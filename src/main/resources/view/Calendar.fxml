@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.company.lab2.controllers.CalendarController">
+   <children>
+      <Label alignment="CENTER" prefHeight="60.0" prefWidth="600.0" style="-fx-background-color: #008080;" text="Calendar" textAlignment="CENTER">
+         <font>
+            <Font name="Times New Roman" size="30.0" />
+         </font>
+      </Label>
+      <Button fx:id="ExitBtn" alignment="CENTER" layoutX="270.0" layoutY="360.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="60.0" text="Exit" textAlignment="CENTER">
+         <font>
+            <Font name="Arial" size="13.0" />
+         </font>
+      </Button>
+      <Label layoutX="86.0" layoutY="76.0" text="From" />
+      <Label fx:id="Start" layoutX="145.0" layoutY="76.0" prefHeight="17.0" prefWidth="165.0" />
+      <Label layoutX="324.0" layoutY="76.0" text="To" />
+      <Label fx:id="End" layoutX="361.0" layoutY="76.0" prefHeight="17.0" prefWidth="165.0" />
+      <TreeView fx:id="calendarTreeView" layoutX="25.0" layoutY="101.0" prefHeight="243.0" prefWidth="550.0" />
+   </children>
+</AnchorPane>

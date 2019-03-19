@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.company.lab2.controllers.AddOrChangeTaskController">
+   <children>
+      <Button fx:id="AddBtn" alignment="CENTER" layoutX="165.0" layoutY="350.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="65.0" text="Add" textAlignment="CENTER">
+         <font>
+            <Font name="Arial" size="13.0" />
+         </font>
+      </Button>
+      <Label fx:id="Header" alignment="CENTER" prefHeight="60.0" prefWidth="500.0" style="-fx-background-color: #008080;" text="Adding new Task" textAlignment="CENTER" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <font>
+            <Font name="Times New Roman" size="30.0" />
+         </font>
+      </Label>
+      <Button fx:id="ExitBtn" alignment="CENTER" layoutX="270.0" layoutY="350.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="66.0" text="Exit" textAlignment="CENTER">
+         <font>
+            <Font name="Arial" size="13.0" />
+         </font>
+      </Button>
+      <VBox layoutX="25.0" layoutY="93.0" prefHeight="205.0" prefWidth="450.0" style="-fx-border-color: Black; -fx-border-radius: 15px;">
+         <children>
+            <HBox prefHeight="25.0" prefWidth="443.0">
+               <children>
+                  <Label prefHeight="27.0" prefWidth="51.0" text="Task title">
+                     <HBox.margin>
+                        <Insets left="20.0" />
+                     </HBox.margin>
+                  </Label>
+                  <TextField fx:id="Title" prefHeight="25.0" prefWidth="105.0" promptText="title">
+                     <HBox.margin>
+                        <Insets left="55.0" />
+                     </HBox.margin>
+                  </TextField>
+                  <CheckBox fx:id="active" mnemonicParsing="false" prefHeight="25.0" prefWidth="62.0" text="Active" textAlignment="CENTER">
+                     <HBox.margin>
+                        <Insets left="42.0" />
+                     </HBox.margin>
+                  </CheckBox>
+               </children>
+               <VBox.margin>
+                  <Insets left="5.0" top="5.0" />
+               </VBox.margin>
+            </HBox>
+            <RadioButton fx:id="NRep" mnemonicParsing="false" text="Without repeating">
+               <font>
+                  <Font name="Arial Bold" size="12.0" />
+               </font>
+               <toggleGroup>
+                  <ToggleGroup fx:id="choose" />
+               </toggleGroup>
+               <VBox.margin>
+                  <Insets left="5.0" top="10.0" />
+               </VBox.margin>
+            </RadioButton>
+            <HBox fx:id="NRepHBox" prefHeight="25.0" prefWidth="443.0">
+               <children>
+                  <Label prefHeight="25.0" prefWidth="81.0" text="Task date">
+                     <HBox.margin>
+                        <Insets left="20.0" />
+                     </HBox.margin>
+                  </Label>
+                  <TextField fx:id="hours" alignment="CENTER" prefHeight="25.0" prefWidth="35.0" promptText="hh">
+                     <HBox.margin>
+                        <Insets left="25.0" right="3.0" />
+                     </HBox.margin>
+                  </TextField>
+                  <Label prefHeight="25.0" prefWidth="0.0" text=":" />
+                  <TextField fx:id="min" alignment="CENTER" prefHeight="25.0" prefWidth="35.0" promptText="mm">
+                     <HBox.margin>
+                        <Insets left="3.0" right="3.0" />
+                     </HBox.margin>
+                  </TextField>
+                  <Label prefHeight="25.0" text=":" />
+                  <TextField fx:id="sec" alignment="CENTER" prefHeight="25.0" prefWidth="35.0" promptText="ss">
+                     <HBox.margin>
+                        <Insets left="3.0" />
+                     </HBox.margin>
+                  </TextField>
+                  <DatePicker fx:id="date" prefHeight="25.0" prefWidth="149.0" promptText="dd.MM.yyyy">
+                     <HBox.margin>
+                        <Insets left="27.0" />
+                     </HBox.margin>
+                  </DatePicker>
+               </children>
+               <VBox.margin>
+                  <Insets left="5.0" top="10.0" />
+               </VBox.margin>
+            </HBox>
+            <RadioButton fx:id="Rep" mnemonicParsing="false" text="With repeating" toggleGroup="$choose">
+               <font>
+                  <Font name="Arial Bold" size="12.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="5.0" top="10.0" />
+               </VBox.margin>
+            </RadioButton>
+            <VBox fx:id="RepVBox" prefHeight="108.0" prefWidth="448.0">
+               <children>
+                  <HBox prefHeight="25.0" prefWidth="443.0">
+                     <children>
+                        <Label prefHeight="25.0" prefWidth="87.0" text="Start date">
+                           <HBox.margin>
+                              <Insets left="20.0" />
+                           </HBox.margin>
+                        </Label>
+                        <TextField fx:id="shours" alignment="CENTER" prefHeight="25.0" prefWidth="35.0" promptText="hh">
+                           <HBox.margin>
+                              <Insets left="18.0" right="3.0" />
+                           </HBox.margin>
+                        </TextField>
+                        <Label prefHeight="25.0" text=":" />
+                        <TextField fx:id="smin" alignment="CENTER" prefHeight="25.0" prefWidth="35.0" promptText="mm">
+                           <HBox.margin>
+                              <Insets left="3.0" right="3.0" />
+                           </HBox.margin>
+                        </TextField>
+                        <Label prefHeight="25.0" prefWidth="0.0" text=":" />
+                        <TextField fx:id="ssec" alignment="CENTER" prefHeight="25.0" prefWidth="35.0" promptText="ss">
+                           <HBox.margin>
+                              <Insets left="3.0" />
+                           </HBox.margin>
+                        </TextField>
+                        <DatePicker fx:id="start" prefHeight="25.0" prefWidth="149.0" promptText="dd.MM.yyyy">
+                           <HBox.margin>
+                              <Insets left="27.0" />
+                           </HBox.margin>
+                        </DatePicker>
+                     </children>
+                     <VBox.margin>
+                        <Insets bottom="10.0" left="5.0" top="10.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox prefHeight="25.0" prefWidth="443.0">
+                     <children>
+                        <Label prefHeight="25.0" prefWidth="85.0" text="End date">
+                           <HBox.margin>
+                              <Insets left="20.0" />
+                           </HBox.margin>
+                        </Label>
+                        <TextField fx:id="ehours" alignment="CENTER" prefHeight="25.0" prefWidth="35.0" promptText="hh">
+                           <HBox.margin>
+                              <Insets left="20.0" right="3.0" />
+                           </HBox.margin>
+                        </TextField>
+                        <Label prefHeight="25.0" prefWidth="0.0" text=":" />
+                        <TextField fx:id="emin" alignment="CENTER" prefHeight="25.0" prefWidth="35.0" promptText="mm">
+                           <HBox.margin>
+                              <Insets left="3.0" right="3.0" />
+                           </HBox.margin>
+                        </TextField>
+                        <Label prefHeight="25.0" text=":" />
+                        <TextField fx:id="esec" alignment="CENTER" prefHeight="25.0" prefWidth="35.0" promptText="ss">
+                           <HBox.margin>
+                              <Insets left="3.0" />
+                           </HBox.margin>
+                        </TextField>
+                        <DatePicker fx:id="end" prefHeight="25.0" prefWidth="149.0" promptText="dd.MM.yyyy">
+                           <HBox.margin>
+                              <Insets left="27.0" />
+                           </HBox.margin>
+                        </DatePicker>
+                     </children>
+                     <VBox.margin>
+                        <Insets bottom="10.0" left="5.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox prefHeight="25.0" prefWidth="443.0">
+                     <children>
+                        <Label prefHeight="25.0" prefWidth="105.0" text="Interval">
+                           <HBox.margin>
+                              <Insets left="20.0" />
+                           </HBox.margin>
+                        </Label>
+                        <TextField fx:id="idays" alignment="CENTER" prefHeight="25.0" prefWidth="35.0" promptText="dd">
+                           <HBox.margin>
+                              <Insets right="3.0" />
+                           </HBox.margin>
+                        </TextField>
+                        <Label prefHeight="25.0" text=":" />
+                        <TextField fx:id="ihours" alignment="CENTER" prefHeight="25.0" prefWidth="35.0" promptText="hh">
+                           <HBox.margin>
+                              <Insets left="3.0" right="3.0" />
+                           </HBox.margin>
+                        </TextField>
+                        <Label prefHeight="25.0" text=":" />
+                        <TextField fx:id="imin" alignment="CENTER" prefHeight="25.0" prefWidth="35.0" promptText="mm">
+                           <HBox.margin>
+                              <Insets left="3.0" right="3.0" />
+                           </HBox.margin>
+                        </TextField>
+                        <Label prefHeight="25.0" prefWidth="0.0" text=":" />
+                        <TextField fx:id="isec" alignment="CENTER" prefHeight="25.0" prefWidth="35.0" promptText="ss">
+                           <HBox.margin>
+                              <Insets left="3.0" />
+                           </HBox.margin>
+                        </TextField>
+                     </children>
+                     <VBox.margin>
+                        <Insets bottom="3.0" left="5.0" />
+                     </VBox.margin>
+                  </HBox>
+               </children>
+               <VBox.margin>
+                  <Insets bottom="5.0" />
+               </VBox.margin>
+            </VBox>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>
