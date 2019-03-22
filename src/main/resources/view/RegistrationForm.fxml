@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.*?>
+<AnchorPane prefHeight="385.0" prefWidth="475.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.company.lab2.controllers.RegistrationFormController">
+    <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="60.0" prefWidth="475.0"
+           style="-fx-background-color: #008080;" text="Task Manager" textAlignment="CENTER">
+        <font>
+            <Font name="Times New Roman" size="30.0"/>
+        </font>
+    </Label>
+    <Text layoutX="177.0" layoutY="99.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Registration"
+          textAlignment="CENTER">
+        <font>
+            <Font name="Arial" size="23.0"/>
+        </font>
+    </Text>
+    <TextField fx:id="email" layoutX="225.0" layoutY="116.0" prefHeight="26.0" promptText="Enter your Email">
+        <font>
+            <Font name="Arial" size="12.0"/>
+        </font>
+    </TextField>
+    <Text layoutX="101.0" layoutY="242.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password:"
+          wrappingWidth="57.55859375">
+        <font>
+            <Font name="Times New Roman" size="14.0"/>
+        </font>
+    </Text>
+    <Text layoutX="101.0" layoutY="134.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email:">
+        <font>
+            <Font name="Times New Roman" size="14.0"/>
+        </font>
+    </Text>
+    <Button fx:id="registrateBtn" layoutX="200.0" layoutY="309.0" mnemonicParsing="false" prefHeight="26.0"
+            prefWidth="75.0" text="Registrate">
+        <font>
+            <Font name="Arial Bold" size="12.0"/>
+        </font>
+    </Button>
+    <Label fx:id="singIn" alignment="CENTER" layoutX="180.0" layoutY="349.0" prefHeight="17.0" prefWidth="116.0"
+           text="or Sing In" textAlignment="CENTER" textFill="#2f2cf2" textOverrun="CLIP" underline="true">
+        <font>
+            <Font name="System Bold" size="12.0"/>
+        </font>
+    </Label>
+    <Text layoutX="101.0" layoutY="170.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Login:">
+        <font>
+          <Font name="Times New Roman" size="14.0"/>
+        </font>
+    </Text>
+    <TextField fx:id="login" layoutX="225.0" layoutY="152.0" prefHeight="26.0" promptText="Enter your login">
+        <font>
+          <Font name="Arial" size="12.0"/>
+        </font>
+    </TextField>
+    <TextField fx:id="name" layoutX="225.0" layoutY="188.0" prefHeight="26.0" promptText="Enter your name">
+        <font>
+          <Font name="Arial" size="12.0"/>
+        </font>
+    </TextField>
+    <Text layoutX="101.0" layoutY="206.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name:">
+        <font>
+          <Font name="Times New Roman" size="14.0"/>
+        </font>
+    </Text>
+    <Text layoutX="101.0" layoutY="278.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Confirm password:"
+          textAlignment="CENTER" wrappingWidth="108.0">
+        <font>
+          <Font name="Times New Roman" size="14.0"/>
+        </font>
+    </Text>
+    <PasswordField fx:id="password" layoutX="225.0" layoutY="224.0" prefHeight="26.0" promptText="Enter your password">
+        <font>
+          <Font name="Arial" size="12.0"/>
+        </font>
+    </PasswordField>
+    <PasswordField fx:id="passwordConfirm" layoutX="225.0" layoutY="260.0" prefHeight="26.0"
+                   promptText="Confir password">
+        <font>
+          <Font name="Arial" size="12.0"/>
+        </font>
+    </PasswordField>
+</AnchorPane>
