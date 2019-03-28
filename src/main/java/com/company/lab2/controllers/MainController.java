@@ -27,7 +27,7 @@ public class MainController {
 
     private static ObservableList<Task> TaskList;
     private static Task task;
-    private TimeToDoTask alarm;
+    private Notification alarm;
     private static boolean saved = true;
 
 
@@ -58,7 +58,7 @@ public class MainController {
      * when its time to do task.
      */
     private void alarm(){
-        alarm = new TimeToDoTask();
+        alarm = new Notification();
         alarm.start();
     }
 

@@ -4,13 +4,17 @@ import com.company.lab2.model.Task;
 import com.company.lab2.model.Tasks;
 import javafx.application.Platform;
 import javafx.collections.ObservableList;
-import java.util.*;
+
+import java.util.Date;
+import java.util.Set;
+import java.util.SortedMap;
+
 import static com.company.lab2.Controller.logger;
 
 /**Thread class for checking taskList
  * and make alarm signal when it's time to do Task
  */
-public class TimeToDoTask extends Thread {
+public class Notification extends Thread {
     private ObservableList<Task> TaskList;
     private Date now;
     private Date endDayTime;

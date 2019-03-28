@@ -1,16 +1,16 @@
 package com.company.lab2.controllers;
 
-import java.time.LocalDate;
-import java.time.ZoneId;
-import java.util.Date;
-
+import com.company.lab2.model.Task;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import com.company.lab2.model.Task;
+
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.Date;
 
 /**
  * Class controller for AddOrChangeTask.fxml view
@@ -86,7 +86,6 @@ public class AddOrChangeTaskController {
         Rep.setOnAction(event -> showRepRadioBtnContent());
         NRep.setOnAction(event -> showNotRepRadioBtnContent());
         if (stage.getTitle().matches("Task Adding")) {
-            Header.setText("Adding new Task");
             AddBtn.setText("Add");
             AddBtn.setOnAction(event -> {
                 if (MakeNewTask()) {
