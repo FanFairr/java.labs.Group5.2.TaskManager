@@ -1,12 +1,11 @@
 package com.company.lab2.controllers;
 
+import com.company.lab2.Controller;
 import javafx.application.Platform;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
-import com.company.lab2.model.Task;
 
 /**
  * Class controller for Confirm.fxml view
@@ -19,7 +18,6 @@ public class ConfirmController {
     private Button Confirm;
     @FXML
     private Label label;
-    private ObservableList<Task> taskList;
     private Stage confirmStage;
     private static boolean exit;
 
@@ -33,11 +31,9 @@ public class ConfirmController {
                 WindowMaker.closeWindow(confirmStage);
             });
         } else if (confirmStage.getTitle().matches("Confirm deleting")){
-            taskList = MainController.getTaskList();
             label.setText("Remove " + MainController.getTask().getTitle());
             Confirm.setOnAction(event -> {
-                taskList.remove(MainController.getTask());
-                MainController.setSaved(false);
+                Controller.deleteTask(MainController.getTask());
                 WindowMaker.closeWindow(confirmStage);
                 Platform.runLater(() -> WindowMaker.closeWindow(TaskController.getStage()));
             });

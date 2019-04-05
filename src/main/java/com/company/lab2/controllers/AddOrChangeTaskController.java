@@ -1,7 +1,7 @@
 package com.company.lab2.controllers;
 
+import com.company.lab2.Controller;
 import com.company.lab2.model.Task;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
@@ -90,10 +90,7 @@ public class AddOrChangeTaskController {
             AddBtn.setOnAction(event -> {
                 if (MakeNewTask()) {
                     if (active.isSelected()) task.setActive(true);
-                    ObservableList<Task> taskList = MainController.getTaskList();
-                    taskList.add(task);
-                    MainController.setTaskList(taskList);
-                    MainController.setSaved(false);
+                    Controller.addTask(task);
                     WindowMaker.closeWindow(stage);
                 }
             });
@@ -107,13 +104,7 @@ public class AddOrChangeTaskController {
                 if (MakeNewTask()) {
                     if (active.isSelected()) task.setActive(true);
                     if (!task.equals(oldTask)) {
-                        ObservableList<Task> taskList = MainController.getTaskList();
-                        int position = taskList.indexOf(oldTask);
-                        taskList.remove(position);
-                        taskList.add(position, task);
-                        MainController.setTaskList(taskList);
-                        MainController.setTask(task);
-                        MainController.setSaved(false);
+                        Controller.changeTask(oldTask,task);
                         WindowMaker.closeWindow(stage);
                     } else WindowMaker.closeWindow(stage);
                 }
@@ -139,9 +130,9 @@ public class AddOrChangeTaskController {
         String alertText = "";
         boolean taskReady = false;
         boolean alertMade = true;
-        Long SDate = makeLongFromTimeFields(shours, smin, ssec);
-        Long EDate = makeLongFromTimeFields(ehours, emin, esec);
-        Long lDate = makeLongFromTimeFields(hours, min, sec);
+        Long SDate = ConvertController.makeLongFromTimeFields(shours, smin, ssec);
+        Long EDate = ConvertController.makeLongFromTimeFields(ehours, emin, esec);
+        Long lDate = ConvertController.makeLongFromTimeFields(hours, min, sec);
         if (ValidateController.isEmpty(Title)) {
             alertText = "Title field should be filled";
         } else {
@@ -157,8 +148,8 @@ public class AddOrChangeTaskController {
                     alertText = "\"Interval\" must be greater than zero!";
                 } else {
                     int interval = intInterval;
-                    Date startD = makeDate(start, SDate);
-                    Date endD = makeDate(end, EDate);
+                    Date startD = ConvertController.makeDate(start, SDate);
+                    Date endD = ConvertController.makeDate(end, EDate);
                     if (endD.getTime() < startD.getTime() + interval) {
                         alertText = "End time of the task must be greater than Start time + interval";
                     } else {
@@ -170,10 +161,10 @@ public class AddOrChangeTaskController {
             } else if (NRep.isSelected()) {
                 if (date.getValue() == null) {
                     alertText = "Date field should be filled";
-                } else if (makeLongFromTimeFields(hours, min, sec) == null) {
+                } else if (ConvertController.makeLongFromTimeFields(hours, min, sec) == null) {
                     alertText = "At least one of time fields should be filled";
                 } else {
-                    Date time = makeDate(date, lDate);
+                    Date time = ConvertController.makeDate(date, lDate);
                     task = new Task(Title.getText(), time);
                     taskReady = true;
                     alertMade = false;
@@ -279,40 +270,6 @@ public class AddOrChangeTaskController {
         ValidateController.hoursMinSecondsValidate(hours, min, sec);
     }
 
-
-    /**Method for making long digit from textFields
-     * @param h hours TextField
-     * @param m minutes TextField
-     * @param s seconds TextField
-     * @return long h+m+s || null
-     */
-    static Long makeLongFromTimeFields(TextField h, TextField m, TextField s) {
-        if (!ValidateController.isEmpty(h) || !ValidateController.isEmpty(s) || !ValidateController.isEmpty(m)){
-            ValidateController.setZeroIfEmpty(h);
-            ValidateController.setZeroIfEmpty(m);
-            ValidateController.setZeroIfEmpty(s);
-            int hours = Integer.parseInt(ValidateController.removeZeroBeforeNumber(h.getText())) * 3600;
-            int minutes = Integer.parseInt(ValidateController.removeZeroBeforeNumber(m.getText())) * 60;
-            int seconds = Integer.parseInt(ValidateController.removeZeroBeforeNumber(s.getText()));
-            return (long) (hours + minutes + seconds);
-        } else {
-            return null;
-        }
-    }
-
-    /**Method for show not repeated task radioButton content
-     * @param date date to get from
-     * @param time long time to add in seconds
-     * @return new Date
-     */
-    static Date makeDate(DatePicker date, Long time) {
-        if( time != null) {
-            Date current = Date.from(date.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant());
-            long toDate = current.getTime() + time * 1000;
-            return new Date(toDate);
-        }
-        return null;
-    }
 
     /**Method for showing tip on fields which may/should be filled
      */

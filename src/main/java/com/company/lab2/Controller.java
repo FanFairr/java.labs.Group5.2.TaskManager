@@ -1,27 +1,24 @@
 package com.company.lab2;
 
 import com.company.lab2.controllers.MainController;
-import com.company.lab2.model.ArrayTaskList;
-import com.company.lab2.model.Task;
-import com.company.lab2.model.TaskIO;
-import com.company.lab2.model.Tasks;
-import javafx.application.Application;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.stage.Stage;
 import com.company.lab2.controllers.WindowMaker;
+import com.company.lab2.model.Task;
+import javafx.application.Application;
+import javafx.collections.ObservableList;
+import javafx.scene.control.ListView;
+import javafx.scene.control.TreeView;
+import javafx.stage.Stage;
 import org.apache.log4j.Logger;
 
-import java.io.File;
-import java.io.IOException;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Set;
 import java.util.SortedMap;
 
 public class Controller extends Application {
+    private static String login;
+    private static TreeView<Task> calendarTreeView;
+    public static ObservableList<Task> TaskList;
     public final static Logger logger = Logger.getLogger(MainController.class);
-    private static File file = new File("file.txt");
 
     @Override
     public void start(Stage primaryStage) throws Exception{
@@ -32,76 +29,67 @@ public class Controller extends Application {
 
     public static void main(String[] args) {
         launch(args);
-
-    }
-    /**Method for reading tasks from file
-     * if file not found make this file
-     */
-    public static ObservableList<Task> getFromFileToTaskList() {
-        ArrayTaskList list = new ArrayTaskList();
-        ObservableList<Task> TaskList = FXCollections.observableArrayList();
-        try {
-            if (!file.exists()) {
-                file.createNewFile();
-            }
-            TaskIO.readBinary(list, file);
-        } catch (IOException e) {
-            logger.error("Не найден файл для чтения",e);
-            return TaskList;
-        }
-        if (list.size() != 0) {
-            for (Task t: list) {
-                TaskList.add(t);
-            }
-        }
-        return TaskList;
     }
 
-    /**Method for writing tasks in file
-     * if file not found make this file
-     */
-    public static void saveInFile(ObservableList<Task> TaskList) {
-        final String title = "Saving";
-        String content;
-        try {
-            if (!file.exists()) {
-                file.createNewFile();
-            }
-            ArrayTaskList list = new ArrayTaskList();
-            for (Task t:TaskList) {
-                list.add(t);
-            }
-            TaskIO.writeBinary(list, file);
-            MainController.setSaved(true);
-            content = "Successful";
-            WindowMaker.alertWindowInf(title, title, content);
-        } catch (IOException e) {
-            logger.error("Не найден файл для сохранения",e);
-            content = "File not found";
-            WindowMaker.alertWindowWarning(title, title, content);
-        }
-    }
-    /**Method for making calendar
-     */
-    public static SortedMap<Date, Set<Task>> calendar(Date start, Date end){
-        return Tasks.calendar(MainController.getTaskList(), start, end);
+    public static void registration(String email, String password) {
+
     }
 
-    /**Method for formatting ListView Items
-     */
-    public static String formatListViewItems(Task item) {
-        SimpleDateFormat format = new SimpleDateFormat("HH:mm:ss dd-MM-yyyy");
-        if (item.isRepeated()) {
-            return "Title: '" + item.getTitle() +
-                    "', startTime: " + format.format(item.getStartTime()) +
-                    ", endTime: " +  format.format(item.getEndTime()) +
-                    ", repeatInterval: " + TaskIO.getStringFromRepeatInterval(item.getRepeatInterval()) +
-                    ", active: " + item.isActive() + ";";
-        }
-        else {
-            return"Title: '" + item.getTitle() +
-                    "', time: " +  format.format(item.getTime()) +
-                    ", active: " + item.isActive() + ";";
-        }
+    public static void signIn(String email, String password) {
+
     }
+
+    /**Method for GETTING  ListView tasks from server*/
+    public static ListView<Task> getTaskListView() {
+        return null;
+    }
+
+    /**Method for GETTING tasks from server*/
+    //запрос на ObservableList тасок
+    public static ObservableList<Task> getTaskList() {
+        return null;
+    }
+
+    public static void parseJsonResponse() {}
+
+    public static void addTask(Task task) {
+
+
+        MainController.notificationInterrupt();
+    }
+
+    public static void deleteTask(Task task) {
+
+
+        MainController.notificationInterrupt();
+    }
+
+    public static void changeTask(Task oldT, Task newT) {
+
+
+        MainController.notificationInterrupt();
+    }
+
+    /**Method for getting TreeView calendar from server
+     */
+    public static boolean calendarTreeViewGetRequest(Date start, Date end){
+        calendarTreeView = null;
+        //тип response вернет что-то вроде строки после анмаршалинга которой сперва узнаем были ли найдены задачи
+        //если да(true), то парсим их
+        boolean isEmpty = false;
+        return isEmpty;
+    }
+
+    //запрос календарь по таскам данного пользователя
+    public static SortedMap<Date, Set<Task>> getCalendar(Date start, Date end) {
+
+
+        return null;
+    }
+
+
+    public static TreeView<Task> getCalendarTreeView() {
+        return calendarTreeView;
+    }
+
 }

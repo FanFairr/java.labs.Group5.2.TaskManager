@@ -61,39 +61,12 @@ public class CalendarController {
         return false;
     }
 
-    /**Method for redacting visualization of tasks in TreeView
-     */
-    private void redactTextInTreeView() {
-        calendarTreeView.setCellFactory(p -> new TextFieldTreeCell<>(new StringConverter<Task>(){
-            @Override
-            public String toString(Task object) {
-                SimpleDateFormat format1 = new SimpleDateFormat("HH:mm:ss dd-MM-yyyy");
-                String title = object.getTitle();
-                String date = object.getTime() == null? "": ", time: " + format1.format(object.getTime()) +";";
-                return title + date;
-            }
-            @Override
-            public Task fromString(String string) {
-                SimpleDateFormat format1 = new SimpleDateFormat("HH:mm:ss dd-MM-yyyy");
-                string = string.replace("Title: '","");
-                String title =  string.replaceAll("\', time:.+","");
-                String date = string.replaceAll(".+ ","").replace(";","");
-                try {
-                    Date d = format1.parse(date);
-                    return new Task(title,d);
-                } catch (ParseException e) {
-                    logger.error(e.getMessage(),e);
-                    e.printStackTrace();
-                }
-                return new Task(title,null);
-            }
-        }));
-    }
 
+    //TODO перенос на сервер
     /**Method for filling TreeView
      */
     private void fillTreeView() {
-        calendar = Controller.calendar(start, end);
+        calendar = Controller.getCalendar(start, end);
         SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy");
         Start.setText(format.format(start));
         End.setText(format.format(end));
@@ -126,5 +99,33 @@ public class CalendarController {
             calendarTreeView.refresh();
             redactTextInTreeView();
         }
+    }
+    /**Method for redacting visualization of tasks in TreeView
+     */
+    private void redactTextInTreeView() {
+        calendarTreeView.setCellFactory(p -> new TextFieldTreeCell<>(new StringConverter<Task>(){
+            @Override
+            public String toString(Task object) {
+                SimpleDateFormat format1 = new SimpleDateFormat("HH:mm:ss dd-MM-yyyy");
+                String title = object.getTitle();
+                String date = object.getTime() == null? "": ", time: " + format1.format(object.getTime()) +";";
+                return title + date;
+            }
+            @Override
+            public Task fromString(String string) {
+                SimpleDateFormat format1 = new SimpleDateFormat("HH:mm:ss dd-MM-yyyy");
+                string = string.replace("Title: '","");
+                String title =  string.replaceAll("\', time:.+","");
+                String date = string.replaceAll(".+ ","").replace(";","");
+                try {
+                    Date d = format1.parse(date);
+                    return new Task(title,d);
+                } catch (ParseException e) {
+                    logger.error(e.getMessage(),e);
+                    e.printStackTrace();
+                }
+                return new Task(title,null);
+            }
+        }));
     }
 }

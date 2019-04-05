@@ -1,7 +1,7 @@
 package com.company.lab2.model;
 
-import java.util.Date;
 import java.io.Serializable;
+import java.util.Date;
 
 /** класс задачи**/
 public class Task implements Cloneable, Serializable {
@@ -33,7 +33,7 @@ public class Task implements Cloneable, Serializable {
      *із заданим інтервалом
      *і має задану назву.
      *@throws IllegalArgumentException
-     *Интервал поторения задачи должен
+     *интервал поторения задачи должен
      *быть не null!!.
      *@throws IllegalArgumentException
      *Время начала и конца выполнения задачи
@@ -48,7 +48,7 @@ public class Task implements Cloneable, Serializable {
     public Task(String title, Date start, Date end, int interval)
             throws IllegalArgumentException {
         if (interval <= 0) {
-            throw new IllegalArgumentException("Интервал поторения задачи должен быть больше ноля!!");
+            throw new IllegalArgumentException("интервал поторения задачи должен быть больше ноля!!");
         } else if (start == null || end == null || end.getTime() < start.getTime() + interval) {
             throw new IllegalArgumentException("Время начала и "
                     + "конца выполнения задачи должны быть не null "
@@ -169,7 +169,7 @@ public class Task implements Cloneable, Serializable {
     public void setTime(Date start, Date end, int interval)
             throws IllegalArgumentException {
         if (interval <= 0) {
-            throw new IllegalArgumentException("Интервал повторения задачи должен быть больше ноля!!");
+            throw new IllegalArgumentException("интервал повторения задачи должен быть больше ноля!!");
         }else if (start == null || end == null || end.getTime() < start.getTime() + interval) {
             throw new IllegalArgumentException("Время начала и "
                     + "конца выполнения задачи должны быть не null "

@@ -1,7 +1,7 @@
 package com.company.lab2.controllers;
 
+import com.company.lab2.Controller;
 import com.company.lab2.model.Task;
-import com.company.lab2.model.Tasks;
 import javafx.application.Platform;
 import javafx.collections.ObservableList;
 
@@ -30,10 +30,10 @@ public class Notification extends Thread {
      */
     private void makeCalendarForDay() {
         if (!notFirstTimeHereAfterMonitor) {
-            TaskList = MainController.getTaskList();
+            TaskList = Controller.getTaskList();
             now = new Date(System.currentTimeMillis() / 1000 * 1000);
             endDayTime = new Date((now.getTime() +(86400000 - now.getTime() % 86400000)));
-            calendarByTime = Tasks.calendar(TaskList, now, endDayTime);
+            calendarByTime = Controller.getCalendar(now, endDayTime);
             notFirstTimeHereAfterMonitor = false;
         }
     }

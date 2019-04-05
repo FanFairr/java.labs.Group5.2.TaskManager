@@ -7,7 +7,7 @@ import javafx.scene.control.Tooltip;
 
 /**Class for fields validation
  */
-class ValidateController {
+public class ValidateController {
 
     /**Method for hours validation
      * @param textField hours TextField

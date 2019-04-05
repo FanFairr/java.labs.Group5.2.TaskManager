@@ -1,13 +1,13 @@
 package com.company.lab2.controllers;
 
-import java.text.SimpleDateFormat;
-import com.company.lab2.model.TaskIO;
+import com.company.lab2.model.Task;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
-import com.company.lab2.model.Task;
+
+import java.text.SimpleDateFormat;
 
 /**
  * Class controller for Task.fxml view
@@ -75,7 +75,7 @@ public class TaskController {
                 IntrevBox.setVisible(true);
                 End.setText(format.format(task.getEndTime()));
                 Start.setText(format.format(task.getStartTime()));
-                Interval.setText(TaskIO.getStringFromRepeatInterval(task.getRepeatInterval()));
+                Interval.setText(ConvertController.getStringFromRepeatInterval(task.getRepeatInterval()));
             } else {
                 DateBox.setVisible(true);
                 StartBox.setVisible(false);
