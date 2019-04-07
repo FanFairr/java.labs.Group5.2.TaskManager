@@ -1,4 +1,4 @@
-package com.company.lab2.controllers;
+package com.company.lab2.userControllers;
 
 import com.company.lab2.Controller;
 import javafx.fxml.FXMLLoader;
@@ -8,6 +8,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+
 import static com.company.lab2.Controller.logger;
 
 /**Class for making new windows

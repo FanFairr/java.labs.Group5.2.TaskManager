@@ -1,4 +1,4 @@
-package com.company.lab2.controllers;
+package com.company.lab2.userControllers;
 
 import com.company.lab2.Controller;
 import javafx.application.Platform;

@@ -1,8 +1,8 @@
 package com.company.lab2;
 
-import com.company.lab2.controllers.MainController;
-import com.company.lab2.controllers.WindowMaker;
-import com.company.lab2.model.Task;
+import com.company.lab2.userControllers.MainController;
+import com.company.lab2.userControllers.WindowMaker;
+import com.company.lab2.userModel.Task;
 import javafx.application.Application;
 import javafx.collections.ObservableList;
 import javafx.scene.control.ListView;

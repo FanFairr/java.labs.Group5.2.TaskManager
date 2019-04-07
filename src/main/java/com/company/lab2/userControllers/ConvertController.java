@@ -1,4 +1,4 @@
-package com.company.lab2.controllers;
+package com.company.lab2.userControllers;
 
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;

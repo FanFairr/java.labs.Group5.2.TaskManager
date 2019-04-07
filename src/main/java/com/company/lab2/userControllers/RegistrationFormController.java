@@ -1,4 +1,4 @@
-package com.company.lab2.controllers;
+package com.company.lab2.userControllers;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;

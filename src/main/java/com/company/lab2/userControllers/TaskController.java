@@ -1,6 +1,6 @@
-package com.company.lab2.controllers;
+package com.company.lab2.userControllers;
 
-import com.company.lab2.model.Task;
+import com.company.lab2.userModel.Task;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;

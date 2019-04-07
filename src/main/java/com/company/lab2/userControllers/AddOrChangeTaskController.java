@@ -1,7 +1,7 @@
-package com.company.lab2.controllers;
+package com.company.lab2.userControllers;
 
 import com.company.lab2.Controller;
-import com.company.lab2.model.Task;
+import com.company.lab2.userModel.Task;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.HBox;

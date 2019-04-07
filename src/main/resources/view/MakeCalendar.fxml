@@ -1,14 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.*?>
-<?import javafx.scene.text.*?>
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-
-<AnchorPane fx:id="Search" prefHeight="225.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.company.lab2.controllers.MakeCalendarController">
+<?import javafx.scene.text.Font?>
+<AnchorPane fx:id="Search" prefHeight="225.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.company.lab2.userControllers.MakeCalendarController">
 <children>
     <Button fx:id="SearchBtn" layoutX="115.0" layoutY="178.0" mnemonicParsing="false" prefWidth="65.0" text="Search">
          <font>

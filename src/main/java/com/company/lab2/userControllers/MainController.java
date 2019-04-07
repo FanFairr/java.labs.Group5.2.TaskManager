@@ -1,7 +1,7 @@
-package com.company.lab2.controllers;
+package com.company.lab2.userControllers;
 
 import com.company.lab2.Controller;
-import com.company.lab2.model.Task;
+import com.company.lab2.userModel.Task;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
