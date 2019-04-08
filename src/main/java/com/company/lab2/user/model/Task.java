@@ -1,4 +1,4 @@
-package com.company.lab2.userModel;
+package com.company.lab2.user.model;
 
 import java.io.Serializable;
 import java.util.Date;

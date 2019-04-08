@@ -3,7 +3,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.*?>
-<AnchorPane prefHeight="385.0" prefWidth="475.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.company.lab2.userControllers.RegistrationFormController">
+<AnchorPane prefHeight="385.0" prefWidth="475.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.company.lab2.user.controllers.RegistrationFormController">
     <children>
     <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="60.0" prefWidth="475.0" style="-fx-background-color: #008080;" text="Task Manager" textAlignment="CENTER">
         <font>

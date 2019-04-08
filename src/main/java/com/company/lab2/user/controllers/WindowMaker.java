@@ -1,6 +1,6 @@
-package com.company.lab2.userControllers;
+package com.company.lab2.user.controllers;
 
-import com.company.lab2.Controller;
+import com.company.lab2.user.Controller;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -9,7 +9,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-import static com.company.lab2.Controller.logger;
+import static com.company.lab2.user.Controller.logger;
 
 /**Class for making new windows
  */

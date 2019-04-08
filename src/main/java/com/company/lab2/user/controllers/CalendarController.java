@@ -1,7 +1,7 @@
-package com.company.lab2.userControllers;
+package com.company.lab2.user.controllers;
 
-import com.company.lab2.Controller;
-import com.company.lab2.userModel.Task;
+import com.company.lab2.user.Controller;
+import com.company.lab2.user.model.Task;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -17,7 +17,7 @@ import java.util.Set;
 import java.util.SortedMap;
 import java.util.TreeMap;
 
-import static com.company.lab2.Controller.logger;
+import static com.company.lab2.user.Controller.logger;
 
 /**
  * Class controller for Calendar.fxml view

@@ -1,7 +1,7 @@
-package com.company.lab2.userControllers;
+package com.company.lab2.user.controllers;
 
-import com.company.lab2.Controller;
-import com.company.lab2.userModel.Task;
+import com.company.lab2.user.Controller;
+import com.company.lab2.user.model.Task;
 import javafx.application.Platform;
 import javafx.collections.ObservableList;
 
@@ -9,7 +9,7 @@ import java.util.Date;
 import java.util.Set;
 import java.util.SortedMap;
 
-import static com.company.lab2.Controller.logger;
+import static com.company.lab2.user.Controller.logger;
 
 /**Thread class for checking taskList
  * and make alarm signal when it's time to do Task

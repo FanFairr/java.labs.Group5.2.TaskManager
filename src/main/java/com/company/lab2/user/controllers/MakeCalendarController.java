@@ -1,6 +1,6 @@
-package com.company.lab2.userControllers;
+package com.company.lab2.user.controllers;
 
-import com.company.lab2.Controller;
+import com.company.lab2.user.Controller;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;

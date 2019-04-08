@@ -1,10 +1,10 @@
-package com.company.lab2;
+package com.company.lab2.server;
 
-import com.company.lab2.serverControllers.ServerSceneController;
-import com.company.lab2.serverControllers.ServerThread;
-import com.company.lab2.serverModel.Task;
-import com.company.lab2.serverModel.TaskIO;
-import com.company.lab2.serverModel.User;
+import com.company.lab2.server.controllers.ServerSceneController;
+import com.company.lab2.server.controllers.ServerThread;
+import com.company.lab2.server.model.Task;
+import com.company.lab2.server.model.TaskIO;
+import com.company.lab2.server.model.User;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.event.EventHandler;

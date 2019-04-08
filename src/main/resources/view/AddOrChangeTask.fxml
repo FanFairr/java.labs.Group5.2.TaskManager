@@ -4,7 +4,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
-<AnchorPane prefHeight="400.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.company.lab2.userControllers.AddOrChangeTaskController">
+<AnchorPane prefHeight="400.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.company.lab2.user.controllers.AddOrChangeTaskController">
    <children>
       <Button fx:id="AddBtn" alignment="CENTER" layoutX="165.0" layoutY="350.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="65.0" text="Add" textAlignment="CENTER">
          <font>

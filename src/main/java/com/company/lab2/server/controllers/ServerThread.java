@@ -1,8 +1,8 @@
-package com.company.lab2.serverControllers;
+package com.company.lab2.server.controllers;
 
-import com.company.lab2.serverModel.Task;
-import com.company.lab2.serverModel.Tasks;
-import com.company.lab2.serverModel.User;
+import com.company.lab2.server.model.Task;
+import com.company.lab2.server.model.Tasks;
+import com.company.lab2.server.model.User;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
