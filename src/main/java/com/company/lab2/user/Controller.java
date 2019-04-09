@@ -22,8 +22,12 @@ public class Controller extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        final String path = "/view/Main.fxml";
+        /*
+        final String path = "/view.user/Main.fxml";
         final String header = "Task Manager";
+        */
+        final String path = "/view/user/EnterForm.fxml";
+        final String header = "SignIn";
         WindowMaker.makeWindow(path, header);
     }
 
@@ -39,12 +43,12 @@ public class Controller extends Application {
 
     }
 
-    /**Method for GETTING  ListView tasks from server*/
+    /**Method for GETTING  ListView tasks from view.user*/
     public static ListView<Task> getTaskListView() {
         return null;
     }
 
-    /**Method for GETTING tasks from server*/
+    /**Method for GETTING tasks from view.user*/
     //запрос на ObservableList тасок
     public static ObservableList<Task> getTaskList() {
         return null;
@@ -70,7 +74,7 @@ public class Controller extends Application {
         MainController.notificationInterrupt();
     }
 
-    /**Method for getting TreeView calendar from server
+    /**Method for getting TreeView calendar from view.user
      */
     public static boolean calendarTreeViewGetRequest(Date start, Date end){
         calendarTreeView = null;

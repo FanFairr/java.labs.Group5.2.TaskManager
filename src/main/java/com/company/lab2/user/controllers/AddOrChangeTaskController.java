@@ -13,7 +13,7 @@ import java.time.ZoneId;
 import java.util.Date;
 
 /**
- * Class controller for AddOrChangeTask.fxml view
+ * Class controller for AddOrChangeTask.fxml view.user
  */
 public class AddOrChangeTaskController {
 

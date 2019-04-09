@@ -1,10 +1,12 @@
 package com.company.lab2.user.controllers;
 
+import com.company.lab2.user.Controller;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Tooltip;
+import javafx.stage.Stage;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -18,18 +20,32 @@ public class EnterFormController {
     @FXML
     private PasswordField password;
     @FXML
-    private Button singInBtn;
+    private Button registrationBtn;
     @FXML
-    private Label registration;
+    private TextField login;
     @FXML
-    private TextField userName;
+    private Button signInBtn;
 
     @FXML
     void initialize() {
-        assert password != null : "fx:id=\"password\" was not injected: check your FXML file 'EnterForm.fxml'.";
-        assert singInBtn != null : "fx:id=\"singInBtn\" was not injected: check your FXML file 'EnterForm.fxml'.";
-        assert registration != null : "fx:id=\"registration\" was not injected: check your FXML file 'EnterForm.fxml'.";
-        assert userName != null : "fx:id=\"userName\" was not injected: check your FXML file 'EnterForm.fxml'.";
+        login.setTooltip(new Tooltip("Your login"));
+        password.setTooltip(new Tooltip("Your password"));
+        signInBtn.setOnAction(event -> {
+            final String alertTitle = "Warning";
+            final String alertHeader = "Action mistake";
+            final String alertText ="Login & password fields should be filled";
+            if (ValidateController.isEmpty(login)|| password.getText().trim().equals("")) {
+                WindowMaker.alertWindowWarning(alertTitle, alertHeader, alertText);
+            } else
+                Controller.signIn(login.getText(), password.getText());
+        });
+        registrationBtn.setOnMouseClicked(event -> {
+            Stage current = WindowMaker.getStage();
+            final String path = "/view/user/RegistrationForm.fxml";
+            final String header = "Registration";
+            WindowMaker.makeWindow(path, header);
+            WindowMaker.closeWindow(current);
+        });
 
     }
 }

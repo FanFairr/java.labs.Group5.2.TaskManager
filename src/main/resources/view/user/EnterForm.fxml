@@ -3,7 +3,8 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.*?>
-<AnchorPane prefHeight="385.0" prefWidth="475.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.company.lab2.user.controllers.RegistrationFormController">
+<AnchorPane prefHeight="360.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.company.lab2.user.controllers.EnterFormController">
+
     <children>
     <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="60.0" prefWidth="475.0" style="-fx-background-color: #008080;" text="Task Manager" textAlignment="CENTER">
         <font>
@@ -15,7 +16,7 @@
             <Font name="Arial" size="23.0" />
         </font>
     </Text>
-    <TextField fx:id="userName" layoutX="186.0" layoutY="155.0" prefHeight="26.0" promptText="Enter your login">
+    <TextField fx:id="login" layoutX="186.0" layoutY="155.0" prefHeight="26.0" promptText="Enter your login">
         <font>
             <Font name="Arial" size="12.0" />
         </font>
@@ -30,20 +31,20 @@
             <Font name="Times New Roman" size="14.0" />
         </font>
     </Text>
-    <Button fx:id="signInBtn" layoutX="200.0" layoutY="262.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="75.0" text="Sign in">
+    <Button fx:id="signInBtn" layoutX="200.0" layoutY="264.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="75.0" text="Sign in">
         <font>
             <Font name="Arial Bold" size="12.0" />
         </font>
     </Button>
-    <Label fx:id="registration" alignment="CENTER" layoutX="180.0" layoutY="310.0" prefHeight="17.0" prefWidth="116.0" text="Registration" textAlignment="CENTER" textFill="#2f2cf2" textOverrun="CLIP" underline="true">
-        <font>
-            <Font name="System Bold" size="12.0" />
-        </font>
-    </Label>
     <PasswordField fx:id="password" layoutX="186.0" layoutY="199.0" prefHeight="26.0" promptText="Enter your password">
         <font>
             <Font name="Arial" size="12.0" />
         </font>
     </PasswordField>
+      <Button fx:id="registrationBtn" alignment="CENTER" layoutX="180.0" layoutY="311.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="116.0" text="Registration" textAlignment="CENTER" textFill="#2e2ef0" textOverrun="CLIP" underline="true">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
     </children>
 </AnchorPane>

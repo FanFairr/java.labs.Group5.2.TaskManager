@@ -10,7 +10,7 @@ import javafx.stage.Stage;
 import java.text.SimpleDateFormat;
 
 /**
- * Class controller for Task.fxml view
+ * Class controller for Task.fxml view.user
  */
 public class TaskController {
 
@@ -48,13 +48,13 @@ public class TaskController {
         stage = WindowMaker.getStage();
         showTaskData();
         ChangeBtn.setOnAction(event -> {
-            final String path = "/view/AddOrChangeTask.fxml";
+            final String path = "/view/user/AddOrChangeTask.fxml";
             final String header = "Task Changing";
             WindowMaker.makeWindow(path, header);
             showTaskData();
         });
         DeleteBtn.setOnAction(event -> {
-            final String path = "/view/Confirm.fxml";
+            final String path = "/view/user/Confirm.fxml";
             final String header = "Confirm deleting";
             WindowMaker.makeWindow(path, header);
         });

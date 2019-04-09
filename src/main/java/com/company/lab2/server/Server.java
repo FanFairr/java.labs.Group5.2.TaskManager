@@ -32,7 +32,7 @@ public class Server extends Application {
     public void start(Stage primaryStage) throws Exception{
 
         FXMLLoader fxmlLoader = new FXMLLoader();
-        fxmlLoader.setLocation(getClass().getResource("/view/ServerScene.fxml"));
+        fxmlLoader.setLocation(getClass().getResource("/view/user/ServerScene.fxml"));
         Parent root = fxmlLoader.load();
 
         ((ServerSceneController) fxmlLoader.getController()).setParams(usersList, tasksList, serverSocket, socketList);
@@ -81,8 +81,8 @@ public class Server extends Application {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd/hh:mm:ss");
         ArrayList<Task> arrayList = new ArrayList<>();
         arrayList.add(new Task("Hello", new Date(), false));
-        for (User user : usersList) {
-            tasksList.put(user.getLogin(), arrayList);
+        for (User view.user : usersList) {
+            tasksList.put(view.user.getLogin(), arrayList);
         }*/
         taskIO.readData(tasksList, usersList);
 

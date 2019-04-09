@@ -20,7 +20,7 @@ import java.util.TreeMap;
 import static com.company.lab2.user.Controller.logger;
 
 /**
- * Class controller for Calendar.fxml view
+ * Class controller for Calendar.fxml view.user
  */
 public class CalendarController {
 

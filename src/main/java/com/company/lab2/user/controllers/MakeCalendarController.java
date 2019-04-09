@@ -10,7 +10,7 @@ import javafx.stage.Stage;
 import java.util.Date;
 
 /**
- * Class controller for MakeCalendar.fxml view
+ * Class controller for MakeCalendar.fxml view.user
  */
 public class MakeCalendarController {
     @FXML
@@ -72,7 +72,7 @@ public class MakeCalendarController {
                         text = "There aren't any Tasks is such period of time";
                         WindowMaker.alertWindowInf(title, header, text);
                     } else {
-                        final String path = "/view/Calendar.fxml";
+                        final String path = "/view/user/Calendar.fxml";
                         header = "Calendar";
                         WindowMaker.makeWindow(path, header);
                     }

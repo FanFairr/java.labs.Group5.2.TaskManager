@@ -8,7 +8,7 @@ import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
 /**
- * Class controller for Confirm.fxml view
+ * Class controller for Confirm.fxml view.user
  */
 public class ConfirmController {
 

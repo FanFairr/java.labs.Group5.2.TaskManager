@@ -1,10 +1,10 @@
 2019-03-19 12:05:16 ERROR MainController:70 - 
 java.io.EOFException
 	at java.io.DataInputStream.readInt(DataInputStream.java:392)
-	at com.company.lab2.user.model.TaskIO.read(TaskIO.java:54)
-	at com.company.lab2.user.model.TaskIO.readBinary(TaskIO.java:103)
-	at com.company.lab2.user.Controller.getFromFileToTaskList(Controller.java:47)
-	at com.company.lab2.user.controllers.MainController.initialize(MainController.java:38)
+	at com.company.lab2.view.user.model.TaskIO.read(TaskIO.java:54)
+	at com.company.lab2.view.user.model.TaskIO.readBinary(TaskIO.java:103)
+	at com.company.lab2.view.user.Controller.getFromFileToTaskList(Controller.java:47)
+	at com.company.lab2.view.user.controllers.MainController.initialize(MainController.java:38)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -17,8 +17,8 @@ java.io.EOFException
 	at javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2566)
 	at javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2441)
 	at javafx.fxml.FXMLLoader.load(FXMLLoader.java:2409)
-	at com.company.lab2.user.controllers.WindowMaker.makeWindow(WindowMaker.java:32)
-	at com.company.lab2.user.Controller.start(Controller.java:30)
+	at com.company.lab2.view.user.controllers.WindowMaker.makeWindow(WindowMaker.java:32)
+	at com.company.lab2.view.user.Controller.start(Controller.java:30)
 	at com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$161(LauncherImpl.java:863)
 	at com.sun.javafx.application.PlatformImpl.lambda$runAndWait$174(PlatformImpl.java:326)
 	at com.sun.javafx.application.PlatformImpl.lambda$null$172(PlatformImpl.java:295)
@@ -30,10 +30,10 @@ java.io.EOFException
 	at java.lang.Thread.run(Thread.java:748)
 2019-03-19 12:05:16 ERROR MainController:108 - IOException, при чтении в InputStream из колекции
 java.io.IOException: IOException, при чтении в InputStream из колекции
-	at com.company.lab2.user.model.TaskIO.read(TaskIO.java:71)
-	at com.company.lab2.user.model.TaskIO.readBinary(TaskIO.java:103)
-	at com.company.lab2.user.Controller.getFromFileToTaskList(Controller.java:47)
-	at com.company.lab2.user.controllers.MainController.initialize(MainController.java:38)
+	at com.company.lab2.view.user.model.TaskIO.read(TaskIO.java:71)
+	at com.company.lab2.view.user.model.TaskIO.readBinary(TaskIO.java:103)
+	at com.company.lab2.view.user.Controller.getFromFileToTaskList(Controller.java:47)
+	at com.company.lab2.view.user.controllers.MainController.initialize(MainController.java:38)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -46,8 +46,8 @@ java.io.IOException: IOException, при чтении в InputStream из кол
 	at javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2566)
 	at javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2441)
 	at javafx.fxml.FXMLLoader.load(FXMLLoader.java:2409)
-	at com.company.lab2.user.controllers.WindowMaker.makeWindow(WindowMaker.java:32)
-	at com.company.lab2.user.Controller.start(Controller.java:30)
+	at com.company.lab2.view.user.controllers.WindowMaker.makeWindow(WindowMaker.java:32)
+	at com.company.lab2.view.user.Controller.start(Controller.java:30)
 	at com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$161(LauncherImpl.java:863)
 	at com.sun.javafx.application.PlatformImpl.lambda$runAndWait$174(PlatformImpl.java:326)
 	at com.sun.javafx.application.PlatformImpl.lambda$null$172(PlatformImpl.java:295)
@@ -59,9 +59,9 @@ java.io.IOException: IOException, при чтении в InputStream из кол
 	at java.lang.Thread.run(Thread.java:748)
 2019-03-19 12:05:16 ERROR MainController:55 - Не найден файл для чтения
 java.io.IOException: IOException, при чтении задач из файла
-	at com.company.lab2.user.model.TaskIO.readBinary(TaskIO.java:109)
-	at com.company.lab2.user.Controller.getFromFileToTaskList(Controller.java:47)
-	at com.company.lab2.user.controllers.MainController.initialize(MainController.java:38)
+	at com.company.lab2.view.user.model.TaskIO.readBinary(TaskIO.java:109)
+	at com.company.lab2.view.user.Controller.getFromFileToTaskList(Controller.java:47)
+	at com.company.lab2.view.user.controllers.MainController.initialize(MainController.java:38)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -74,8 +74,8 @@ java.io.IOException: IOException, при чтении задач из файла
 	at javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2566)
 	at javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2441)
 	at javafx.fxml.FXMLLoader.load(FXMLLoader.java:2409)
-	at com.company.lab2.user.controllers.WindowMaker.makeWindow(WindowMaker.java:32)
-	at com.company.lab2.user.Controller.start(Controller.java:30)
+	at com.company.lab2.view.user.controllers.WindowMaker.makeWindow(WindowMaker.java:32)
+	at com.company.lab2.view.user.Controller.start(Controller.java:30)
 	at com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$161(LauncherImpl.java:863)
 	at com.sun.javafx.application.PlatformImpl.lambda$runAndWait$174(PlatformImpl.java:326)
 	at com.sun.javafx.application.PlatformImpl.lambda$null$172(PlatformImpl.java:295)
@@ -86,17 +86,17 @@ java.io.IOException: IOException, при чтении задач из файла
 	at com.sun.glass.ui.win.WinApplication.lambda$null$147(WinApplication.java:177)
 	at java.lang.Thread.run(Thread.java:748)
 2019-03-19 12:05:16 ERROR MainController:36 - 
-/D:/IdeaProjects/java.labs.Group5.2.TaskManager/out/production/java.labs.Group5.2.TaskManager/com/company/lab2/view/Main.fxml
+/D:/IdeaProjects/java.labs.Group5.2.TaskManager/out/production/java.labs.Group5.2.TaskManager/com/company/lab2/view.user/Main.fxml
 
 javafx.fxml.LoadException: 
-/D:/IdeaProjects/java.labs.Group5.2.TaskManager/out/production/java.labs.Group5.2.TaskManager/com/company/lab2/view/Main.fxml
+/D:/IdeaProjects/java.labs.Group5.2.TaskManager/out/production/java.labs.Group5.2.TaskManager/com/company/lab2/view.user/Main.fxml
 
 	at javafx.fxml.FXMLLoader.constructLoadException(FXMLLoader.java:2601)
 	at javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2571)
 	at javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2441)
 	at javafx.fxml.FXMLLoader.load(FXMLLoader.java:2409)
-	at com.company.lab2.user.controllers.WindowMaker.makeWindow(WindowMaker.java:32)
-	at com.company.lab2.user.Controller.start(Controller.java:30)
+	at com.company.lab2.view.user.controllers.WindowMaker.makeWindow(WindowMaker.java:32)
+	at com.company.lab2.view.user.Controller.start(Controller.java:30)
 	at com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$161(LauncherImpl.java:863)
 	at com.sun.javafx.application.PlatformImpl.lambda$runAndWait$174(PlatformImpl.java:326)
 	at com.sun.javafx.application.PlatformImpl.lambda$null$172(PlatformImpl.java:295)
@@ -119,16 +119,16 @@ Caused by: java.lang.reflect.InvocationTargetException
 	at javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2566)
 	... 13 more
 Caused by: java.lang.NullPointerException
-	at com.company.lab2.user.controllers.MainController.catchTaskListChanges(MainController.java:71)
-	at com.company.lab2.user.controllers.MainController.initialize(MainController.java:42)
+	at com.company.lab2.view.user.controllers.MainController.catchTaskListChanges(MainController.java:71)
+	at com.company.lab2.view.user.controllers.MainController.initialize(MainController.java:42)
 	... 23 more
 2019-03-19 12:10:57 ERROR MainController:70 - 
 java.io.EOFException
 	at java.io.DataInputStream.readInt(DataInputStream.java:392)
-	at com.company.lab2.user.model.TaskIO.read(TaskIO.java:54)
-	at com.company.lab2.user.model.TaskIO.readBinary(TaskIO.java:103)
-	at com.company.lab2.user.Controller.getFromFileToTaskList(Controller.java:47)
-	at com.company.lab2.user.controllers.MainController.initialize(MainController.java:38)
+	at com.company.lab2.view.user.model.TaskIO.read(TaskIO.java:54)
+	at com.company.lab2.view.user.model.TaskIO.readBinary(TaskIO.java:103)
+	at com.company.lab2.view.user.Controller.getFromFileToTaskList(Controller.java:47)
+	at com.company.lab2.view.user.controllers.MainController.initialize(MainController.java:38)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -141,8 +141,8 @@ java.io.EOFException
 	at javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2566)
 	at javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2441)
 	at javafx.fxml.FXMLLoader.load(FXMLLoader.java:2409)
-	at com.company.lab2.user.controllers.WindowMaker.makeWindow(WindowMaker.java:32)
-	at com.company.lab2.user.Controller.start(Controller.java:30)
+	at com.company.lab2.view.user.controllers.WindowMaker.makeWindow(WindowMaker.java:32)
+	at com.company.lab2.view.user.Controller.start(Controller.java:30)
 	at com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$161(LauncherImpl.java:863)
 	at com.sun.javafx.application.PlatformImpl.lambda$runAndWait$174(PlatformImpl.java:326)
 	at com.sun.javafx.application.PlatformImpl.lambda$null$172(PlatformImpl.java:295)
@@ -154,10 +154,10 @@ java.io.EOFException
 	at java.lang.Thread.run(Thread.java:748)
 2019-03-19 12:10:57 ERROR MainController:108 - IOException, при чтении в InputStream из колекции
 java.io.IOException: IOException, при чтении в InputStream из колекции
-	at com.company.lab2.user.model.TaskIO.read(TaskIO.java:71)
-	at com.company.lab2.user.model.TaskIO.readBinary(TaskIO.java:103)
-	at com.company.lab2.user.Controller.getFromFileToTaskList(Controller.java:47)
-	at com.company.lab2.user.controllers.MainController.initialize(MainController.java:38)
+	at com.company.lab2.view.user.model.TaskIO.read(TaskIO.java:71)
+	at com.company.lab2.view.user.model.TaskIO.readBinary(TaskIO.java:103)
+	at com.company.lab2.view.user.Controller.getFromFileToTaskList(Controller.java:47)
+	at com.company.lab2.view.user.controllers.MainController.initialize(MainController.java:38)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -170,8 +170,8 @@ java.io.IOException: IOException, при чтении в InputStream из кол
 	at javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2566)
 	at javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2441)
 	at javafx.fxml.FXMLLoader.load(FXMLLoader.java:2409)
-	at com.company.lab2.user.controllers.WindowMaker.makeWindow(WindowMaker.java:32)
-	at com.company.lab2.user.Controller.start(Controller.java:30)
+	at com.company.lab2.view.user.controllers.WindowMaker.makeWindow(WindowMaker.java:32)
+	at com.company.lab2.view.user.Controller.start(Controller.java:30)
 	at com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$161(LauncherImpl.java:863)
 	at com.sun.javafx.application.PlatformImpl.lambda$runAndWait$174(PlatformImpl.java:326)
 	at com.sun.javafx.application.PlatformImpl.lambda$null$172(PlatformImpl.java:295)
@@ -183,9 +183,9 @@ java.io.IOException: IOException, при чтении в InputStream из кол
 	at java.lang.Thread.run(Thread.java:748)
 2019-03-19 12:10:57 ERROR MainController:55 - Не найден файл для чтения
 java.io.IOException: IOException, при чтении задач из файла
-	at com.company.lab2.user.model.TaskIO.readBinary(TaskIO.java:109)
-	at com.company.lab2.user.Controller.getFromFileToTaskList(Controller.java:47)
-	at com.company.lab2.user.controllers.MainController.initialize(MainController.java:38)
+	at com.company.lab2.view.user.model.TaskIO.readBinary(TaskIO.java:109)
+	at com.company.lab2.view.user.Controller.getFromFileToTaskList(Controller.java:47)
+	at com.company.lab2.view.user.controllers.MainController.initialize(MainController.java:38)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -198,8 +198,8 @@ java.io.IOException: IOException, при чтении задач из файла
 	at javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2566)
 	at javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2441)
 	at javafx.fxml.FXMLLoader.load(FXMLLoader.java:2409)
-	at com.company.lab2.user.controllers.WindowMaker.makeWindow(WindowMaker.java:32)
-	at com.company.lab2.user.Controller.start(Controller.java:30)
+	at com.company.lab2.view.user.controllers.WindowMaker.makeWindow(WindowMaker.java:32)
+	at com.company.lab2.view.user.Controller.start(Controller.java:30)
 	at com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$161(LauncherImpl.java:863)
 	at com.sun.javafx.application.PlatformImpl.lambda$runAndWait$174(PlatformImpl.java:326)
 	at com.sun.javafx.application.PlatformImpl.lambda$null$172(PlatformImpl.java:295)
@@ -210,17 +210,17 @@ java.io.IOException: IOException, при чтении задач из файла
 	at com.sun.glass.ui.win.WinApplication.lambda$null$147(WinApplication.java:177)
 	at java.lang.Thread.run(Thread.java:748)
 2019-03-19 12:10:57 ERROR MainController:36 - 
-/D:/IdeaProjects/java.labs.Group5.2.TaskManager/out/production/java.labs.Group5.2.TaskManager/com/company/lab2/view/Main.fxml
+/D:/IdeaProjects/java.labs.Group5.2.TaskManager/out/production/java.labs.Group5.2.TaskManager/com/company/lab2/view.user/Main.fxml
 
 javafx.fxml.LoadException: 
-/D:/IdeaProjects/java.labs.Group5.2.TaskManager/out/production/java.labs.Group5.2.TaskManager/com/company/lab2/view/Main.fxml
+/D:/IdeaProjects/java.labs.Group5.2.TaskManager/out/production/java.labs.Group5.2.TaskManager/com/company/lab2/view.user/Main.fxml
 
 	at javafx.fxml.FXMLLoader.constructLoadException(FXMLLoader.java:2601)
 	at javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2571)
 	at javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2441)
 	at javafx.fxml.FXMLLoader.load(FXMLLoader.java:2409)
-	at com.company.lab2.user.controllers.WindowMaker.makeWindow(WindowMaker.java:32)
-	at com.company.lab2.user.Controller.start(Controller.java:30)
+	at com.company.lab2.view.user.controllers.WindowMaker.makeWindow(WindowMaker.java:32)
+	at com.company.lab2.view.user.Controller.start(Controller.java:30)
 	at com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$161(LauncherImpl.java:863)
 	at com.sun.javafx.application.PlatformImpl.lambda$runAndWait$174(PlatformImpl.java:326)
 	at com.sun.javafx.application.PlatformImpl.lambda$null$172(PlatformImpl.java:295)
@@ -243,16 +243,16 @@ Caused by: java.lang.reflect.InvocationTargetException
 	at javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2566)
 	... 13 more
 Caused by: java.lang.NullPointerException
-	at com.company.lab2.user.controllers.MainController.catchTaskListChanges(MainController.java:71)
-	at com.company.lab2.user.controllers.MainController.initialize(MainController.java:42)
+	at com.company.lab2.view.user.controllers.MainController.catchTaskListChanges(MainController.java:71)
+	at com.company.lab2.view.user.controllers.MainController.initialize(MainController.java:42)
 	... 23 more
 2019-03-19 12:11:31 ERROR MainController:70 - 
 java.io.EOFException
 	at java.io.DataInputStream.readInt(DataInputStream.java:392)
-	at com.company.lab2.user.model.TaskIO.read(TaskIO.java:54)
-	at com.company.lab2.user.model.TaskIO.readBinary(TaskIO.java:103)
-	at com.company.lab2.user.Controller.getFromFileToTaskList(Controller.java:47)
-	at com.company.lab2.user.controllers.MainController.initialize(MainController.java:38)
+	at com.company.lab2.view.user.model.TaskIO.read(TaskIO.java:54)
+	at com.company.lab2.view.user.model.TaskIO.readBinary(TaskIO.java:103)
+	at com.company.lab2.view.user.Controller.getFromFileToTaskList(Controller.java:47)
+	at com.company.lab2.view.user.controllers.MainController.initialize(MainController.java:38)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -265,8 +265,8 @@ java.io.EOFException
 	at javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2566)
 	at javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2441)
 	at javafx.fxml.FXMLLoader.load(FXMLLoader.java:2409)
-	at com.company.lab2.user.controllers.WindowMaker.makeWindow(WindowMaker.java:32)
-	at com.company.lab2.user.Controller.start(Controller.java:30)
+	at com.company.lab2.view.user.controllers.WindowMaker.makeWindow(WindowMaker.java:32)
+	at com.company.lab2.view.user.Controller.start(Controller.java:30)
 	at com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$161(LauncherImpl.java:863)
 	at com.sun.javafx.application.PlatformImpl.lambda$runAndWait$174(PlatformImpl.java:326)
 	at com.sun.javafx.application.PlatformImpl.lambda$null$172(PlatformImpl.java:295)
@@ -278,10 +278,10 @@ java.io.EOFException
 	at java.lang.Thread.run(Thread.java:748)
 2019-03-19 12:11:31 ERROR MainController:108 - IOException, при чтении в InputStream из колекции
 java.io.IOException: IOException, при чтении в InputStream из колекции
-	at com.company.lab2.user.model.TaskIO.read(TaskIO.java:71)
-	at com.company.lab2.user.model.TaskIO.readBinary(TaskIO.java:103)
-	at com.company.lab2.user.Controller.getFromFileToTaskList(Controller.java:47)
-	at com.company.lab2.user.controllers.MainController.initialize(MainController.java:38)
+	at com.company.lab2.view.user.model.TaskIO.read(TaskIO.java:71)
+	at com.company.lab2.view.user.model.TaskIO.readBinary(TaskIO.java:103)
+	at com.company.lab2.view.user.Controller.getFromFileToTaskList(Controller.java:47)
+	at com.company.lab2.view.user.controllers.MainController.initialize(MainController.java:38)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -294,8 +294,8 @@ java.io.IOException: IOException, при чтении в InputStream из кол
 	at javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2566)
 	at javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2441)
 	at javafx.fxml.FXMLLoader.load(FXMLLoader.java:2409)
-	at com.company.lab2.user.controllers.WindowMaker.makeWindow(WindowMaker.java:32)
-	at com.company.lab2.user.Controller.start(Controller.java:30)
+	at com.company.lab2.view.user.controllers.WindowMaker.makeWindow(WindowMaker.java:32)
+	at com.company.lab2.view.user.Controller.start(Controller.java:30)
 	at com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$161(LauncherImpl.java:863)
 	at com.sun.javafx.application.PlatformImpl.lambda$runAndWait$174(PlatformImpl.java:326)
 	at com.sun.javafx.application.PlatformImpl.lambda$null$172(PlatformImpl.java:295)
@@ -307,9 +307,9 @@ java.io.IOException: IOException, при чтении в InputStream из кол
 	at java.lang.Thread.run(Thread.java:748)
 2019-03-19 12:11:31 ERROR MainController:55 - Не найден файл для чтения
 java.io.IOException: IOException, при чтении задач из файла
-	at com.company.lab2.user.model.TaskIO.readBinary(TaskIO.java:109)
-	at com.company.lab2.user.Controller.getFromFileToTaskList(Controller.java:47)
-	at com.company.lab2.user.controllers.MainController.initialize(MainController.java:38)
+	at com.company.lab2.view.user.model.TaskIO.readBinary(TaskIO.java:109)
+	at com.company.lab2.view.user.Controller.getFromFileToTaskList(Controller.java:47)
+	at com.company.lab2.view.user.controllers.MainController.initialize(MainController.java:38)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -322,8 +322,8 @@ java.io.IOException: IOException, при чтении задач из файла
 	at javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2566)
 	at javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2441)
 	at javafx.fxml.FXMLLoader.load(FXMLLoader.java:2409)
-	at com.company.lab2.user.controllers.WindowMaker.makeWindow(WindowMaker.java:32)
-	at com.company.lab2.user.Controller.start(Controller.java:30)
+	at com.company.lab2.view.user.controllers.WindowMaker.makeWindow(WindowMaker.java:32)
+	at com.company.lab2.view.user.Controller.start(Controller.java:30)
 	at com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$161(LauncherImpl.java:863)
 	at com.sun.javafx.application.PlatformImpl.lambda$runAndWait$174(PlatformImpl.java:326)
 	at com.sun.javafx.application.PlatformImpl.lambda$null$172(PlatformImpl.java:295)
@@ -334,17 +334,17 @@ java.io.IOException: IOException, при чтении задач из файла
 	at com.sun.glass.ui.win.WinApplication.lambda$null$147(WinApplication.java:177)
 	at java.lang.Thread.run(Thread.java:748)
 2019-03-19 12:11:31 ERROR MainController:36 - 
-/D:/IdeaProjects/java.labs.Group5.2.TaskManager/out/production/java.labs.Group5.2.TaskManager/com/company/lab2/view/Main.fxml
+/D:/IdeaProjects/java.labs.Group5.2.TaskManager/out/production/java.labs.Group5.2.TaskManager/com/company/lab2/view.user/Main.fxml
 
 javafx.fxml.LoadException: 
-/D:/IdeaProjects/java.labs.Group5.2.TaskManager/out/production/java.labs.Group5.2.TaskManager/com/company/lab2/view/Main.fxml
+/D:/IdeaProjects/java.labs.Group5.2.TaskManager/out/production/java.labs.Group5.2.TaskManager/com/company/lab2/view.user/Main.fxml
 
 	at javafx.fxml.FXMLLoader.constructLoadException(FXMLLoader.java:2601)
 	at javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2571)
 	at javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2441)
 	at javafx.fxml.FXMLLoader.load(FXMLLoader.java:2409)
-	at com.company.lab2.user.controllers.WindowMaker.makeWindow(WindowMaker.java:32)
-	at com.company.lab2.user.Controller.start(Controller.java:30)
+	at com.company.lab2.view.user.controllers.WindowMaker.makeWindow(WindowMaker.java:32)
+	at com.company.lab2.view.user.Controller.start(Controller.java:30)
 	at com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$161(LauncherImpl.java:863)
 	at com.sun.javafx.application.PlatformImpl.lambda$runAndWait$174(PlatformImpl.java:326)
 	at com.sun.javafx.application.PlatformImpl.lambda$null$172(PlatformImpl.java:295)
@@ -367,16 +367,16 @@ Caused by: java.lang.reflect.InvocationTargetException
 	at javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2566)
 	... 13 more
 Caused by: java.lang.NullPointerException
-	at com.company.lab2.user.controllers.MainController.catchTaskListChanges(MainController.java:71)
-	at com.company.lab2.user.controllers.MainController.initialize(MainController.java:42)
+	at com.company.lab2.view.user.controllers.MainController.catchTaskListChanges(MainController.java:71)
+	at com.company.lab2.view.user.controllers.MainController.initialize(MainController.java:42)
 	... 23 more
 2019-03-19 12:15:44 ERROR MainController:70 - 
 java.io.EOFException
 	at java.io.DataInputStream.readInt(DataInputStream.java:392)
-	at com.company.lab2.user.model.TaskIO.read(TaskIO.java:54)
-	at com.company.lab2.user.model.TaskIO.readBinary(TaskIO.java:103)
-	at com.company.lab2.user.Controller.getFromFileToTaskList(Controller.java:47)
-	at com.company.lab2.user.controllers.MainController.initialize(MainController.java:38)
+	at com.company.lab2.view.user.model.TaskIO.read(TaskIO.java:54)
+	at com.company.lab2.view.user.model.TaskIO.readBinary(TaskIO.java:103)
+	at com.company.lab2.view.user.Controller.getFromFileToTaskList(Controller.java:47)
+	at com.company.lab2.view.user.controllers.MainController.initialize(MainController.java:38)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -389,8 +389,8 @@ java.io.EOFException
 	at javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2566)
 	at javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2441)
 	at javafx.fxml.FXMLLoader.load(FXMLLoader.java:2409)
-	at com.company.lab2.user.controllers.WindowMaker.makeWindow(WindowMaker.java:32)
-	at com.company.lab2.user.Controller.start(Controller.java:30)
+	at com.company.lab2.view.user.controllers.WindowMaker.makeWindow(WindowMaker.java:32)
+	at com.company.lab2.view.user.Controller.start(Controller.java:30)
 	at com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$161(LauncherImpl.java:863)
 	at com.sun.javafx.application.PlatformImpl.lambda$runAndWait$174(PlatformImpl.java:326)
 	at com.sun.javafx.application.PlatformImpl.lambda$null$172(PlatformImpl.java:295)
@@ -402,10 +402,10 @@ java.io.EOFException
 	at java.lang.Thread.run(Thread.java:748)
 2019-03-19 12:15:44 ERROR MainController:108 - IOException, при чтении в InputStream из колекции
 java.io.IOException: IOException, при чтении в InputStream из колекции
-	at com.company.lab2.user.model.TaskIO.read(TaskIO.java:71)
-	at com.company.lab2.user.model.TaskIO.readBinary(TaskIO.java:103)
-	at com.company.lab2.user.Controller.getFromFileToTaskList(Controller.java:47)
-	at com.company.lab2.user.controllers.MainController.initialize(MainController.java:38)
+	at com.company.lab2.view.user.model.TaskIO.read(TaskIO.java:71)
+	at com.company.lab2.view.user.model.TaskIO.readBinary(TaskIO.java:103)
+	at com.company.lab2.view.user.Controller.getFromFileToTaskList(Controller.java:47)
+	at com.company.lab2.view.user.controllers.MainController.initialize(MainController.java:38)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -418,8 +418,8 @@ java.io.IOException: IOException, при чтении в InputStream из кол
 	at javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2566)
 	at javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2441)
 	at javafx.fxml.FXMLLoader.load(FXMLLoader.java:2409)
-	at com.company.lab2.user.controllers.WindowMaker.makeWindow(WindowMaker.java:32)
-	at com.company.lab2.user.Controller.start(Controller.java:30)
+	at com.company.lab2.view.user.controllers.WindowMaker.makeWindow(WindowMaker.java:32)
+	at com.company.lab2.view.user.Controller.start(Controller.java:30)
 	at com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$161(LauncherImpl.java:863)
 	at com.sun.javafx.application.PlatformImpl.lambda$runAndWait$174(PlatformImpl.java:326)
 	at com.sun.javafx.application.PlatformImpl.lambda$null$172(PlatformImpl.java:295)
@@ -431,9 +431,9 @@ java.io.IOException: IOException, при чтении в InputStream из кол
 	at java.lang.Thread.run(Thread.java:748)
 2019-03-19 12:15:44 ERROR MainController:56 - Не найден файл для чтения
 java.io.IOException: IOException, при чтении задач из файла
-	at com.company.lab2.user.model.TaskIO.readBinary(TaskIO.java:109)
-	at com.company.lab2.user.Controller.getFromFileToTaskList(Controller.java:47)
-	at com.company.lab2.user.controllers.MainController.initialize(MainController.java:38)
+	at com.company.lab2.view.user.model.TaskIO.readBinary(TaskIO.java:109)
+	at com.company.lab2.view.user.Controller.getFromFileToTaskList(Controller.java:47)
+	at com.company.lab2.view.user.controllers.MainController.initialize(MainController.java:38)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -446,8 +446,8 @@ java.io.IOException: IOException, при чтении задач из файла
 	at javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2566)
 	at javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2441)
 	at javafx.fxml.FXMLLoader.load(FXMLLoader.java:2409)
-	at com.company.lab2.user.controllers.WindowMaker.makeWindow(WindowMaker.java:32)
-	at com.company.lab2.user.Controller.start(Controller.java:30)
+	at com.company.lab2.view.user.controllers.WindowMaker.makeWindow(WindowMaker.java:32)
+	at com.company.lab2.view.user.Controller.start(Controller.java:30)
 	at com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$161(LauncherImpl.java:863)
 	at com.sun.javafx.application.PlatformImpl.lambda$runAndWait$174(PlatformImpl.java:326)
 	at com.sun.javafx.application.PlatformImpl.lambda$null$172(PlatformImpl.java:295)
@@ -458,17 +458,17 @@ java.io.IOException: IOException, при чтении задач из файла
 	at com.sun.glass.ui.win.WinApplication.lambda$null$147(WinApplication.java:177)
 	at java.lang.Thread.run(Thread.java:748)
 2019-03-19 12:15:44 ERROR MainController:36 - 
-/D:/IdeaProjects/java.labs.Group5.2.TaskManager/out/production/java.labs.Group5.2.TaskManager/com/company/lab2/view/Main.fxml
+/D:/IdeaProjects/java.labs.Group5.2.TaskManager/out/production/java.labs.Group5.2.TaskManager/com/company/lab2/view.user/Main.fxml
 
 javafx.fxml.LoadException: 
-/D:/IdeaProjects/java.labs.Group5.2.TaskManager/out/production/java.labs.Group5.2.TaskManager/com/company/lab2/view/Main.fxml
+/D:/IdeaProjects/java.labs.Group5.2.TaskManager/out/production/java.labs.Group5.2.TaskManager/com/company/lab2/view.user/Main.fxml
 
 	at javafx.fxml.FXMLLoader.constructLoadException(FXMLLoader.java:2601)
 	at javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2571)
 	at javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2441)
 	at javafx.fxml.FXMLLoader.load(FXMLLoader.java:2409)
-	at com.company.lab2.user.controllers.WindowMaker.makeWindow(WindowMaker.java:32)
-	at com.company.lab2.user.Controller.start(Controller.java:30)
+	at com.company.lab2.view.user.controllers.WindowMaker.makeWindow(WindowMaker.java:32)
+	at com.company.lab2.view.user.Controller.start(Controller.java:30)
 	at com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$161(LauncherImpl.java:863)
 	at com.sun.javafx.application.PlatformImpl.lambda$runAndWait$174(PlatformImpl.java:326)
 	at com.sun.javafx.application.PlatformImpl.lambda$null$172(PlatformImpl.java:295)
@@ -491,16 +491,16 @@ Caused by: java.lang.reflect.InvocationTargetException
 	at javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2566)
 	... 13 more
 Caused by: java.lang.NullPointerException
-	at com.company.lab2.user.controllers.MainController.catchTaskListChanges(MainController.java:71)
-	at com.company.lab2.user.controllers.MainController.initialize(MainController.java:42)
+	at com.company.lab2.view.user.controllers.MainController.catchTaskListChanges(MainController.java:71)
+	at com.company.lab2.view.user.controllers.MainController.initialize(MainController.java:42)
 	... 23 more
 2019-03-19 12:22:36 ERROR MainController:70 - 
 java.io.EOFException
 	at java.io.DataInputStream.readInt(DataInputStream.java:392)
-	at com.company.lab2.user.model.TaskIO.read(TaskIO.java:54)
-	at com.company.lab2.user.model.TaskIO.readBinary(TaskIO.java:103)
-	at com.company.lab2.user.Controller.getFromFileToTaskList(Controller.java:47)
-	at com.company.lab2.user.controllers.MainController.initialize(MainController.java:38)
+	at com.company.lab2.view.user.model.TaskIO.read(TaskIO.java:54)
+	at com.company.lab2.view.user.model.TaskIO.readBinary(TaskIO.java:103)
+	at com.company.lab2.view.user.Controller.getFromFileToTaskList(Controller.java:47)
+	at com.company.lab2.view.user.controllers.MainController.initialize(MainController.java:38)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -513,8 +513,8 @@ java.io.EOFException
 	at javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2566)
 	at javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2441)
 	at javafx.fxml.FXMLLoader.load(FXMLLoader.java:2409)
-	at com.company.lab2.user.controllers.WindowMaker.makeWindow(WindowMaker.java:32)
-	at com.company.lab2.user.Controller.start(Controller.java:30)
+	at com.company.lab2.view.user.controllers.WindowMaker.makeWindow(WindowMaker.java:32)
+	at com.company.lab2.view.user.Controller.start(Controller.java:30)
 	at com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$161(LauncherImpl.java:863)
 	at com.sun.javafx.application.PlatformImpl.lambda$runAndWait$174(PlatformImpl.java:326)
 	at com.sun.javafx.application.PlatformImpl.lambda$null$172(PlatformImpl.java:295)
@@ -526,10 +526,10 @@ java.io.EOFException
 	at java.lang.Thread.run(Thread.java:748)
 2019-03-19 12:22:36 ERROR MainController:108 - IOException, при чтении в InputStream из колекции
 java.io.IOException: IOException, при чтении в InputStream из колекции
-	at com.company.lab2.user.model.TaskIO.read(TaskIO.java:71)
-	at com.company.lab2.user.model.TaskIO.readBinary(TaskIO.java:103)
-	at com.company.lab2.user.Controller.getFromFileToTaskList(Controller.java:47)
-	at com.company.lab2.user.controllers.MainController.initialize(MainController.java:38)
+	at com.company.lab2.view.user.model.TaskIO.read(TaskIO.java:71)
+	at com.company.lab2.view.user.model.TaskIO.readBinary(TaskIO.java:103)
+	at com.company.lab2.view.user.Controller.getFromFileToTaskList(Controller.java:47)
+	at com.company.lab2.view.user.controllers.MainController.initialize(MainController.java:38)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -542,8 +542,8 @@ java.io.IOException: IOException, при чтении в InputStream из кол
 	at javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2566)
 	at javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2441)
 	at javafx.fxml.FXMLLoader.load(FXMLLoader.java:2409)
-	at com.company.lab2.user.controllers.WindowMaker.makeWindow(WindowMaker.java:32)
-	at com.company.lab2.user.Controller.start(Controller.java:30)
+	at com.company.lab2.view.user.controllers.WindowMaker.makeWindow(WindowMaker.java:32)
+	at com.company.lab2.view.user.Controller.start(Controller.java:30)
 	at com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$161(LauncherImpl.java:863)
 	at com.sun.javafx.application.PlatformImpl.lambda$runAndWait$174(PlatformImpl.java:326)
 	at com.sun.javafx.application.PlatformImpl.lambda$null$172(PlatformImpl.java:295)
@@ -555,9 +555,9 @@ java.io.IOException: IOException, при чтении в InputStream из кол
 	at java.lang.Thread.run(Thread.java:748)
 2019-03-19 12:22:36 ERROR MainController:50 - Не найден файл для чтения
 java.io.IOException: IOException, при чтении задач из файла
-	at com.company.lab2.user.model.TaskIO.readBinary(TaskIO.java:109)
-	at com.company.lab2.user.Controller.getFromFileToTaskList(Controller.java:47)
-	at com.company.lab2.user.controllers.MainController.initialize(MainController.java:38)
+	at com.company.lab2.view.user.model.TaskIO.readBinary(TaskIO.java:109)
+	at com.company.lab2.view.user.Controller.getFromFileToTaskList(Controller.java:47)
+	at com.company.lab2.view.user.controllers.MainController.initialize(MainController.java:38)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -570,8 +570,8 @@ java.io.IOException: IOException, при чтении задач из файла
 	at javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2566)
 	at javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2441)
 	at javafx.fxml.FXMLLoader.load(FXMLLoader.java:2409)
-	at com.company.lab2.user.controllers.WindowMaker.makeWindow(WindowMaker.java:32)
-	at com.company.lab2.user.Controller.start(Controller.java:30)
+	at com.company.lab2.view.user.controllers.WindowMaker.makeWindow(WindowMaker.java:32)
+	at com.company.lab2.view.user.Controller.start(Controller.java:30)
 	at com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$161(LauncherImpl.java:863)
 	at com.sun.javafx.application.PlatformImpl.lambda$runAndWait$174(PlatformImpl.java:326)
 	at com.sun.javafx.application.PlatformImpl.lambda$null$172(PlatformImpl.java:295)
@@ -584,10 +584,10 @@ java.io.IOException: IOException, при чтении задач из файла
 2019-03-19 12:23:13 ERROR MainController:70 - 
 java.io.EOFException
 	at java.io.DataInputStream.readInt(DataInputStream.java:392)
-	at com.company.lab2.user.model.TaskIO.read(TaskIO.java:54)
-	at com.company.lab2.user.model.TaskIO.readBinary(TaskIO.java:103)
-	at com.company.lab2.user.Controller.getFromFileToTaskList(Controller.java:47)
-	at com.company.lab2.user.controllers.MainController.initialize(MainController.java:38)
+	at com.company.lab2.view.user.model.TaskIO.read(TaskIO.java:54)
+	at com.company.lab2.view.user.model.TaskIO.readBinary(TaskIO.java:103)
+	at com.company.lab2.view.user.Controller.getFromFileToTaskList(Controller.java:47)
+	at com.company.lab2.view.user.controllers.MainController.initialize(MainController.java:38)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -600,8 +600,8 @@ java.io.EOFException
 	at javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2566)
 	at javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2441)
 	at javafx.fxml.FXMLLoader.load(FXMLLoader.java:2409)
-	at com.company.lab2.user.controllers.WindowMaker.makeWindow(WindowMaker.java:32)
-	at com.company.lab2.user.Controller.start(Controller.java:30)
+	at com.company.lab2.view.user.controllers.WindowMaker.makeWindow(WindowMaker.java:32)
+	at com.company.lab2.view.user.Controller.start(Controller.java:30)
 	at com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$161(LauncherImpl.java:863)
 	at com.sun.javafx.application.PlatformImpl.lambda$runAndWait$174(PlatformImpl.java:326)
 	at com.sun.javafx.application.PlatformImpl.lambda$null$172(PlatformImpl.java:295)
@@ -613,10 +613,10 @@ java.io.EOFException
 	at java.lang.Thread.run(Thread.java:748)
 2019-03-19 12:23:13 ERROR MainController:108 - IOException, при чтении в InputStream из колекции
 java.io.IOException: IOException, при чтении в InputStream из колекции
-	at com.company.lab2.user.model.TaskIO.read(TaskIO.java:71)
-	at com.company.lab2.user.model.TaskIO.readBinary(TaskIO.java:103)
-	at com.company.lab2.user.Controller.getFromFileToTaskList(Controller.java:47)
-	at com.company.lab2.user.controllers.MainController.initialize(MainController.java:38)
+	at com.company.lab2.view.user.model.TaskIO.read(TaskIO.java:71)
+	at com.company.lab2.view.user.model.TaskIO.readBinary(TaskIO.java:103)
+	at com.company.lab2.view.user.Controller.getFromFileToTaskList(Controller.java:47)
+	at com.company.lab2.view.user.controllers.MainController.initialize(MainController.java:38)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -629,8 +629,8 @@ java.io.IOException: IOException, при чтении в InputStream из кол
 	at javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2566)
 	at javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2441)
 	at javafx.fxml.FXMLLoader.load(FXMLLoader.java:2409)
-	at com.company.lab2.user.controllers.WindowMaker.makeWindow(WindowMaker.java:32)
-	at com.company.lab2.user.Controller.start(Controller.java:30)
+	at com.company.lab2.view.user.controllers.WindowMaker.makeWindow(WindowMaker.java:32)
+	at com.company.lab2.view.user.Controller.start(Controller.java:30)
 	at com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$161(LauncherImpl.java:863)
 	at com.sun.javafx.application.PlatformImpl.lambda$runAndWait$174(PlatformImpl.java:326)
 	at com.sun.javafx.application.PlatformImpl.lambda$null$172(PlatformImpl.java:295)
@@ -642,9 +642,9 @@ java.io.IOException: IOException, при чтении в InputStream из кол
 	at java.lang.Thread.run(Thread.java:748)
 2019-03-19 12:23:13 ERROR MainController:50 - Не найден файл для чтения
 java.io.IOException: IOException, при чтении задач из файла
-	at com.company.lab2.user.model.TaskIO.readBinary(TaskIO.java:109)
-	at com.company.lab2.user.Controller.getFromFileToTaskList(Controller.java:47)
-	at com.company.lab2.user.controllers.MainController.initialize(MainController.java:38)
+	at com.company.lab2.view.user.model.TaskIO.readBinary(TaskIO.java:109)
+	at com.company.lab2.view.user.Controller.getFromFileToTaskList(Controller.java:47)
+	at com.company.lab2.view.user.controllers.MainController.initialize(MainController.java:38)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -657,8 +657,8 @@ java.io.IOException: IOException, при чтении задач из файла
 	at javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2566)
 	at javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2441)
 	at javafx.fxml.FXMLLoader.load(FXMLLoader.java:2409)
-	at com.company.lab2.user.controllers.WindowMaker.makeWindow(WindowMaker.java:32)
-	at com.company.lab2.user.Controller.start(Controller.java:30)
+	at com.company.lab2.view.user.controllers.WindowMaker.makeWindow(WindowMaker.java:32)
+	at com.company.lab2.view.user.Controller.start(Controller.java:30)
 	at com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$161(LauncherImpl.java:863)
 	at com.sun.javafx.application.PlatformImpl.lambda$runAndWait$174(PlatformImpl.java:326)
 	at com.sun.javafx.application.PlatformImpl.lambda$null$172(PlatformImpl.java:295)
@@ -671,10 +671,10 @@ java.io.IOException: IOException, при чтении задач из файла
 2019-03-19 12:28:58 ERROR MainController:70 - 
 java.io.EOFException
 	at java.io.DataInputStream.readInt(DataInputStream.java:392)
-	at com.company.lab2.user.model.TaskIO.read(TaskIO.java:54)
-	at com.company.lab2.user.model.TaskIO.readBinary(TaskIO.java:104)
-	at com.company.lab2.user.Controller.getFromFileToTaskList(Controller.java:47)
-	at com.company.lab2.user.controllers.MainController.initialize(MainController.java:38)
+	at com.company.lab2.view.user.model.TaskIO.read(TaskIO.java:54)
+	at com.company.lab2.view.user.model.TaskIO.readBinary(TaskIO.java:104)
+	at com.company.lab2.view.user.Controller.getFromFileToTaskList(Controller.java:47)
+	at com.company.lab2.view.user.controllers.MainController.initialize(MainController.java:38)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -687,8 +687,8 @@ java.io.EOFException
 	at javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2566)
 	at javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2441)
 	at javafx.fxml.FXMLLoader.load(FXMLLoader.java:2409)
-	at com.company.lab2.user.controllers.WindowMaker.makeWindow(WindowMaker.java:32)
-	at com.company.lab2.user.Controller.start(Controller.java:30)
+	at com.company.lab2.view.user.controllers.WindowMaker.makeWindow(WindowMaker.java:32)
+	at com.company.lab2.view.user.Controller.start(Controller.java:30)
 	at com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$161(LauncherImpl.java:863)
 	at com.sun.javafx.application.PlatformImpl.lambda$runAndWait$174(PlatformImpl.java:326)
 	at com.sun.javafx.application.PlatformImpl.lambda$null$172(PlatformImpl.java:295)
@@ -700,10 +700,10 @@ java.io.EOFException
 	at java.lang.Thread.run(Thread.java:748)
 2019-03-19 12:28:58 ERROR MainController:109 - IOException, при чтении в InputStream из колекции
 java.io.IOException: IOException, при чтении в InputStream из колекции
-	at com.company.lab2.user.model.TaskIO.read(TaskIO.java:71)
-	at com.company.lab2.user.model.TaskIO.readBinary(TaskIO.java:104)
-	at com.company.lab2.user.Controller.getFromFileToTaskList(Controller.java:47)
-	at com.company.lab2.user.controllers.MainController.initialize(MainController.java:38)
+	at com.company.lab2.view.user.model.TaskIO.read(TaskIO.java:71)
+	at com.company.lab2.view.user.model.TaskIO.readBinary(TaskIO.java:104)
+	at com.company.lab2.view.user.Controller.getFromFileToTaskList(Controller.java:47)
+	at com.company.lab2.view.user.controllers.MainController.initialize(MainController.java:38)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -716,8 +716,8 @@ java.io.IOException: IOException, при чтении в InputStream из кол
 	at javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2566)
 	at javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2441)
 	at javafx.fxml.FXMLLoader.load(FXMLLoader.java:2409)
-	at com.company.lab2.user.controllers.WindowMaker.makeWindow(WindowMaker.java:32)
-	at com.company.lab2.user.Controller.start(Controller.java:30)
+	at com.company.lab2.view.user.controllers.WindowMaker.makeWindow(WindowMaker.java:32)
+	at com.company.lab2.view.user.Controller.start(Controller.java:30)
 	at com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$161(LauncherImpl.java:863)
 	at com.sun.javafx.application.PlatformImpl.lambda$runAndWait$174(PlatformImpl.java:326)
 	at com.sun.javafx.application.PlatformImpl.lambda$null$172(PlatformImpl.java:295)
@@ -729,9 +729,9 @@ java.io.IOException: IOException, при чтении в InputStream из кол
 	at java.lang.Thread.run(Thread.java:748)
 2019-03-19 12:28:58 ERROR MainController:50 - Не найден файл для чтения
 java.io.IOException: IOException, при чтении задач из файла
-	at com.company.lab2.user.model.TaskIO.readBinary(TaskIO.java:110)
-	at com.company.lab2.user.Controller.getFromFileToTaskList(Controller.java:47)
-	at com.company.lab2.user.controllers.MainController.initialize(MainController.java:38)
+	at com.company.lab2.view.user.model.TaskIO.readBinary(TaskIO.java:110)
+	at com.company.lab2.view.user.Controller.getFromFileToTaskList(Controller.java:47)
+	at com.company.lab2.view.user.controllers.MainController.initialize(MainController.java:38)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -744,8 +744,8 @@ java.io.IOException: IOException, при чтении задач из файла
 	at javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2566)
 	at javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2441)
 	at javafx.fxml.FXMLLoader.load(FXMLLoader.java:2409)
-	at com.company.lab2.user.controllers.WindowMaker.makeWindow(WindowMaker.java:32)
-	at com.company.lab2.user.Controller.start(Controller.java:30)
+	at com.company.lab2.view.user.controllers.WindowMaker.makeWindow(WindowMaker.java:32)
+	at com.company.lab2.view.user.Controller.start(Controller.java:30)
 	at com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$161(LauncherImpl.java:863)
 	at com.sun.javafx.application.PlatformImpl.lambda$runAndWait$174(PlatformImpl.java:326)
 	at com.sun.javafx.application.PlatformImpl.lambda$null$172(PlatformImpl.java:295)
@@ -758,10 +758,10 @@ java.io.IOException: IOException, при чтении задач из файла
 2019-03-19 12:29:21 ERROR MainController:70 - 
 java.io.EOFException
 	at java.io.DataInputStream.readInt(DataInputStream.java:392)
-	at com.company.lab2.user.model.TaskIO.read(TaskIO.java:54)
-	at com.company.lab2.user.model.TaskIO.readBinary(TaskIO.java:104)
-	at com.company.lab2.user.Controller.getFromFileToTaskList(Controller.java:47)
-	at com.company.lab2.user.controllers.MainController.initialize(MainController.java:38)
+	at com.company.lab2.view.user.model.TaskIO.read(TaskIO.java:54)
+	at com.company.lab2.view.user.model.TaskIO.readBinary(TaskIO.java:104)
+	at com.company.lab2.view.user.Controller.getFromFileToTaskList(Controller.java:47)
+	at com.company.lab2.view.user.controllers.MainController.initialize(MainController.java:38)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -774,8 +774,8 @@ java.io.EOFException
 	at javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2566)
 	at javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2441)
 	at javafx.fxml.FXMLLoader.load(FXMLLoader.java:2409)
-	at com.company.lab2.user.controllers.WindowMaker.makeWindow(WindowMaker.java:32)
-	at com.company.lab2.user.Controller.start(Controller.java:30)
+	at com.company.lab2.view.user.controllers.WindowMaker.makeWindow(WindowMaker.java:32)
+	at com.company.lab2.view.user.Controller.start(Controller.java:30)
 	at com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$161(LauncherImpl.java:863)
 	at com.sun.javafx.application.PlatformImpl.lambda$runAndWait$174(PlatformImpl.java:326)
 	at com.sun.javafx.application.PlatformImpl.lambda$null$172(PlatformImpl.java:295)
@@ -787,10 +787,10 @@ java.io.EOFException
 	at java.lang.Thread.run(Thread.java:748)
 2019-03-19 12:29:21 ERROR MainController:109 - IOException, при чтении в InputStream из колекции
 java.io.IOException: IOException, при чтении в InputStream из колекции
-	at com.company.lab2.user.model.TaskIO.read(TaskIO.java:71)
-	at com.company.lab2.user.model.TaskIO.readBinary(TaskIO.java:104)
-	at com.company.lab2.user.Controller.getFromFileToTaskList(Controller.java:47)
-	at com.company.lab2.user.controllers.MainController.initialize(MainController.java:38)
+	at com.company.lab2.view.user.model.TaskIO.read(TaskIO.java:71)
+	at com.company.lab2.view.user.model.TaskIO.readBinary(TaskIO.java:104)
+	at com.company.lab2.view.user.Controller.getFromFileToTaskList(Controller.java:47)
+	at com.company.lab2.view.user.controllers.MainController.initialize(MainController.java:38)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -803,8 +803,8 @@ java.io.IOException: IOException, при чтении в InputStream из кол
 	at javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2566)
 	at javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2441)
 	at javafx.fxml.FXMLLoader.load(FXMLLoader.java:2409)
-	at com.company.lab2.user.controllers.WindowMaker.makeWindow(WindowMaker.java:32)
-	at com.company.lab2.user.Controller.start(Controller.java:30)
+	at com.company.lab2.view.user.controllers.WindowMaker.makeWindow(WindowMaker.java:32)
+	at com.company.lab2.view.user.Controller.start(Controller.java:30)
 	at com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$161(LauncherImpl.java:863)
 	at com.sun.javafx.application.PlatformImpl.lambda$runAndWait$174(PlatformImpl.java:326)
 	at com.sun.javafx.application.PlatformImpl.lambda$null$172(PlatformImpl.java:295)
@@ -816,9 +816,9 @@ java.io.IOException: IOException, при чтении в InputStream из кол
 	at java.lang.Thread.run(Thread.java:748)
 2019-03-19 12:29:21 ERROR MainController:50 - Не найден файл для чтения
 java.io.IOException: IOException, при чтении задач из файла
-	at com.company.lab2.user.model.TaskIO.readBinary(TaskIO.java:110)
-	at com.company.lab2.user.Controller.getFromFileToTaskList(Controller.java:47)
-	at com.company.lab2.user.controllers.MainController.initialize(MainController.java:38)
+	at com.company.lab2.view.user.model.TaskIO.readBinary(TaskIO.java:110)
+	at com.company.lab2.view.user.Controller.getFromFileToTaskList(Controller.java:47)
+	at com.company.lab2.view.user.controllers.MainController.initialize(MainController.java:38)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -831,8 +831,8 @@ java.io.IOException: IOException, при чтении задач из файла
 	at javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2566)
 	at javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2441)
 	at javafx.fxml.FXMLLoader.load(FXMLLoader.java:2409)
-	at com.company.lab2.user.controllers.WindowMaker.makeWindow(WindowMaker.java:32)
-	at com.company.lab2.user.Controller.start(Controller.java:30)
+	at com.company.lab2.view.user.controllers.WindowMaker.makeWindow(WindowMaker.java:32)
+	at com.company.lab2.view.user.Controller.start(Controller.java:30)
 	at com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$161(LauncherImpl.java:863)
 	at com.sun.javafx.application.PlatformImpl.lambda$runAndWait$174(PlatformImpl.java:326)
 	at com.sun.javafx.application.PlatformImpl.lambda$null$172(PlatformImpl.java:295)
@@ -845,10 +845,10 @@ java.io.IOException: IOException, при чтении задач из файла
 2019-03-19 12:29:48 ERROR MainController:70 - 
 java.io.EOFException
 	at java.io.DataInputStream.readInt(DataInputStream.java:392)
-	at com.company.lab2.user.model.TaskIO.read(TaskIO.java:54)
-	at com.company.lab2.user.model.TaskIO.readBinary(TaskIO.java:104)
-	at com.company.lab2.user.Controller.getFromFileToTaskList(Controller.java:47)
-	at com.company.lab2.user.controllers.MainController.initialize(MainController.java:38)
+	at com.company.lab2.view.user.model.TaskIO.read(TaskIO.java:54)
+	at com.company.lab2.view.user.model.TaskIO.readBinary(TaskIO.java:104)
+	at com.company.lab2.view.user.Controller.getFromFileToTaskList(Controller.java:47)
+	at com.company.lab2.view.user.controllers.MainController.initialize(MainController.java:38)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -861,8 +861,8 @@ java.io.EOFException
 	at javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2566)
 	at javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2441)
 	at javafx.fxml.FXMLLoader.load(FXMLLoader.java:2409)
-	at com.company.lab2.user.controllers.WindowMaker.makeWindow(WindowMaker.java:32)
-	at com.company.lab2.user.Controller.start(Controller.java:30)
+	at com.company.lab2.view.user.controllers.WindowMaker.makeWindow(WindowMaker.java:32)
+	at com.company.lab2.view.user.Controller.start(Controller.java:30)
 	at com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$161(LauncherImpl.java:863)
 	at com.sun.javafx.application.PlatformImpl.lambda$runAndWait$174(PlatformImpl.java:326)
 	at com.sun.javafx.application.PlatformImpl.lambda$null$172(PlatformImpl.java:295)
@@ -874,10 +874,10 @@ java.io.EOFException
 	at java.lang.Thread.run(Thread.java:748)
 2019-03-19 12:29:48 ERROR MainController:109 - IOException, при чтении в InputStream из колекции
 java.io.IOException: IOException, при чтении в InputStream из колекции
-	at com.company.lab2.user.model.TaskIO.read(TaskIO.java:71)
-	at com.company.lab2.user.model.TaskIO.readBinary(TaskIO.java:104)
-	at com.company.lab2.user.Controller.getFromFileToTaskList(Controller.java:47)
-	at com.company.lab2.user.controllers.MainController.initialize(MainController.java:38)
+	at com.company.lab2.view.user.model.TaskIO.read(TaskIO.java:71)
+	at com.company.lab2.view.user.model.TaskIO.readBinary(TaskIO.java:104)
+	at com.company.lab2.view.user.Controller.getFromFileToTaskList(Controller.java:47)
+	at com.company.lab2.view.user.controllers.MainController.initialize(MainController.java:38)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -890,8 +890,8 @@ java.io.IOException: IOException, при чтении в InputStream из кол
 	at javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2566)
 	at javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2441)
 	at javafx.fxml.FXMLLoader.load(FXMLLoader.java:2409)
-	at com.company.lab2.user.controllers.WindowMaker.makeWindow(WindowMaker.java:32)
-	at com.company.lab2.user.Controller.start(Controller.java:30)
+	at com.company.lab2.view.user.controllers.WindowMaker.makeWindow(WindowMaker.java:32)
+	at com.company.lab2.view.user.Controller.start(Controller.java:30)
 	at com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$161(LauncherImpl.java:863)
 	at com.sun.javafx.application.PlatformImpl.lambda$runAndWait$174(PlatformImpl.java:326)
 	at com.sun.javafx.application.PlatformImpl.lambda$null$172(PlatformImpl.java:295)
@@ -903,9 +903,9 @@ java.io.IOException: IOException, при чтении в InputStream из кол
 	at java.lang.Thread.run(Thread.java:748)
 2019-03-19 12:29:48 ERROR MainController:50 - Не найден файл для чтения
 java.io.IOException: IOException, при чтении задач из файла
-	at com.company.lab2.user.model.TaskIO.readBinary(TaskIO.java:110)
-	at com.company.lab2.user.Controller.getFromFileToTaskList(Controller.java:47)
-	at com.company.lab2.user.controllers.MainController.initialize(MainController.java:38)
+	at com.company.lab2.view.user.model.TaskIO.readBinary(TaskIO.java:110)
+	at com.company.lab2.view.user.Controller.getFromFileToTaskList(Controller.java:47)
+	at com.company.lab2.view.user.controllers.MainController.initialize(MainController.java:38)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -918,8 +918,8 @@ java.io.IOException: IOException, при чтении задач из файла
 	at javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2566)
 	at javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2441)
 	at javafx.fxml.FXMLLoader.load(FXMLLoader.java:2409)
-	at com.company.lab2.user.controllers.WindowMaker.makeWindow(WindowMaker.java:32)
-	at com.company.lab2.user.Controller.start(Controller.java:30)
+	at com.company.lab2.view.user.controllers.WindowMaker.makeWindow(WindowMaker.java:32)
+	at com.company.lab2.view.user.Controller.start(Controller.java:30)
 	at com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$161(LauncherImpl.java:863)
 	at com.sun.javafx.application.PlatformImpl.lambda$runAndWait$174(PlatformImpl.java:326)
 	at com.sun.javafx.application.PlatformImpl.lambda$null$172(PlatformImpl.java:295)
@@ -932,10 +932,10 @@ java.io.IOException: IOException, при чтении задач из файла
 2019-03-19 12:31:41 ERROR MainController:70 - 
 java.io.EOFException
 	at java.io.DataInputStream.readInt(DataInputStream.java:392)
-	at com.company.lab2.user.model.TaskIO.read(TaskIO.java:54)
-	at com.company.lab2.user.model.TaskIO.readBinary(TaskIO.java:103)
-	at com.company.lab2.user.Controller.getFromFileToTaskList(Controller.java:47)
-	at com.company.lab2.user.controllers.MainController.initialize(MainController.java:38)
+	at com.company.lab2.view.user.model.TaskIO.read(TaskIO.java:54)
+	at com.company.lab2.view.user.model.TaskIO.readBinary(TaskIO.java:103)
+	at com.company.lab2.view.user.Controller.getFromFileToTaskList(Controller.java:47)
+	at com.company.lab2.view.user.controllers.MainController.initialize(MainController.java:38)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -948,8 +948,8 @@ java.io.EOFException
 	at javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2566)
 	at javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2441)
 	at javafx.fxml.FXMLLoader.load(FXMLLoader.java:2409)
-	at com.company.lab2.user.controllers.WindowMaker.makeWindow(WindowMaker.java:32)
-	at com.company.lab2.user.Controller.start(Controller.java:30)
+	at com.company.lab2.view.user.controllers.WindowMaker.makeWindow(WindowMaker.java:32)
+	at com.company.lab2.view.user.Controller.start(Controller.java:30)
 	at com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$161(LauncherImpl.java:863)
 	at com.sun.javafx.application.PlatformImpl.lambda$runAndWait$174(PlatformImpl.java:326)
 	at com.sun.javafx.application.PlatformImpl.lambda$null$172(PlatformImpl.java:295)
@@ -961,10 +961,10 @@ java.io.EOFException
 	at java.lang.Thread.run(Thread.java:748)
 2019-03-19 12:31:41 ERROR MainController:108 - IOException, при чтении в InputStream из колекции
 java.io.IOException: IOException, при чтении в InputStream из колекции
-	at com.company.lab2.user.model.TaskIO.read(TaskIO.java:71)
-	at com.company.lab2.user.model.TaskIO.readBinary(TaskIO.java:103)
-	at com.company.lab2.user.Controller.getFromFileToTaskList(Controller.java:47)
-	at com.company.lab2.user.controllers.MainController.initialize(MainController.java:38)
+	at com.company.lab2.view.user.model.TaskIO.read(TaskIO.java:71)
+	at com.company.lab2.view.user.model.TaskIO.readBinary(TaskIO.java:103)
+	at com.company.lab2.view.user.Controller.getFromFileToTaskList(Controller.java:47)
+	at com.company.lab2.view.user.controllers.MainController.initialize(MainController.java:38)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -977,8 +977,8 @@ java.io.IOException: IOException, при чтении в InputStream из кол
 	at javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2566)
 	at javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2441)
 	at javafx.fxml.FXMLLoader.load(FXMLLoader.java:2409)
-	at com.company.lab2.user.controllers.WindowMaker.makeWindow(WindowMaker.java:32)
-	at com.company.lab2.user.Controller.start(Controller.java:30)
+	at com.company.lab2.view.user.controllers.WindowMaker.makeWindow(WindowMaker.java:32)
+	at com.company.lab2.view.user.Controller.start(Controller.java:30)
 	at com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$161(LauncherImpl.java:863)
 	at com.sun.javafx.application.PlatformImpl.lambda$runAndWait$174(PlatformImpl.java:326)
 	at com.sun.javafx.application.PlatformImpl.lambda$null$172(PlatformImpl.java:295)
@@ -990,9 +990,9 @@ java.io.IOException: IOException, при чтении в InputStream из кол
 	at java.lang.Thread.run(Thread.java:748)
 2019-03-19 12:31:41 ERROR MainController:49 - Не найден файл для чтения
 java.io.IOException: IOException, при чтении задач из файла
-	at com.company.lab2.user.model.TaskIO.readBinary(TaskIO.java:109)
-	at com.company.lab2.user.Controller.getFromFileToTaskList(Controller.java:47)
-	at com.company.lab2.user.controllers.MainController.initialize(MainController.java:38)
+	at com.company.lab2.view.user.model.TaskIO.readBinary(TaskIO.java:109)
+	at com.company.lab2.view.user.Controller.getFromFileToTaskList(Controller.java:47)
+	at com.company.lab2.view.user.controllers.MainController.initialize(MainController.java:38)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -1005,8 +1005,8 @@ java.io.IOException: IOException, при чтении задач из файла
 	at javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2566)
 	at javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2441)
 	at javafx.fxml.FXMLLoader.load(FXMLLoader.java:2409)
-	at com.company.lab2.user.controllers.WindowMaker.makeWindow(WindowMaker.java:32)
-	at com.company.lab2.user.Controller.start(Controller.java:30)
+	at com.company.lab2.view.user.controllers.WindowMaker.makeWindow(WindowMaker.java:32)
+	at com.company.lab2.view.user.Controller.start(Controller.java:30)
 	at com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$161(LauncherImpl.java:863)
 	at com.sun.javafx.application.PlatformImpl.lambda$runAndWait$174(PlatformImpl.java:326)
 	at com.sun.javafx.application.PlatformImpl.lambda$null$172(PlatformImpl.java:295)
@@ -1016,3 +1016,147 @@ java.io.IOException: IOException, при чтении задач из файла
 	at com.sun.glass.ui.win.WinApplication._runLoop(Native Method)
 	at com.sun.glass.ui.win.WinApplication.lambda$null$147(WinApplication.java:177)
 	at java.lang.Thread.run(Thread.java:748)
+2019-04-08 11:24:56 ERROR MainController:37 - 
+/D:/IdeaProjects/java.labs.Group5.2.TaskManager/target/classes/view.user/EnterForm.fxml
+
+javafx.fxml.LoadException: 
+/D:/IdeaProjects/java.labs.Group5.2.TaskManager/target/classes/view.user/EnterForm.fxml
+
+	at javafx.fxml.FXMLLoader.constructLoadException(FXMLLoader.java:2601)
+	at javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2571)
+	at javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2441)
+	at javafx.fxml.FXMLLoader.load(FXMLLoader.java:2409)
+	at com.company.lab2.view.user.controllers.WindowMaker.makeWindow(WindowMaker.java:33)
+	at com.company.lab2.view.user.Controller.start(Controller.java:31)
+	at com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$161(LauncherImpl.java:863)
+	at com.sun.javafx.application.PlatformImpl.lambda$runAndWait$174(PlatformImpl.java:326)
+	at com.sun.javafx.application.PlatformImpl.lambda$null$172(PlatformImpl.java:295)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$173(PlatformImpl.java:294)
+	at com.sun.glass.ui.InvokeLaterDispatcher$Future.run(InvokeLaterDispatcher.java:95)
+	at com.sun.glass.ui.win.WinApplication._runLoop(Native Method)
+	at com.sun.glass.ui.win.WinApplication.lambda$null$147(WinApplication.java:177)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.lang.reflect.InvocationTargetException
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at sun.reflect.misc.Trampoline.invoke(MethodUtil.java:71)
+	at sun.reflect.GeneratedMethodAccessor1.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at sun.reflect.misc.MethodUtil.invoke(MethodUtil.java:275)
+	at javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2566)
+	... 13 more
+Caused by: java.lang.NullPointerException
+	at com.company.lab2.view.user.controllers.RegistrationFormController.initialize(RegistrationFormController.java:36)
+	... 23 more
+2019-04-08 11:35:31 ERROR MainController:37 - 
+/D:/IdeaProjects/java.labs.Group5.2.TaskManager/target/classes/view.user/EnterForm.fxml
+
+javafx.fxml.LoadException: 
+/D:/IdeaProjects/java.labs.Group5.2.TaskManager/target/classes/view.user/EnterForm.fxml
+
+	at javafx.fxml.FXMLLoader.constructLoadException(FXMLLoader.java:2601)
+	at javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2571)
+	at javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2441)
+	at javafx.fxml.FXMLLoader.load(FXMLLoader.java:2409)
+	at com.company.lab2.view.user.controllers.WindowMaker.makeWindow(WindowMaker.java:33)
+	at com.company.lab2.view.user.Controller.start(Controller.java:31)
+	at com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$161(LauncherImpl.java:863)
+	at com.sun.javafx.application.PlatformImpl.lambda$runAndWait$174(PlatformImpl.java:326)
+	at com.sun.javafx.application.PlatformImpl.lambda$null$172(PlatformImpl.java:295)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$173(PlatformImpl.java:294)
+	at com.sun.glass.ui.InvokeLaterDispatcher$Future.run(InvokeLaterDispatcher.java:95)
+	at com.sun.glass.ui.win.WinApplication._runLoop(Native Method)
+	at com.sun.glass.ui.win.WinApplication.lambda$null$147(WinApplication.java:177)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.lang.reflect.InvocationTargetException
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at sun.reflect.misc.Trampoline.invoke(MethodUtil.java:71)
+	at sun.reflect.GeneratedMethodAccessor1.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at sun.reflect.misc.MethodUtil.invoke(MethodUtil.java:275)
+	at javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2566)
+	... 13 more
+Caused by: java.lang.NullPointerException
+	at com.company.lab2.view.user.controllers.RegistrationFormController.initialize(RegistrationFormController.java:36)
+	... 23 more
+2019-04-08 11:39:23 ERROR MainController:37 - 
+/D:/IdeaProjects/java.labs.Group5.2.TaskManager/target/classes/view.user/EnterForm.fxml
+
+javafx.fxml.LoadException: 
+/D:/IdeaProjects/java.labs.Group5.2.TaskManager/target/classes/view.user/EnterForm.fxml
+
+	at javafx.fxml.FXMLLoader.constructLoadException(FXMLLoader.java:2601)
+	at javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2571)
+	at javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2441)
+	at javafx.fxml.FXMLLoader.load(FXMLLoader.java:2409)
+	at com.company.lab2.view.user.controllers.WindowMaker.makeWindow(WindowMaker.java:33)
+	at com.company.lab2.view.user.Controller.start(Controller.java:31)
+	at com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$161(LauncherImpl.java:863)
+	at com.sun.javafx.application.PlatformImpl.lambda$runAndWait$174(PlatformImpl.java:326)
+	at com.sun.javafx.application.PlatformImpl.lambda$null$172(PlatformImpl.java:295)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$173(PlatformImpl.java:294)
+	at com.sun.glass.ui.InvokeLaterDispatcher$Future.run(InvokeLaterDispatcher.java:95)
+	at com.sun.glass.ui.win.WinApplication._runLoop(Native Method)
+	at com.sun.glass.ui.win.WinApplication.lambda$null$147(WinApplication.java:177)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.lang.reflect.InvocationTargetException
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at sun.reflect.misc.Trampoline.invoke(MethodUtil.java:71)
+	at sun.reflect.GeneratedMethodAccessor1.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at sun.reflect.misc.MethodUtil.invoke(MethodUtil.java:275)
+	at javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2566)
+	... 13 more
+Caused by: java.lang.NullPointerException
+	at com.company.lab2.view.user.controllers.RegistrationFormController.initialize(RegistrationFormController.java:36)
+	... 23 more
+2019-04-08 11:40:19 ERROR MainController:37 - 
+/D:/IdeaProjects/java.labs.Group5.2.TaskManager/target/classes/view.user/EnterForm.fxml
+
+javafx.fxml.LoadException: 
+/D:/IdeaProjects/java.labs.Group5.2.TaskManager/target/classes/view.user/EnterForm.fxml
+
+	at javafx.fxml.FXMLLoader.constructLoadException(FXMLLoader.java:2601)
+	at javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2571)
+	at javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2441)
+	at javafx.fxml.FXMLLoader.load(FXMLLoader.java:2409)
+	at com.company.lab2.view.user.controllers.WindowMaker.makeWindow(WindowMaker.java:33)
+	at com.company.lab2.view.user.Controller.start(Controller.java:31)
+	at com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$161(LauncherImpl.java:863)
+	at com.sun.javafx.application.PlatformImpl.lambda$runAndWait$174(PlatformImpl.java:326)
+	at com.sun.javafx.application.PlatformImpl.lambda$null$172(PlatformImpl.java:295)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at com.sun.javafx.application.PlatformImpl.lambda$runLater$173(PlatformImpl.java:294)
+	at com.sun.glass.ui.InvokeLaterDispatcher$Future.run(InvokeLaterDispatcher.java:95)
+	at com.sun.glass.ui.win.WinApplication._runLoop(Native Method)
+	at com.sun.glass.ui.win.WinApplication.lambda$null$147(WinApplication.java:177)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.lang.reflect.InvocationTargetException
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at sun.reflect.misc.Trampoline.invoke(MethodUtil.java:71)
+	at sun.reflect.GeneratedMethodAccessor1.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at sun.reflect.misc.MethodUtil.invoke(MethodUtil.java:275)
+	at javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2566)
+	... 13 more
+Caused by: java.lang.NullPointerException
+	at com.company.lab2.view.user.controllers.RegistrationFormController.initialize(RegistrationFormController.java:36)
+	... 23 more

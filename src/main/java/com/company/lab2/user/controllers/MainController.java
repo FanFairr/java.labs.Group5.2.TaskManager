@@ -14,7 +14,7 @@ import javafx.stage.Stage;
 import java.text.SimpleDateFormat;
 
 /**
- * Class controller for Main.fxml view
+ * Class controller for Main.fxml view.user
  */
 public class MainController {
 
@@ -39,25 +39,25 @@ public class MainController {
         multipleSelectionChoose(taskListView);
         notification();
         addBtn.setOnAction(event -> {
-            final String path = "/view/AddOrChangeTask.fxml";
+            final String path = "/view/user/AddOrChangeTask.fxml";
             final String header = "Task Adding";
             WindowMaker.makeWindow(path, header);
         });
         makeClBtn.setOnAction(event -> {
-            final String path = "/view/MakeCalendar.fxml";
+            final String path = "/view/user/MakeCalendar.fxml";
             final String header = "Calendar";
             WindowMaker.makeWindow(path, header);
         });
         //TODO заменить кнопку?
         saveBtn.setOnAction(event -> {
-            final String path = "/view/MyAccount.fxml";
+            final String path = "/view/user/MyAccount.fxml";
             final String header = "Account";
             WindowMaker.makeWindow(path, header);
         });
     }
 
     /**Method create new Thread and start it.
-     * To make message for user
+     * To make message for view.user
      * when its time to do task.
      */
     private static void notification(){
@@ -100,7 +100,7 @@ public class MainController {
             if (newValue != null) {
                 //System.out.println("Selected: " + newValue.toString());
                 task = newValue;
-                final String path = "/view/Task.fxml";
+                final String path = "/view/user/Task.fxml";
                 final String header = "Task";
                 WindowMaker.makeWindow(path, header);
                 taskListView.refresh();
@@ -110,7 +110,7 @@ public class MainController {
 
     //TODO перенести на сервер
     /**Method for setting items in TaskListView
-     * @param Login user login
+     * @param Login view.user login
      */
     private void makeListView(String Login) {
         ObservableList<Task> taskList = FXCollections.observableArrayList();

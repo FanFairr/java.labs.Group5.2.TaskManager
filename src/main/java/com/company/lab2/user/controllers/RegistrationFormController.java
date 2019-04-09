@@ -24,7 +24,7 @@ public class RegistrationFormController {
     @FXML
     private TextField name;
     @FXML
-    private Label singIn;
+    private Label signIn;
     @FXML
     private TextField login;
     @FXML
@@ -32,13 +32,13 @@ public class RegistrationFormController {
 
     @FXML
     void initialize() {
-        assert registrateBtn != null : "fx:id=\"registrateBtn\" was not injected: check your FXML file 'RegistrationForm.fxml'.";
-        assert password != null : "fx:id=\"password\" was not injected: check your FXML file 'RegistrationForm.fxml'.";
-        assert passwordConfirm != null : "fx:id=\"passwordConfirm\" was not injected: check your FXML file 'RegistrationForm.fxml'.";
-        assert name != null : "fx:id=\"name\" was not injected: check your FXML file 'RegistrationForm.fxml'.";
-        assert singIn != null : "fx:id=\"singIn\" was not injected: check your FXML file 'RegistrationForm.fxml'.";
-        assert login != null : "fx:id=\"login\" was not injected: check your FXML file 'RegistrationForm.fxml'.";
-        assert email != null : "fx:id=\"email\" was not injected: check your FXML file 'RegistrationForm.fxml'.";
+        /*signIn.setOnMouseClicked(event -> {
+            Stage current = WindowMaker.getStage();
+            final String path = "/view.user/EnterForm.fxml";
+            final String header = "SignIn";
+            WindowMaker.makeWindow(path, header);
+            WindowMaker.closeWindow(current);
+        });*/
 
     }
 }
