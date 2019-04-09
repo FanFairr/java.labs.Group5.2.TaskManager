@@ -2,39 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/com/company/lab2/serverModel/ArrayTaskList.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/com/company/lab2/serverModel/LinkedTaskList.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/com/company/lab2/serverModel/TaskIO.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/com/company/lab2/serverModel/TaskList.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/com/company/lab2/serverModel/Tasks.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/com/company/lab2/serverModel/User.java" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/logs/mylog.log" afterPath="$PROJECT_DIR$/logs/mylog.log" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/company/lab2/server/Server.java" afterPath="$PROJECT_DIR$/src/main/java/com/company/lab2/server/Server.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/company/lab2/server/model/TaskIO.java" afterPath="$PROJECT_DIR$/src/main/java/com/company/lab2/server/model/TaskIO.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/company/lab2/user/Controller.java" afterPath="$PROJECT_DIR$/src/main/java/com/company/lab2/user/Controller.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/company/lab2/user/controllers/AddOrChangeTaskController.java" afterPath="$PROJECT_DIR$/src/main/java/com/company/lab2/user/controllers/AddOrChangeTaskController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/company/lab2/user/controllers/CalendarController.java" afterPath="$PROJECT_DIR$/src/main/java/com/company/lab2/user/controllers/CalendarController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/company/lab2/user/controllers/ConfirmController.java" afterPath="$PROJECT_DIR$/src/main/java/com/company/lab2/user/controllers/ConfirmController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/company/lab2/user/controllers/EnterFormController.java" afterPath="$PROJECT_DIR$/src/main/java/com/company/lab2/user/controllers/EnterFormController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/company/lab2/user/controllers/MainController.java" afterPath="$PROJECT_DIR$/src/main/java/com/company/lab2/user/controllers/MainController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/company/lab2/user/controllers/MakeCalendarController.java" afterPath="$PROJECT_DIR$/src/main/java/com/company/lab2/user/controllers/MakeCalendarController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/company/lab2/user/controllers/RegistrationFormController.java" afterPath="$PROJECT_DIR$/src/main/java/com/company/lab2/user/controllers/RegistrationFormController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/company/lab2/user/controllers/TaskController.java" afterPath="$PROJECT_DIR$/src/main/java/com/company/lab2/user/controllers/TaskController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/view/AddOrChangeTask.fxml" afterPath="$PROJECT_DIR$/target/classes/view/AddOrChangeTask.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/view/Calendar.fxml" afterPath="$PROJECT_DIR$/target/classes/view/Calendar.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/view/Confirm.fxml" afterPath="$PROJECT_DIR$/target/classes/view/Confirm.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/view/Main.fxml" afterPath="$PROJECT_DIR$/target/classes/view/Main.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/view/MakeCalendar.fxml" afterPath="$PROJECT_DIR$/target/classes/view/MakeCalendar.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/view/Task.fxml" afterPath="$PROJECT_DIR$/target/classes/view/Task.fxml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/resources/view/AddOrChangeTask.fxml" afterPath="$PROJECT_DIR$/src/main/resources/view/user/AddOrChangeTask.fxml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/resources/view/Calendar.fxml" afterPath="$PROJECT_DIR$/src/main/resources/view/user/Calendar.fxml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/resources/view/Confirm.fxml" afterPath="$PROJECT_DIR$/src/main/resources/view/user/Confirm.fxml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/resources/view/EnterForm.fxml" afterPath="$PROJECT_DIR$/src/main/resources/view/user/EnterForm.fxml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/resources/view/Main.fxml" afterPath="$PROJECT_DIR$/src/main/resources/view/user/Main.fxml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/resources/view/MakeCalendar.fxml" afterPath="$PROJECT_DIR$/src/main/resources/view/user/MakeCalendar.fxml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/resources/view/RegistrationForm.fxml" afterPath="$PROJECT_DIR$/src/main/resources/view/user/RegistrationForm.fxml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/resources/view/Task.fxml" afterPath="$PROJECT_DIR$/src/main/resources/view/user/Task.fxml" />
     </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -1052,7 +1020,7 @@
       <workItem from="1554561118421" duration="3706000" />
       <workItem from="1554647959673" duration="7299000" />
       <workItem from="1554739855185" duration="592000" />
-      <workItem from="1554790879535" duration="1470000" />
+      <workItem from="1554790879535" duration="1754000" />
     </task>
     <task id="LOCAL-00001" summary="TaskManager application">
       <created>1552992604199</created>
@@ -1110,11 +1078,18 @@
       <option name="project" value="LOCAL" />
       <updated>1554709517146</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="TaskManager application">
+      <created>1554794322255</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1554794322255</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="80619000" />
+    <option name="totallyTimeSpent" value="80903000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1126,8 +1101,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1696" height="1026" extended-state="0" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1696" height="1026" extended-state="6" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32997763" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -1144,7 +1118,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32997763" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23471883" sideWeight="0.6703755" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23471883" sideWeight="0.6703755" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32997763" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
