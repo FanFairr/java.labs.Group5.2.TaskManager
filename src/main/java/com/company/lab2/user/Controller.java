@@ -92,9 +92,14 @@ public class Controller extends Application {
         return null;
     }
 
+    //проверка на админа
+    public static boolean isAdmin() {
+        return true;
+    }
 
     public static TreeView<Task> getCalendarTreeView() {
         return calendarTreeView;
     }
+
 
 }

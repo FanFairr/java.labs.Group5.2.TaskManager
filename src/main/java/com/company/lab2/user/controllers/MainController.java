@@ -24,7 +24,7 @@ public class MainController {
     @FXML
     private Button makeClBtn;
     @FXML
-    private Button saveBtn;
+    private Button adminBtn;
     @FXML
     private ListView<Task> taskListView;
 
@@ -49,11 +49,18 @@ public class MainController {
             final String header = "Calendar";
             WindowMaker.makeWindow(path, header, Modality.WINDOW_MODAL);
         });
-        //TODO заменить кнопку?
-        saveBtn.setOnAction(event -> {
-            final String path = "/view/user/MyAccount.fxml";
-            final String header = "Account";
-            WindowMaker.makeWindow(path, header, Modality.WINDOW_MODAL);
+
+        adminBtn.setOnAction(event -> {
+            if (Controller.isAdmin()) {
+                final String path = "/view/user/ServerScene.fxml";
+                final String header = "Account";
+                WindowMaker.makeWindow(path, header, Modality.WINDOW_MODAL);
+            } else {
+                final String alertTitle = "Warning";
+                final String alertHeader = "You got no rights";
+                final String alertText ="Excess denied";
+                WindowMaker.alertWindowWarning(alertTitle, alertHeader, alertText);
+            }
         });
     }
 
