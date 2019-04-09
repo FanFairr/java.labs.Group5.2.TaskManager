@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.util.Date;
@@ -74,7 +75,7 @@ public class MakeCalendarController {
                     } else {
                         final String path = "/view/user/Calendar.fxml";
                         header = "Calendar";
-                        WindowMaker.makeWindow(path, header);
+                        WindowMaker.makeWindow(path, header, Modality.WINDOW_MODAL);
                     }
                 }
             }

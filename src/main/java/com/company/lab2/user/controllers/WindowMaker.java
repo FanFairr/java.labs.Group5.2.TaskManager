@@ -23,7 +23,7 @@ public class WindowMaker {
      * @param path .fxml file path
 
      */
-    public static void makeWindow(String path, String header) {
+    public static void makeWindow(String path, String header, Modality modality) {
         try {
             stage = new Stage();
             stage.setResizable(false);
@@ -31,7 +31,7 @@ public class WindowMaker {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(Controller.class.getResource(path));
             stage.setScene(new Scene(loader.load()));
-            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.initModality(modality);
             stage.showAndWait();
         } catch (IOException e) {
             logger.error(e.getMessage(),e);

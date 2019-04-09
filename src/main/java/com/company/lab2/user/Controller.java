@@ -7,6 +7,7 @@ import javafx.application.Application;
 import javafx.collections.ObservableList;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TreeView;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import org.apache.log4j.Logger;
 
@@ -28,18 +29,18 @@ public class Controller extends Application {
         */
         final String path = "/view/user/EnterForm.fxml";
         final String header = "SignIn";
-        WindowMaker.makeWindow(path, header);
+        WindowMaker.makeWindow(path, header, Modality.NONE);
     }
 
     public static void main(String[] args) {
         launch(args);
     }
 
-    public static void registration(String email, String password) {
+    public static void registration(String login,String name, String email, String password) {
 
     }
 
-    public static void signIn(String email, String password) {
+    public static void signIn(String login, String password) {
 
     }
 

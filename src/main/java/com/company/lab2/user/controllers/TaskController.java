@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.text.SimpleDateFormat;
@@ -50,13 +51,13 @@ public class TaskController {
         ChangeBtn.setOnAction(event -> {
             final String path = "/view/user/AddOrChangeTask.fxml";
             final String header = "Task Changing";
-            WindowMaker.makeWindow(path, header);
+            WindowMaker.makeWindow(path, header, Modality.WINDOW_MODAL);
             showTaskData();
         });
         DeleteBtn.setOnAction(event -> {
             final String path = "/view/user/Confirm.fxml";
             final String header = "Confirm deleting";
-            WindowMaker.makeWindow(path, header);
+            WindowMaker.makeWindow(path, header, Modality.WINDOW_MODAL);
         });
         CloseBtn.setOnAction(event -> WindowMaker.closeWindow(stage));
     }

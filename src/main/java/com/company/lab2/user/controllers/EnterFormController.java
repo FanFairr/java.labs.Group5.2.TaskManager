@@ -1,11 +1,13 @@
 package com.company.lab2.user.controllers;
 
 import com.company.lab2.user.Controller;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Tooltip;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.net.URL;
@@ -43,8 +45,8 @@ public class EnterFormController {
             Stage current = WindowMaker.getStage();
             final String path = "/view/user/RegistrationForm.fxml";
             final String header = "Registration";
-            WindowMaker.makeWindow(path, header);
-            WindowMaker.closeWindow(current);
+            Platform.runLater(() -> WindowMaker.closeWindow(current));
+            WindowMaker.makeWindow(path, header, Modality.NONE);
         });
 
     }

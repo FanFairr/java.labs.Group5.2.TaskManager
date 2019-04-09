@@ -9,6 +9,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.MultipleSelectionModel;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.text.SimpleDateFormat;
@@ -41,18 +42,18 @@ public class MainController {
         addBtn.setOnAction(event -> {
             final String path = "/view/user/AddOrChangeTask.fxml";
             final String header = "Task Adding";
-            WindowMaker.makeWindow(path, header);
+            WindowMaker.makeWindow(path, header, Modality.WINDOW_MODAL);
         });
         makeClBtn.setOnAction(event -> {
             final String path = "/view/user/MakeCalendar.fxml";
             final String header = "Calendar";
-            WindowMaker.makeWindow(path, header);
+            WindowMaker.makeWindow(path, header, Modality.WINDOW_MODAL);
         });
         //TODO заменить кнопку?
         saveBtn.setOnAction(event -> {
             final String path = "/view/user/MyAccount.fxml";
             final String header = "Account";
-            WindowMaker.makeWindow(path, header);
+            WindowMaker.makeWindow(path, header, Modality.WINDOW_MODAL);
         });
     }
 
@@ -102,7 +103,7 @@ public class MainController {
                 task = newValue;
                 final String path = "/view/user/Task.fxml";
                 final String header = "Task";
-                WindowMaker.makeWindow(path, header);
+                WindowMaker.makeWindow(path, header, Modality.WINDOW_MODAL);
                 taskListView.refresh();
             }
         }));
