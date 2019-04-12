@@ -19,11 +19,13 @@ public class ServerThread extends Thread {
     private Socket socket = null;
     private final ArrayList<User> usersList;
     private final TreeMap<String, ArrayList<Task>> tasksList;
+    private final ArrayList<User> adminList;
 
-    public ServerThread(Socket socket, ArrayList<User> usersList, TreeMap<String, ArrayList<Task>> tasksList) {
+    public ServerThread(Socket socket, ArrayList<User> usersList, TreeMap<String, ArrayList<Task>> tasksList, ArrayList<User> adminList) {
         this.socket = socket;
         this.usersList = usersList;
         this.tasksList = tasksList;
+        this.adminList = adminList;
     }
 
     @Override
@@ -143,6 +145,16 @@ public class ServerThread extends Thread {
                     Gson gson = new Gson();
                     synchronized (usersList) {
                         printWriter.println(gson.toJson(usersList));
+                    }
+                } else if ("Adminka:".equals(title)){
+                    String login = response.substring(0, response.indexOf(" "));
+                    response = response.substring(response.indexOf(" ") + 1);
+                    synchronized (adminList) {
+                        for (int i = 0; i < usersList.size(); i++)
+                            if (login.equals(usersList.get(i).getLogin())) {
+                                adminList.add(usersList.get(i));
+                                break;
+                            }
                     }
                 } else if ("Exit work:".equals(title)) {
                     socket.close();

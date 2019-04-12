@@ -5,6 +5,7 @@ import com.company.lab2.server.controllers.ServerThread;
 import com.company.lab2.server.model.Task;
 import com.company.lab2.server.model.TaskIO;
 import com.company.lab2.server.model.User;
+import com.google.gson.Gson;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.event.EventHandler;
@@ -14,11 +15,11 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
-import java.io.IOException;
-import java.io.PrintWriter;
+import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.TreeMap;
 
 public class Server extends Application {
@@ -27,6 +28,7 @@ public class Server extends Application {
 
     private final static ArrayList<User> usersList = new ArrayList<>();
     private final static TreeMap<String, ArrayList<Task>> tasksList = new TreeMap<>();
+    private static ArrayList<User> adminList = new ArrayList<>();
 
     @Override
     public void start(Stage primaryStage) throws Exception{
@@ -45,10 +47,19 @@ public class Server extends Application {
         primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
             @Override
             public void handle(WindowEvent t) {
+                Gson gson = new Gson();
                 synchronized (tasksList){
                     synchronized (usersList) {
                         TaskIO readerWriter = new TaskIO();
                         readerWriter.writeData(tasksList, usersList);
+
+                        try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("adminka.txt"))) {
+                            synchronized (adminList) {
+                                bufferedWriter.write(gson.toJson(adminList));
+                            }
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
 
                         try {
                             for (Socket socket : socketList) {
@@ -70,6 +81,7 @@ public class Server extends Application {
 
     public static void main(String[] args) {
         TaskIO taskIO = new TaskIO();
+        Gson gson = new Gson();
 
         /*usersList.add(new User("aa", "ba", false));
         usersList.add(new User("ab", "bb", false));
@@ -86,6 +98,21 @@ public class Server extends Application {
         }*/
         taskIO.readData(tasksList, usersList);
 
+        try {
+            File file = new File("adminka.txt");
+
+            file.createNewFile();
+
+            BufferedReader bufferedReader = new BufferedReader(new FileReader(file));
+            String str = bufferedReader.readLine();
+            if (!(str == null) && !str.equals("[]"))
+                adminList = (ArrayList<User>) Arrays.asList(gson.fromJson(str, User[].class));
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
         new Thread(() -> {
             try {
                 serverSocket = new ServerSocket(1488);
@@ -93,7 +120,7 @@ public class Server extends Application {
                     synchronized (serverSocket) {
                         Socket socket = serverSocket.accept();
                         socketList.add(socket);
-                        new ServerThread(socketList.get(socketList.size() - 1), usersList, tasksList).start();
+                        new ServerThread(socketList.get(socketList.size() - 1), usersList, tasksList, adminList).start();
                     }
                 }
             } catch (IOException e) {

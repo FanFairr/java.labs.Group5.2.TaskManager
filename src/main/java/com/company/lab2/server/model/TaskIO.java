@@ -9,10 +9,7 @@ import org.xml.sax.SAXException;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.transform.OutputKeys;
-import javax.xml.transform.Transformer;
-import javax.xml.transform.TransformerException;
-import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.*;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 import java.io.FileNotFoundException;
@@ -31,7 +28,7 @@ public class TaskIO {
         try {
             DocumentBuilder builder = factory.newDocumentBuilder();
             Document document = builder.parse(fileName);
-            NodeList userList = document.getElementsByTagName("view/user");
+            NodeList userList = document.getElementsByTagName("user");
 
             for (int i = 0; i < userList.getLength(); i++) {
                 Node node = userList.item(i);
@@ -72,7 +69,13 @@ public class TaskIO {
                 }
 
             }
-        } catch (ParserConfigurationException | SAXException | ParseException | IOException e) {
+        } catch (ParserConfigurationException e) {
+            e.printStackTrace();
+        } catch (SAXException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ParseException e) {
             e.printStackTrace();
         }
     }
@@ -118,7 +121,7 @@ public class TaskIO {
             document.appendChild(users);
 
             for (User user : usersList){
-                Element user1 = document.createElement("view/user");
+                Element user1 = document.createElement("user");
                 users.appendChild(user1);
                 user1.setAttribute("login", user.getLogin());
                 user1.setAttribute("password", user.getPassword());
@@ -131,7 +134,13 @@ public class TaskIO {
             Transformer t = TransformerFactory.newInstance().newTransformer();
             t.setOutputProperty(OutputKeys.INDENT, "yes");
             t.transform(new DOMSource(document), new StreamResult(new FileOutputStream(fileName)));
-        } catch (ParserConfigurationException | TransformerException | FileNotFoundException e) {
+        } catch (ParserConfigurationException e) {
+            e.printStackTrace();
+        } catch (TransformerConfigurationException e) {
+            e.printStackTrace();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (TransformerException e) {
             e.printStackTrace();
         }
     }
