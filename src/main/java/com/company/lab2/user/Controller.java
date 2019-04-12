@@ -3,6 +3,7 @@ package com.company.lab2.user;
 import com.company.lab2.user.controllers.MainController;
 import com.company.lab2.user.controllers.WindowMaker;
 import com.company.lab2.user.model.Task;
+import com.google.gson.Gson;
 import javafx.application.Application;
 import javafx.collections.ObservableList;
 import javafx.scene.control.ListView;
@@ -11,6 +12,11 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import org.apache.log4j.Logger;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.net.Socket;
 import java.util.Date;
 import java.util.Set;
 import java.util.SortedMap;
@@ -34,6 +40,40 @@ public class Controller extends Application {
 
     public static void main(String[] args) {
         launch(args);
+        try {
+            Gson gson = new Gson();
+            Socket client = new Socket("127.0.0.1", 1488);
+            PrintWriter printWriter = new PrintWriter(client.getOutputStream());
+            BufferedReader in = new BufferedReader(new InputStreamReader(client.getInputStream()));
+
+            printWriter.println("Login: aq bd");
+            printWriter.flush();
+
+            String list;
+
+            while (true) {
+                list = in.readLine();
+                if (!list.isEmpty()) {
+                    System.out.println(list);
+                    if (list.equals("Exit"))
+                        System.exit(0);
+                }
+                Thread.sleep(10);
+            }
+            /*ObjectInputStream in = new ObjectInputStream(client.getInputStream());
+            ObjectOutputStream out = new ObjectOutputStream(client.getOutputStream());
+            out.writeObject("Login: aa ba");
+            out.flush();
+            while (true) {
+                String list = (String) in.readObject();
+                if (!"".equals(list)) {
+                    System.out.println(list);
+                    break;
+                }
+            }*/
+        } catch (IOException | InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
     public static void registration(String login,String name, String email, String password) {
