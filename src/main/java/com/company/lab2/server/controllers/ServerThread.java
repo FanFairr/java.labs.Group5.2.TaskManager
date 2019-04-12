@@ -61,7 +61,7 @@ public class ServerThread extends Thread {
                                     } else {
                                         Gson gson = new Gson();
                                         synchronized (tasksList) {
-                                            printWriter.println("Login: " + user.getAdmin()+ " " + gson.toJson(tasksList.get(login)));
+                                            printWriter.println("Login: " + user.getAdmin() + " " + gson.toJson(tasksList.get(login)));
                                             printWriter.flush();
                                             break;
                                         }
@@ -146,7 +146,7 @@ public class ServerThread extends Thread {
                     synchronized (usersList) {
                         printWriter.println(gson.toJson(usersList));
                     }
-                } else if ("Adminka:".equals(title)){
+                } else if ("Adminka:".equals(title)) {
                     String login = response.substring(0, response.indexOf(" "));
                     response = response.substring(response.indexOf(" ") + 1);
                     synchronized (adminList) {
@@ -155,6 +155,13 @@ public class ServerThread extends Thread {
                                 adminList.add(usersList.get(i));
                                 break;
                             }
+                    }
+                } else if ("Spisok adminov:".equals(title)) {
+                    Gson gson = new Gson();
+                    synchronized (adminList) {
+                        String list = gson.toJson(adminList);
+                        printWriter.println("Spisok adminov: " + list);
+                        printWriter.flush();
                     }
                 } else if ("Exit work:".equals(title)) {
                     socket.close();

@@ -1,15 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="TaskManager application">
-      <change afterPath="$PROJECT_DIR$/information.xml" afterDir="false" />
+    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="TaskManager возможность просить админку">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/java.labs.Group5.2.TaskManager.iml" beforeDir="false" afterPath="$PROJECT_DIR$/java.labs.Group5.2.TaskManager.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/company/lab2/server/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/company/lab2/server/Server.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/company/lab2/server/controllers/ServerThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/company/lab2/server/controllers/ServerThread.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/company/lab2/server/model/TaskIO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/company/lab2/server/model/TaskIO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/view/server/ServerScene.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/server/ServerScene.fxml" afterDir="false" />
     </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -74,13 +68,15 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="107" />
+          <entry key="java" value="240" />
+          <entry key="txt" value="35" />
           <entry key="xml" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="107" />
+          <entry key="JAVA" value="240" />
+          <entry key="PLAIN_TEXT" value="35" />
           <entry key="XML" value="1" />
         </counts>
       </usages-collector>
@@ -120,11 +116,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/resources/view/server/ServerScene.fxml">
           <provider editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="16" column="17" selection-start-line="16" selection-start-column="17" selection-end-line="16" selection-end-column="17" />
+            <state relative-caret-position="153">
+              <caret line="12" column="17" selection-start-line="12" selection-start-column="17" selection-end-line="12" selection-end-column="17" />
             </state>
           </provider>
           <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
@@ -157,11 +153,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/company/lab2/server/controllers/ServerThread.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="521">
-              <caret line="170" selection-start-line="170" selection-end-line="170" />
+            <state relative-caret-position="335">
+              <caret line="163" column="44" lean-forward="true" selection-start-line="163" selection-start-column="44" selection-end-line="163" selection-end-column="44" />
             </state>
           </provider>
         </entry>
@@ -300,13 +296,13 @@
         <option value="$PROJECT_DIR$/src/main/java/com/company/lab2/user/controllers/ServerSceneController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/company/lab2/user/controllers/MainController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/company/lab2/user/Controller.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/company/lab2/server/controllers/ServerThread.java" />
         <option value="$PROJECT_DIR$/infromation.xml" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/company/lab2/server/model/TaskIO.java" />
         <option value="$PROJECT_DIR$/information.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/company/lab2/server/Server.java" />
         <option value="$PROJECT_DIR$/src/main/resources/view/server/ServerScene.fxml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/company/lab2/server/controllers/ServerThread.java" />
       </list>
     </option>
   </component>
@@ -442,7 +438,7 @@
     <property name="OverrideImplement.combined" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1555072780625" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1555072954578" />
     <property name="dynamic.classpath" value="false" />
     <property name="last_opened_file_path" value="$USER_HOME$/lab2" />
     <property name="project.structure.last.edited" value="Artifacts" />
@@ -1000,7 +996,14 @@
       <option name="project" value="LOCAL" />
       <updated>1554813130983</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="TaskManager возможность просить админку">
+      <created>1555072819157</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1555072819157</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -1084,7 +1087,8 @@
     <option name="CHECK_CODE_CLEANUP_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="INCLUDE_TEXT_INTO_SHELF" value="false" />
     <MESSAGE value="TaskManager application" />
-    <option name="LAST_COMMIT_MESSAGE" value="TaskManager application" />
+    <MESSAGE value="TaskManager возможность просить админку" />
+    <option name="LAST_COMMIT_MESSAGE" value="TaskManager возможность просить админку" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="antWorkspaceConfiguration">
@@ -1387,13 +1391,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/company/lab2/server/controllers/ServerThread.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="521">
-          <caret line="170" selection-start-line="170" selection-end-line="170" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/company/lab2/server/Server.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="123">
@@ -1403,11 +1400,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/view/server/ServerScene.fxml">
       <provider editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="16" column="17" selection-start-line="16" selection-start-column="17" selection-end-line="16" selection-end-column="17" />
+        <state relative-caret-position="153">
+          <caret line="12" column="17" selection-start-line="12" selection-start-column="17" selection-end-line="12" selection-end-column="17" />
         </state>
       </provider>
       <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/company/lab2/server/controllers/ServerThread.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="335">
+          <caret line="163" column="44" lean-forward="true" selection-start-line="163" selection-start-column="44" selection-end-line="163" selection-end-column="44" />
+        </state>
+      </provider>
     </entry>
   </component>
   <component name="masterDetails">
