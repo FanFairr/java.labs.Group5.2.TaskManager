@@ -144,7 +144,7 @@ public class ServerThread extends Thread {
                 } else if ("Banned list:".equals(title)) {
                     Gson gson = new Gson();
                     synchronized (usersList) {
-                        printWriter.println(gson.toJson(usersList));
+                        printWriter.println("Banned list: " + gson.toJson(usersList));
                     }
                 } else if ("Adminka:".equals(title)) {
                     String login = response.substring(0, response.indexOf(" "));
