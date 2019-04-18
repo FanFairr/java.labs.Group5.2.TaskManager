@@ -2,8 +2,8 @@ package com.company.lab2.user.controllers;
 
 import com.company.lab2.user.Controller;
 import com.company.lab2.user.model.Task;
+import com.company.lab2.user.model.Tasks;
 import javafx.application.Platform;
-import javafx.collections.ObservableList;
 
 import java.util.Date;
 import java.util.Set;
@@ -15,7 +15,6 @@ import static com.company.lab2.user.Controller.logger;
  * and make alarm signal when it's time to do Task
  */
 public class Notification extends Thread {
-    private ObservableList<Task> TaskList;
     private Date now;
     private Date endDayTime;
     private Date nextAlarmDate;
@@ -25,15 +24,15 @@ public class Notification extends Thread {
     private final String title = "Task Time!";
     private final String header = "Time to do this Task";
 
+
     /**Method for making Calendar for one day
      * from current time to 02:00:00 next day
      */
     private void makeCalendarForDay() {
         if (!notFirstTimeHereAfterMonitor) {
-            TaskList = Controller.getTaskList();
             now = new Date(System.currentTimeMillis() / 1000 * 1000);
             endDayTime = new Date((now.getTime() +(86400000 - now.getTime() % 86400000)));
-            calendarByTime = Controller.getCalendar(now, endDayTime);
+            calendarByTime = Tasks.calendar(Controller.taskList, now, endDayTime);
             notFirstTimeHereAfterMonitor = false;
         }
     }
@@ -44,7 +43,6 @@ public class Notification extends Thread {
         mark:
         while (checkForWhile){
             makeCalendarForDay();
-            TaskList = null;
             try {
                 while ((calendarByTime == null ? 0 : calendarByTime.size()) > 0) {
                     Thread.sleep(200);

@@ -54,7 +54,7 @@ public class RegistrationFormController {
                 alertText ="Passwords not match!";
             } else {
                 alertMade = false;
-                Controller.registration(login.getText(), email.getText(), name.getText(), password.getText());
+                Controller.registration(login.getText(), name.getText(), password.getText());
             }
             if (alertMade)
                 WindowMaker.alertWindowWarning(alertTitle, alertHeader, alertText);

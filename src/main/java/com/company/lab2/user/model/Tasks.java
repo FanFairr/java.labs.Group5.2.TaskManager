@@ -1,4 +1,4 @@
-package com.company.lab2.server.model;
+package com.company.lab2.user.model;
 
 import java.util.*;
 

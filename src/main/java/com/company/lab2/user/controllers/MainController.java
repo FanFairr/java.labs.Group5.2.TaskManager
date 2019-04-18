@@ -2,7 +2,6 @@ package com.company.lab2.user.controllers;
 
 import com.company.lab2.user.Controller;
 import com.company.lab2.user.model.Task;
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -28,6 +27,7 @@ public class MainController {
     @FXML
     private ListView<Task> taskListView;
 
+    private static ObservableList<Task> TaskList;
     private static Task task;
     private static Notification alarm;
 
@@ -35,9 +35,12 @@ public class MainController {
     @FXML
     void initialize() {
         Stage stage = WindowMaker.getStage();
-        stageIsClosing(stage);
-        taskListView = Controller.getTaskListView();
-        multipleSelectionChoose(taskListView);
+        stage.setOnCloseRequest(event -> {
+            alarm.interrupt();
+        });
+        TaskList = Controller.taskList;
+        setItemsInViewList(taskListView, TaskList);
+        multipleSelectionChoose();
         notification();
         addBtn.setOnAction(event -> {
             final String path = "/view/user/AddOrChangeTask.fxml";
@@ -85,49 +88,11 @@ public class MainController {
         }
     }
 
-
-    /**Method react on request for closing window
-     * close window if tasks are saved or not changed
-     * else generate new window to confirm closing without saving
-     * @param stage stage to request
-     */
-    private void stageIsClosing(Stage stage) {
-        stage.setOnCloseRequest(event -> {
-                alarm.interrupt();
-        });
-    }
-
-
-
-    /**Method for selecting items in TaskListView
-     * @param taskListView where to select
-     */
-    private void multipleSelectionChoose(ListView<Task> taskListView) {
-        MultipleSelectionModel<Task> selectionModel = taskListView.getSelectionModel();
-        selectionModel.selectedItemProperty().addListener((changed, oldValue, newValue) -> taskListView.setOnMouseClicked(event -> {
-            if (newValue != null) {
-                //System.out.println("Selected: " + newValue.toString());
-                task = newValue;
-                final String path = "/view/user/Task.fxml";
-                final String header = "Task";
-                WindowMaker.makeWindow(path, header, Modality.WINDOW_MODAL);
-                taskListView.refresh();
-            }
-        }));
-    }
-
-    //TODO перенести на сервер
     /**Method for setting items in TaskListView
-     * @param Login view.user login
+     * @param taskListView where to sat
+     * @param taskList items to set
      */
-    private void makeListView(String Login) {
-        ObservableList<Task> taskList = FXCollections.observableArrayList();
-        //это твоя мапа с тасками
-        // Map<String,TaskArr> map....
-        /*for (Task someTask:map.get(Login);) {
-            TaskList.add(someTask);
-        }*/
-        ListView<Task> taskListView = new ListView<>();
+    private void setItemsInViewList(ListView<Task> taskListView, ObservableList<Task> taskList) {
         taskListView.refresh();
         taskListView.setItems(taskList);
         taskListView.setCellFactory(param -> new ListCell<Task>() {
@@ -142,7 +107,7 @@ public class MainController {
             }
         });
     }
-    //TODO перенести на сервер
+
     /**Method for formatting ListView Items
      */
     private String formatListViewItems(Task item) {
@@ -160,6 +125,24 @@ public class MainController {
                     ", active: " + item.isActive() + ";";
         }
     }
+
+
+    /**Method for selecting items in TaskListView
+     */
+    private void multipleSelectionChoose() {
+        MultipleSelectionModel<Task> selectionModel = taskListView.getSelectionModel();
+        selectionModel.selectedItemProperty().addListener((changed, oldValue, newValue) -> taskListView.setOnMouseClicked(event -> {
+            if (newValue != null) {
+                //System.out.println("Selected: " + newValue.toString());
+                task = newValue;
+                final String path = "/view/user/Task.fxml";
+                final String header = "Task";
+                WindowMaker.makeWindow(path, header, Modality.WINDOW_MODAL);
+                taskListView.refresh();
+            }
+        }));
+    }
+
 
     public static Task getTask() {
         return task;

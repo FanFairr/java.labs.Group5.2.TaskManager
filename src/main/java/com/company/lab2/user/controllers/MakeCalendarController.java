@@ -1,6 +1,7 @@
 package com.company.lab2.user.controllers;
 
 import com.company.lab2.user.Controller;
+import com.company.lab2.user.model.Tasks;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
@@ -66,8 +67,7 @@ public class MakeCalendarController {
                     text = "The end time of the task must be greater than the start time";
                 } else {
                     alertMade = false;
-                    //TODO
-                    if (Controller.calendarTreeViewGetRequest(start, end)) {
+                    if (Tasks.calendar(Controller.taskList, start, end).size() == 0) {
                         title = "Calendar not found";
                         header = "Sorry :-(";
                         text = "There aren't any Tasks is such period of time";
