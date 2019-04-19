@@ -94,11 +94,11 @@ public class ServerThread extends Thread {
                         tasksList.put(login, new ArrayList<>());
                         Gson gson = new Gson();
                         synchronized (tasksList) {
-                            printWriter.println("Registration: " + gson.toJson(tasksList.get(login)));
+                            printWriter.println("Registration" + gson.toJson(tasksList.get(login)));
                             printWriter.flush();
                         }
                     }
-                } else if ("Delete:".equals(title)) {
+                } else if ("Delete".equals(title)) {
                     Gson gson = new Gson();
                     String login = response.substring(0, response.indexOf(" "));
                     Task task = gson.fromJson(response.substring(response.indexOf(" ") + 1), new TypeToken<Task>() {
@@ -107,7 +107,7 @@ public class ServerThread extends Thread {
                     synchronized (tasksList) {
                         tasksList.get(login).remove(task);
                     }
-                } else if ("Add:".equals(title)) {
+                } else if ("Add".equals(title)) {
                     Gson gson = new Gson();
                     String login = response.substring(0, response.indexOf(" "));
                     Task task = gson.fromJson(response.substring(response.indexOf(" ") + 1), new TypeToken<Task>() {
@@ -116,7 +116,7 @@ public class ServerThread extends Thread {
                     synchronized (tasksList) {
                         tasksList.get(login).add(task);
                     }
-                } else if ("Change:".equals(title)) {
+                } else if ("Change".equals(title)) {
                     String login = response.substring(0, response.indexOf(" "));
                     response = response.substring(response.indexOf(" ") + 1);
                     Gson gson = new Gson();

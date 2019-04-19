@@ -37,23 +37,21 @@ public class Controller extends Application {
     }
 
     public static void main(String[] args) {
-        launch(args);
         try {
             Socket client = new Socket("127.0.0.1", 1488);
             PrintWriter printWriter = new PrintWriter(client.getOutputStream());
             reader = new BufferedReader(new InputStreamReader(client.getInputStream()));
             writer = new BufferedWriter(new OutputStreamWriter(client.getOutputStream()));
 
-            printWriter.println("Login: aq bd");
-            printWriter.flush();
+           /* printWriter.println("Login: aq bd");
+            printWriter.flush();*/
 
-            String list;
 
-            while (true) {
-                list = reader.readLine();
-                if (!list.isEmpty()) {
-                    System.out.println(list);
-                    if (list.equals("Exit"))
+           while (true) {
+                String response = reader.readLine();
+                if (!response.isEmpty()) {
+                    System.out.println(response);
+                    if (response.equals("Exit"))
                         System.exit(0);
                 }
                 Thread.sleep(10);
@@ -72,6 +70,7 @@ public class Controller extends Application {
         } catch (IOException | InterruptedException e) {
             e.printStackTrace();
         }
+        launch(args);
     }
 
     public static void registration(String login, String name, String password) {
