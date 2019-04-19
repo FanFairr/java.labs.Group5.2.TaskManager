@@ -30,6 +30,7 @@ public class MainController {
     private static ObservableList<Task> TaskList;
     private static Task task;
     private static Notification alarm;
+    private static boolean isAdmin = true;
 
 
     @FXML
@@ -54,7 +55,7 @@ public class MainController {
         });
 
         adminBtn.setOnAction(event -> {
-            if (Controller.isAdmin()) {
+            if (isAdmin) {
                 final String path = "/view/user/ServerScene.fxml";
                 final String header = "Account";
                 WindowMaker.makeWindow(path, header, Modality.WINDOW_MODAL);
@@ -152,4 +153,7 @@ public class MainController {
         MainController.task = task;
     }
 
+    public static void setAdmin(boolean admin) {
+        isAdmin = admin;
+    }
 }

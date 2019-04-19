@@ -69,11 +69,11 @@ public class WindowMaker {
         alert.showAndWait();
     }
 
-    static void closeWindow(Stage stageClose){
+    public static void closeWindow(Stage stageClose){
         stageClose.close();
     }
 
-    static Stage getStage() {
+    public static Stage getStage() {
         return stage;
     }
 }
