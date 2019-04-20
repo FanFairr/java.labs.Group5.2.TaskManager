@@ -1,7 +1,6 @@
 package com.company.lab2.server.controllers;
 
 import com.company.lab2.server.model.Task;
-import com.company.lab2.server.model.Tasks;
 import com.company.lab2.server.model.User;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -11,9 +10,8 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.TreeMap;
 
 public class ServerThread extends Thread {
     private Socket socket = null;
@@ -37,15 +35,14 @@ public class ServerThread extends Thread {
 
             while (true) {
 
-                String response = in.readLine();
-                System.out.println(response);
-
-                String title = response.substring(0, response.indexOf(":") + 1);
-                response = response.substring(response.indexOf(":") + 2);
+                String title = in.readLine();
+                System.out.println(title);
 
                 if ("Login:".equals(title)) {
-                    String login = response.substring(0, response.indexOf(" "));
-                    String password = response.substring(response.indexOf(" ") + 1);
+                    String login = in.readLine();
+                    System.out.println(login);
+                    String password = in.readLine();
+                    System.out.println(password);
 
                     int i = 0;
 
@@ -55,19 +52,21 @@ public class ServerThread extends Thread {
                             if (user.getLogin().equals(login)) {
                                 if (user.getPassword().equals(password)) {
                                     if (user.isBanned()) {
-                                        printWriter.println("Login: You are banned");
+                                        printWriter.println("banned");
                                         printWriter.flush();
                                         break;
                                     } else {
                                         Gson gson = new Gson();
                                         synchronized (tasksList) {
-                                            printWriter.println("Login: " + user.getAdmin() + " " + gson.toJson(tasksList.get(login)));
+                                            printWriter.println("connected");
+                                            printWriter.flush();
+                                            printWriter.println(gson.toJson(tasksList.get(login)));
                                             printWriter.flush();
                                             break;
                                         }
                                     }
                                 } else {
-                                    printWriter.println("Login: Password entered incorrectly");
+                                    printWriter.println("wrong password");
                                     printWriter.flush();
                                     break;
                                 }
@@ -76,59 +75,56 @@ public class ServerThread extends Thread {
                     }
 
                     if (i == usersList.size()) {
-                        printWriter.println("Login: Login entered incorrectly");
+                        printWriter.println("login not exist");
                         printWriter.flush();
                     }
                 } else if ("Registration:".equals(title)) {
-                    String login = response.substring(0, response.indexOf(" "));
-                    String password = response.substring(response.indexOf(" ") + 1);
+                    String login = in.readLine();
+                    String password = in.readLine();
 
                     synchronized (usersList) {
                         for (User user : usersList) {
                             if (user.getLogin().equals(login)) {
-                                printWriter.println("Registration: Such a login is already busy");
+                                printWriter.println("already exist login");
                                 printWriter.flush();
                             }
                         }
                         usersList.add(new User(login, password, false, "false"));
                         tasksList.put(login, new ArrayList<>());
-                        Gson gson = new Gson();
                         synchronized (tasksList) {
-                            printWriter.println("Registration" + gson.toJson(tasksList.get(login)));
+                            printWriter.println("registration accept");
                             printWriter.flush();
                         }
                     }
-                } else if ("Delete".equals(title)) {
+                } else if ("Delete:".equals(title)) {
                     Gson gson = new Gson();
-                    String login = response.substring(0, response.indexOf(" "));
-                    Task task = gson.fromJson(response.substring(response.indexOf(" ") + 1), new TypeToken<Task>() {
+                    String login = in.readLine();
+                    Task task = gson.fromJson(in.readLine(), new TypeToken<Task>() {
                     }.getType());
 
                     synchronized (tasksList) {
                         tasksList.get(login).remove(task);
                     }
-                } else if ("Add".equals(title)) {
+                } else if ("Add:".equals(title)) {
                     Gson gson = new Gson();
-                    String login = response.substring(0, response.indexOf(" "));
-                    Task task = gson.fromJson(response.substring(response.indexOf(" ") + 1), new TypeToken<Task>() {
+                    String login = in.readLine();
+                    Task task = gson.fromJson(in.readLine(), new TypeToken<Task>() {
                     }.getType());
 
                     synchronized (tasksList) {
                         tasksList.get(login).add(task);
                     }
-                } else if ("Change".equals(title)) {
-                    String login = response.substring(0, response.indexOf(" "));
-                    response = response.substring(response.indexOf(" ") + 1);
+                } else if ("Change:".equals(title)) {
+                    String login = in.readLine();
                     Gson gson = new Gson();
-                    int index = Integer.parseInt(response.substring(0, response.indexOf(" ")));
-                    response = response.substring(response.indexOf(" "));
+                    int index = Integer.parseInt(in.readLine());
 
-                    Task task = gson.fromJson(response, Task.class);
+                    Task task = gson.fromJson(in.readLine(), Task.class);
 
                     synchronized (tasksList) {
                         tasksList.get(login).set(index, task);
                     }
-                } else if ("Calendar:".equals(title)) {
+                }/* else if ("Calendar:".equals(title)) {
                     Gson gson = new Gson();
                     String login = response.substring(0, response.indexOf(" "));
                     response = response.substring(response.indexOf(" ") + 1);
@@ -141,26 +137,38 @@ public class ServerThread extends Thread {
                         printWriter.println("Calendar: " + gson.toJson(sortedMap));
                         printWriter.flush();
                     }
-                } else if ("Banned list:".equals(title)) {
+                }*/ else if ("Users list:".equals(title)) {
                     Gson gson = new Gson();
                     synchronized (usersList) {
-                        printWriter.println("Banned list: " + gson.toJson(usersList));
+                        printWriter.println("Users list: " + gson.toJson(usersList));
                     }
-                } else if ("Adminka:".equals(title)) {
-                    String login = response.substring(0, response.indexOf(" "));
-                    response = response.substring(response.indexOf(" ") + 1);
+                } else if ("Become adm:".equals(title)) {
+                    String login = in.readLine();
+                    int k = 0;
                     synchronized (adminList) {
-                        for (int i = 0; i < usersList.size(); i++)
-                            if (login.equals(usersList.get(i).getLogin())) {
-                                adminList.add(usersList.get(i));
-                                break;
+                        for (User user1 : usersList)
+                            if (login.equals(user1.getLogin())) {
+                                for (User user : adminList) {
+                                    if (user.getLogin().equals(login)) {
+                                        k = 1;
+                                        break;
+                                    }
+                                }
+
+                                if (k == 0) {
+                                    adminList.add(user1);
+                                    break;
+                                } else {
+                                    printWriter.println("become adm");
+                                    printWriter.flush();
+                                }
                             }
                     }
                 } else if ("Spisok adminov:".equals(title)) {
                     Gson gson = new Gson();
                     synchronized (adminList) {
                         String list = gson.toJson(adminList);
-                        printWriter.println("Spisok adminov: " + list);
+                        printWriter.println("Spisok adminov: \n" + list);
                         printWriter.flush();
                     }
                 } else if ("Exit work:".equals(title)) {
@@ -170,7 +178,7 @@ public class ServerThread extends Thread {
 
                 Thread.sleep(10);
             }
-        } catch (IOException | InterruptedException | ParseException e) {
+        } catch (IOException | InterruptedException e) {
             e.printStackTrace();
         }
     }

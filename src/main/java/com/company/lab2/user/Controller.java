@@ -27,7 +27,7 @@ public class Controller extends Application {
     private static BufferedWriter writer = null;
     private static Gson gson = new Gson();
     @Override
-    public void start(Stage primaryStage) throws Exception{
+    public void start(Stage primaryStage) {
         /*
         final String path = "/view.user/Main.fxml";
         final String header = "Task Manager";
@@ -97,7 +97,7 @@ public class Controller extends Application {
 
     public static void registration(String login, String name, String password) {
         try {
-            writer.write("Registration\n" + login + "\n" + name + "\n" + password + "\n");
+            writer.write("Registration:\n" + login + "\n" + name + "\n" + password + "\n");
             writer.flush();
         } catch (IOException e) {
             e.printStackTrace();
@@ -106,7 +106,7 @@ public class Controller extends Application {
 
     public static void signIn(String login, String password) {
         try {
-            writer.write("Login\n" + login + "\n" + password + "\n");
+            writer.write("Login:\n" + login + "\n" + password + "\n");
             writer.flush();
             } catch (IOException e) {
             e.printStackTrace();
@@ -116,7 +116,7 @@ public class Controller extends Application {
 
     public static void addTask(Task task) {
         try {
-            writer.write("Add\n");
+            writer.write("Add:\n");
             writer.flush();
             writer.write(gson.toJson(task) + "\n");
             writer.flush();
@@ -129,7 +129,7 @@ public class Controller extends Application {
 
     public static void deleteTask(Task task) {
         try {
-            writer.write("Delete\n");
+            writer.write("Delete:\n");
             writer.flush();
             writer.write(gson.toJson(task) + "\n");
             writer.flush();
@@ -142,7 +142,7 @@ public class Controller extends Application {
 
     public static void changeTask(Task oldT, Task newT) {
         try {
-            writer.write("Change\n");
+            writer.write("Change:\n");
             writer.flush();
             writer.write(gson.toJson(oldT) + "\n");
             writer.flush();
@@ -158,7 +158,7 @@ public class Controller extends Application {
 
     public static void isAdmin() {
         try {
-            writer.write("isAdmin\n");
+            writer.write("isAdmin:\n");
             writer.flush();
         } catch (IOException e) {
             e.printStackTrace();
@@ -167,7 +167,7 @@ public class Controller extends Application {
 
     public static void becomeAdmin(String code) {
         try {
-            writer.write("Become adm\n" + code + "\n");
+            writer.write("Become adm: " + code + "\n");
             writer.flush();
         } catch (IOException e) {
             e.printStackTrace();
