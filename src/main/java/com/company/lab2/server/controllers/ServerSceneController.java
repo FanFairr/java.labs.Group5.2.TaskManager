@@ -19,7 +19,9 @@ import java.net.Socket;
 import java.util.ArrayList;
 import java.util.TreeMap;
 
-
+/**
+ *
+ */
 public class ServerSceneController {
     private ObservableList<User> observableList;
     private ServerSocket serverSocket;
@@ -97,6 +99,14 @@ public class ServerSceneController {
                 Platform.exit();
                 System.exit(0);
             }
+        }
+    }
+
+    public void refresh(ActionEvent actionEvent) {
+        synchronized (usersList) {
+            observableList.removeAll();
+            observableList.addAll(usersList);
+            table.refresh();
         }
     }
 }

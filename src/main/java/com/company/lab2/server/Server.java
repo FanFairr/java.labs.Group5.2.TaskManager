@@ -34,7 +34,7 @@ public class Server extends Application {
     public void start(Stage primaryStage) throws Exception{
 
         FXMLLoader fxmlLoader = new FXMLLoader();
-        fxmlLoader.setLocation(getClass().getResource("/view/user/ServerScene.fxml"));
+        fxmlLoader.setLocation(getClass().getResource("/view/server/ServerScene.fxml"));
         Parent root = fxmlLoader.load();
 
         ((ServerSceneController) fxmlLoader.getController()).setParams(usersList, tasksList, serverSocket, socketList);

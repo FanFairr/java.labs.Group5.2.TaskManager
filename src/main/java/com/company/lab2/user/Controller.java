@@ -13,7 +13,10 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import org.apache.log4j.Logger;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
 import java.lang.reflect.Type;
 import java.net.Socket;
 import java.util.ArrayList;
@@ -24,7 +27,7 @@ public class Controller extends Application {
     private static ArrayList<Task> tasksArr;
     public final static Logger logger = Logger.getLogger(MainController.class);
     private static BufferedReader reader = null;
-    private static BufferedWriter writer = null;
+    private static PrintWriter writer = null;
     private static Gson gson = new Gson();
     @Override
     public void start(Stage primaryStage) {
@@ -43,7 +46,7 @@ public class Controller extends Application {
                 Socket client = new Socket("127.0.0.1", 1488);
                 PrintWriter printWriter = new PrintWriter(client.getOutputStream());
                 reader = new BufferedReader(new InputStreamReader(client.getInputStream()));
-                writer = new BufferedWriter(new OutputStreamWriter(client.getOutputStream()));
+                writer = new PrintWriter(client.getOutputStream());
                 while (true) {
                     String response = reader.readLine();
                     if (!response.isEmpty()) {
@@ -51,7 +54,12 @@ public class Controller extends Application {
                             case "connected":
                                 Type token = new TypeToken<ArrayList<Task>>() {
                                 }.getType();
-                                tasksArr = gson.fromJson(reader.readLine(), token);
+                                String list = reader.readLine();
+                                if ("[]".equals(list)) {
+                                    tasksArr = new ArrayList<>();
+                                } else {
+                                    tasksArr = gson.fromJson(list, token);
+                                }
                                 taskList.setAll(tasksArr);
                                 Stage current = WindowMaker.getStage();
                                 WindowMaker.makeWindow("/view.user/Main.fxml", "Task Manager", Modality.WINDOW_MODAL);
@@ -96,81 +104,47 @@ public class Controller extends Application {
     }
 
     public static void registration(String login, String name, String password) {
-        try {
-            writer.write("Registration:\n" + login + "\n" + name + "\n" + password + "\n");
-            writer.flush();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        writer.println("Registration: " + login + " " + password);
+        writer.flush();
     }
 
     public static void signIn(String login, String password) {
-        try {
-            writer.write("Login:\n" + login + "\n" + password + "\n");
-            writer.flush();
-            } catch (IOException e) {
-            e.printStackTrace();
-        }
-
+        writer.println("Login: " + login + " " + password);
+        writer.flush();
     }
 
     public static void addTask(Task task) {
-        try {
-            writer.write("Add:\n");
-            writer.flush();
-            writer.write(gson.toJson(task) + "\n");
-            writer.flush();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+
+        writer.write("Add:\n");
+        writer.flush();
+        writer.write(gson.toJson(task) + "\n");
+        writer.flush();
         taskList.add(task);
         MainController.notificationInterrupt();
     }
 
     public static void deleteTask(Task task) {
-        try {
-            writer.write("Delete:\n");
-            writer.flush();
-            writer.write(gson.toJson(task) + "\n");
-            writer.flush();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        writer.println("Delete: " + gson.toJson(task));
+        writer.flush();
         taskList.remove(task);
         MainController.notificationInterrupt();
     }
 
     public static void changeTask(Task oldT, Task newT) {
-        try {
-            writer.write("Change:\n");
-            writer.flush();
-            writer.write(gson.toJson(oldT) + "\n");
-            writer.flush();
-            writer.write(gson.toJson(newT) + "\n");
-            writer.flush();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        writer.write("Change: " + gson.toJson(oldT) + " " + gson.toJson(newT));
+        writer.flush();
         taskList.set(taskList.indexOf(oldT), newT);
         MainController.notificationInterrupt();
     }
 
 
     public static void isAdmin() {
-        try {
-            writer.write("isAdmin:\n");
-            writer.flush();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        writer.println("isAdmin:");
+        writer.flush();
     }
 
     public static void becomeAdmin(String code) {
-        try {
-            writer.write("Become adm: " + code + "\n");
-            writer.flush();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        writer.println("Become adm: " + code);
+        writer.flush();
     }
 }
