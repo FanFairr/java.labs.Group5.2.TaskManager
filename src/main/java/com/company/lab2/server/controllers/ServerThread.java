@@ -19,6 +19,7 @@ public class ServerThread extends Thread {
     private final TreeMap<String, ArrayList<Task>> tasksList;
     private ArrayList<Task> taskArrayList;
     private final ArrayList<User> adminList;
+    private String login;
 
     public ServerThread(Socket socket, ArrayList<User> usersList, TreeMap<String, ArrayList<Task>> tasksList, ArrayList<User> adminList) {
         this.socket = socket;
@@ -43,8 +44,8 @@ public class ServerThread extends Thread {
                 response = response.substring(response.indexOf(":") + 2);
 
                 if ("Login:".equals(title)) {
-                    String login = in.readLine();
-                    String password = in.readLine();
+                    login = response.substring(0, response.indexOf(" "));
+                    String password = response.substring(response.indexOf(" ") + 1);
                     synchronized (tasksList) {
                         taskArrayList = tasksList.get(login);
                     }
@@ -82,7 +83,7 @@ public class ServerThread extends Thread {
                     }
                 } else if ("Registration:".equals(title)) {
                     Gson gson = new Gson();
-                    String login = response.substring(0, response.indexOf(" "));
+                    login = response.substring(0, response.indexOf(" "));
                     String password = response.substring(response.indexOf(" ") + 1);
                     int k = 0;
 
@@ -101,7 +102,7 @@ public class ServerThread extends Thread {
                                 tasksList.put(login, new ArrayList<>());
 
                                 taskArrayList = tasksList.get(login);
-                                printWriter.println("connected\n" + gson.toJson(taskArrayList));
+                                printWriter.println("connected:\n" + gson.toJson(taskArrayList));
                                 printWriter.flush();
                             }
                         }
@@ -176,6 +177,9 @@ public class ServerThread extends Thread {
                         printWriter.flush();
                     }
                 } else if ("Exit work:".equals(title)) {
+                    synchronized (tasksList) {
+                        tasksList.put(login, taskArrayList);
+                    }
                     socket.close();
                     break;
                 }

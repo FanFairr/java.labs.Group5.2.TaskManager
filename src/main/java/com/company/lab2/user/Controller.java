@@ -49,9 +49,10 @@ public class Controller extends Application {
                 writer = new PrintWriter(client.getOutputStream());
                 while (true) {
                     String response = reader.readLine();
+                    System.out.println(response);
                     if (!response.isEmpty()) {
                         switch (response) {
-                            case "connected":
+                            case "connected:":
                                 Type token = new TypeToken<ArrayList<Task>>() {
                                 }.getType();
                                 String list = reader.readLine();
@@ -62,8 +63,12 @@ public class Controller extends Application {
                                 }
                                 taskList.setAll(tasksArr);
                                 Stage current = WindowMaker.getStage();
-                                WindowMaker.makeWindow("/view.user/Main.fxml", "Task Manager", Modality.WINDOW_MODAL);
-                                Platform.runLater(() -> WindowMaker.closeWindow(current));
+
+                                Platform.runLater(() ->  {
+                                    WindowMaker.makeWindow("/view/user/Main.fxml", "Task Manager", Modality.WINDOW_MODAL);
+                                    WindowMaker.closeWindow(current);
+
+                                });
                                 break;
                             case "already exist login":
                                 WindowMaker.alertWindowInf("Error", "Wrong login", "Login already exist");
@@ -115,9 +120,7 @@ public class Controller extends Application {
 
     public static void addTask(Task task) {
 
-        writer.write("Add:\n");
-        writer.flush();
-        writer.write(gson.toJson(task) + "\n");
+        writer.println("Add: " + gson.toJson(task));
         writer.flush();
         taskList.add(task);
         MainController.notificationInterrupt();
@@ -131,7 +134,7 @@ public class Controller extends Application {
     }
 
     public static void changeTask(Task oldT, Task newT) {
-        writer.write("Change: " + gson.toJson(oldT) + " " + gson.toJson(newT));
+        writer.println("Change: " + gson.toJson(oldT) + " " + gson.toJson(newT));
         writer.flush();
         taskList.set(taskList.indexOf(oldT), newT);
         MainController.notificationInterrupt();
@@ -145,6 +148,11 @@ public class Controller extends Application {
 
     public static void becomeAdmin(String code) {
         writer.println("Become adm: " + code);
+        writer.flush();
+    }
+
+    public static void exitWork() {
+        writer.println("Exit work:  ");
         writer.flush();
     }
 }

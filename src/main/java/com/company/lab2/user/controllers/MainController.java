@@ -37,6 +37,7 @@ public class MainController {
     void initialize() {
         Stage stage = WindowMaker.getStage();
         stage.setOnCloseRequest(event -> {
+            Controller.exitWork();
             alarm.interrupt();
         });
         TaskList = Controller.taskList;
