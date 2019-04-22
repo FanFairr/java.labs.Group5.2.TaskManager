@@ -104,7 +104,7 @@ public class ServerSceneController {
 
     public void refresh(ActionEvent actionEvent) {
         synchronized (usersList) {
-            observableList.removeAll();
+            observableList.clear();
             observableList.addAll(usersList);
             table.refresh();
         }
