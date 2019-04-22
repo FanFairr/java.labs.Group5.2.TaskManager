@@ -7,7 +7,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Tooltip;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.net.URL;
@@ -28,8 +27,13 @@ public class EnterFormController {
     @FXML
     private Button signInBtn;
 
+    public static String logIn;
+
     @FXML
     void initialize() {
+        WindowMaker.getStage().setOnCloseRequest(event -> {
+            Controller.interrupt();
+        });
         login.setTooltip(new Tooltip("Your login"));
         password.setTooltip(new Tooltip("Your password"));
         signInBtn.setOnAction(event -> {
@@ -38,15 +42,17 @@ public class EnterFormController {
             final String alertText ="Login & password fields should be filled";
             if (ValidateController.isEmpty(login)|| password.getText().trim().equals("")) {
                 WindowMaker.alertWindowWarning(alertTitle, alertHeader, alertText);
-            } else
+            } else {
+                logIn = login.getText();
                 Controller.signIn(login.getText(), password.getText());
+            }
         });
         registrationBtn.setOnMouseClicked(event -> {
             Stage current = WindowMaker.getStage();
             final String path = "/view/user/RegistrationForm.fxml";
             final String header = "Registration";
             Platform.runLater(() -> WindowMaker.closeWindow(current));
-            WindowMaker.makeWindow(path, header, Modality.NONE);
+            WindowMaker.makeWindow(path, header);
         });
 
     }

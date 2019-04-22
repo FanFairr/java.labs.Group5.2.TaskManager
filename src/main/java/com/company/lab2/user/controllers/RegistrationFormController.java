@@ -7,7 +7,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Tooltip;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.net.URL;
@@ -54,6 +53,7 @@ public class RegistrationFormController {
                 alertText ="Passwords not match!";
             } else {
                 alertMade = false;
+                EnterFormController.logIn = login.getText();
                 Controller.registration(login.getText(), name.getText(), password.getText());
             }
             if (alertMade)
@@ -64,7 +64,7 @@ public class RegistrationFormController {
             final String path = "/view/user/EnterForm.fxml";
             final String header = "SignIn";
             Platform.runLater(() -> WindowMaker.closeWindow(current));
-            WindowMaker.makeWindow(path, header, Modality.NONE);
+            WindowMaker.makeWindow(path, header);
         });
 
     }

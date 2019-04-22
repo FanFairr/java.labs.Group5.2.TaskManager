@@ -2,6 +2,7 @@ package com.company.lab2.user.controllers;
 
 import com.company.lab2.user.Controller;
 import com.company.lab2.user.model.Task;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
@@ -106,6 +107,7 @@ public class AddOrChangeTaskController {
                     if (!task.equals(oldTask)) {
                         Controller.changeTask(oldTask,task);
                         WindowMaker.closeWindow(stage);
+                        Platform.runLater(() -> WindowMaker.closeWindow(TaskController.getStage()));
                     } else WindowMaker.closeWindow(stage);
                 }
             });

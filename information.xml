@@ -9,6 +9,22 @@
 <interval value="0"/>
 <active value="false"/>
 </task>
+<task>
+<title value="aa"/>
+<time value="2019-04-09/01:00:00"/>
+<start value="2019-04-09/01:00:00"/>
+<end value="2019-04-09/01:00:00"/>
+<interval value="0"/>
+<active value="false"/>
+</task>
+<task>
+<title value="1"/>
+<time value="2019-04-02/01:00:00"/>
+<start value="2019-04-02/01:00:00"/>
+<end value="2019-04-02/01:00:00"/>
+<interval value="0"/>
+<active value="false"/>
+</task>
 </user>
 <user admin="admin" isBanned="false" login="ad" password="bd">
 <task>
@@ -38,6 +54,16 @@
 <end value="2019-04-01/07:03:46"/>
 <interval value="0"/>
 <active value="false"/>
+</task>
+</user>
+<user admin="false" isBanned="false" login="Valera" password="123">
+<task>
+<title value="GG"/>
+<time value="2019-04-02/11:00:00"/>
+<start value="2019-04-02/11:00:00"/>
+<end value="2019-04-10/10:00:00"/>
+<interval value="60"/>
+<active value="true"/>
 </task>
 </user>
 </users>

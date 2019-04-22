@@ -89,7 +89,7 @@ public class ServerSceneController {
                 try {
                     for (Socket socket : socketList) {
                         PrintWriter printWriter = new PrintWriter(socket.getOutputStream());
-                        printWriter.println("Exit");
+                        printWriter.write("Exit\n");
                         printWriter.flush();
                     }
                 } catch (IOException e) {

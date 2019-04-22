@@ -8,7 +8,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.MultipleSelectionModel;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.text.SimpleDateFormat;
@@ -35,9 +34,10 @@ public class MainController {
 
     @FXML
     void initialize() {
-        Stage stage = WindowMaker.getStage();
+        final Stage stage = WindowMaker.getStage();
         stage.setOnCloseRequest(event -> {
             alarm.interrupt();
+            Controller.interrupt();
         });
         TaskList = Controller.taskList;
         setItemsInViewList(taskListView, TaskList);
@@ -46,19 +46,19 @@ public class MainController {
         addBtn.setOnAction(event -> {
             final String path = "/view/user/AddOrChangeTask.fxml";
             final String header = "Task Adding";
-            WindowMaker.makeWindow(path, header, Modality.WINDOW_MODAL);
+            WindowMaker.makeWindow(path, header);
         });
         makeClBtn.setOnAction(event -> {
             final String path = "/view/user/MakeCalendar.fxml";
             final String header = "Calendar";
-            WindowMaker.makeWindow(path, header, Modality.WINDOW_MODAL);
+            WindowMaker.makeWindow(path, header);
         });
 
         adminBtn.setOnAction(event -> {
             if (isAdmin) {
                 final String path = "/view/user/ServerScene.fxml";
                 final String header = "Account";
-                WindowMaker.makeWindow(path, header, Modality.WINDOW_MODAL);
+                WindowMaker.makeWindow(path, header);
             } else {
                 final String alertTitle = "Warning";
                 final String alertHeader = "You got no rights";
@@ -138,7 +138,7 @@ public class MainController {
                 task = newValue;
                 final String path = "/view/user/Task.fxml";
                 final String header = "Task";
-                WindowMaker.makeWindow(path, header, Modality.WINDOW_MODAL);
+                WindowMaker.makeWindow(path, header);
                 taskListView.refresh();
             }
         }));
