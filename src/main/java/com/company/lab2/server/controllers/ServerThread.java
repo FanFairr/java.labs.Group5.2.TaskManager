@@ -23,8 +23,6 @@ public class ServerThread extends Thread {
     private BufferedReader in;
     private Gson gson = new Gson();
     private String login;
-    private String password;
-    private String strTask;
     private boolean whileCondition = true;
 
     public ServerThread(Socket socket, ArrayList<User> usersList, TreeMap<String, ArrayList<Task>> tasksList, ArrayList<User> adminList) {
@@ -49,7 +47,7 @@ public class ServerThread extends Thread {
                     switch (response) {
                         case "Login:":
                             login = in.readLine();
-                            password = in.readLine();
+                            String password = in.readLine();
                             synchronized (tasksList) {
                                 taskArrayList = tasksList.get(login);
                             }
@@ -160,6 +158,9 @@ public class ServerThread extends Thread {
                             }
                             break;
                         case "Exit:":
+                            synchronized (tasksList) {
+                                tasksList.put(login, taskArrayList);
+                            }
                             socket.close();
                             whileCondition = false;
                             break;
@@ -189,15 +190,15 @@ public class ServerThread extends Thread {
     }
 
     private Task getTaskFromInputStream() throws IOException {
-        strTask = in.readLine();
+        String strTask = in.readLine();
         Type type = new TypeToken<Task>(){}.getType();
-        while (strTask == null) {
+        /*while (strTask == null) {
             try {
                 Thread.sleep(10);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-        }
+        }*/
         Task task = gson.fromJson(strTask, type);
         strTask = null;
         return task;

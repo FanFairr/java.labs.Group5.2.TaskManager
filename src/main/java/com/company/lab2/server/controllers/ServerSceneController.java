@@ -88,9 +88,11 @@ public class ServerSceneController {
 
                 try {
                     for (Socket socket : socketList) {
-                        PrintWriter printWriter = new PrintWriter(socket.getOutputStream());
-                        printWriter.write("Exit\n");
-                        printWriter.flush();
+                        if (!socket.isClosed()) {
+                            PrintWriter printWriter = new PrintWriter(socket.getOutputStream());
+                            printWriter.write("Exit\n");
+                            printWriter.flush();
+                        }
                     }
                 } catch (IOException e) {
                     e.printStackTrace();

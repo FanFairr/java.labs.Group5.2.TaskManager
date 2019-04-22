@@ -193,10 +193,5 @@ public class Controller extends Application {
         connection.interrupt();
         Platform.exit();
         System.exit(0);
-
-    }
-
-    public static void closeFirstStage() {
-
     }
 }

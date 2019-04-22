@@ -61,8 +61,26 @@
 <title value="GG"/>
 <time value="2019-04-02/11:00:00"/>
 <start value="2019-04-02/11:00:00"/>
-<end value="2019-04-10/10:00:00"/>
-<interval value="60"/>
+<end value="2019-04-02/11:00:00"/>
+<interval value="0"/>
+<active value="false"/>
+</task>
+</user>
+<user admin="false" isBanned="false" login="valera" password="123">
+<task>
+<title value="111"/>
+<time value="2019-04-04/01:00:00"/>
+<start value="2019-04-04/01:00:00"/>
+<end value="2019-04-04/01:00:00"/>
+<interval value="0"/>
+<active value="false"/>
+</task>
+<task>
+<title value="22"/>
+<time value="2019-04-05/01:00:00"/>
+<start value="2019-04-05/01:00:00"/>
+<end value="2019-04-19/01:00:00"/>
+<interval value="172800"/>
 <active value="true"/>
 </task>
 </user>
