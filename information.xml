@@ -18,10 +18,18 @@
 <active value="false"/>
 </task>
 <task>
+<title value="qqq"/>
+<time value="2019-04-03/12:00:02"/>
+<start value="2019-04-03/12:00:02"/>
+<end value="2019-04-11/12:02:00"/>
+<interval value="10800"/>
+<active value="true"/>
+</task>
+<task>
 <title value="1"/>
-<time value="2019-04-02/01:00:00"/>
-<start value="2019-04-02/01:00:00"/>
-<end value="2019-04-02/01:00:00"/>
+<time value="2019-04-03/01:00:00"/>
+<start value="2019-04-03/01:00:00"/>
+<end value="2019-04-03/01:00:00"/>
 <interval value="0"/>
 <active value="false"/>
 </task>
@@ -79,9 +87,9 @@
 <title value="22"/>
 <time value="2019-04-05/01:00:00"/>
 <start value="2019-04-05/01:00:00"/>
-<end value="2019-04-19/01:00:00"/>
-<interval value="172800"/>
-<active value="true"/>
+<end value="2019-04-05/01:00:00"/>
+<interval value="0"/>
+<active value="false"/>
 </task>
 </user>
 </users>

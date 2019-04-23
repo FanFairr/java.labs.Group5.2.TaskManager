@@ -17,6 +17,11 @@
             <Font name="Arial" size="23.0" />
         </font>
     </Text>
+    <Text layoutX="100.0" layoutY="165.0" strokeType="OUTSIDE" strokeWidth="0.0" text="User name:">
+        <font>
+            <Font name="Times New Roman" size="14.0" />
+        </font>
+    </Text>
     <TextField fx:id="login" layoutX="186.0" layoutY="147.0" prefHeight="26.0" promptText="Enter your login">
         <font>
             <Font name="Arial" size="12.0" />
@@ -27,11 +32,11 @@
             <Font name="Times New Roman" size="14.0" />
         </font>
     </Text>
-    <Text layoutX="100.0" layoutY="165.0" strokeType="OUTSIDE" strokeWidth="0.0" text="User name:">
+    <PasswordField fx:id="password" layoutX="186.0" layoutY="191.0" prefHeight="26.0" promptText="Enter your password">
         <font>
-            <Font name="Times New Roman" size="14.0" />
+            <Font name="Arial" size="12.0" />
         </font>
-    </Text>
+    </PasswordField>
     <Button fx:id="signInBtn" layoutX="200.0" layoutY="238.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="75.0" text="Sign in" AnchorPane.topAnchor="238.0">
         <font>
             <Font name="Arial Bold" size="12.0" />
@@ -40,11 +45,6 @@
             <Cursor fx:constant="HAND" />
          </cursor>
     </Button>
-    <PasswordField fx:id="password" layoutX="186.0" layoutY="191.0" prefHeight="26.0" promptText="Enter your password">
-        <font>
-            <Font name="Arial" size="12.0" />
-        </font>
-    </PasswordField>
       <Button fx:id="registrationBtn" alignment="CENTER" layoutX="180.0" layoutY="286.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="116.0" style="-fx-background-color: none;" text="Registration" textAlignment="CENTER" textFill="#2e2ef0" textOverrun="CLIP" underline="true" AnchorPane.topAnchor="286.0">
          <font>
             <Font name="System Bold" size="12.0" />

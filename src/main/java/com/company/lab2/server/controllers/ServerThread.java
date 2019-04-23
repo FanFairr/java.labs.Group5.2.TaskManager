@@ -9,7 +9,6 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
-import java.lang.reflect.Type;
 import java.net.Socket;
 import java.util.ArrayList;
 import java.util.TreeMap;
@@ -20,10 +19,11 @@ public class ServerThread extends Thread {
     private final TreeMap<String, ArrayList<Task>> tasksList;
     private ArrayList<Task> taskArrayList;
     private final ArrayList<User> adminList;
-    private BufferedReader in;
+    private PrintWriter printWriter;
     private Gson gson = new Gson();
     private String login;
     private boolean whileCondition = true;
+    private User currentUser;
 
     public ServerThread(Socket socket, ArrayList<User> usersList, TreeMap<String, ArrayList<Task>> tasksList, ArrayList<User> adminList) {
         this.socket = socket;
@@ -35,13 +35,11 @@ public class ServerThread extends Thread {
     @Override
     public void run() {
         try {
-            in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-            PrintWriter printWriter = new PrintWriter(socket.getOutputStream());
+            BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+            printWriter = new PrintWriter(socket.getOutputStream());
             while (whileCondition) {
                 System.out.println("hi");
-                String response = null;
-                if (in != null)
-                    response = in.readLine();
+                String response = in.readLine();
                 if (response != null && !response.isEmpty()) {
                     System.out.println(response);
                     switch (response) {
@@ -55,21 +53,19 @@ public class ServerThread extends Thread {
                             synchronized (usersList) {
                                 for (User user : usersList) {
                                     if (user.getLogin().equals(login)) {
+                                        currentUser = user;
                                         if (user.getPassword().equals(password)) {
                                             if (user.isBanned()) {
-                                                printWriter.write("banned\n");
-                                                printWriter.flush();
+                                                streamWrite("banned\n");
                                                 loginNotExist = false;
                                                 break;
                                             } else {
                                                 loginNotExist = false;
-                                                printWriter.write("connected\n" + gson.toJson(taskArrayList) + "\n");
-                                                printWriter.flush();
+                                                streamWrite("connected\n" + gson.toJson(taskArrayList) + "\n");
                                                 break;
                                             }
                                         } else {
-                                            printWriter.write("wrong password\n");
-                                            printWriter.flush();
+                                            streamWrite("wrong password\n");
                                             loginNotExist = false;
                                             break;
                                         }
@@ -77,8 +73,7 @@ public class ServerThread extends Thread {
                                 }
                             }
                             if (loginNotExist) {
-                                printWriter.write("login not exist\n");
-                                printWriter.flush();
+                                streamWrite("login not exist\n");
                             }
                             break;
 
@@ -89,74 +84,69 @@ public class ServerThread extends Thread {
                             synchronized (usersList) {
                                 for (User user : usersList) {
                                     if (user.getLogin().equals(login)) {
-                                        printWriter.write("already exist login\n");
-                                        printWriter.flush();
+                                        streamWrite("already exist login\n");
                                         loginNotExist = false;
                                         break;
                                     }
                                 }
                                 if (loginNotExist) {
-                                    usersList.add(new User(login, password, false, "false"));
+                                    currentUser = new User(login, password, false, "false");
+                                    usersList.add(currentUser);
                                     synchronized (tasksList) {
                                         tasksList.put(login, new ArrayList<>());
                                         taskArrayList = tasksList.get(login);
-                                        printWriter.write("connected\n" + gson.toJson(taskArrayList) + "\n");
-                                        printWriter.flush();
+                                        streamWrite("connected\n" + gson.toJson(taskArrayList) + "\n");
                                     }
                                 }
                             }
                             break;
 
                         case "Add:":
-                            taskArrayList.add(getTaskFromInputStream());
+                            taskArrayList.add(gson.fromJson(in.readLine(), new TypeToken<Task>(){}.getType()));
                             break;
 
                         case "Delete:":
-                            taskArrayList.remove(getTaskFromInputStream());
+                            Task task = gson.fromJson(in.readLine(), new TypeToken<Task>(){}.getType());
+                            taskArrayList.remove(task);
                             break;
 
                         case "Change:":
-                            Task oldT = getTaskFromInputStream();
-                            Task newT = getTaskFromInputStream();
+                            Task oldT = gson.fromJson(in.readLine(), new TypeToken<Task>(){}.getType());
+                            Task newT = gson.fromJson(in.readLine(), new TypeToken<Task>(){}.getType());
                             taskArrayList.set(taskArrayList.indexOf(oldT), newT);
                             break;
 
                         case "Users list:":
                             synchronized (usersList) {
-                                printWriter.write("Users list:\n" + gson.toJson(usersList) + "\n");
+                                streamWrite("Users list:\n" + gson.toJson(usersList) + "\n");
                             }
                             break;
 
+                        case "isAdmin:":
+                            if (currentUser.getAdmin().equals("false"))
+                                streamWrite("false\n");
+                            else streamWrite("true\n");
+                            break;
+
                         case "Become adm:":
-                            boolean notAdmin = true;
                             synchronized (adminList) {
-                                for (User user1 : usersList)
-                                    if (login.equals(user1.getLogin())) {
-                                        for (User user : adminList) {
-                                            if (user.getLogin().equals(login)) {
-                                                notAdmin = false;
-                                                break;
-                                            }
-                                        }
-                                        //todo лучше сделать не арейлист по админам хеш сет, тогда не нужна проверка на наличие чела в списке
-                                        if (notAdmin) {
-                                            adminList.add(user1);
-                                            printWriter.write("congratulations\n");
-                                            break;
-                                        } else {
-                                            printWriter.write("become adm\n");
-                                            printWriter.flush();
-                                        }
-                                    }
+                                if (!adminList.contains(currentUser)) {
+                                    adminList.add(currentUser);
+                                    streamWrite("congratulations\n");
+                                    break;
+                                } else {
+                                    streamWrite("already admin\n");
+                                }
                             }
                             break;
-                        case "Spisok adminov:":
+
+                        case "AdminList:":
                             synchronized (adminList) {
                                 String list = gson.toJson(adminList);
-                                printWriter.write("Spisok adminov:\n" + list + "\n");
-                                printWriter.flush();
+                                streamWrite("Spisok adminov:\n" + list + "\n");
                             }
                             break;
+
                         case "Exit:":
                             synchronized (tasksList) {
                                 tasksList.put(login, taskArrayList);
@@ -177,8 +167,7 @@ public class ServerThread extends Thread {
 
                         synchronized (tasksList) {
                             SortedMap<Date, Set<Task>> sortedMap = Tasks.calendar(tasksList.get(login), date1, date2);
-                            printWriter.write("Calendar:\n" + gson.toJson(sortedMap) + "\n");
-                            printWriter.flush();
+                            streamWrite("Calendar:\n" + gson.toJson(sortedMap) + "\n");
                         }
                     }*/
                     Thread.sleep(10);
@@ -189,19 +178,9 @@ public class ServerThread extends Thread {
         }
     }
 
-    private Task getTaskFromInputStream() throws IOException {
-        String strTask = in.readLine();
-        Type type = new TypeToken<Task>(){}.getType();
-        /*while (strTask == null) {
-            try {
-                Thread.sleep(10);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }*/
-        Task task = gson.fromJson(strTask, type);
-        strTask = null;
-        return task;
+    private void streamWrite(String write) {
+        printWriter.write(write);
+        printWriter.flush();
     }
 }
 

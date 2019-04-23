@@ -91,10 +91,10 @@ public class Controller extends Application {
                                 content = "Good luck";
                                 break;
                             case "true":
-                                MainController.setAdmin(true);
+                                title = response;
                                 break;
                             case "false":
-                                MainController.setAdmin(false);
+                                title = response;
                                 break;
                             case "wrong code":
                                 title = "Error";
@@ -123,47 +123,59 @@ public class Controller extends Application {
     }
 
     public static void registration(String login, String name, String password) {
-        writer.write("Registration:\n" + login + "\n" + password + "\n");
-        writer.flush();
+        streamWrite("Registration:\n" + login + "\n" + password + "\n");
         Platform.runLater(Controller::runMain);
     }
 
     public static void signIn(String login, String password) {
-        writer.write("Login:\n" + login + "\n" + password + "\n");
-        writer.flush();
+        streamWrite("Login:\n" + login + "\n" + password + "\n");
         Platform.runLater(Controller::runMain);
     }
 
     public static void addTask(Task task) {
-        writer.write("Add:\n" + gson.toJson(task) + "\n");
-        writer.flush();
+        streamWrite("Add:\n" + gson.toJson(task) + "\n");
         taskList.add(task);
         MainController.notificationInterrupt();
     }
 
     public static void deleteTask(Task task) {
-        writer.write("Delete:\n" + gson.toJson(task) + "\n");
-        writer.flush();
+        streamWrite("Delete:\n" + gson.toJson(task) + "\n");
         taskList.remove(task);
         MainController.notificationInterrupt();
     }
 
     public static void changeTask(Task oldT, Task newT) {
-        writer.write("Change:\n" + gson.toJson(oldT) + "\n" + gson.toJson(newT) + "\n");
-        writer.flush();
+        streamWrite("Change:\n" + gson.toJson(oldT) + "\n" + gson.toJson(newT) + "\n");
         taskList.set(taskList.indexOf(oldT), newT);
         MainController.notificationInterrupt();
     }
 
 
-    public static void isAdmin() {
-        writer.write("isAdmin:\n");
-        writer.flush();
+    public static boolean isAdmin() {
+        streamWrite("isAdmin:\n");
+        boolean to_return;
+        while (true) {
+            if(title != null) {
+                if(title.equals("true")) {
+                    to_return = true;
+                    break;
+                } else if (title.equals("false")) {
+                    to_return = false;
+                    break;
+                }
+            }
+            try {
+                Thread.sleep(10);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+        title = null;
+        return to_return;
     }
 
     public static void becomeAdmin(String code) {
-        writer.write("Become adm:\n" + code + "\n");
-        writer.flush();
+        streamWrite("Become adm:\n" + code + "\n");
     }
 
     private static void runMain() {
@@ -188,10 +200,14 @@ public class Controller extends Application {
 
     public static void interrupt() {
         whileCondition = false;
-        writer.write("Exit:\n");
-        writer.flush();
+        streamWrite("Exit:\n");
         connection.interrupt();
         Platform.exit();
         System.exit(0);
+    }
+
+    private static void streamWrite(String write) {
+        writer.write(write);
+        writer.flush();
     }
 }

@@ -40,8 +40,4 @@ public class ConfirmController {
         }
         Deny.setOnAction(event -> WindowMaker.closeWindow(confirmStage));
     }
-
-    static boolean isExit() {
-        return exit;
-    }
 }
