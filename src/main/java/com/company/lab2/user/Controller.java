@@ -17,10 +17,7 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.Set;
-import java.util.SortedMap;
+import java.util.*;
 
 public class Controller extends Application {
 
@@ -41,6 +38,7 @@ public class Controller extends Application {
     public static String tStrInterval;
     public static int tIntInterval;
     public static SortedMap<Date, Set<String>> tCalendar;
+    public static Date lastKey;
 
     private static Thread connection;
     private static boolean whileCondition = true;
@@ -87,12 +85,22 @@ public class Controller extends Application {
                                 tParsed = Boolean.TRUE;
                                 break;
                             case "calendar":
-                                String calendarStr = reader.readLine();
-                                System.out.println(calendarStr);
-                                if (calendarStr.equals("empty"))
+                                String str = reader.readLine();
+                                System.out.println(str);
+                                if (str.equals("empty"))
                                     calendarIsEmpty = Boolean.TRUE;
                                 else {
-                                    tCalendar = new Gson().fromJson(calendarStr, new TypeToken<SortedMap<Date, Set<String>>>(){}.getType());
+                                    tCalendar = new TreeMap<>();
+                                    Date date;
+                                    Set<String> set;
+                                    while (!str.equals("end")) {
+                                        date = new Gson().fromJson(str, new TypeToken<Date>(){}.getType());
+                                        str = reader.readLine();
+                                        set = new Gson().fromJson(str, new TypeToken<Set<String>>(){}.getType());
+                                        tCalendar.put(date,set);
+                                        str = reader.readLine();
+                                    }
+                                    lastKey = new Gson().fromJson(reader.readLine(), new TypeToken<Date>(){}.getType());
                                     calendarIsEmpty = Boolean.FALSE;
                                 }
                                 break;
@@ -231,6 +239,7 @@ public class Controller extends Application {
 
     public static SortedMap<Date, Set<String>> calendar(Date start,Date end) {
         streamWrite("Calendar:\n" + new SimpleDateFormat(" HH:mm:ss dd-MM-yyyy").format(start) + "\n" + new SimpleDateFormat(" HH:mm:ss dd-MM-yyyy").format(end) + "\n");
+        calendarIsEmpty = null;
         while (true) {
             if (calendarIsEmpty !=  null) {
                 if (calendarIsEmpty) {

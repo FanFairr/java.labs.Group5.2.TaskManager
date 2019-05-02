@@ -36,12 +36,12 @@ public class Tasks {
      *@param end время до которого ищем задачу
      *@return связанный список задач
      **/
-    public static SortedMap<Date, Set<Task>> calendar(Iterable<Task> tasks, Date start, Date end) {
+    public static SortedMap<Date, Set<String>> calendar(Iterable<Task> tasks, Date start, Date end) {
         if (tasks == null)
             return null;
         Iterator<Task> iter = incoming(tasks, start, end).iterator();
-        SortedMap<Date,Set<Task>> map = new TreeMap<>();
-        Set<Task> set;
+        SortedMap<Date,Set<String>> map = new TreeMap<>();
+        Set<String> set;
         Task task;
         Date date;
         while (iter.hasNext()){
@@ -49,31 +49,31 @@ public class Tasks {
             if (task.isActive()) {
                 if (task.isRepeated()) {
                     int interval = task.getRepeatInterval();
-                    for (long i = start.getTime(); i <= end.getTime(); i += (interval*1000)) {
+                    for (long i = start.getTime(); i < end.getTime(); i += (interval*1000)) {
                         Date d = new Date(i);
                         date = task.nextTimeAfter(d);
                         if (date != null) {
+                            Task t = new Task(task.getTitle(), date);
+                            t.setActive(true);
                             if (map.get(date) == null) {
                                 set = new HashSet<>();
-                                set.add(task);
+                                set.add(t.toString());
                                 map.put(date,set);
                             } else {
                                 set = map.get(date);
-                                set.add(task);
+                                set.add(t.toString());
                             }
                         }
                     }
-
-
                 } else {
                     date = task.nextTimeAfter(start);
                     if (map.get(date) == null) {
                         set = new HashSet<>();
-                        set.add(task);
+                        set.add(task.toString());
                         map.put(date,set);
                     } else {
                         set = map.get(date);
-                        set.add(task);
+                        set.add(task.toString());
                     }
                 }
             }

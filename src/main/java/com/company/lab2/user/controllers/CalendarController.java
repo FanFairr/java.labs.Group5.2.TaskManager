@@ -7,8 +7,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
-import javafx.scene.control.cell.TextFieldTreeCell;
-import javafx.util.StringConverter;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -29,7 +27,7 @@ public class CalendarController {
     private Label End;
 
     @FXML
-    private Button ExitBtn;
+    private Button MoreBtn;
 
     @FXML
     private TreeView<String> calendarTreeView;
@@ -41,11 +39,24 @@ public class CalendarController {
 
     @FXML
     void initialize() {
+        MoreBtn.setVisible(false);
+        calendar = Controller.tCalendar;
         fillTreeView();
-        ExitBtn.setOnAction(event -> WindowMaker.closeWindow(WindowMaker.getStage()));
+        if (!calendar.lastKey().equals(Controller.lastKey))
+            MoreBtn.setVisible(true);
+        MoreBtn.setOnAction(event -> {
+            Controller.calendar(calendar.lastKey(), Controller.lastKey);
+            calendar.putAll(Controller.tCalendar);
+            fillTreeView();
+            if (calendar.lastKey().equals(Controller.lastKey))
+                MoreBtn.setVisible(false);
+        });
+        if (!MoreBtn.isVisible()) {
+            MoreBtn.setText("Exit");
+            MoreBtn.setVisible(true);
+            MoreBtn.setOnAction(event -> WindowMaker.closeWindow(WindowMaker.getStage()));
+        }
     }
-
-
 
     /**Method make calendar by days
      * @return true if made, else false
@@ -61,29 +72,8 @@ public class CalendarController {
         return false;
     }
 
-
-    /**Method for redacting visualization of tasks in TreeView*/
-    private void redactTextInTreeView() {
-        calendarTreeView.setCellFactory(p -> new TextFieldTreeCell<>(new StringConverter<String>(){
-            @Override
-            public String toString(String object) {
-                String string = object.replace("Title: ","");
-                String title = string.substring(0, string.indexOf("\'," + 1));
-                String dString = object.replaceAll(".+time: ","");
-                String date = dString.substring(0, dString.indexOf(",")) + ";";
-                return title + date;
-            }
-            @Override
-            public String fromString(String string) {
-                return string;
-            }
-        }));
-    }
-
-
     /**Method for filling TreeView*/
     private void fillTreeView() {
-        calendar = Controller.tCalendar;
         SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy");
         Start.setText(format.format(start));
         End.setText(format.format(end));
@@ -91,14 +81,12 @@ public class CalendarController {
             TreeItem<String> rootItem = new TreeItem<>("Root",null);
             rootItem.setExpanded(true);
             for (Date date: calendarByDays.keySet()) {
-                TreeItem<String> day = new TreeItem<>(format.format(date), null);
+                TreeItem<String> day = new TreeItem<>(format.format(date));
                 for (Date dateTime : calendar.keySet()) {
                     if (date.getTime() <= dateTime.getTime()
                             && dateTime.getTime() < (date.getTime() + 3600000 * 24)) {
                         for (String task : calendar.get(dateTime)) {
-                            String dString = task.replaceAll(".+time: ","");
-                            String replace = dString.substring(0, dString.indexOf(","));
-                            String taskToPut = task.replace(replace, new SimpleDateFormat("HH:mm:ss dd-MM-yyyy").format(dateTime));
+                            String taskToPut = task.substring(0, task.indexOf(", a"));
                             TreeItem<String> taskItem = new TreeItem<>(taskToPut);
                             day.getChildren().add(taskItem);
                         }
@@ -110,7 +98,6 @@ public class CalendarController {
             calendarTreeView.setRoot(rootItem);
             calendarTreeView.setShowRoot(false);
             calendarTreeView.refresh();
-            redactTextInTreeView();
         }
     }
 }

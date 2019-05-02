@@ -47,14 +47,14 @@
 <start value="2019-05-01/01:00:00"/>
 <end value="2019-05-01/01:00:00"/>
 <interval value="0"/>
-<active value="true"/>
+<active value="false"/>
 </task>
 <task>
 <title value="pupa"/>
-<time value="2019-05-31/01:00:00"/>
-<start value="2019-05-31/01:00:00"/>
-<end value="2019-06-09/01:00:00"/>
-<interval value="86400"/>
+<time value="2019-05-01/01:00:00"/>
+<start value="2019-05-01/01:00:00"/>
+<end value="2019-05-10/01:00:00"/>
+<interval value="3600"/>
 <active value="true"/>
 </task>
 </user>

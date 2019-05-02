@@ -123,32 +123,18 @@ public class ServerThread extends Thread {
                             break;
 
                         case "Add:":
-                            String s =in.readLine();
-                            System.out.println(s);
-                            taskArrayList.add(StringConverterController.makeTaskFromString(s));
+                            taskArrayList.add(StringConverterController.makeTaskFromString(in.readLine()));
                             streamWrite("doneADCH\n");
-                            for (Task t:taskArrayList) {
-                                System.out.println(t);
-                            }
                             break;
 
                         case "Delete:":
-                            String ss =in.readLine();
-                            System.out.println(ss);
-                            taskArrayList.remove(StringConverterController.makeTaskFromString(ss));
-                            for (Task t:taskArrayList) {
-                                System.out.println(t);
-                            }
+                            taskArrayList.remove(StringConverterController.makeTaskFromString(in.readLine()));
                             streamWrite("doneADCH\n");
                             break;
 
                         case "Change:":
-                            String sss =in.readLine();
-                            System.out.println(sss);
-                            String ssss =in.readLine();
-                            System.out.println(ssss);
-                            Task oldT = StringConverterController.makeTaskFromString(sss);
-                            Task newT = StringConverterController.makeTaskFromString(ssss);
+                            Task oldT = StringConverterController.makeTaskFromString(in.readLine());
+                            Task newT = StringConverterController.makeTaskFromString(in.readLine());
                             taskArrayList.set(taskArrayList.indexOf(oldT), newT);
                             streamWrite("doneADCH\n");
                             break;
@@ -190,14 +176,32 @@ public class ServerThread extends Thread {
                             try {
                                 date1 = format.parse(in.readLine());
                                 date2 = format.parse(in.readLine());
+                                System.out.println(date2);
                             } catch (ParseException e) {
                                 e.printStackTrace();
                             }
                             synchronized (tasksList) {
-                                SortedMap<Date, Set<Task>> sortedMap = Tasks.calendar(tasksList.get(login), date1, date2);
+                                SortedMap<Date, Set<String>> sortedMap = Tasks.calendar(tasksList.get(login), date1, date2);
                                 if (sortedMap.isEmpty())
                                     streamWrite("calendar\n" + "empty\n");
-                                else streamWrite("calendar\n" + gson.toJson(sortedMap) + "\n");
+                                else {
+                                    streamWrite("calendar\n");// + new Gson().toJson(sortedMap)
+                                    int i = 0;
+                                    for (Date date:sortedMap.keySet()) {
+                                        Date now = new Date(System.currentTimeMillis() / 1000 * 1000);
+                                        Date endDayTime = new Date((now.getTime() +(86400000 - now.getTime() % 86400000)));
+                                        if (date.before(endDayTime) || date.equals(endDayTime)) {
+                                            streamWrite(new Gson().toJson(date) + "\n" + new Gson().toJson(sortedMap.get(date)) + "\n");
+                                            i++;
+                                        } else if (i < 96) {
+                                            streamWrite(new Gson().toJson(date) + "\n" + new Gson().toJson(sortedMap.get(date)) + "\n");
+                                            i++;
+                                        }
+                                    }
+                                    streamWrite("end\n");
+                                    System.out.println(sortedMap.lastKey());
+                                    streamWrite(new Gson().toJson(sortedMap.lastKey()) + "\n");
+                                }
                             }
                             break;
 

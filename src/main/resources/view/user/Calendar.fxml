@@ -10,7 +10,7 @@
             <Font name="Times New Roman" size="30.0" />
          </font>
       </Label>
-      <Button fx:id="ExitBtn" alignment="CENTER" layoutX="270.0" layoutY="360.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="60.0" text="Exit" textAlignment="CENTER">
+      <Button fx:id="MoreBtn" alignment="CENTER" layoutX="258.0" layoutY="360.0" mnemonicParsing="false" prefHeight="25.0" text="Show More" textAlignment="CENTER">
          <font>
             <Font name="Arial" size="13.0" />
          </font>

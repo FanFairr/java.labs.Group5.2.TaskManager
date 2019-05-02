@@ -24,12 +24,12 @@ public class Notification extends Thread {
 
 
     /**Method for making Calendar for one day
-     * from current time to 02:00:00 next day
+     * from current time to 03:00:00 next day
      */
     private void makeCalendarForDay() {
         if (!notFirstTimeHereAfterMonitor) {
             now = new Date(System.currentTimeMillis() / 1000 * 1000);
-            endDayTime = new Date((now.getTime() +(86400000 - now.getTime() % 86400000)));
+            endDayTime = new Date((now.getTime() + (86400000 - now.getTime() % 86400000)));
             calendarByTime = Controller.calendar(now, endDayTime);
             notFirstTimeHereAfterMonitor = false;
         }
