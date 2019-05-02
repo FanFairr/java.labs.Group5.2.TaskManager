@@ -27,13 +27,11 @@ public class EnterFormController {
     @FXML
     private Button signInBtn;
 
-    public static String logIn;
+    static String logIn;
 
     @FXML
     void initialize() {
-        WindowMaker.getStage().setOnCloseRequest(event -> {
-            Controller.interrupt();
-        });
+        WindowMaker.getStage().setOnCloseRequest(event -> Controller.interrupt());
         login.setTooltip(new Tooltip("Your login"));
         password.setTooltip(new Tooltip("Your password"));
         signInBtn.setOnAction(event -> {

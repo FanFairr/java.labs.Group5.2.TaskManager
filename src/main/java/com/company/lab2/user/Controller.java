@@ -30,6 +30,7 @@ public class Controller extends Application {
     private static String header;
     private static String content;
     private static Boolean calendarIsEmpty;
+    private static Boolean tParsed;
     public final static Logger logger = Logger.getLogger(MainController.class);
     public static ObservableList<String> taskList;
     public static String tTitle;
@@ -74,6 +75,7 @@ public class Controller extends Application {
                                 tDate = reader.readLine();
                                 tActive = reader.readLine();
                                 tStrInterval = null;
+                                tParsed = Boolean.TRUE;
                                 break;
                             case "taskRep":
                                 tTitle = reader.readLine();
@@ -82,6 +84,7 @@ public class Controller extends Application {
                                 tStrInterval = reader.readLine();
                                 tIntInterval = Integer.parseInt(reader.readLine());
                                 tActive = reader.readLine();
+                                tParsed = Boolean.TRUE;
                                 break;
                             case "calendar":
                                 String calendarStr = reader.readLine();
@@ -117,12 +120,9 @@ public class Controller extends Application {
                                 header = "U are banned";
                                 content = "Good luck";
                                 break;
-                            case "true":
-                                title = response;
+                            case "isAdmin":
+                                title = reader.readLine();
                             break;
-                            case "false":
-                                title = response;
-                                break;
                             case "wrong code":
                                 title = "Error";
                                 header = "Wrong code";
@@ -248,10 +248,10 @@ public class Controller extends Application {
     }
 
     public static void parsTaskStringRequest(String task) {
-        tTitle = null;
+        tParsed = null;
         streamWrite("Task:\n" + task + "\n");
         while (true) {
-            if (tTitle !=  null) break;
+            if (tParsed !=  null) break;
             try {
                 Thread.sleep(10);
             } catch (InterruptedException e) {

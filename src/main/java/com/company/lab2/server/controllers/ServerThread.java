@@ -38,6 +38,7 @@ public class ServerThread extends Thread {
         try {
             BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             printWriter = new PrintWriter(socket.getOutputStream());
+            SimpleDateFormat format = new SimpleDateFormat("HH:mm:ss dd-MM-yyyy");
             while (whileCondition) {
                 System.out.println("hi");
                 String response = in.readLine();
@@ -108,13 +109,13 @@ public class ServerThread extends Thread {
                             StringBuilder builder = new StringBuilder();
                             if (task.isRepeated()) {
                                 builder.append("taskRep\n").append(task.getTitle()).append("\n");
-                                builder.append(task.getStartTime()).append("\n");
-                                builder.append(task.getEndTime()).append("\n");
+                                builder.append(format.format(task.getStartTime())).append("\n");
+                                builder.append(format.format(task.getEndTime())).append("\n");
                                 builder.append(StringConverterController.getStringFromRepeatInterval(task.getRepeatInterval())).append("\n");
                                 builder.append(task.getRepeatInterval()).append("\n");
                             } else {
                                 builder.append("task\n").append(task.getTitle()).append("\n");
-                                builder.append(task.getTime()).append("\n");
+                                builder.append(format.format(task.getTime())).append("\n");
                             }
                             if (task.isActive()) builder.append("Active\n");
                             else builder.append("NotActive\n");
@@ -132,13 +133,22 @@ public class ServerThread extends Thread {
                             break;
 
                         case "Delete:":
-                            taskArrayList.remove(StringConverterController.makeTaskFromString(in.readLine()));
+                            String ss =in.readLine();
+                            System.out.println(ss);
+                            taskArrayList.remove(StringConverterController.makeTaskFromString(ss));
+                            for (Task t:taskArrayList) {
+                                System.out.println(t);
+                            }
                             streamWrite("doneADCH\n");
                             break;
 
                         case "Change:":
-                            Task oldT = StringConverterController.makeTaskFromString(in.readLine());
-                            Task newT = StringConverterController.makeTaskFromString(in.readLine());
+                            String sss =in.readLine();
+                            System.out.println(sss);
+                            String ssss =in.readLine();
+                            System.out.println(ssss);
+                            Task oldT = StringConverterController.makeTaskFromString(sss);
+                            Task newT = StringConverterController.makeTaskFromString(ssss);
                             taskArrayList.set(taskArrayList.indexOf(oldT), newT);
                             streamWrite("doneADCH\n");
                             break;
@@ -151,8 +161,8 @@ public class ServerThread extends Thread {
 
                         case "isAdmin:":
                             if (currentUser.getAdmin().equals("false"))
-                                streamWrite("false\n");
-                            else streamWrite("true\n");
+                                streamWrite("isAdmin\nfalse\n");
+                            else streamWrite("isAdmin\ntrue\n");
                             break;
 
                         case "Become adm:":
@@ -175,7 +185,6 @@ public class ServerThread extends Thread {
                             break;
 
                         case "Calendar:":
-                            SimpleDateFormat format = new SimpleDateFormat("HH:mm:ss dd-MM-yyyy");
                             Date date1 = null;
                             Date date2 = null;
                             try {

@@ -35,6 +35,7 @@ public class RegistrationFormController {
 
     @FXML
     void initialize() {
+        WindowMaker.getStage().setOnCloseRequest(event -> Controller.interrupt());
         login.setTooltip(new Tooltip("Your login"));
         password.setTooltip(new Tooltip("Your password"));
         passwordConfirm.setTooltip(new Tooltip("Confirm your password"));

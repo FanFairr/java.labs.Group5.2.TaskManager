@@ -9,7 +9,10 @@ import org.xml.sax.SAXException;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.transform.*;
+import javax.xml.transform.OutputKeys;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerException;
+import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 import java.io.FileNotFoundException;
@@ -50,7 +53,7 @@ public class TaskIO {
                             Element task = (Element) node1;
 
                             NodeList attributes = task.getChildNodes();
-                            String attributesString = "";
+                            StringBuilder attributesString = new StringBuilder();
 
                             for (int k = 0; k < attributes.getLength(); k++) {
                                 Node node2 = attributes.item(k);
@@ -58,24 +61,18 @@ public class TaskIO {
                                 if (node2.getNodeType() == Node.ELEMENT_NODE) {
                                     Element attribute = (Element) node2;
 
-                                    attributesString += attribute.getAttribute("value") + " ";
+                                    attributesString.append(attribute.getAttribute("value")).append(" ");
                                 }
                             }
 
-                            taskArrayList.add(parserStroki(attributesString));
+                            taskArrayList.add(parserStroki(attributesString.toString()));
                         }
                     }
                     information.put(login, taskArrayList);
                 }
 
             }
-        } catch (ParserConfigurationException e) {
-            e.printStackTrace();
-        } catch (SAXException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (ParseException e) {
+        } catch (ParserConfigurationException | ParseException | IOException | SAXException e) {
             e.printStackTrace();
         }
     }
@@ -100,7 +97,6 @@ public class TaskIO {
         attr = attr.substring(attr.indexOf(" ") + 1);
 
         String active = attr.substring(0, attr.indexOf(" "));
-        attr = attr.substring(attr.indexOf(" ") + 1);
 
         if ("".equals(time)) {
             task = new Task(title, dateFormat.parse(start), dateFormat.parse(end), Integer.getInteger(interval));
@@ -134,13 +130,7 @@ public class TaskIO {
             Transformer t = TransformerFactory.newInstance().newTransformer();
             t.setOutputProperty(OutputKeys.INDENT, "yes");
             t.transform(new DOMSource(document), new StreamResult(new FileOutputStream(fileName)));
-        } catch (ParserConfigurationException e) {
-            e.printStackTrace();
-        } catch (TransformerConfigurationException e) {
-            e.printStackTrace();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (TransformerException e) {
+        } catch (ParserConfigurationException | FileNotFoundException | TransformerException e) {
             e.printStackTrace();
         }
     }

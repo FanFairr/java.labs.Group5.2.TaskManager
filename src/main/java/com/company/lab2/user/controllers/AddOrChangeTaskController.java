@@ -156,7 +156,7 @@ public class AddOrChangeTaskController {
                             builder.append("true;");
                         else
                             builder.append("false;");
-                        task = new String(builder);
+                        task = builder.toString();
                         taskReady = true;
                         alertMade = false;
                     }
@@ -175,7 +175,7 @@ public class AddOrChangeTaskController {
                         builder.append("true;");
                      else
                         builder.append("false;");
-                    task = new String(builder);
+                    task = builder.toString();
                     taskReady = true;
                     alertMade = false;
                 }
@@ -227,9 +227,9 @@ public class AddOrChangeTaskController {
             builder.append((hours == 0? "": hours + (hours > 1 ? " hours " : " hour ")));
             builder.append((minutes == 0? "": minutes + (minutes > 1 ? " minutes " : " minute ")));
             builder.append((seconds == 0? "": seconds + (seconds > 1 ? " seconds " : " second ")));
-            String s = new String(builder);
+
             interval = days * 86400 + hours * 3600 + minutes * 60 + seconds;
-            return s.trim();
+            return builder.toString().trim();
         } else return null;
     }
 
