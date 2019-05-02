@@ -1,9 +1,7 @@
 package com.company.lab2.user;
 
-import com.company.lab2.user.controllers.EnterFormController;
 import com.company.lab2.user.controllers.MainController;
 import com.company.lab2.user.controllers.WindowMaker;
-import com.company.lab2.user.model.Task;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import javafx.application.Application;
@@ -17,21 +15,32 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
-import java.lang.reflect.Type;
 import java.net.Socket;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.Set;
+import java.util.SortedMap;
 
 public class Controller extends Application {
-    private static String login;
-    public static ObservableList<Task> taskList = FXCollections.observableArrayList();
-    private static ArrayList<Task> tasksArr;
-    public final static Logger logger = Logger.getLogger(MainController.class);
+
     private static BufferedReader reader;
     private static PrintWriter writer;
-    private static Gson gson = new Gson();
     private static String title;
     private static String header;
     private static String content;
+    private static Boolean calendarIsEmpty;
+    public final static Logger logger = Logger.getLogger(MainController.class);
+    public static ObservableList<String> taskList;
+    public static String tTitle;
+    public static String tDate;
+    public static String tActive;
+    public static String tSDate;
+    public static String tEDate;
+    public static String tStrInterval;
+    public static int tIntInterval;
+    public static SortedMap<Date, Set<String>> tCalendar;
+
     private static Thread connection;
     private static boolean whileCondition = true;
     private static Stage firstStage;
@@ -56,18 +65,36 @@ public class Controller extends Application {
                         System.out.println("here");
                         switch (response) {
                             case "connected":
-                                Type token = new TypeToken<ArrayList<Task>>() {}.getType();
                                 String list = reader.readLine();
                                 System.out.println(list);
-                                if ("[]".equals(list)) {
-                                    System.out.println("v if");
-                                    tasksArr = new ArrayList<>();
-                                } else {
-                                    tasksArr = gson.fromJson(list, token);
-                                    System.out.println("v else");
+                                taskList = FXCollections.observableList(new Gson().fromJson(list, new TypeToken<ArrayList<String>>(){}.getType()));
+                                break;
+                            case "task":
+                                tTitle = reader.readLine();
+                                tDate = reader.readLine();
+                                tActive = reader.readLine();
+                                tStrInterval = null;
+                                break;
+                            case "taskRep":
+                                tTitle = reader.readLine();
+                                tSDate = reader.readLine();
+                                tEDate = reader.readLine();
+                                tStrInterval = reader.readLine();
+                                tIntInterval = Integer.parseInt(reader.readLine());
+                                tActive = reader.readLine();
+                                break;
+                            case "calendar":
+                                String calendarStr = reader.readLine();
+                                System.out.println(calendarStr);
+                                if (calendarStr.equals("empty"))
+                                    calendarIsEmpty = Boolean.TRUE;
+                                else {
+                                    tCalendar = new Gson().fromJson(calendarStr, new TypeToken<SortedMap<Date, Set<String>>>(){}.getType());
+                                    calendarIsEmpty = Boolean.FALSE;
                                 }
-                                login = EnterFormController.logIn;
-                                taskList.setAll(tasksArr);                                
+                                break;
+                            case "doneADCH":
+                                title = response;
                                 break;
                             case "already exist login":
                                 title = "Error";
@@ -92,7 +119,7 @@ public class Controller extends Application {
                                 break;
                             case "true":
                                 title = response;
-                                break;
+                            break;
                             case "false":
                                 title = response;
                                 break;
@@ -132,22 +159,26 @@ public class Controller extends Application {
         Platform.runLater(Controller::runMain);
     }
 
-    public static void addTask(Task task) {
-        streamWrite("Add:\n" + gson.toJson(task) + "\n");
+    public static void addTask(String task) {
+        title = null;
+        streamWrite("Add:\n" + task + "\n");
+        System.out.println(task);
         taskList.add(task);
-        MainController.notificationInterrupt();
+        w84Response();
     }
 
-    public static void deleteTask(Task task) {
-        streamWrite("Delete:\n" + gson.toJson(task) + "\n");
+    public static void deleteTask(String task) {
+        title = null;
+        streamWrite("Delete:\n" + task + "\n");
         taskList.remove(task);
-        MainController.notificationInterrupt();
+        w84Response();
     }
 
-    public static void changeTask(Task oldT, Task newT) {
-        streamWrite("Change:\n" + gson.toJson(oldT) + "\n" + gson.toJson(newT) + "\n");
+    public static void changeTask(String oldT, String newT) {
+        title = null;
+        streamWrite("Change:\n" + oldT + "\n" + newT + "\n");
         taskList.set(taskList.indexOf(oldT), newT);
-        MainController.notificationInterrupt();
+        w84Response();
     }
 
 
@@ -180,7 +211,7 @@ public class Controller extends Application {
 
     private static void runMain() {
         while (true) {
-            if (tasksArr != null) {
+            if (taskList != null) {
                 firstStage = WindowMaker.getStage();
                 Platform.runLater(()-> firstStage.close());
                 WindowMaker.makeWindow("/view/user/Main.fxml", "Task Manager");
@@ -190,6 +221,37 @@ public class Controller extends Application {
                 title = null;
                 break;
             }
+            try {
+                Thread.sleep(10);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    public static SortedMap<Date, Set<String>> calendar(Date start,Date end) {
+        streamWrite("Calendar:\n" + new SimpleDateFormat(" HH:mm:ss dd-MM-yyyy").format(start) + "\n" + new SimpleDateFormat(" HH:mm:ss dd-MM-yyyy").format(end) + "\n");
+        while (true) {
+            if (calendarIsEmpty !=  null) {
+                if (calendarIsEmpty) {
+                    return null;
+                } else {
+                    return tCalendar;
+                }
+            }
+            try {
+                Thread.sleep(10);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    public static void parsTaskStringRequest(String task) {
+        tTitle = null;
+        streamWrite("Task:\n" + task + "\n");
+        while (true) {
+            if (tTitle !=  null) break;
             try {
                 Thread.sleep(10);
             } catch (InterruptedException e) {
@@ -210,4 +272,19 @@ public class Controller extends Application {
         writer.write(write);
         writer.flush();
     }
+
+    private static void w84Response() {
+        while (true) {
+            if (title !=  null)
+                if (title.equals("doneADCH"))
+                    break;
+            try {
+                Thread.sleep(10);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+        MainController.notificationInterrupt();
+    }
 }
+

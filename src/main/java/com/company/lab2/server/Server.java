@@ -100,15 +100,11 @@ public class Server extends Application {
 
         try {
             File file = new File("adminka.txt");
-
             file.createNewFile();
-
             BufferedReader bufferedReader = new BufferedReader(new FileReader(file));
             String str = bufferedReader.readLine();
-            if (!(str == null) && !str.equals("[]"))
+            if (str != null && !str.equals("[]"))
                 adminList = (ArrayList<User>) Arrays.asList(gson.fromJson(str, User[].class));
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }

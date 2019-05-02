@@ -1,17 +1,18 @@
 package com.company.lab2.server.controllers;
 
 import com.company.lab2.server.model.Task;
+import com.company.lab2.server.model.Tasks;
 import com.company.lab2.server.model.User;
 import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
-import java.util.ArrayList;
-import java.util.TreeMap;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 public class ServerThread extends Thread {
     private Socket socket = null;
@@ -61,7 +62,7 @@ public class ServerThread extends Thread {
                                                 break;
                                             } else {
                                                 loginNotExist = false;
-                                                streamWrite("connected\n" + gson.toJson(taskArrayList) + "\n");
+                                                streamWrite("connected\n" + gson.toJson(StringConverterController.formatTaskArr(taskArrayList)) + "\n");
                                                 break;
                                             }
                                         } else {
@@ -95,25 +96,51 @@ public class ServerThread extends Thread {
                                     synchronized (tasksList) {
                                         tasksList.put(login, new ArrayList<>());
                                         taskArrayList = tasksList.get(login);
-                                        streamWrite("connected\n" + gson.toJson(taskArrayList) + "\n");
+                                        streamWrite("connected\n" + gson.toJson(StringConverterController.formatTaskArr(taskArrayList)) + "\n");
                                     }
                                 }
                             }
                             break;
 
+                        case "Task:":
+                            String taskStr = in.readLine();
+                            Task task = StringConverterController.makeTaskFromString(taskStr);
+                            StringBuilder builder = new StringBuilder();
+                            if (task.isRepeated()) {
+                                builder.append("taskRep\n").append(task.getTitle()).append("\n");
+                                builder.append(task.getStartTime()).append("\n");
+                                builder.append(task.getEndTime()).append("\n");
+                                builder.append(StringConverterController.getStringFromRepeatInterval(task.getRepeatInterval())).append("\n");
+                                builder.append(task.getRepeatInterval()).append("\n");
+                            } else {
+                                builder.append("task\n").append(task.getTitle()).append("\n");
+                                builder.append(task.getTime()).append("\n");
+                            }
+                            if (task.isActive()) builder.append("Active\n");
+                            else builder.append("NotActive\n");
+                            streamWrite(new String(builder));
+                            break;
+
                         case "Add:":
-                            taskArrayList.add(gson.fromJson(in.readLine(), new TypeToken<Task>(){}.getType()));
+                            String s =in.readLine();
+                            System.out.println(s);
+                            taskArrayList.add(StringConverterController.makeTaskFromString(s));
+                            streamWrite("doneADCH\n");
+                            for (Task t:taskArrayList) {
+                                System.out.println(t);
+                            }
                             break;
 
                         case "Delete:":
-                            Task task = gson.fromJson(in.readLine(), new TypeToken<Task>(){}.getType());
-                            taskArrayList.remove(task);
+                            taskArrayList.remove(StringConverterController.makeTaskFromString(in.readLine()));
+                            streamWrite("doneADCH\n");
                             break;
 
                         case "Change:":
-                            Task oldT = gson.fromJson(in.readLine(), new TypeToken<Task>(){}.getType());
-                            Task newT = gson.fromJson(in.readLine(), new TypeToken<Task>(){}.getType());
+                            Task oldT = StringConverterController.makeTaskFromString(in.readLine());
+                            Task newT = StringConverterController.makeTaskFromString(in.readLine());
                             taskArrayList.set(taskArrayList.indexOf(oldT), newT);
+                            streamWrite("doneADCH\n");
                             break;
 
                         case "Users list:":
@@ -147,6 +174,24 @@ public class ServerThread extends Thread {
                             }
                             break;
 
+                        case "Calendar:":
+                            SimpleDateFormat format = new SimpleDateFormat("HH:mm:ss dd-MM-yyyy");
+                            Date date1 = null;
+                            Date date2 = null;
+                            try {
+                                date1 = format.parse(in.readLine());
+                                date2 = format.parse(in.readLine());
+                            } catch (ParseException e) {
+                                e.printStackTrace();
+                            }
+                            synchronized (tasksList) {
+                                SortedMap<Date, Set<Task>> sortedMap = Tasks.calendar(tasksList.get(login), date1, date2);
+                                if (sortedMap.isEmpty())
+                                    streamWrite("calendar\n" + "empty\n");
+                                else streamWrite("calendar\n" + gson.toJson(sortedMap) + "\n");
+                            }
+                            break;
+
                         case "Exit:":
                             synchronized (tasksList) {
                                 tasksList.put(login, taskArrayList);
@@ -157,19 +202,6 @@ public class ServerThread extends Thread {
                         default:
                             System.out.println("smth wrong");
                     }
-                    /* else if ("Calendar:".equals(title)) {
-                        Gson gson = new Gson();
-                        String login = response.substring(0, response.indexOf(" "));
-                        response = response.substring(response.indexOf(" ") + 1);
-                        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd/hh:mm:ss");
-                        Date date1 = simpleDateFormat.parse(response.substring(0, response.indexOf(" ")));
-                        Date date2 = simpleDateFormat.parse(response.substring(response.indexOf(" ") + 1));
-
-                        synchronized (tasksList) {
-                            SortedMap<Date, Set<Task>> sortedMap = Tasks.calendar(tasksList.get(login), date1, date2);
-                            streamWrite("Calendar:\n" + gson.toJson(sortedMap) + "\n");
-                        }
-                    }*/
                     Thread.sleep(10);
                 }
             }

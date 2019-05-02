@@ -7,6 +7,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
+
 /**
  * Class controller for Confirm.fxml view.user
  */
@@ -31,7 +32,7 @@ public class ConfirmController {
                 WindowMaker.closeWindow(confirmStage);
             });
         } else if (confirmStage.getTitle().matches("Confirm deleting")){
-            label.setText("Remove " + MainController.getTask().getTitle());
+            label.setText("Remove " + Controller.tTitle);
             Confirm.setOnAction(event -> {
                 Controller.deleteTask(MainController.getTask());
                 WindowMaker.closeWindow(confirmStage);

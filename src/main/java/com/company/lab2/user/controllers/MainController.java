@@ -1,16 +1,11 @@
 package com.company.lab2.user.controllers;
 
 import com.company.lab2.user.Controller;
-import com.company.lab2.user.model.Task;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.MultipleSelectionModel;
 import javafx.stage.Stage;
-
-import java.text.SimpleDateFormat;
 
 /**
  * Class controller for Main.fxml view.user
@@ -24,10 +19,8 @@ public class MainController {
     @FXML
     private Button adminBtn;
     @FXML
-    private ListView<Task> taskListView;
-
-    private static ObservableList<Task> TaskList;
-    private static Task task;
+    private ListView<String> taskListView;
+    private static String task;
     private static Notification alarm;
 
     @FXML
@@ -37,8 +30,9 @@ public class MainController {
             alarm.interrupt();
             Controller.interrupt();
         });
-        TaskList = Controller.taskList;
-        setItemsInViewList(taskListView, TaskList);
+
+        taskListView.refresh();
+        taskListView.setItems(Controller.taskList);
         multipleSelectionChoose();
         notification();
         addBtn.setOnAction(event -> {
@@ -87,53 +81,16 @@ public class MainController {
         }
     }
 
-    /**Method for setting items in TaskListView
-     * @param taskListView where to sat
-     * @param taskList items to set
-     */
-    private void setItemsInViewList(ListView<Task> taskListView, ObservableList<Task> taskList) {
-        taskListView.refresh();
-        taskListView.setItems(taskList);
-        taskListView.setCellFactory(param -> new ListCell<Task>() {
-            @Override
-            protected void updateItem(Task item, boolean empty) {
-                super.updateItem(item, empty);
-                if (empty || item == null) {
-                    setText(null);
-                } else {
-                    setText(formatListViewItems(item));
-                }
-            }
-        });
-    }
-
-    /**Method for formatting ListView Items
-     */
-    private String formatListViewItems(Task item) {
-        SimpleDateFormat format = new SimpleDateFormat("HH:mm:ss dd-MM-yyyy");
-        if (item.isRepeated()) {
-            return "Title: '" + item.getTitle() +
-                    "', startTime: " + format.format(item.getStartTime()) +
-                    ", endTime: " +  format.format(item.getEndTime()) +
-                    ", repeatInterval: " + ConvertController.getStringFromRepeatInterval(item.getRepeatInterval()) +
-                    ", active: " + item.isActive() + ";";
-        }
-        else {
-            return"Title: '" + item.getTitle() +
-                    "', time: " +  format.format(item.getTime()) +
-                    ", active: " + item.isActive() + ";";
-        }
-    }
-
 
     /**Method for selecting items in TaskListView
      */
     private void multipleSelectionChoose() {
-        MultipleSelectionModel<Task> selectionModel = taskListView.getSelectionModel();
+        MultipleSelectionModel<String> selectionModel = taskListView.getSelectionModel();
         selectionModel.selectedItemProperty().addListener((changed, oldValue, newValue) -> taskListView.setOnMouseClicked(event -> {
             if (newValue != null) {
                 //System.out.println("Selected: " + newValue.toString());
                 task = newValue;
+                Controller.parsTaskStringRequest(task);
                 final String path = "/view/user/Task.fxml";
                 final String header = "Task";
                 WindowMaker.makeWindow(path, header);
@@ -142,10 +99,10 @@ public class MainController {
         }));
     }
 
-    public static Task getTask() {
+    public static String getTask() {
         return task;
     }
-    public static void setTask(Task task) {
+    public static void setTask(String task) {
         MainController.task = task;
     }
 }

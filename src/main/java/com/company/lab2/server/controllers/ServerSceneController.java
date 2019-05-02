@@ -61,7 +61,6 @@ public class ServerSceneController {
             synchronized (socketList) {
                 for (Socket socket : socketList) {
                     PrintWriter printWriter = new PrintWriter(socket.getOutputStream());
-
                     printWriter.println("Exit");
                     printWriter.flush();
                 }

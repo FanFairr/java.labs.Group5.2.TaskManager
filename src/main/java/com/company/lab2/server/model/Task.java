@@ -1,6 +1,9 @@
 package com.company.lab2.server.model;
 
+import com.company.lab2.server.controllers.StringConverterController;
+
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /** класс задачи**/
@@ -49,7 +52,7 @@ public class Task implements Cloneable, Serializable {
             throws IllegalArgumentException {
         if (interval <= 0) {
             throw new IllegalArgumentException("интервал поторения задачи должен быть больше ноля!!");
-        } else if (start == null || end == null || end.getTime() < start.getTime() + interval) {
+        } else if (start == null || end == null || end.getTime() < start.getTime() + interval * 1000) {
             throw new IllegalArgumentException("Время начала и "
                     + "конца выполнения задачи должны быть не null "
                     + "и время конца выполнения задачи должно быть "
@@ -265,14 +268,19 @@ public class Task implements Cloneable, Serializable {
      *@return String**/
     @Override
     public String toString() {
-        return "Task{" +
-                "title='" + title + '\'' +
-                ", time=" + time +
-                ", startTime=" + startTime +
-                ", endTime=" + endTime +
-                ", repeatInterval=" + repeatInterval +
-                ", active=" + active +
-                '}';
+        SimpleDateFormat format = new SimpleDateFormat("HH:mm:ss dd-MM-yyyy");
+        if (this.isRepeated()) {
+            return "Title: '" + this.getTitle() +
+                    "', startTime: " + format.format(this.getStartTime()) +
+                    ", endTime: " +  format.format(this.getEndTime()) +
+                    ", repeatInterval: " + StringConverterController.getStringFromRepeatInterval(this.getRepeatInterval()) +
+                    ", active: " + this.isActive() + ";";
+        }
+        else {
+            return"Title: '" + this.getTitle() +
+                    "', time: " +  format.format(this.getTime()) +
+                    ", active: " + this.isActive() + ";";
+        }
     }
 
 

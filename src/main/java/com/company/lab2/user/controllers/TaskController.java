@@ -1,17 +1,16 @@
 package com.company.lab2.user.controllers;
 
-import com.company.lab2.user.model.Task;
+import com.company.lab2.user.Controller;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
-import java.text.SimpleDateFormat;
-
 /**
  * Class controller for Task.fxml view.user
  */
+
 public class TaskController {
 
     @FXML
@@ -40,6 +39,8 @@ public class TaskController {
     private HBox StartBox;
     @FXML
     private HBox IntrevBox;
+    @FXML
+    private Label Active;
 
     private static Stage stage;
 
@@ -61,29 +62,26 @@ public class TaskController {
         CloseBtn.setOnAction(event -> WindowMaker.closeWindow(stage));
     }
 
-    /**Method for showing task data
-     */
+    /**Method for showing task data*/
     private void showTaskData(){
-        Task task = MainController.getTask();
-        if (task != null){
-            Title.setText(task.getTitle());
-            SimpleDateFormat format = new SimpleDateFormat(" HH:mm:ss dd-MM-yyyy");
-            if (task.isRepeated()) {
+            Title.setText(Controller.tTitle);
+            if (Controller.tStrInterval != null) {
                 DateBox.setVisible(false);
                 StartBox.setVisible(true);
                 EndBox.setVisible(true);
                 IntrevBox.setVisible(true);
-                End.setText(format.format(task.getEndTime()));
-                Start.setText(format.format(task.getStartTime()));
-                Interval.setText(ConvertController.getStringFromRepeatInterval(task.getRepeatInterval()));
+                End.setText(Controller.tEDate);
+                Start.setText(Controller.tSDate);
+                Interval.setText(Controller.tStrInterval);
             } else {
                 DateBox.setVisible(true);
                 StartBox.setVisible(false);
                 EndBox.setVisible(false);
                 IntrevBox.setVisible(false);
-                Date.setText(format.format(task.getTime()));
+                Date.setText(Controller.tDate);
             }
-        } else System.out.println("Null task TaskController");
+            if (Controller.tActive != null)
+                Active.setText(Controller.tActive);
     }
 
     static Stage getStage() {

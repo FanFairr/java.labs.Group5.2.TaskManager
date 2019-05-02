@@ -6,24 +6,9 @@ import javafx.scene.control.TextField;
 import java.time.ZoneId;
 import java.util.Date;
 
-class ConvertController {
-    /**метод, что записывает интервал повторения
-     *задачи в текстовый формат(строку).
-     *@param repeatInterval интервал повторения задачи
-     */
-    static String getStringFromRepeatInterval(final int repeatInterval) {
-        StringBuilder builderString = new StringBuilder();
-        int days = repeatInterval / 86400;
-        int hours =  (repeatInterval / 3600) % 24;
-        int minutes = (repeatInterval / 60) % 60;
-        int seconds = repeatInterval % 60;
-        builderString.append((days == 0? "": days + (days > 1 ? " days " : " day ")));
-        builderString.append((hours == 0? "": hours + (hours > 1 ? " hours " : " hour ")));
-        builderString.append((minutes == 0? "": minutes + (minutes > 1 ? " minutes " : " minute ")));
-        builderString.append((seconds == 0? "": seconds + (seconds > 1 ? " seconds " : " second ")));
-        String s = new String(builderString);
-        return s.trim();
-    }
+public class ConvertController {
+
+
 
     /**Method for show not repeated task radioButton content
      * @param date date to get from

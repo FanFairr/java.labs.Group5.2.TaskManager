@@ -11,16 +11,33 @@
             <Font name="Times New Roman" size="30.0" />
          </font>
       </Label>
-      <HBox fx:id="IntrevBox" layoutX="19.0" layoutY="232.0" AnchorPane.bottomAnchor="75.0" AnchorPane.leftAnchor="19.0" AnchorPane.topAnchor="197.0">
+      <HBox layoutX="19.0" layoutY="92.0" prefHeight="23.0" AnchorPane.leftAnchor="19.0" AnchorPane.topAnchor="92.0">
          <children>
-            <Label alignment="CENTER" prefHeight="23.0" text="Interval">
+            <Label alignment="CENTER" prefHeight="23.0" text="Ttile">
                <HBox.margin>
                   <Insets left="5.0" right="10.0" />
                </HBox.margin>
             </Label>
-            <Label fx:id="Interval" prefHeight="23.0" text="Interval">
+            <Label fx:id="Title" prefHeight="23.0" text="Title">
                <HBox.margin>
-                  <Insets left="22.0" />
+                  <Insets left="39.0" />
+               </HBox.margin>
+            </Label>
+         </children>
+         <padding>
+            <Insets right="10.0" />
+         </padding>
+      </HBox>
+      <HBox fx:id="StartBox" layoutX="19.0" layoutY="162.0" AnchorPane.bottomAnchor="145.0" AnchorPane.leftAnchor="19.0" AnchorPane.topAnchor="127.0">
+         <children>
+            <Label alignment="CENTER" minHeight="23.0" prefHeight="23.0" text="Start date">
+               <HBox.margin>
+                  <Insets left="5.0" right="10.0" />
+               </HBox.margin>
+            </Label>
+            <Label fx:id="Start" prefHeight="23.0" text="SDate">
+               <HBox.margin>
+                  <Insets left="6.0" />
                </HBox.margin>
             </Label>
          </children>
@@ -62,33 +79,16 @@
             <Insets right="10.0" />
          </padding>
       </HBox>
-      <HBox fx:id="StartBox" layoutX="19.0" layoutY="162.0" AnchorPane.bottomAnchor="145.0" AnchorPane.leftAnchor="19.0" AnchorPane.topAnchor="127.0">
+      <HBox fx:id="IntrevBox" layoutX="19.0" layoutY="232.0" AnchorPane.bottomAnchor="75.0" AnchorPane.leftAnchor="19.0" AnchorPane.topAnchor="197.0">
          <children>
-            <Label alignment="CENTER" minHeight="23.0" prefHeight="23.0" text="Start date">
+            <Label alignment="CENTER" prefHeight="23.0" text="Interval">
                <HBox.margin>
                   <Insets left="5.0" right="10.0" />
                </HBox.margin>
             </Label>
-            <Label fx:id="Start" prefHeight="23.0" text="SDate">
+            <Label fx:id="Interval" prefHeight="23.0" text="Interval">
                <HBox.margin>
-                  <Insets left="6.0" />
-               </HBox.margin>
-            </Label>
-         </children>
-         <padding>
-            <Insets right="10.0" />
-         </padding>
-      </HBox>
-      <HBox layoutX="19.0" layoutY="92.0" prefHeight="23.0" AnchorPane.leftAnchor="19.0" AnchorPane.topAnchor="92.0">
-         <children>
-            <Label alignment="CENTER" prefHeight="23.0" text="Ttile">
-               <HBox.margin>
-                  <Insets left="5.0" right="10.0" />
-               </HBox.margin>
-            </Label>
-            <Label fx:id="Title" prefHeight="23.0" text="Title">
-               <HBox.margin>
-                  <Insets left="39.0" />
+                  <Insets left="22.0" />
                </HBox.margin>
             </Label>
          </children>
@@ -124,5 +124,6 @@
             </Button>
          </children>
       </HBox>
+      <Label fx:id="Active" alignment="CENTER" layoutX="341.0" layoutY="127.0" prefHeight="23.0" text="Active" />
    </children>
 </AnchorPane>

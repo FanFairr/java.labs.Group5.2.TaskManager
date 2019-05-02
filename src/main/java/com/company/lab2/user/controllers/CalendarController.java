@@ -1,8 +1,7 @@
+
 package com.company.lab2.user.controllers;
 
 import com.company.lab2.user.Controller;
-import com.company.lab2.user.model.Task;
-import com.company.lab2.user.model.Tasks;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -11,14 +10,13 @@ import javafx.scene.control.TreeView;
 import javafx.scene.control.cell.TextFieldTreeCell;
 import javafx.util.StringConverter;
 
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Set;
 import java.util.SortedMap;
 import java.util.TreeMap;
 
-import static com.company.lab2.user.Controller.logger;
+
 
 /**
  * Class controller for Calendar.fxml view.user
@@ -34,18 +32,19 @@ public class CalendarController {
     private Button ExitBtn;
 
     @FXML
-    private TreeView<Task> calendarTreeView;
+    private TreeView<String> calendarTreeView;
 
     private Date start = MakeCalendarController.getStart();
     private Date end = MakeCalendarController.getEnd();
-    private SortedMap<Date, Set<Task>> calendar;
-    private SortedMap<Date, Set<Task>> calendarByDays = new TreeMap<>();
+    private SortedMap<Date, Set<String>> calendar;
+    private SortedMap<Date, Set<String>> calendarByDays = new TreeMap<>();
 
     @FXML
     void initialize() {
         fillTreeView();
         ExitBtn.setOnAction(event -> WindowMaker.closeWindow(WindowMaker.getStage()));
     }
+
 
 
     /**Method make calendar by days
@@ -62,60 +61,46 @@ public class CalendarController {
         return false;
     }
 
-    /**Method for redacting visualization of tasks in TreeView
-     */
+
+    /**Method for redacting visualization of tasks in TreeView*/
     private void redactTextInTreeView() {
-        calendarTreeView.setCellFactory(p -> new TextFieldTreeCell<>(new StringConverter<Task>(){
+        calendarTreeView.setCellFactory(p -> new TextFieldTreeCell<>(new StringConverter<String>(){
             @Override
-            public String toString(Task object) {
-                SimpleDateFormat format1 = new SimpleDateFormat("HH:mm:ss dd-MM-yyyy");
-                String title = object.getTitle();
-                String date = object.getTime() == null? "": ", time: " + format1.format(object.getTime()) +";";
+            public String toString(String object) {
+                String string = object.replace("Title: ","");
+                String title = string.substring(0, string.indexOf("\'," + 1));
+                String dString = object.replaceAll(".+time: ","");
+                String date = dString.substring(0, dString.indexOf(",")) + ";";
                 return title + date;
             }
             @Override
-            public Task fromString(String string) {
-                SimpleDateFormat format1 = new SimpleDateFormat("HH:mm:ss dd-MM-yyyy");
-                string = string.replace("Title: '","");
-                String title =  string.replaceAll("\', time:.+","");
-                String date = string.replaceAll(".+ ","").replace(";","");
-                try {
-                    Date d = format1.parse(date);
-                    return new Task(title,d);
-                } catch (ParseException e) {
-                    logger.error(e.getMessage(),e);
-                    e.printStackTrace();
-                }
-                return new Task(title,null);
+            public String fromString(String string) {
+                return string;
             }
         }));
     }
 
-    /**Method for filling TreeView
-     */
+
+    /**Method for filling TreeView*/
     private void fillTreeView() {
-        calendar = Tasks.calendar(Controller.taskList, start, end);
+        calendar = Controller.tCalendar;
         SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy");
         Start.setText(format.format(start));
         End.setText(format.format(end));
         if (makeCalendarByDays()) {
-            TreeItem<Task> rootItem = new TreeItem<>(new Task("Root",null));
+            TreeItem<String> rootItem = new TreeItem<>("Root",null);
             rootItem.setExpanded(true);
             for (Date date: calendarByDays.keySet()) {
-                TreeItem<Task> day = new TreeItem<>(new Task(format.format(date), null));
+                TreeItem<String> day = new TreeItem<>(format.format(date), null);
                 for (Date dateTime : calendar.keySet()) {
                     if (date.getTime() <= dateTime.getTime()
                             && dateTime.getTime() < (date.getTime() + 3600000 * 24)) {
-                        for (Task task : calendar.get(dateTime)) {
-                            try {
-                                Task taskToPut = task.clone();
-                                taskToPut.setTime(dateTime);
-                                TreeItem<Task> taskItem = new TreeItem<>(taskToPut);
-                                day.getChildren().add(taskItem);
-                            } catch (CloneNotSupportedException e) {
-                                logger.error(e.getMessage(),e);
-                                e.printStackTrace();
-                            }
+                        for (String task : calendar.get(dateTime)) {
+                            String dString = task.replaceAll(".+time: ","");
+                            String replace = dString.substring(0, dString.indexOf(","));
+                            String taskToPut = task.replace(replace, new SimpleDateFormat("HH:mm:ss dd-MM-yyyy").format(dateTime));
+                            TreeItem<String> taskItem = new TreeItem<>(taskToPut);
+                            day.getChildren().add(taskItem);
                         }
                     }
                 }

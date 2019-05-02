@@ -1,8 +1,6 @@
 package com.company.lab2.user.controllers;
 
 import com.company.lab2.user.Controller;
-import com.company.lab2.user.model.Task;
-import com.company.lab2.user.model.Tasks;
 import javafx.application.Platform;
 
 import java.util.Date;
@@ -18,7 +16,7 @@ public class Notification extends Thread {
     private Date now;
     private Date endDayTime;
     private Date nextAlarmDate;
-    private SortedMap<Date, Set<Task>> calendarByTime;
+    private SortedMap<Date, Set<String>> calendarByTime;
     private boolean notFirstTimeHereAfterMonitor;
     private boolean checkForWhile = true;
     private final String title = "Task Time!";
@@ -32,7 +30,7 @@ public class Notification extends Thread {
         if (!notFirstTimeHereAfterMonitor) {
             now = new Date(System.currentTimeMillis() / 1000 * 1000);
             endDayTime = new Date((now.getTime() +(86400000 - now.getTime() % 86400000)));
-            calendarByTime = Tasks.calendar(Controller.taskList, now, endDayTime);
+            calendarByTime = Controller.calendar(now, endDayTime);
             notFirstTimeHereAfterMonitor = false;
         }
     }
@@ -53,9 +51,9 @@ public class Notification extends Thread {
                     if (nextAlarmDate != null && now.getTime() == nextAlarmDate.getTime()) {
                         //то походи по сету задач этого ключа и выводи все задачи сета
                         if (calendarByTime.get(now) != null ) {
-                            for (Task task : calendarByTime.get(now)) {
+                            for (String task : calendarByTime.get(now)) {
                                 logger.debug("alarm!!!");
-                                Platform.runLater(() -> WindowMaker.alertWindowInf(title, header, task.getTitle()));
+                                Platform.runLater(() -> WindowMaker.alertWindowInf(title, header, task));
                             }
                             //удаляем объекты мапы
                             calendarByTime.remove(now);
@@ -69,9 +67,9 @@ public class Notification extends Thread {
                             if (date.getTime() == now.getTime()) {
                                 //то проходим по сету задач этого ключа и выводи все задачи сета
                                 if (calendarByTime.get(now) != null ) {
-                                    for (Task task : calendarByTime.get(now)) {
+                                    for (String task : calendarByTime.get(now)) {
                                         logger.debug("alarm!!!");
-                                        Platform.runLater(() -> WindowMaker.alertWindowInf(title, header, task.getTitle()));
+                                        Platform.runLater(() -> WindowMaker.alertWindowInf(title, header, task));
                                     }
                                     //удаляем объекты мапы
                                     calendarByTime.remove(now);
