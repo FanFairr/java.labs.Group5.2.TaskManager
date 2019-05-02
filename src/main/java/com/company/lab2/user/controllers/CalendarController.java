@@ -48,14 +48,11 @@ public class CalendarController {
             Controller.calendar(calendar.lastKey(), Controller.lastKey);
             calendar.putAll(Controller.tCalendar);
             fillTreeView();
-            if (calendar.lastKey().equals(Controller.lastKey))
-                MoreBtn.setVisible(false);
+            if (calendar.lastKey().equals(Controller.lastKey)){
+                MoreBtn.setText("Exit");
+                MoreBtn.setOnAction(actionEvent -> WindowMaker.closeWindow(WindowMaker.getStage()));
+                }
         });
-        if (!MoreBtn.isVisible()) {
-            MoreBtn.setText("Exit");
-            MoreBtn.setVisible(true);
-            MoreBtn.setOnAction(event -> WindowMaker.closeWindow(WindowMaker.getStage()));
-        }
     }
 
     /**Method make calendar by days
@@ -64,7 +61,10 @@ public class CalendarController {
     private boolean makeCalendarByDays() {
         if (calendar != null) {
             for (Date date:calendar.keySet()) {
-                Date startDay = new Date(date.getTime() - 3600000 * 2 - date.getTime() % 86400000);
+                Date startDay;
+                if (date.getTime() > date.getTime() - 3600000 * 2 - date.getTime() % 86400000)
+                    startDay = new Date(date.getTime() + 3600000 * 22 - date.getTime() % 86400000);
+                else startDay = new Date(date.getTime() - 3600000 * 2 - date.getTime() % 86400000);
                 calendarByDays.put(startDay, calendar.get(date));
             }
             return true;
