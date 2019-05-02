@@ -53,8 +53,8 @@
 <title value="q"/>
 <time value="2019-05-01/01:00:00"/>
 <start value="2019-05-01/01:00:00"/>
-<end value="2019-05-17/01:00:00"/>
-<interval value="86400"/>
+<end value="2019-05-01/01:00:00"/>
+<interval value="0"/>
 <active value="false"/>
 </task>
 </user>

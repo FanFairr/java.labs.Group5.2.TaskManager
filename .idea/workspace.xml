@@ -2,25 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/com/company/lab2/user/model/Task.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/com/company/lab2/user/model/Tasks.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/com/company/lab2/user/model/User.java" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/information.xml" afterPath="$PROJECT_DIR$/information.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/company/lab2/server/Server.java" afterPath="$PROJECT_DIR$/src/main/java/com/company/lab2/server/Server.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/company/lab2/server/controllers/ServerSceneController.java" afterPath="$PROJECT_DIR$/src/main/java/com/company/lab2/server/controllers/ServerSceneController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/company/lab2/server/controllers/ServerThread.java" afterPath="$PROJECT_DIR$/src/main/java/com/company/lab2/server/controllers/ServerThread.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/company/lab2/server/model/Task.java" afterPath="$PROJECT_DIR$/src/main/java/com/company/lab2/server/model/Task.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/company/lab2/user/Controller.java" afterPath="$PROJECT_DIR$/src/main/java/com/company/lab2/user/Controller.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/company/lab2/user/controllers/AddOrChangeTaskController.java" afterPath="$PROJECT_DIR$/src/main/java/com/company/lab2/user/controllers/AddOrChangeTaskController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/company/lab2/user/controllers/CalendarController.java" afterPath="$PROJECT_DIR$/src/main/java/com/company/lab2/user/controllers/CalendarController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/company/lab2/user/controllers/ConfirmController.java" afterPath="$PROJECT_DIR$/src/main/java/com/company/lab2/user/controllers/ConfirmController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/company/lab2/user/controllers/ConvertController.java" afterPath="$PROJECT_DIR$/src/main/java/com/company/lab2/user/controllers/ConvertController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/company/lab2/user/controllers/MainController.java" afterPath="$PROJECT_DIR$/src/main/java/com/company/lab2/user/controllers/MainController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/company/lab2/user/controllers/MakeCalendarController.java" afterPath="$PROJECT_DIR$/src/main/java/com/company/lab2/user/controllers/MakeCalendarController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/company/lab2/user/controllers/Notification.java" afterPath="$PROJECT_DIR$/src/main/java/com/company/lab2/user/controllers/Notification.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/company/lab2/user/controllers/TaskController.java" afterPath="$PROJECT_DIR$/src/main/java/com/company/lab2/user/controllers/TaskController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/view/user/Task.fxml" afterPath="$PROJECT_DIR$/src/main/resources/view/user/Task.fxml" />
     </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -141,7 +124,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/com/company/lab2/server/controllers/ServerThread.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="-68">
-              <caret line="21" column="28" lean-forward="false" selection-start-line="21" selection-start-column="28" selection-end-line="21" selection-end-column="28" />
+              <caret line="20" column="28" lean-forward="false" selection-start-line="20" selection-start-column="28" selection-end-line="20" selection-end-column="28" />
               <folding />
             </state>
           </provider>
@@ -316,9 +299,9 @@
         <option value="$PROJECT_DIR$/src/main/java/com/company/lab2/user/controllers/AddOrChangeTaskController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/company/lab2/server/controllers/StringConverterController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/company/lab2/user/Controller.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/company/lab2/server/controllers/ServerThread.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/company/lab2/server/Server.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/company/lab2/server/controllers/ServerSceneController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/company/lab2/server/controllers/ServerThread.java" />
       </list>
     </option>
   </component>
@@ -1196,7 +1179,7 @@
       <workItem from="1556177090578" duration="10614000" />
       <workItem from="1556213091370" duration="26176000" />
       <workItem from="1556621712218" duration="9338000" />
-      <workItem from="1556703558754" duration="30334000" />
+      <workItem from="1556703558754" duration="31176000" />
     </task>
     <task id="LOCAL-00001" summary="TaskManager application">
       <created>1552992604199</created>
@@ -1317,11 +1300,18 @@
       <option name="project" value="LOCAL" />
       <updated>1556029330180</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="Практически тонки клиент БТВ">
+      <created>1556808549419</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1556808549419</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="268554000" />
+    <option name="totallyTimeSpent" value="269396000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1400,7 +1390,8 @@
     <MESSAGE value="клиент" />
     <MESSAGE value="Много фикса, много работает. Много костылей. Основные функции работают.&#10;Осталось добавить функционал на добавление админа и тп.." />
     <MESSAGE value="Начало интеграции использования Админпанели на Клиенте" />
-    <option name="LAST_COMMIT_MESSAGE" value="Начало интеграции использования Админпанели на Клиенте" />
+    <MESSAGE value="Практически тонки клиент БТВ" />
+    <option name="LAST_COMMIT_MESSAGE" value="Практически тонки клиент БТВ" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
@@ -2007,11 +1998,11 @@
         <state relative-caret-position="516">
           <caret line="76" column="27" lean-forward="true" selection-start-line="76" selection-start-column="27" selection-end-line="76" selection-end-column="27" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <marker date="1556794102093" expanded="false" signature="2993:3004" ph=" { " />
-            <marker date="1556794102093" expanded="false" signature="3017:3023" ph=" }" />
-            <marker date="1556794102093" expanded="false" signature="3049:3060" ph=" { " />
-            <marker date="1556794102093" expanded="false" signature="3071:3077" ph=" }" />
+            <element signature="imports" expanded="false" />
+            <marker date="1556808471471" expanded="false" signature="2994:3005" ph=" { " />
+            <marker date="1556808471471" expanded="false" signature="3018:3024" ph=" }" />
+            <marker date="1556808471471" expanded="false" signature="3050:3061" ph=" { " />
+            <marker date="1556808471471" expanded="false" signature="3072:3078" ph=" }" />
           </folding>
         </state>
       </provider>
@@ -2041,7 +2032,7 @@
         <state relative-caret-position="91">
           <caret line="69" column="31" lean-forward="false" selection-start-line="69" selection-start-column="31" selection-end-line="69" selection-end-column="31" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -2153,7 +2144,7 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/com/company/lab2/server/controllers/ServerThread.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-68">
-          <caret line="21" column="28" lean-forward="false" selection-start-line="21" selection-start-column="28" selection-end-line="21" selection-end-column="28" />
+          <caret line="20" column="28" lean-forward="false" selection-start-line="20" selection-start-column="28" selection-end-line="20" selection-end-column="28" />
           <folding />
         </state>
       </provider>
