@@ -24,5 +24,6 @@
       <Button layoutX="169.0" layoutY="254.0" mnemonicParsing="false" onAction="#banUnban" prefHeight="31.0" prefWidth="106.0" text="ban/unban" />
       <Button layoutX="324.0" layoutY="254.0" mnemonicParsing="false" onAction="#exit" prefHeight="31.0" prefWidth="106.0" text="exit" />
       <Button layoutX="169.0" layoutY="297.0" mnemonicParsing="false" onAction="#refresh" prefHeight="31.0" prefWidth="106.0" text="Refresh" />
+      <Button layoutX="14.0" layoutY="297.0" mnemonicParsing="false" onAction="#adminka" prefHeight="31.0" prefWidth="106.0" text="admin" />
    </children>
 </AnchorPane>

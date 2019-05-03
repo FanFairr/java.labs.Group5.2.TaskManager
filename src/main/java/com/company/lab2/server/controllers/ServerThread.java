@@ -260,7 +260,7 @@ public class ServerThread extends Thread {
     }
 
     private void streamWrite(String write) {
-        printWriter.println(write);
+        printWriter.write(write);
         printWriter.flush();
     }
 }

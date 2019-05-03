@@ -65,6 +65,14 @@
 <interval value="0"/>
 <active value="false"/>
 </task>
+<task>
+<title value="asdasd"/>
+<time value=""/>
+<start value="2019-05-03/01:01:01"/>
+<end value="2019-05-10/01:11:01"/>
+<interval value="36000"/>
+<active value="true"/>
+</task>
 </user>
 <user admin="admin" isBanned="false" login="ad" password="bd">
 <task>
@@ -81,6 +89,14 @@
 <start value="2019-05-03/01:01:01"/>
 <end value="2019-05-03/01:11:01"/>
 <interval value="600"/>
+<active value="true"/>
+</task>
+<task>
+<title value="asd"/>
+<time value="2019-05-03/01:01:01"/>
+<start value=""/>
+<end value=""/>
+<interval value="0"/>
 <active value="true"/>
 </task>
 </user>

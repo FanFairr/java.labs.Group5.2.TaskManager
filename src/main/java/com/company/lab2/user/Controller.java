@@ -326,7 +326,7 @@ public class Controller extends Application {
     }
 
     private static void streamWrite(String write) {
-        writer.println(write);
+        writer.write(write);
         writer.flush();
     }
 
