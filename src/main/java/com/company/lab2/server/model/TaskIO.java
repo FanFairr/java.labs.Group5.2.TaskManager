@@ -99,10 +99,11 @@ public class TaskIO {
         String active = attr.substring(0, attr.indexOf(" "));
 
         if ("".equals(time)) {
-            task = new Task(title, dateFormat.parse(start), dateFormat.parse(end), Integer.getInteger(interval));
+            task = new Task(title, dateFormat.parse(start), dateFormat.parse(end), Integer.parseInt(interval));
+            task.setActive(Boolean.parseBoolean(active));
         } else {
             task = new Task(title, dateFormat.parse(time));
-            task.setActive(Boolean.getBoolean(active));
+            task.setActive(Boolean.parseBoolean(active));
         }
 
         return task;
@@ -145,29 +146,55 @@ public class TaskIO {
             task1.appendChild(title);
             title.setAttribute("value", task.getTitle());
 
-            Element time = document.createElement("time");
-            user.appendChild(task1);
-            task1.appendChild(time);
-            if (task.getTime() != null)
-                time.setAttribute("value", dateFormat.format(task.getTime()));
-            else
-                time.setAttribute("value", "");
+            if (task.isRepeated()) {
+                Element time = document.createElement("time");
+                user.appendChild(task1);
+                task1.appendChild(time);
+                if (task.getTime() != null)
+                    time.setAttribute("value", null);
+                else
+                    time.setAttribute("value", "");
 
-            Element start = document.createElement("start");
-            user.appendChild(task1);
-            task1.appendChild(start);
-            if (task.getStartTime() != null)
-                start.setAttribute("value", dateFormat.format(task.getStartTime()));
-            else
-                start.setAttribute("value", "");
+                Element start = document.createElement("start");
+                user.appendChild(task1);
+                task1.appendChild(start);
+                if (task.getStartTime() != null)
+                    start.setAttribute("value", dateFormat.format(task.getStartTime()));
+                else
+                    start.setAttribute("value", "");
 
-            Element end = document.createElement("end");
-            user.appendChild(task1);
-            task1.appendChild(end);
-            if (task.getEndTime() != null)
-                end.setAttribute("value", dateFormat.format(task.getEndTime()));
-            else
-                end.setAttribute("value", "");
+                Element end = document.createElement("end");
+                user.appendChild(task1);
+                task1.appendChild(end);
+                if (task.getEndTime() != null)
+                    end.setAttribute("value", dateFormat.format(task.getEndTime()));
+                else
+                    end.setAttribute("value", "");
+            } else {
+                Element time = document.createElement("time");
+                user.appendChild(task1);
+                task1.appendChild(time);
+                if (task.getTime() != null)
+                    time.setAttribute("value", dateFormat.format(task.getTime()));
+                else
+                    time.setAttribute("value", "");
+
+                Element start = document.createElement("start");
+                user.appendChild(task1);
+                task1.appendChild(start);
+                if (task.getStartTime() != null)
+                    start.setAttribute("value", null);
+                else
+                    start.setAttribute("value", "");
+
+                Element end = document.createElement("end");
+                user.appendChild(task1);
+                task1.appendChild(end);
+                if (task.getEndTime() != null)
+                    end.setAttribute("value", null);
+                else
+                    end.setAttribute("value", "");
+            }
 
             Element interval = document.createElement("interval");
             user.appendChild(task1);

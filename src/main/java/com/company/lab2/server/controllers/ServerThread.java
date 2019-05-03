@@ -16,22 +16,26 @@ import java.util.*;
 
 public class ServerThread extends Thread {
     private Socket socket = null;
-    private final ArrayList<User> usersList;
-    private final TreeMap<String, ArrayList<Task>> tasksList;
-    private ArrayList<Task> taskArrayList;
-    private final ArrayList<User> adminList;
     private PrintWriter printWriter;
+
     private Gson gson = new Gson();
     private String login;
     private boolean whileCondition = true;
     private User currentUser;
     private int becomeAdmTry;
 
-    public ServerThread(Socket socket, ArrayList<User> usersList, TreeMap<String, ArrayList<Task>> tasksList, ArrayList<User> adminList) {
+    private final ArrayList<User> usersList;
+    private final TreeMap<String, ArrayList<Task>> tasksList;
+    private ArrayList<Task> taskArrayList;
+    private final ArrayList<User> adminList;
+    private LinkedList<User> activeUsers = new LinkedList<>();
+
+    public ServerThread(Socket socket, ArrayList<User> usersList, TreeMap<String, ArrayList<Task>> tasksList, ArrayList<User> adminList, LinkedList<User> activeUsers) {
         this.socket = socket;
         this.usersList = usersList;
         this.tasksList = tasksList;
         this.adminList = adminList;
+        this.activeUsers = activeUsers;
     }
 
     @Override
@@ -58,14 +62,22 @@ public class ServerThread extends Thread {
                                     if (user.getLogin().equals(login)) {
                                         currentUser = user;
                                         if (user.getPassword().equals(password)) {
-                                            if (user.isBanned()) {
-                                                streamWrite("banned\n");
-                                                loginNotExist = false;
-                                                break;
-                                            } else {
-                                                loginNotExist = false;
-                                                streamWrite("connected\n" + gson.toJson(StringConverterController.formatTaskArr(taskArrayList)) + "\n");
-                                                break;
+                                            synchronized (activeUsers) {
+                                                System.out.println(activeUsers.indexOf(user));
+                                                if (user.isBanned()) {
+                                                    streamWrite("banned\n");
+                                                    loginNotExist = false;
+                                                    break;
+                                                } else if (activeUsers.indexOf(user) != -1) {
+                                                    loginNotExist = false;
+                                                    streamWrite("active user\n");
+                                                    break;
+                                                } else{
+                                                    activeUsers.add(user);
+                                                    loginNotExist = false;
+                                                    streamWrite("connected\n" + gson.toJson(StringConverterController.formatTaskArr(taskArrayList)) + "\n");
+                                                    break;
+                                                }
                                             }
                                         } else {
                                             streamWrite("wrong password\n");
@@ -99,6 +111,9 @@ public class ServerThread extends Thread {
                                         tasksList.put(login, new ArrayList<>());
                                         taskArrayList = tasksList.get(login);
                                         streamWrite("connected\n" + gson.toJson(StringConverterController.formatTaskArr(taskArrayList)) + "\n");
+                                        synchronized (activeUsers) {
+                                            activeUsers.add(currentUser);
+                                        }
                                     }
                                 }
                             }
@@ -157,7 +172,7 @@ public class ServerThread extends Thread {
                             if (code.equals("123")) {
                                 synchronized (adminList) {
                                     if (!adminList.contains(currentUser)) {
-                                        currentUser.setAdmin("admin");
+                                        currentUser.setAdmin("true");
                                         adminList.add(currentUser);
                                         streamWrite("congratulations\n");
                                         break;
@@ -222,6 +237,15 @@ public class ServerThread extends Thread {
                             }
                             socket.close();
                             whileCondition = false;
+                            synchronized (activeUsers) {
+                                for (User user : usersList) {
+                                    if (user.getLogin().equals(login)) {
+                                        activeUsers.remove(user);
+                                        break;
+                                    }
+                                }
+
+                            }
                             break;
                         default:
                             System.out.println("smth wrong");
@@ -235,7 +259,7 @@ public class ServerThread extends Thread {
     }
 
     private void streamWrite(String write) {
-        printWriter.write(write);
+        printWriter.println(write);
         printWriter.flush();
     }
 }

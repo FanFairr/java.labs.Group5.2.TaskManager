@@ -113,6 +113,11 @@ public class Controller extends Application {
                                 header = "Wrong login";
                                 content = "Login already exist";
                                 break;
+                            case "active user":
+                                title = "Error";
+                                header = "Active user";
+                                content = "This account already uses";
+                                break;
                             case "login not exist":
                                 System.out.println("lnex");
                                 title = "Error";
@@ -131,7 +136,7 @@ public class Controller extends Application {
                                 break;
                             case "isAdmin":
                                 title = reader.readLine();
-                            break;
+                                break;
                             case "wrong code":
                                 becomeAdmTry = Integer.parseInt(reader.readLine());
                                 title = "Error";
@@ -225,7 +230,7 @@ public class Controller extends Application {
     }
 
     public static void becomeAdmin(String code) {
-        streamWrite("Become adm:\n" + code + "\n");
+        streamWrite("Become adm:\n" + code);
         while (true) {
             if (header != null) {
                 if (header.equals("Wrong code")) {
@@ -320,7 +325,7 @@ public class Controller extends Application {
     }
 
     private static void streamWrite(String write) {
-        writer.write(write);
+        writer.println(write);
         writer.flush();
     }
 

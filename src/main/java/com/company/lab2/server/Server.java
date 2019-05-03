@@ -20,12 +20,14 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.TreeMap;
 
 public class Server extends Application {
     private static ServerSocket serverSocket;
     private static ArrayList<Socket> socketList = new ArrayList<>();
 
+    private static LinkedList<User> activeUsers = new LinkedList<>();
     private final static ArrayList<User> usersList = new ArrayList<>();
     private final static TreeMap<String, ArrayList<Task>> tasksList = new TreeMap<>();
     private static ArrayList<User> adminList = new ArrayList<>();
@@ -113,10 +115,11 @@ public class Server extends Application {
             try {
                 serverSocket = new ServerSocket(1488);
                 while (true) {
+                    System.out.println(serverSocket.isBound());
                     synchronized (serverSocket) {
                         Socket socket = serverSocket.accept();
                         socketList.add(socket);
-                        new ServerThread(socketList.get(socketList.size() - 1), usersList, tasksList, adminList).start();
+                        new ServerThread(socketList.get(socketList.size() - 1), usersList, tasksList, adminList, activeUsers).start();
                     }
                 }
             } catch (IOException e) {

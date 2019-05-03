@@ -65,9 +65,6 @@ public class ServerSceneController {
                     printWriter.flush();
                 }
             }
-
-            serverSocket.close();
-            serverSocket = new ServerSocket(1488);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -97,6 +94,11 @@ public class ServerSceneController {
                     e.printStackTrace();
                 }
 
+                try {
+                    Thread.sleep(5000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
                 Platform.exit();
                 System.exit(0);
             }

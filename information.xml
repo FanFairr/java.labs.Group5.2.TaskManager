@@ -2,58 +2,66 @@
 <users>
 <user admin="superadmin" isBanned="false" login="ac" password="bc">
 <task>
+<title value="asd"/>
+<time value=""/>
+<start value="2019-05-03/01:01:01"/>
+<end value="2019-05-03/01:11:01"/>
+<interval value="600"/>
+<active value="true"/>
+</task>
+<task>
 <title value="Hello"/>
 <time value="2019-04-01/07:03:46"/>
-<start value="2019-04-01/07:03:46"/>
-<end value="2019-04-01/07:03:46"/>
+<start value=""/>
+<end value=""/>
 <interval value="0"/>
-<active value="false"/>
+<active value="true"/>
 </task>
 <task>
 <title value="qq"/>
 <time value="2019-04-02/11:00:00"/>
-<start value="2019-04-02/11:00:00"/>
-<end value="2019-04-02/11:00:00"/>
+<start value=""/>
+<end value=""/>
 <interval value="0"/>
 <active value="false"/>
 </task>
 <task>
 <title value="1"/>
 <time value="2019-05-01/02:00:00"/>
-<start value="2019-05-01/02:00:00"/>
-<end value="2019-05-01/02:00:00"/>
+<start value=""/>
+<end value=""/>
 <interval value="0"/>
 <active value="false"/>
 </task>
 <task>
 <title value="q"/>
 <time value="2019-05-01/01:00:00"/>
-<start value="2019-05-01/01:00:00"/>
-<end value="2019-05-01/01:00:00"/>
+<start value=""/>
+<end value=""/>
 <interval value="0"/>
 <active value="false"/>
 </task>
 <task>
 <title value="ПОВТОР"/>
 <time value="2019-05-02/01:00:00"/>
-<start value="2019-05-02/01:00:00"/>
-<end value="2019-05-02/01:00:00"/>
+<start value=""/>
+<end value=""/>
 <interval value="0"/>
 <active value="false"/>
 </task>
 <task>
 <title value="lupa"/>
 <time value="2019-05-01/01:00:00"/>
-<start value="2019-05-01/01:00:00"/>
-<end value="2019-05-01/01:00:00"/>
+<start value=""/>
+<end value=""/>
 <interval value="0"/>
 <active value="false"/>
 </task>
 <task>
 <title value="pupa"/>
 <time value="2019-05-01/01:00:00"/>
-<start value="2019-05-01/01:00:00"/>
-<end value="2019-05-01/01:00:00"/>
+<start value=""/>
+<end value=""/>
 <interval value="0"/>
 <active value="false"/>
 </task>
@@ -62,28 +70,36 @@
 <task>
 <title value="Hello"/>
 <time value="2019-04-01/07:03:46"/>
-<start value="2019-04-01/07:03:46"/>
-<end value="2019-04-01/07:03:46"/>
+<start value=""/>
+<end value=""/>
+<interval value="0"/>
+<active value="false"/>
+</task>
+<task>
+<title value="asd"/>
+<time value=""/>
+<start value="2019-05-03/01:01:01"/>
+<end value="2019-05-03/01:11:01"/>
+<interval value="600"/>
+<active value="true"/>
+</task>
+</user>
+<user admin="true" isBanned="false" login="ae" password="be">
+<task>
+<title value="Hello"/>
+<time value="2019-04-01/07:03:46"/>
+<start value=""/>
+<end value=""/>
 <interval value="0"/>
 <active value="false"/>
 </task>
 </user>
-<user admin="admin" isBanned="false" login="ae" password="be">
+<user admin="true" isBanned="false" login="af" password="bf">
 <task>
 <title value="Hello"/>
 <time value="2019-04-01/07:03:46"/>
-<start value="2019-04-01/07:03:46"/>
-<end value="2019-04-01/07:03:46"/>
-<interval value="0"/>
-<active value="false"/>
-</task>
-</user>
-<user admin="admin" isBanned="false" login="af" password="bf">
-<task>
-<title value="Hello"/>
-<time value="2019-04-01/07:03:46"/>
-<start value="2019-04-01/07:03:46"/>
-<end value="2019-04-01/07:03:46"/>
+<start value=""/>
+<end value=""/>
 <interval value="0"/>
 <active value="false"/>
 </task>
@@ -92,8 +108,8 @@
 <task>
 <title value="GG"/>
 <time value="2019-04-02/11:00:00"/>
-<start value="2019-04-02/11:00:00"/>
-<end value="2019-04-02/11:00:00"/>
+<start value=""/>
+<end value=""/>
 <interval value="0"/>
 <active value="false"/>
 </task>
@@ -102,18 +118,19 @@
 <task>
 <title value="111"/>
 <time value="2019-04-04/01:00:00"/>
-<start value="2019-04-04/01:00:00"/>
-<end value="2019-04-04/01:00:00"/>
+<start value=""/>
+<end value=""/>
 <interval value="0"/>
 <active value="false"/>
 </task>
 <task>
 <title value="22"/>
 <time value="2019-04-05/01:00:00"/>
-<start value="2019-04-05/01:00:00"/>
-<end value="2019-04-05/01:00:00"/>
+<start value=""/>
+<end value=""/>
 <interval value="0"/>
 <active value="false"/>
 </task>
 </user>
+<user admin="false" isBanned="false" login="asd" password="asd"/>
 </users>
