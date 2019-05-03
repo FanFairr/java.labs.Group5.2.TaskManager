@@ -16,10 +16,6 @@ public class StringConverterController {
 
     public static ObservableList<String> formatTaskArr(ArrayList<Task> list) {
         ObservableList<String> TaskList = FXCollections.observableArrayList();
-        for (Task task: list) {
-            TaskList.add(task.toString());
-            System.out.println(task.toString());
-        }
         return TaskList;
     }
 

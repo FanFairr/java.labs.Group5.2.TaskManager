@@ -157,7 +157,7 @@ public class ServerThread extends Thread {
                             if (code.equals("123")) {
                                 synchronized (adminList) {
                                     if (!adminList.contains(currentUser)) {
-                                        currentUser.setAdmin("true");
+                                        currentUser.setAdmin("admin");
                                         adminList.add(currentUser);
                                         streamWrite("congratulations\n");
                                         break;
