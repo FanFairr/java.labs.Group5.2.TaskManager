@@ -52,12 +52,20 @@ public class MainController {
                 final String header = "Account";
                 WindowMaker.makeWindow(path, header);
             } else {
-                final String alertTitle = "Warning";
-                final String alertHeader = "You got no rights";
-                final String alertText ="Excess denied";
-                WindowMaker.alertWindowWarning(alertTitle, alertHeader, alertText);
+                if (Controller.becomeAdmTry == 0) {
+                    adminBtn.setText("Exit");
+                    adminBtn.setOnAction(actionEvent -> {
+                        alarm.interrupt();
+                        Controller.interrupt();
+                    });
+                } else {
+                    final String path = "/view/user/BecomeAdmin.fxml";
+                    final String header = "BecomeAdmin";
+                    WindowMaker.makeWindow(path, header);
+                }
             }
         });
+
     }
 
     /**Method create new Thread and start it.

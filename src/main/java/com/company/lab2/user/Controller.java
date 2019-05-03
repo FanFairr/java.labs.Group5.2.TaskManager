@@ -39,6 +39,7 @@ public class Controller extends Application {
     public static int tIntInterval;
     public static SortedMap<Date, Set<String>> tCalendar;
     public static Date lastKey;
+    public static int becomeAdmTry = 1;
 
     private static Thread connection;
     private static boolean whileCondition = true;
@@ -132,14 +133,24 @@ public class Controller extends Application {
                                 title = reader.readLine();
                             break;
                             case "wrong code":
+                                becomeAdmTry = Integer.parseInt(reader.readLine());
                                 title = "Error";
                                 header = "Wrong code";
-                                content = "Connect with mainAdmin to get code";
+                                String s = becomeAdmTry > 1? becomeAdmTry +" try's left. ": becomeAdmTry +" try left. ";
+                                content = s + "Connect with mainAdmin to get code";
                                 break;
                             case "congratulations":
                                 title = "Cool";
                                 header = "Congratulations";
                                 content = "You are admin now";
+                                break;
+                            case "already admin":
+                                title = "woops";
+                                header = "already admin";
+                                content = "";
+                                break;
+                            case "Exit":
+                                exit();
                                 break;
                             default:
                                 System.out.println("smth wrong with response");
@@ -215,6 +226,30 @@ public class Controller extends Application {
 
     public static void becomeAdmin(String code) {
         streamWrite("Become adm:\n" + code + "\n");
+        while (true) {
+            if (header != null) {
+                if (header.equals("Wrong code")) {
+                    WindowMaker.alertWindowInf(title, header, content);
+                    header = null;
+                    break;
+                }
+                if (header.equals("Congratulations")) {
+                    WindowMaker.alertWindowInf(title, header, content);
+                    header = null;
+                    break;
+                }
+                if (header.equals("already admin")) {
+                    WindowMaker.alertWindowInf(title, header, content);
+                    header = null;
+                    break;
+                }
+            }
+            try {
+                Thread.sleep(10);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     private static void runMain() {
@@ -272,6 +307,13 @@ public class Controller extends Application {
     public static void interrupt() {
         whileCondition = false;
         streamWrite("Exit:\n");
+        connection.interrupt();
+        Platform.exit();
+        System.exit(0);
+    }
+
+    private static void exit() {
+        whileCondition = false;
         connection.interrupt();
         Platform.exit();
         System.exit(0);

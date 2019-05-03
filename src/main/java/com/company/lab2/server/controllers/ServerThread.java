@@ -25,6 +25,7 @@ public class ServerThread extends Thread {
     private String login;
     private boolean whileCondition = true;
     private User currentUser;
+    private int becomeAdmTry;
 
     public ServerThread(Socket socket, ArrayList<User> usersList, TreeMap<String, ArrayList<Task>> tasksList, ArrayList<User> adminList) {
         this.socket = socket;
@@ -152,15 +153,25 @@ public class ServerThread extends Thread {
                             break;
 
                         case "Become adm:":
-                            synchronized (adminList) {
-                                if (!adminList.contains(currentUser)) {
-                                    adminList.add(currentUser);
-                                    streamWrite("congratulations\n");
-                                    break;
-                                } else {
-                                    streamWrite("already admin\n");
+                            String code = in.readLine();
+                            if (code.equals("123")) {
+                                synchronized (adminList) {
+                                    if (!adminList.contains(currentUser)) {
+                                        currentUser.setAdmin("true");
+                                        adminList.add(currentUser);
+                                        streamWrite("congratulations\n");
+                                        break;
+                                    } else {
+                                        streamWrite("already admin\n");
+                                    }
                                 }
+                            } else {
+                                becomeAdmTry++;
+                                int i = 3 - becomeAdmTry;
+                                streamWrite("wrong code\n"+ i + "\n");
                             }
+
+
                             break;
 
                         case "AdminList:":

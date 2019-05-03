@@ -53,9 +53,9 @@
 <title value="pupa"/>
 <time value="2019-05-01/01:00:00"/>
 <start value="2019-05-01/01:00:00"/>
-<end value="2019-05-10/01:00:00"/>
-<interval value="3600"/>
-<active value="true"/>
+<end value="2019-05-01/01:00:00"/>
+<interval value="0"/>
+<active value="false"/>
 </task>
 </user>
 <user admin="admin" isBanned="false" login="ad" password="bd">
@@ -68,7 +68,7 @@
 <active value="false"/>
 </task>
 </user>
-<user admin="false" isBanned="false" login="ae" password="be">
+<user admin="true" isBanned="false" login="ae" password="be">
 <task>
 <title value="Hello"/>
 <time value="2019-04-01/07:03:46"/>
@@ -78,7 +78,7 @@
 <active value="false"/>
 </task>
 </user>
-<user admin="false" isBanned="false" login="af" password="bf">
+<user admin="true" isBanned="false" login="af" password="bf">
 <task>
 <title value="Hello"/>
 <time value="2019-04-01/07:03:46"/>

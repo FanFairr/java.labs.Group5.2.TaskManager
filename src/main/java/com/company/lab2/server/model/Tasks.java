@@ -11,7 +11,7 @@ public class Tasks {
      *@param end время до которого ищем задачу
      *@return итератор по списку задач
      **/
-    public static Iterable<Task> incoming(Iterable<Task> tasks, Date start, Date end){
+    private static Iterable<Task> incoming(Iterable<Task> tasks, Date start, Date end){
         if (tasks == null)
             return null;
         Iterator<Task> iter = tasks.iterator();
