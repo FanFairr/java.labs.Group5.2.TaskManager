@@ -246,6 +246,7 @@ public class ServerThread extends Thread {
                                 }
 
                             }
+                            whileCondition = false;
                             break;
                         default:
                             System.out.println("smth wrong");

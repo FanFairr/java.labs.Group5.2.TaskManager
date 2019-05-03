@@ -319,6 +319,7 @@ public class Controller extends Application {
 
     private static void exit() {
         whileCondition = false;
+        streamWrite("Exit:\n");
         connection.interrupt();
         Platform.exit();
         System.exit(0);
