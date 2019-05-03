@@ -100,7 +100,7 @@
 <active value="true"/>
 </task>
 </user>
-<user admin="true" isBanned="false" login="ae" password="be">
+<user admin="false" isBanned="false" login="ae" password="be">
 <task>
 <title value="Hello"/>
 <time value="2019-04-01/07:03:46"/>
@@ -110,7 +110,7 @@
 <active value="false"/>
 </task>
 </user>
-<user admin="true" isBanned="false" login="af" password="bf">
+<user admin="false" isBanned="false" login="af" password="bf">
 <task>
 <title value="Hello"/>
 <time value="2019-04-01/07:03:46"/>
