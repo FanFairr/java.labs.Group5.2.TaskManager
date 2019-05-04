@@ -100,12 +100,10 @@ public class TaskIO {
 
         if ("".equals(time)) {
             task = new Task(title, dateFormat.parse(start), dateFormat.parse(end), Integer.parseInt(interval));
-            task.setActive(Boolean.parseBoolean(active));
         } else {
             task = new Task(title, dateFormat.parse(time));
-            task.setActive(Boolean.parseBoolean(active));
         }
-
+        task.setActive(Boolean.parseBoolean(active));
         return task;
     }
 

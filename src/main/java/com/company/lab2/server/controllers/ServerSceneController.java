@@ -115,7 +115,7 @@ public class ServerSceneController {
 
     public void adminka(ActionEvent actionEvent) {
         User user = table.getSelectionModel().getSelectedItem();
-        user.setAdmin("true".equals(user.getAdmin()) ? "false" : "true");
+        user.setAdmin("admin".equals(user.getAdmin()) ? "false" : "admin");
         table.refresh();
     }
 }

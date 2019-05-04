@@ -172,7 +172,7 @@ public class ServerThread extends Thread {
                             if (code.equals("123")) {
                                 synchronized (adminList) {
                                     if (!adminList.contains(currentUser)) {
-                                        currentUser.setAdmin("true");
+                                        currentUser.setAdmin("admin");
                                         adminList.add(currentUser);
                                         streamWrite("congratulations\n");
                                         break;
@@ -202,7 +202,6 @@ public class ServerThread extends Thread {
                             try {
                                 date1 = format.parse(in.readLine());
                                 date2 = format.parse(in.readLine());
-                                System.out.println(date2);
                             } catch (ParseException e) {
                                 e.printStackTrace();
                             }
@@ -225,7 +224,6 @@ public class ServerThread extends Thread {
                                         }
                                     }
                                     streamWrite("end\n");
-                                    System.out.println(sortedMap.lastKey());
                                     streamWrite(new Gson().toJson(sortedMap.lastKey()) + "\n");
                                 }
                             }

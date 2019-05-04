@@ -115,7 +115,6 @@ public class Server extends Application {
             try {
                 serverSocket = new ServerSocket(1488);
                 while (true) {
-                    System.out.println(serverSocket.isBound());
                     synchronized (serverSocket) {
                         Socket socket = serverSocket.accept();
                         socketList.add(socket);

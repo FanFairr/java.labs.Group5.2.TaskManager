@@ -155,7 +155,7 @@ public class Controller extends Application {
                                 content = "";
                                 break;
                             case "Exit":
-                                exit();
+                                interrupt();
                                 break;
                             default:
                                 System.out.println("smth wrong with response");
@@ -230,7 +230,7 @@ public class Controller extends Application {
     }
 
     public static void becomeAdmin(String code) {
-        streamWrite("Become adm:\n" + code);
+        streamWrite("Become adm:\n" + code + "\n");
         while (true) {
             if (header != null) {
                 if (header.equals("Wrong code")) {
@@ -317,16 +317,8 @@ public class Controller extends Application {
         System.exit(0);
     }
 
-    private static void exit() {
-        whileCondition = false;
-        streamWrite("Exit:\n");
-        connection.interrupt();
-        Platform.exit();
-        System.exit(0);
-    }
-
     private static void streamWrite(String write) {
-        writer.write(write);
+        writer.print(write);
         writer.flush();
     }
 
