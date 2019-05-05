@@ -119,7 +119,6 @@ public class Controller extends Application {
                                 content = "This account already uses";
                                 break;
                             case "login not exist":
-                                System.out.println("lnex");
                                 title = "Error";
                                 header = "Wrong login";
                                 content = "Login doesn't exist";
@@ -186,7 +185,6 @@ public class Controller extends Application {
     public static void addTask(String task) {
         title = null;
         streamWrite("Add:\n" + task + "\n");
-        System.out.println(task);
         taskList.add(task);
         w84Response();
     }

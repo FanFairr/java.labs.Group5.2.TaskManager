@@ -231,7 +231,8 @@ public class ServerThread extends Thread {
 
                         case "Exit:":
                             synchronized (tasksList) {
-                                tasksList.put(login, taskArrayList);
+                                if (login != null)
+                                    tasksList.put(login, taskArrayList);
                             }
                             socket.close();
                             whileCondition = false;

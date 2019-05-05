@@ -31,7 +31,8 @@ public class EnterFormController {
 
     @FXML
     void initialize() {
-        WindowMaker.getStage().setOnCloseRequest(event -> Controller.interrupt());
+        Stage stage = WindowMaker.getStage();
+        stage.setOnCloseRequest(event -> Controller.interrupt());
         login.setTooltip(new Tooltip("Your login"));
         password.setTooltip(new Tooltip("Your password"));
         signInBtn.setOnAction(event -> {

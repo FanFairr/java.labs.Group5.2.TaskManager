@@ -14,7 +14,7 @@ import java.util.regex.Pattern;
 
 public class StringConverterController {
 
-    public static ObservableList<String> formatTaskArr(ArrayList<Task> list) {
+    static ObservableList<String> formatTaskArr(ArrayList<Task> list) {
         ObservableList<String> TaskList = FXCollections.observableArrayList();
         for (Task task: list) {
             TaskList.add(task.toString());
@@ -22,7 +22,7 @@ public class StringConverterController {
         return TaskList;
     }
 
-    public static Task makeTaskFromString (String strTask) {
+    static Task makeTaskFromString (String strTask) {
         String title = getTitle(strTask);
         String buffer;
         if (strTask.contains("repeatInterval")) {
@@ -124,7 +124,7 @@ public class StringConverterController {
                         minutes = Integer.parseInt(parsed[i].substring(0, parsed[i].indexOf(" ")));
                         break;
                     case "s":
-                        minutes = Integer.parseInt(parsed[i].substring(0, parsed[i].indexOf(" ")));
+                        seconds = Integer.parseInt(parsed[i].substring(0, parsed[i].indexOf(" ")));
                         break;
                 }
             }

@@ -43,7 +43,7 @@ public class Notification extends Thread {
             makeCalendarForDay();
             try {
                 while ((calendarByTime == null ? 0 : calendarByTime.size()) > 0) {
-                    Thread.sleep(200);
+                    Thread.sleep(5);
                     if (notFirstTimeHereAfterMonitor) {
                         now = new Date(System.currentTimeMillis() / 1000 * 1000);
                     } else notFirstTimeHereAfterMonitor = true;

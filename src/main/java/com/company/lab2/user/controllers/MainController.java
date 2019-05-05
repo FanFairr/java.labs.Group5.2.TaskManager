@@ -30,7 +30,6 @@ public class MainController {
             alarm.interrupt();
             Controller.interrupt();
         });
-
         taskListView.refresh();
         taskListView.setItems(Controller.taskList);
         multipleSelectionChoose();
