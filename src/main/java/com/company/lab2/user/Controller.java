@@ -30,6 +30,7 @@ public class Controller extends Application {
     private static Boolean tParsed;
     public final static Logger logger = Logger.getLogger(MainController.class);
     public static ObservableList<String> taskList;
+    public static ObservableList<String> usersList;
     public static String tTitle;
     public static String tDate;
     public static String tActive;
@@ -44,6 +45,7 @@ public class Controller extends Application {
     private static Thread connection;
     private static boolean whileCondition = true;
     private static Stage firstStage;
+
     @Override
     public void start(Stage primaryStage) {
         final String path = "/view/user/EnterForm.fxml";
@@ -318,6 +320,32 @@ public class Controller extends Application {
     private static void streamWrite(String write) {
         writer.print(write);
         writer.flush();
+    }
+
+    public static void banned(String user) {
+        streamWrite("Banned:\n" + user + "\n");
+    }
+
+    public static void rebut() {
+        streamWrite("Rebut:\n");
+    }
+
+    /*public static ObservableList<String> getUsers() {
+        streamWrite("Users list:\n");
+        while (true) {
+            try {
+                String users = reader.readLine();
+                System.out.println(users);
+                break;
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        return usersList;
+    }*/
+
+    public static void admin(String user) {
+        streamWrite("Adminka:\n" + user + "\n");
     }
 
     private static void w84Response() {

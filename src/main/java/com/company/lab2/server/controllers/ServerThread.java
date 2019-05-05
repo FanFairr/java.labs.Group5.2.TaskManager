@@ -157,7 +157,7 @@ public class ServerThread extends Thread {
 
                         case "Users list:":
                             synchronized (usersList) {
-                                streamWrite("Users list:\n" + gson.toJson(usersList) + "\n");
+                                streamWrite(gson.toJson(usersList) + "\n");
                             }
                             break;
 
@@ -227,6 +227,27 @@ public class ServerThread extends Thread {
                                     streamWrite(new Gson().toJson(sortedMap.lastKey()) + "\n");
                                 }
                             }
+                            break;
+
+                        case "Banned:":
+                            synchronized (usersList) {
+                                String user = in.readLine();
+                                User user1 = usersList.get(usersList.indexOf(gson.fromJson(user, User.class)));
+                                user1.setBanned(!user1.isBanned());
+                            }
+                            break;
+
+                        case "Adminka:":
+                            synchronized (usersList) {
+                                String user = in.readLine();
+                                User user1 = usersList.get(usersList.indexOf(gson.fromJson(user, User.class)));
+                                user1.setAdmin("false".equals(user1.getAdmin()) ? "admin" : "false");
+                            }
+                            break;
+
+                        case "Rebut:":
+                            ServerSceneController controller = new ServerSceneController();
+                            controller.rebut(null);
                             break;
 
                         case "Exit:":

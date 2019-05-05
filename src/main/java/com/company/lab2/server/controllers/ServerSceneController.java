@@ -25,7 +25,7 @@ import java.util.TreeMap;
 public class ServerSceneController {
     private ObservableList<User> observableList;
     private ServerSocket serverSocket;
-    private ArrayList<Socket> socketList = new ArrayList<>();
+    private static ArrayList<Socket> socketList = new ArrayList<>();
 
     private ArrayList<User> usersList = new ArrayList<>();
     private TreeMap<String, ArrayList<Task>> tasksList = new TreeMap<>();
@@ -45,7 +45,7 @@ public class ServerSceneController {
         this.usersList = usersList;
         this.tasksList = tasksList;
         this.serverSocket = serverSocket;
-        this.socketList = socketList;
+        ServerSceneController.socketList = socketList;
         observableList = FXCollections.observableArrayList(usersList);
 
         login.setCellValueFactory(new PropertyValueFactory<User, String>("login"));
@@ -117,5 +117,9 @@ public class ServerSceneController {
         User user = table.getSelectionModel().getSelectedItem();
         user.setAdmin("admin".equals(user.getAdmin()) ? "false" : "admin");
         table.refresh();
+    }
+
+    public static void rebutServer() {
+
     }
 }
