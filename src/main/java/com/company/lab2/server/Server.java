@@ -108,7 +108,7 @@ public class Server extends Application {
             BufferedReader bufferedReader = new BufferedReader(new FileReader(file));
             String str = bufferedReader.readLine();
             if (str != null && !str.equals("[]"))
-                adminList = (ArrayList<User>) Arrays.asList(gson.fromJson(str, User[].class));
+                adminList = new ArrayList<>(Arrays.asList(gson.fromJson(str, User[].class)));
         } catch (IOException e) {
             e.printStackTrace();
         }
