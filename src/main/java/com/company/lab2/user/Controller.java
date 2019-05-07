@@ -48,18 +48,27 @@ public class Controller extends Application {
     private static Thread connection;
     private static boolean whileCondition = true;
     private static Stage firstStage;
+    private static String host;//127.0.0.1
+    private static Integer port;//1488
 
     @Override
     public void start(Stage primaryStage) {
-        final String path = "/view/user/EnterForm.fxml";
-        final String header = "SignIn";
+        final String path = "/view/user/Connection.fxml";
+        final String header = "Connection";
         WindowMaker.makeWindow(path, header);
     }
 
     public static void main(String[] args) {
         connection = new Thread(() -> {
+            while (host == null || port == null) {
+                try {
+                    Thread.sleep(10);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
             try {
-                Socket client = new Socket("127.0.0.1", 1488);
+                Socket client = new Socket(host, port);
                 reader = new BufferedReader(new InputStreamReader(client.getInputStream()));
                 writer = new PrintWriter(client.getOutputStream());
                 while (whileCondition) {
@@ -391,6 +400,14 @@ public class Controller extends Application {
 
     public static String getAdminValue() {
         return adminValue;
+    }
+
+    public static void setHost(String host) {
+        Controller.host = host;
+    }
+
+    public static void setPort(Integer port) {
+        Controller.port = port;
     }
 }
 

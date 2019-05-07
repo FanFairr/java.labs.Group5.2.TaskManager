@@ -60,6 +60,24 @@ class ValidateController {
         });
     }
 
+    static void portValidate(TextField textField){
+        textField.textProperty().addListener((observable, oldValue, newValue) -> {
+            if (!newValue.matches("\\d{1,5}")){
+                Platform.runLater(textField::clear);
+            }
+        });
+        textField.setTooltip(new Tooltip("Server port"));
+    }
+
+    static void hostValidate(TextField host){
+        host.textProperty().addListener((observable, oldValue, newValue) -> {
+            if (!newValue.matches("[0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-5][0-5]")) {
+                Platform.runLater(host::clear);
+            }
+        });
+        host.setTooltip(new Tooltip("Server host"));
+    }
+
     /**Method for setting "00" in field if its empty
      * @param textField field to check on emptiness and set value
      */
