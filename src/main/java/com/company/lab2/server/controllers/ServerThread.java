@@ -47,10 +47,8 @@ public class ServerThread extends Thread {
             printWriter = new PrintWriter(socket.getOutputStream());
             SimpleDateFormat format = new SimpleDateFormat("HH:mm:ss dd-MM-yyyy");
             while (whileCondition) {
-                System.out.println("hi");
                 String response = in.readLine();
                 if (response != null && !response.isEmpty()) {
-                    System.out.println(response);
                     switch (response) {
                         case "Login:":
                             login = in.readLine();
@@ -65,7 +63,6 @@ public class ServerThread extends Thread {
                                         currentUser = user;
                                         if (user.getPassword().equals(password)) {
                                             synchronized (activeUsers) {
-                                                System.out.println(activeUsers.indexOf(user));
                                                 if (user.isBanned()) {
                                                     streamWrite("banned\n");
                                                     loginNotExist = false;
@@ -164,9 +161,13 @@ public class ServerThread extends Thread {
                             break;
 
                         case "isAdmin:":
-                            if (currentUser.getAdmin().equals("false"))
-                                streamWrite("isAdmin\nfalse\n");
-                            else streamWrite("isAdmin\ntrue\n");
+                            if (currentUser.getAdmin().equals("false")) {
+                                synchronized (adminList) {
+                                    if (adminList.contains(currentUser)) {
+                                        streamWrite("isAdmin\nfalse\nwaiting\n");
+                                    } else streamWrite("isAdmin\nfalse\nnotWaiting\n");
+                                }
+                            } else streamWrite("isAdmin\n"+currentUser.getAdmin()+"\n");
                             break;
 
                         case "Become adm:":
@@ -174,7 +175,6 @@ public class ServerThread extends Thread {
                             if (code.equals("123")) {
                                 synchronized (adminList) {
                                     if (!adminList.contains(currentUser)) {
-                                        currentUser.setAdmin("admin");
                                         adminList.add(currentUser);
                                         streamWrite("congratulations\n");
                                         break;
@@ -187,13 +187,17 @@ public class ServerThread extends Thread {
                                 int i = 3 - becomeAdmTry;
                                 streamWrite("wrong code\n"+ i + "\n");
                             }
-
-
                             break;
 
-                        case "AdminList:":
+                        case "UsersList:":
                             synchronized (adminList) {
-                                streamWrite("adminList\n" + gson.toJson(StringConverterController.convertUserList(usersList)) + "\n");
+                                streamWrite("usersList\n" + gson.toJson(StringConverterController.convertUserList(usersList)) + "\n");
+                            }
+                            break;
+
+                        case "AdminsList:":
+                            synchronized (adminList) {
+                                streamWrite("adminsList\n" + gson.toJson(StringConverterController.convertUserList(adminList)) + "\n");
                             }
                             break;
 
@@ -236,9 +240,12 @@ public class ServerThread extends Thread {
                                 newUser = StringConverterController.makeUserFromString(strUser);
                                 for (User user : usersList) {
                                     if (user.equals(newUser)){
-                                        System.out.println("ban");
-                                        user.setBanned(!newUser.isBanned());
-                                        break;
+                                        if (user.getAdmin().equals("SuperAdmin"))
+                                            break;
+                                        else {
+                                            user.setBanned(!newUser.isBanned());
+                                            break;
+                                        }
                                     }
                                 }
                             }
@@ -248,12 +255,15 @@ public class ServerThread extends Thread {
                             synchronized (usersList) {
                                 strUser = in.readLine();
                                 newUser = StringConverterController.makeUserFromString(strUser);
-                                System.out.println(newUser);
                                 for (User user : usersList) {
                                     if (user.equals(newUser)){
-                                        System.out.println("adm");
-                                        user.setAdmin("false".equals(newUser.getAdmin()) ? "admin" : "false");
-                                        break;
+                                        if (user.getAdmin().equals("SuperAdmin"))
+                                            break;
+                                        else {
+                                            adminList.remove(user);
+                                            user.setAdmin("false".equals(newUser.getAdmin()) ? "admin" : "false");
+                                            break;
+                                        }
                                     }
                                 }
                             }

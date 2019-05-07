@@ -28,9 +28,11 @@ public class Controller extends Application {
     private static String content;
     private static Boolean calendarIsEmpty;
     private static Boolean tParsed;
+    private static String adminValue;
     public final static Logger logger = Logger.getLogger(MainController.class);
     public static ObservableList<String> taskList;
     public static ObservableList<String> usersList;
+    public static ObservableList<String> adminsList;
     public static String tTitle;
     public static String tDate;
     public static String tActive;
@@ -41,6 +43,7 @@ public class Controller extends Application {
     public static SortedMap<Date, Set<String>> tCalendar;
     public static Date lastKey;
     public static int becomeAdmTry = 1;
+    public static String waiting4Adm;
 
     private static Thread connection;
     private static boolean whileCondition = true;
@@ -60,15 +63,11 @@ public class Controller extends Application {
                 reader = new BufferedReader(new InputStreamReader(client.getInputStream()));
                 writer = new PrintWriter(client.getOutputStream());
                 while (whileCondition) {
-                    System.out.println("hi");
                     String response = reader.readLine();
-                    System.out.println(response);
                     if (response != null && !response.isEmpty()) {
-                        System.out.println("here");
                         switch (response) {
                             case "connected":
                                 String list = reader.readLine();
-                                System.out.println(list);
                                 taskList = FXCollections.observableList(new Gson().fromJson(list, new TypeToken<ArrayList<String>>(){}.getType()));
                                 break;
                             case "task":
@@ -89,7 +88,6 @@ public class Controller extends Application {
                                 break;
                             case "calendar":
                                 String str = reader.readLine();
-                                System.out.println(str);
                                 if (str.equals("empty"))
                                     calendarIsEmpty = Boolean.TRUE;
                                 else {
@@ -107,10 +105,13 @@ public class Controller extends Application {
                                     calendarIsEmpty = Boolean.FALSE;
                                 }
                                 break;
-                            case "adminList":
+                            case "usersList":
                                 String users = reader.readLine();
                                 usersList = FXCollections.observableList(new Gson().fromJson(users, new TypeToken<ArrayList<String>>(){}.getType()));
-                                System.out.println(usersList.get(0).split("\n")[0]);
+                                break;
+                            case "adminsList":
+                                String admins = reader.readLine();
+                                adminsList = FXCollections.observableList(new Gson().fromJson(admins, new TypeToken<ArrayList<String>>(){}.getType()));
                                 break;
                             case "doneADCH":
                                 title = response;
@@ -141,7 +142,9 @@ public class Controller extends Application {
                                 content = "Good luck";
                                 break;
                             case "isAdmin":
-                                title = reader.readLine();
+                                adminValue = reader.readLine();
+                                if (adminValue.equals("false"))
+                                    waiting4Adm = reader.readLine();
                                 break;
                             case "wrong code":
                                 becomeAdmTry = Integer.parseInt(reader.readLine());
@@ -153,7 +156,7 @@ public class Controller extends Application {
                             case "congratulations":
                                 title = "Cool";
                                 header = "Congratulations";
-                                content = "You are admin now";
+                                content = "You are on waiting list to become admin";
                                 break;
                             case "already admin":
                                 title = "woops";
@@ -211,16 +214,22 @@ public class Controller extends Application {
     }
 
     public static boolean isAdmin() {
+        adminValue = null;
+        waiting4Adm = null;
         streamWrite("isAdmin:\n");
         boolean to_return;
         while (true) {
-            if(title != null) {
-                if(title.equals("true")) {
+            if(adminValue != null) {
+                if (adminValue.equals("admin") || adminValue.equals("SuperAdmin")) {
                     to_return = true;
                     break;
-                } else if (title.equals("false")) {
-                    to_return = false;
-                    break;
+                } else if (adminValue.equals("false")) {
+                    if (waiting4Adm != null) {
+                        if (waiting4Adm.equals("waiting") || waiting4Adm.equals("notWaiting")) {
+                            to_return = false;
+                            break;
+                        }
+                    }
                 }
             }
             try {
@@ -229,15 +238,26 @@ public class Controller extends Application {
                 e.printStackTrace();
             }
         }
-        title = null;
         return to_return;
     }
 
-    public static void getAdminPanelData() {
+    public static void getPanelData(String str) {
         usersList = null;
-        streamWrite("AdminList:\n");
-        while (true) {
+        adminsList = null;
+        boolean boo = false;
+        if (str.equals("UsersList:")) {
+            streamWrite("UsersList:\n");
+            boo = true;
+        }
+        if (str.equals("AdminsList:")) {
+            streamWrite("AdminsList:\n");
+            boo = true;
+        }
+        while (boo) {
             if (usersList != null) {
+                break;
+            }
+            if (adminsList != null) {
                 break;
             }
             try {
@@ -342,7 +362,8 @@ public class Controller extends Application {
     }
 
     public static void banned(String user) {
-        streamWrite("Banned:\n" + user + "\n");
+        if (user != null && user.length() > 20)
+            streamWrite("Banned:\n" + user + "\n");
     }
 
     public static void rebut() {
@@ -350,7 +371,8 @@ public class Controller extends Application {
     }
 
     public static void grantAdmin(String user) {
-        streamWrite("Adminka:\n" + user + "\n");
+        if (user != null && user.length() > 20)
+            streamWrite("Adminka:\n" + user + "\n");
     }
 
     private static void w84Response() {
@@ -365,6 +387,10 @@ public class Controller extends Application {
             }
         }
         MainController.notificationInterrupt();
+    }
+
+    public static String getAdminValue() {
+        return adminValue;
     }
 }
 

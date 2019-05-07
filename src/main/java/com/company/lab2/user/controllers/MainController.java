@@ -47,21 +47,25 @@ public class MainController {
 
         adminBtn.setOnAction(event -> {
             if (Controller.isAdmin()) {
-                Controller.getAdminPanelData();
+                Controller.getPanelData("UsersList:");
                 final String path = "/view/user/AdminPanel.fxml";
-                final String header = "AdminPanel";
+                final String header = "Admin Panel";
                 WindowMaker.makeWindow(path, header);
             } else {
-                if (Controller.becomeAdmTry == 0) {
-                    adminBtn.setText("Exit");
-                    adminBtn.setOnAction(actionEvent -> {
-                        alarm.interrupt();
-                        Controller.interrupt();
-                    });
-                } else {
-                    final String path = "/view/user/BecomeAdmin.fxml";
-                    final String header = "BecomeAdmin";
-                    WindowMaker.makeWindow(path, header);
+                if (Controller.waiting4Adm.equals("waiting")) {
+                    WindowMaker.alertWindowInf("Waite", "You are in waiting list now", "Waite till SuperAdmin make you administrator");
+                } else if (Controller.waiting4Adm.equals("notWaiting")) {
+                    if (Controller.becomeAdmTry == 0) {
+                        adminBtn.setText("Exit");
+                        adminBtn.setOnAction(actionEvent -> {
+                            alarm.interrupt();
+                            Controller.interrupt();
+                        });
+                    } else {
+                        final String path = "/view/user/BecomeAdmin.fxml";
+                        final String header = "BecomeAdmin";
+                        WindowMaker.makeWindow(path, header);
+                    }
                 }
             }
         });
