@@ -31,12 +31,12 @@ public class AdminPanelController {
         banBtn.setOnAction(event -> {
             Controller.banned(user);
             Controller.getAdminPanelData();
-            usersList.refresh();
+            usersList.setItems(Controller.usersList);
         });
         grantBtn.setOnAction(event -> {
             Controller.grantAdmin(user);
             Controller.getAdminPanelData();
-            usersList.refresh();
+            usersList.setItems(Controller.usersList);
         });
     }
 
