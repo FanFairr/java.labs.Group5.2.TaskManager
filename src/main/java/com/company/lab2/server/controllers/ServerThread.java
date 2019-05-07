@@ -15,14 +15,10 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 
 public class ServerThread extends Thread {
-    private Socket socket = null;
+    private Socket socket;
     private PrintWriter printWriter;
-
-    private Gson gson = new Gson();
-    private String login;
-    private boolean whileCondition = true;
     private User currentUser;
-    private int becomeAdmTry;
+    private String login;
 
     private final ArrayList<User> usersList;
     private final TreeMap<String, ArrayList<Task>> tasksList;
@@ -41,6 +37,12 @@ public class ServerThread extends Thread {
     @Override
     public void run() {
         try {
+            int becomeAdmTry = 0;
+            boolean whileCondition = true;
+            String strUser;
+            User newUser;
+            Gson gson = new Gson();
+
             BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             printWriter = new PrintWriter(socket.getOutputStream());
             SimpleDateFormat format = new SimpleDateFormat("HH:mm:ss dd-MM-yyyy");
@@ -191,8 +193,7 @@ public class ServerThread extends Thread {
 
                         case "AdminList:":
                             synchronized (adminList) {
-                                String list = gson.toJson(adminList);
-                                streamWrite("Spisok adminov:\n" + list + "\n");
+                                streamWrite("adminList\n" + gson.toJson(StringConverterController.convertUserList(usersList)) + "\n");
                             }
                             break;
 
@@ -231,17 +232,30 @@ public class ServerThread extends Thread {
 
                         case "Banned:":
                             synchronized (usersList) {
-                                String user = in.readLine();
-                                User user1 = usersList.get(usersList.indexOf(gson.fromJson(user, User.class)));
-                                user1.setBanned(!user1.isBanned());
+                                strUser = in.readLine();
+                                newUser = StringConverterController.makeUserFromString(strUser);
+                                for (User user : usersList) {
+                                    if (user.equals(newUser)){
+                                        System.out.println("ban");
+                                        user.setBanned(!newUser.isBanned());
+                                        break;
+                                    }
+                                }
                             }
                             break;
 
                         case "Adminka:":
                             synchronized (usersList) {
-                                String user = in.readLine();
-                                User user1 = usersList.get(usersList.indexOf(gson.fromJson(user, User.class)));
-                                user1.setAdmin("false".equals(user1.getAdmin()) ? "admin" : "false");
+                                strUser = in.readLine();
+                                newUser = StringConverterController.makeUserFromString(strUser);
+                                System.out.println(newUser);
+                                for (User user : usersList) {
+                                    if (user.equals(newUser)){
+                                        System.out.println("adm");
+                                        user.setAdmin("false".equals(newUser.getAdmin()) ? "admin" : "false");
+                                        break;
+                                    }
+                                }
                             }
                             break;
 
@@ -280,7 +294,7 @@ public class ServerThread extends Thread {
     }
 
     private void streamWrite(String write) {
-        printWriter.write(write);
+        printWriter.print(write);
         printWriter.flush();
     }
 }

@@ -47,8 +47,9 @@ public class MainController {
 
         adminBtn.setOnAction(event -> {
             if (Controller.isAdmin()) {
-                final String path = "/view/user/ServerScene.fxml";
-                final String header = "Account";
+                Controller.getAdminPanelData();
+                final String path = "/view/user/AdminPanel.fxml";
+                final String header = "AdminPanel";
                 WindowMaker.makeWindow(path, header);
             } else {
                 if (Controller.becomeAdmTry == 0) {

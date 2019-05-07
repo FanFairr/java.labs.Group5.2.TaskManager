@@ -36,4 +36,34 @@ public class User {
     public void setBanned(boolean banned) {
         this.banned = banned;
     }
+
+    @Override
+    public String toString() {
+        return "Login: '" + login +
+                "', password: '" + password +
+                "', banned: " + banned +
+                ", admin: '" + admin + '\'';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof User)) return false;
+
+        User user = (User) o;
+
+        if (isBanned() != user.isBanned()) return false;
+        if (!getLogin().equals(user.getLogin())) return false;
+        if (!getPassword().equals(user.getPassword())) return false;
+        return getAdmin().equals(user.getAdmin());
+    }
+
+    @Override
+    public int hashCode() {
+        int result = getLogin().hashCode();
+        result = 31 * result + getPassword().hashCode();
+        result = 31 * result + (isBanned() ? 1 : 0);
+        result = 31 * result + getAdmin().hashCode();
+        return result;
+    }
 }

@@ -20,18 +20,15 @@ public class ConfirmController {
     @FXML
     private Label label;
     private Stage confirmStage;
-    private static boolean exit;
 
     @FXML
     void initialize() {
         confirmStage = WindowMaker.getStage();
-        if (confirmStage.getTitle().matches("Confirm exit")) {
+        /*if (confirmStage.getTitle().matches("Confirm exit")) {
             label.setText("Exit without saving changes?");
-            Confirm.setOnAction(event -> {
-                exit = true;
-                WindowMaker.closeWindow(confirmStage);
-            });
-        } else if (confirmStage.getTitle().matches("Confirm deleting")){
+            Confirm.setOnAction(event -> WindowMaker.closeWindow(confirmStage));
+        } else*/
+        if (confirmStage.getTitle().matches("Confirm deleting")){
             label.setText("Remove " + Controller.tTitle);
             Confirm.setOnAction(event -> {
                 Controller.deleteTask(MainController.getTask());

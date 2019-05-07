@@ -1,6 +1,7 @@
 package com.company.lab2.server.controllers;
 
 import com.company.lab2.server.model.Task;
+import com.company.lab2.server.model.User;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -21,6 +22,23 @@ public class StringConverterController {
         }
         return TaskList;
     }
+
+    static ObservableList<String> convertUserList(ArrayList<User> userList) {
+        ObservableList<String> list = FXCollections.observableArrayList();
+        for (User user: userList) {
+            list.add(user.toString());
+        }
+        return list;
+    }
+
+    static User makeUserFromString (String strUser) {
+        String login = getLogin(strUser);
+        String pw = getPassword(strUser);
+        String ban = getBanned(strUser);
+        String adm = getAdmin(strUser);
+        return new User(login,pw,Boolean.valueOf(ban),adm);
+    }
+
 
     static Task makeTaskFromString (String strTask) {
         String title = getTitle(strTask);
@@ -54,6 +72,23 @@ public class StringConverterController {
             task.setActive(getActive(strTask));
             return task;
         }
+    }
+
+    private static String getLogin(String str) {
+        String string = str.replace("Login: '","");
+        return string.substring(0, string.indexOf("',"));
+    }
+    private static String getPassword(String str) {
+        String string = str.replaceAll(".+password: '","");
+        return string.substring(0, string.indexOf("',"));
+    }
+    private static String getBanned(String str) {
+        String string = str.replaceAll(".+banned: ","");
+        return string.substring(0, string.indexOf(", "));
+    }
+    private static String getAdmin(String str) {
+        String string = str.replaceAll(".+admin: '","");
+        return string.substring(0, string.indexOf("'"));
     }
 
     private static String getTitle(String str) {

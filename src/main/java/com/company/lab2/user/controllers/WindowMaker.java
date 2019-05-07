@@ -46,7 +46,7 @@ public class WindowMaker {
      * @param header header of window
      * @param contentText content text
      */
-    public static void alertWindowWarning(String title, String header, String contentText) {
+    static void alertWindowWarning(String title, String header, String contentText) {
         Alert alert = new Alert(Alert.AlertType.WARNING);
         alert.setTitle(title);
         alert.setHeaderText(header);

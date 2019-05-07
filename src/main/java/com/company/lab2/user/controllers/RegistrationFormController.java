@@ -55,7 +55,7 @@ public class RegistrationFormController {
             } else {
                 alertMade = false;
                 EnterFormController.logIn = login.getText();
-                Controller.registration(login.getText(), name.getText(), password.getText());
+                Controller.registration(login.getText(), password.getText());
             }
             if (alertMade)
                 WindowMaker.alertWindowWarning(alertTitle, alertHeader, alertText);

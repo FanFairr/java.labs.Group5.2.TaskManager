@@ -23,7 +23,7 @@ import java.util.TreeMap;
  *
  */
 public class ServerSceneController {
-    private ObservableList<User> observableList;
+    private static ObservableList<User> observableList;
     private ServerSocket serverSocket;
     private static ArrayList<Socket> socketList = new ArrayList<>();
 

@@ -107,6 +107,11 @@ public class Controller extends Application {
                                     calendarIsEmpty = Boolean.FALSE;
                                 }
                                 break;
+                            case "adminList":
+                                String users = reader.readLine();
+                                usersList = FXCollections.observableList(new Gson().fromJson(users, new TypeToken<ArrayList<String>>(){}.getType()));
+                                System.out.println(usersList.get(0).split("\n")[0]);
+                                break;
                             case "doneADCH":
                                 title = response;
                                 break;
@@ -174,7 +179,7 @@ public class Controller extends Application {
         connection.interrupt();
     }
 
-    public static void registration(String login, String name, String password) {
+    public static void registration(String login, String password) {
         streamWrite("Registration:\n" + login + "\n" + password + "\n");
         Platform.runLater(Controller::runMain);
     }
@@ -205,7 +210,6 @@ public class Controller extends Application {
         w84Response();
     }
 
-
     public static boolean isAdmin() {
         streamWrite("isAdmin:\n");
         boolean to_return;
@@ -227,6 +231,21 @@ public class Controller extends Application {
         }
         title = null;
         return to_return;
+    }
+
+    public static void getAdminPanelData() {
+        usersList = null;
+        streamWrite("AdminList:\n");
+        while (true) {
+            if (usersList != null) {
+                break;
+            }
+            try {
+                Thread.sleep(10);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     public static void becomeAdmin(String code) {
@@ -330,21 +349,7 @@ public class Controller extends Application {
         streamWrite("Rebut:\n");
     }
 
-    /*public static ObservableList<String> getUsers() {
-        streamWrite("Users list:\n");
-        while (true) {
-            try {
-                String users = reader.readLine();
-                System.out.println(users);
-                break;
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-        return usersList;
-    }*/
-
-    public static void admin(String user) {
+    public static void grantAdmin(String user) {
         streamWrite("Adminka:\n" + user + "\n");
     }
 

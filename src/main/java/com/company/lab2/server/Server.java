@@ -65,9 +65,11 @@ public class Server extends Application {
 
                         try {
                             for (Socket socket : socketList) {
-                                PrintWriter printWriter = new PrintWriter(socket.getOutputStream());
-                                printWriter.println("Exit");
-                                printWriter.flush();
+                                if (!socket.isClosed()){
+                                    PrintWriter printWriter = new PrintWriter(socket.getOutputStream());
+                                    printWriter.println("Exit");
+                                    printWriter.flush();
+                                }
                             }
                         } catch (IOException e) {
                             e.printStackTrace();

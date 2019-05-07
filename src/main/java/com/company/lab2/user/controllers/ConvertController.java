@@ -6,7 +6,7 @@ import javafx.scene.control.TextField;
 import java.time.ZoneId;
 import java.util.Date;
 
-public class ConvertController {
+class ConvertController {
 
 
 

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<AnchorPane prefHeight="302.0" prefWidth="444.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.company.lab2.user.controllers.AdminPanelController">
+    <children>
+        <Label alignment="CENTER" layoutY="4.0" prefHeight="31.0" prefWidth="444.0" text="Admin Panel" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+            <font>
+                <Font size="16.0" />
+            </font></Label>
+      <ListView fx:id="usersList" layoutY="39.0" prefHeight="200.0" prefWidth="444.0" />
+        <Button fx:id="rebutBtn" layoutX="14.0" layoutY="254.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="106.0" text="Rebut" />
+        <Button fx:id="banBtn" layoutX="169.0" layoutY="254.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="106.0" text="ban/unban" />
+        <Button fx:id="grantBtn" layoutX="324.0" layoutY="254.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="106.0" text="admin" />
+    </children>
+</AnchorPane>
