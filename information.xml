@@ -164,7 +164,7 @@
 <active value="false"/>
 </task>
 </user>
-<user grantAdmin="admin" isBanned="true" login="asd" password="asd">
+<user grantAdmin="admin" isBanned="false" login="asd" password="asd">
 <task>
 <title value="asd"/>
 <time value="2019-05-04/11:27:00"/>

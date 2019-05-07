@@ -64,7 +64,9 @@ public class ServerSceneController {
                     printWriter.println("Exit");
                     printWriter.flush();
                 }
+                socketList.clear();
             }
+
         } catch (IOException e) {
             e.printStackTrace();
         }

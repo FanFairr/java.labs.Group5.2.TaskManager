@@ -262,6 +262,17 @@ public class ServerThread extends Thread {
                         case "Rebut:":
                             ServerSceneController controller = new ServerSceneController();
                             controller.rebut(null);
+
+                            synchronized (activeUsers) {
+                                for (User user : usersList) {
+                                    if (user.getLogin().equals(login)) {
+                                        activeUsers.remove(user);
+                                        break;
+                                    }
+                                }
+                            }
+
+                            whileCondition = false;
                             break;
 
                         case "Exit:":
@@ -270,7 +281,6 @@ public class ServerThread extends Thread {
                                     tasksList.put(login, taskArrayList);
                             }
                             socket.close();
-                            whileCondition = false;
                             synchronized (activeUsers) {
                                 for (User user : usersList) {
                                     if (user.getLogin().equals(login)) {
