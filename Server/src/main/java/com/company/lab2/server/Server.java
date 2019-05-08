@@ -33,7 +33,7 @@ public class Server extends Application {
     private static ArrayList<User> adminList = new ArrayList<>();
 
     @Override
-    public void start(Stage primaryStage) throws Exception {
+    public void start(Stage primaryStage) throws Exception{
 
         FXMLLoader fxmlLoader = new FXMLLoader();
         fxmlLoader.setLocation(getClass().getResource("/view/server/ServerScene.fxml"));

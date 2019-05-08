@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.company.lab2.user.controllers.MainController">
+   <children>
+      <Button fx:id="addBtn" alignment="CENTER" layoutX="180.0" layoutY="453.0" mnemonicParsing="false" prefWidth="75.0" text="Add Task">
+         <font>
+            <Font name="Arial" size="13.0" />
+         </font></Button>
+      <Button fx:id="makeClBtn" layoutX="295.0" layoutY="453.0" mnemonicParsing="false" prefWidth="110.0" text="Make Calendar">
+         <font>
+            <Font name="Arial" size="13.0" />
+         </font></Button>
+      <ListView fx:id="taskListView" layoutX="75.0" layoutY="84.0" maxHeight="350.0" maxWidth="550.0" prefHeight="350.0" prefWidth="550.0" AnchorPane.bottomAnchor="66.0" AnchorPane.leftAnchor="75.0" AnchorPane.rightAnchor="75.0" AnchorPane.topAnchor="84.0" />
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutY="-7.0" prefHeight="60.0" prefWidth="700.0" style="-fx-background-color: #008080;" text="Task Manager" textAlignment="CENTER" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-7.0">
+         <font>
+            <Font name="Times New Roman" size="30.0" />
+         </font>
+      </Label>
+      <Button fx:id="adminBtn" alignment="CENTER" layoutX="445.0" layoutY="453.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="75.0" text="Admin" textAlignment="CENTER">
+         <font>
+            <Font name="Arial" size="13.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

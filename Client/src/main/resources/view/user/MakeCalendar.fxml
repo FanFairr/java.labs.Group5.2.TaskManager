@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+<AnchorPane fx:id="Search" prefHeight="225.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.company.lab2.user.controllers.MakeCalendarController">
+<children>
+    <Button fx:id="SearchBtn" layoutX="115.0" layoutY="178.0" mnemonicParsing="false" prefWidth="65.0" text="Search">
+         <font>
+            <Font name="Arial" size="13.0" />
+         </font></Button>
+      <Label alignment="CENTER" prefHeight="60.0" prefWidth="400.0" style="-fx-background-color: #008080;" text="Calendar" textAlignment="CENTER" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+          <font>
+              <Font name="Times New Roman" size="30.0" />
+          </font>
+      </Label>
+      <HBox layoutX="21.0" layoutY="87.0" prefHeight="33.0" prefWidth="358.0">
+         <children>
+          <Label prefHeight="25.0" prefWidth="38.0" text="From" />
+            <TextField fx:id="fromH" alignment="CENTER" prefHeight="25.0" prefWidth="33.0" promptText="hh">
+               <HBox.margin>
+                  <Insets left="15.0" right="3.0" />
+               </HBox.margin>
+            </TextField>
+            <Label prefHeight="25.0" prefWidth="0.0" text=":" />
+            <TextField fx:id="fromM" alignment="CENTER" prefHeight="25.0" prefWidth="35.0" promptText="mm">
+               <HBox.margin>
+                  <Insets left="3.0" right="3.0" />
+               </HBox.margin>
+            </TextField>
+            <Label prefHeight="25.0" text=":" />
+            <TextField fx:id="fromS" alignment="CENTER" prefHeight="25.0" prefWidth="34.0" promptText="ss">
+               <HBox.margin>
+                  <Insets left="3.0" />
+               </HBox.margin>
+            </TextField>
+            <DatePicker fx:id="From" prefHeight="25.0" prefWidth="153.0" promptText="From">
+               <HBox.margin>
+                  <Insets left="20.0" />
+               </HBox.margin>
+            </DatePicker>
+         </children>
+      </HBox>
+      <HBox layoutX="21.0" layoutY="126.0" prefHeight="33.0" prefWidth="358.0">
+         <children>
+            <Label prefHeight="25.0" prefWidth="38.0" text="To" />
+            <TextField fx:id="toH" alignment="CENTER" prefHeight="25.0" prefWidth="33.0" promptText="hh">
+               <HBox.margin>
+                  <Insets left="15.0" right="3.0" />
+               </HBox.margin>
+            </TextField>
+            <Label prefHeight="25.0" prefWidth="0.0" text=":" />
+            <TextField fx:id="toM" alignment="CENTER" prefHeight="25.0" prefWidth="35.0" promptText="mm">
+               <HBox.margin>
+                  <Insets left="3.0" right="3.0" />
+               </HBox.margin>
+            </TextField>
+            <Label prefHeight="25.0" text=":" />
+            <TextField fx:id="toS" alignment="CENTER" prefHeight="25.0" prefWidth="34.0" promptText="ss">
+               <HBox.margin>
+                  <Insets left="3.0" />
+               </HBox.margin>
+            </TextField>
+            <DatePicker fx:id="To" prefHeight="25.0" prefWidth="153.0" promptText="To">
+               <HBox.margin>
+                  <Insets left="20.0" />
+               </HBox.margin>
+            </DatePicker>
+         </children>
+      </HBox>
+      <Button fx:id="CloseBtn" layoutX="220.0" layoutY="178.0" mnemonicParsing="false" prefWidth="65.0" text="Close">
+         <font>
+            <Font name="Arial" size="13.0" />
+         </font>
+      </Button>
+</children>
+</AnchorPane>
