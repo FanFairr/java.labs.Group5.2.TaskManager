@@ -6,21 +6,28 @@ import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-/** класс задачи**/
+/** task class */
 public class Task implements Cloneable, Serializable {
 
+    /** task title */
     private String title;
+    /** task time */
     private Date time;
+    /** task start time */
     private Date startTime;
+    /** task end time */
     private Date endTime;
+    /** task repeat interval */
     private int repeatInterval;
+    /** task active status */
     private boolean active;
 
-    /**конструює неактивну задачу,
-     *яка виконується у заданий час
-     *без повторення із заданою назвою
-     *@param title заголовок
-     *@param time час
+    /**
+     * constructs an inactive task that runs
+     * at a given time without
+     * repeating with a given name
+     *@param title task title
+     *@param time task time
      **/
     public Task(String title, Date time) {
         this.title = title;
@@ -29,34 +36,29 @@ public class Task implements Cloneable, Serializable {
         } else this.time = (Date) time.clone();
     }
 
-    /**конструює неактивну задачу,
-     *що виконується у заданому
-     *проміжку часу
-     *(і початок і кінець включно)
-     *із заданим інтервалом
-     *і має задану назву.
+    /**
+     * constructs an inactive task that runs
+     * at a given start and end time with
+     * repeating with a given name
      *@throws IllegalArgumentException
-     *интервал поторения задачи должен
-     *быть не null!!.
+     * task repetition interval should not be null
      *@throws IllegalArgumentException
-     *Время начала и конца выполнения задачи
-     *должны быть не меньше ноля и время
-     *конца выполнения задачи должно быть
-     *больше времени начала интервал
-     *@param title заголовок
-     *@param start початок
-     *@param end кінець
-     *@param interval інтервал
+     * The start and end time of the task must be
+     * at least zero and the end time of
+     * the task must be greater than the start time
+     *@param title task title
+     *@param start task start time
+     *@param end task end time
+     *@param interval task repeat interval
      **/
     public Task(String title, Date start, Date end, int interval)
             throws IllegalArgumentException {
         if (interval <= 0) {
-            throw new IllegalArgumentException("интервал поторения задачи должен быть больше ноля!!");
+            throw new IllegalArgumentException("task repetition interval must be greater than zero!!");
         } else if (start == null || end == null || end.getTime() < start.getTime() + interval * 1000) {
-            throw new IllegalArgumentException("Время начала и "
-                    + "конца выполнения задачи должны быть не null "
-                    + "и время конца выполнения задачи должно быть "
-                    + "больше времени начала + интервал");
+            throw new IllegalArgumentException("The start and end time of the task must be "
+                    + "at least zero and the end time of "
+                    + "the task must be greater than the start time");
         } else {
             this.title = title;
             this.time = null;
@@ -66,39 +68,44 @@ public class Task implements Cloneable, Serializable {
         }
     }
 
-    /**Метод для зчитування назви задачі
-     *active title
-     *@return title**/
+    /**
+     * Method for reading the task title
+     *@return task title
+     */
     public String getTitle() {
         return title;
     }
 
-    /**Метод для встановлення назви задачі
-     *@param title заголовок
-     **/
+    /**
+     * Method for setting the task name
+     *@param title task title
+     */
     public void setTitle(String title) {
         this.title = title;
     }
 
-    /**Метод для зчитування стану задачі
-     *@return active**/
+    /**
+     * Method for reading the state of the task
+     *@return task active status
+     */
     public boolean isActive() {
         return active;
     }
 
-    /**Метод для встановлення стану задачі
-     *@param active стан
+    /**
+     * Method for determining the status of a task
+     *@param active task active status
      **/
     public void setActive(boolean active) {
         this.active = active;
     }
 
-    /**Метод для зчитування часу
-     *виконання для задач, що не повторюються,
-     *у разі, якщо задача повторюється
-     *метод має повертати
-     *час початку повторення
-     *@return time
+    /**
+     * A method for reading execution time
+     * for non-repetitive tasks, if the
+     * task repeats the method,
+     * returns the start time of the repetition
+     *@return task time
      **/
     public Date getTime() {
         if (repeatInterval > 0) {
@@ -108,11 +115,11 @@ public class Task implements Cloneable, Serializable {
         }
     }
 
-    /**Метод для зміни часу виконання
-     *для задач, що не повторюються, у разі,
-     *якщо задача повторювалась,
-     *вона має стати такою, що не повторюється.
-     *@param time час виконання задачі
+    /**
+     * A method for changing the execution time
+     * for non-repetitive tasks, if the task
+     * is repeated, it should become non repetitive
+     *@param time task time
      **/
     public void setTime(Date time) {
         repeatInterval = 0;
@@ -121,11 +128,12 @@ public class Task implements Cloneable, Serializable {
         this.time = (Date) time.clone();
     }
 
-    /**Метод для зчитування часу початку
-     *виконання для задач, що повторюються..
-     *у разі, якщо задача не
-     *повторюється метод
-     *має повертати час виконання задачі.
+    /**
+     * A method for reading start-up times
+     * for repetitive tasks ..
+     * if the task is not repeated,
+     * the method must return
+     * the execution time of the task.
      *@return time or startTime
      **/
     public Date getStartTime() {
@@ -136,12 +144,14 @@ public class Task implements Cloneable, Serializable {
         }
     }
 
-    /**Метод для зчитування часу кінця
-     *виконання для задач, що повторюються..
-     *у разі, якщо задача не
-     *повторюється метод
-     *має повертати час виконання задачі.
-     *@return time or endTime**/
+    /**
+     * A method for reading end-time
+     * execution for repetitive tasks..
+     * if the task is not repeated,
+     * the method should return
+     * the execution time of the task
+     *@return time or endTime
+     */
     public Date getEndTime() {
         if (repeatInterval == 0) {
             return time;
@@ -150,34 +160,36 @@ public class Task implements Cloneable, Serializable {
         }
     }
 
-    /**Метод для зчитування часу
-     *повторення виконання для задач,
-     *що повторюються.. у разі, якщо
-     *задача не повторюється повертає 0.
-     *@return repeatInterval**/
+    /**
+     * A method for reading repetitive
+     * execution times for repetitive tasks..
+     * if the task does not repeat it returns 0
+     *@return repeatInterval
+     */
     public int getRepeatInterval() {
         return repeatInterval;
     }
 
-    /**Метод для зміни часу виконання
-     *для задач, що повторюються.. у разі,
-     *якщо задача не повторювалася
-     *воня має стати такою, що повторюється.
-     @throws IllegalArgumentException якщо
-      *інтервал повтору задачі <=0.
-     @param start початок
-     @param end кінець
-     @param interval інтевал
+    /**
+     * A method for changing the execution
+     * time for repetitive tasks ..
+     * if the task is not repeated,
+     * the quench should become repetitive
+     *@throws IllegalArgumentException
+     * if the repetition interval of the task <= 0.
+     *@param start task start time
+     *@param end task end time
+     *@param interval task interval
      **/
     public void setTime(Date start, Date end, int interval)
             throws IllegalArgumentException {
         if (interval <= 0) {
-            throw new IllegalArgumentException("интервал повторения задачи должен быть больше ноля!!");
+            throw new IllegalArgumentException("task repetition interval must be greater than zero!!");
         }else if (start == null || end == null || end.getTime() < start.getTime() + interval) {
-            throw new IllegalArgumentException("Время начала и "
-                    + "конца выполнения задачи должны быть не null "
-                    + "и время конца выполнения задачи должно быть "
-                    + "больше времени начала + интервал");
+            throw new IllegalArgumentException("The start and end time "
+                    + "of the task should not be null "
+                    + "and the end time of the task should"
+                    + "be greater than the start time + interval");
         } else {
             repeatInterval = interval;
             startTime = (Date) start.clone();
@@ -186,21 +198,23 @@ public class Task implements Cloneable, Serializable {
         }
     }
 
-    /**Метод для перевірки повторюваності
-     *задачі
-     *@return boolean**/
+    /**
+     * Method for checking the repetition of a task
+     *@return the repetition of a task
+     */
     public boolean isRepeated() {
         return repeatInterval != 0;
     }
 
-    /**повертає час наступного виконання
-     *задачі після вказаного часу current,
-     *якщо після вказаного часу задача не
-     *виконується, то метод має повертати -1.
-     *@param current указаний час
+    /**
+     * returns the next time the task is executed
+     * after the specified current time,
+     * if the task is not executed after the specified time,
+     * then the method has to rotate -1
+     *@param current specified time
      *@return time or null
      **/
-    public Date nextTimeAfter(Date current) {
+    Date nextTimeAfter(Date current) {
         if (active) {
             if (this.isRepeated()) {
                 if (startTime.getTime() <= current.getTime() && current.getTime() <= endTime.getTime()) {
@@ -231,11 +245,12 @@ public class Task implements Cloneable, Serializable {
     }
 
 
-    /** метод, що порівнюе задачі
-     *і повертає істину, якщо така
-     *задачі однакові.
-     *@param o объект типа Object
-     *@return boolean**/
+    /**
+     * a method that compares the task and
+     * returns the truth if the tasks are the same
+     *@param o Object of type Object
+     *@return the truth if the tasks are the same
+     */
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -251,8 +266,10 @@ public class Task implements Cloneable, Serializable {
         return endTime != null ? endTime.equals(task.endTime) : task.endTime == null;
     }
 
-    /** метод, що повертає хешкод задачі.
-     *@return значення хешКода**/
+    /**
+     * method returning the hash task code
+     *@return the value of the hash code
+     */
     @Override
     public int hashCode() {
         int result = title != null ? title.hashCode() : 0;
@@ -263,9 +280,11 @@ public class Task implements Cloneable, Serializable {
         result = 31 * result + (active ? 1 : 0);
         return result;
     }
-    /** метод, що повертає строку значень
-     * полів данного об'єкту.
-     *@return String**/
+
+    /**
+     * a method that returns the value field of a given object.
+     *@return task information
+     */
     @Override
     public String toString() {
         SimpleDateFormat format = new SimpleDateFormat("HH:mm:ss dd-MM-yyyy");

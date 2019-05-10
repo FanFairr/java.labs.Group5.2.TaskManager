@@ -11,6 +11,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import org.apache.log4j.Logger;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -20,14 +21,21 @@ import java.util.ArrayList;
 import java.util.TreeMap;
 
 /**
- *
+ * class for working with events of the "ServerScene" window
  */
 public class ServerSceneController {
+    private Logger logger = Logger.getLogger(ServerSceneController.class);
+
+    /** list of clients */
     private static ObservableList<User> observableList;
+    /** server socket */
     private ServerSocket serverSocket;
+    /** client socket list */
     private static ArrayList<Socket> socketList = new ArrayList<>();
 
+    /** list of clients */
     private ArrayList<User> usersList = new ArrayList<>();
+    /** information of client tasks */
     private TreeMap<String, ArrayList<Task>> tasksList = new TreeMap<>();
 
     @FXML
@@ -41,6 +49,13 @@ public class ServerSceneController {
     @FXML
     private TableColumn admin;
 
+    /**
+     * method for initializing components
+     * @param usersList - list of clients
+     * @param tasksList - information of client tasks
+     * @param serverSocket - server socket
+     * @param socketList - client socket list
+     */
     public void setParams(ArrayList<User> usersList, TreeMap<String, ArrayList<Task>> tasksList, ServerSocket serverSocket, ArrayList<Socket> socketList) {
         this.usersList = usersList;
         this.tasksList = tasksList;
@@ -56,6 +71,10 @@ public class ServerSceneController {
         table.setItems(observableList);
     }
 
+    /**
+     * server reboot event handler
+     * @param actionEvent - action event
+     */
     public void rebut(ActionEvent actionEvent) {
         try {
             synchronized (socketList) {
@@ -68,16 +87,24 @@ public class ServerSceneController {
             }
 
         } catch (IOException e) {
-            e.printStackTrace();
+            logger.error("class ServerSceneController line 90 Error when working with sockets");
         }
     }
 
+    /**
+     * event handler - client's ban
+     * @param actionEvent - action event
+     */
     public void banUnban(ActionEvent actionEvent) {
         User user = table.getSelectionModel().getSelectedItem();
         user.setBanned(!user.isBanned());
         table.refresh();
     }
 
+    /**
+     * event handler - server shutdown
+     * @param actionEvent - action event
+     */
     public void exit(ActionEvent actionEvent) {
         synchronized (tasksList){
             synchronized (usersList) {
@@ -93,13 +120,13 @@ public class ServerSceneController {
                         }
                     }
                 } catch (IOException e) {
-                    e.printStackTrace();
+                    logger.error("class ServerSceneController line 123 Error when working with sockets");
                 }
 
                 try {
                     Thread.sleep(5000);
                 } catch (InterruptedException e) {
-                    e.printStackTrace();
+                    logger.error("class ServerSceneController line 129 Error while working with thread");
                 }
                 Platform.exit();
                 System.exit(0);
@@ -107,6 +134,10 @@ public class ServerSceneController {
         }
     }
 
+    /**
+     * event handler - update table
+     * @param actionEvent - action event
+     */
     public void refresh(ActionEvent actionEvent) {
         synchronized (usersList) {
             observableList.clear();
@@ -115,13 +146,13 @@ public class ServerSceneController {
         }
     }
 
+    /**
+     * event handler - giving the admin rights
+     * @param actionEvent - action event
+     */
     public void adminka(ActionEvent actionEvent) {
         User user = table.getSelectionModel().getSelectedItem();
         user.setAdmin("admin".equals(user.getAdmin()) ? "false" : "admin");
         table.refresh();
-    }
-
-    public static void rebutServer() {
-
     }
 }

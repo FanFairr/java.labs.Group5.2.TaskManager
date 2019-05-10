@@ -8,12 +8,11 @@ import com.company.lab2.server.model.User;
 import com.google.gson.Gson;
 import javafx.application.Application;
 import javafx.application.Platform;
-import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import javafx.stage.WindowEvent;
+import org.apache.log4j.Logger;
 
 import java.io.*;
 import java.net.ServerSocket;
@@ -24,12 +23,21 @@ import java.util.LinkedList;
 import java.util.TreeMap;
 
 public class Server extends Application {
+    /** logger */
+    private static Logger logger = Logger.getLogger(Server.class);
+
+    /** server socket */
     private static ServerSocket serverSocket;
+    /** clients socket list */
     private static ArrayList<Socket> socketList = new ArrayList<>();
 
+    /** active users list */
     private static LinkedList<User> activeUsers = new LinkedList<>();
+    /** users list */
     private final static ArrayList<User> usersList = new ArrayList<>();
+    /** information of client tasks */
     private final static TreeMap<String, ArrayList<Task>> tasksList = new TreeMap<>();
+    /** a list of customers that want to get the admin rights */
     private static ArrayList<User> adminList = new ArrayList<>();
 
     @Override
@@ -46,38 +54,35 @@ public class Server extends Application {
         primaryStage.setResizable(false);
         primaryStage.show();
 
-        primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
-            @Override
-            public void handle(WindowEvent t) {
-                Gson gson = new Gson();
-                synchronized (tasksList){
-                    synchronized (usersList) {
-                        TaskIO readerWriter = new TaskIO();
-                        readerWriter.writeData(tasksList, usersList);
+        primaryStage.setOnCloseRequest(t -> {
+            Gson gson = new Gson();
+            synchronized (tasksList){
+                synchronized (usersList) {
+                    TaskIO readerWriter = new TaskIO();
+                    readerWriter.writeData(tasksList, usersList);
 
-                        try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("adminka.txt"))) {
-                            synchronized (adminList) {
-                                bufferedWriter.write(gson.toJson(adminList));
-                            }
-                        } catch (IOException e) {
-                            e.printStackTrace();
+                    try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("adminka.txt"))) {
+                        synchronized (adminList) {
+                            bufferedWriter.write(gson.toJson(adminList));
                         }
-
-                        try {
-                            for (Socket socket : socketList) {
-                                if (!socket.isClosed()){
-                                    PrintWriter printWriter = new PrintWriter(socket.getOutputStream());
-                                    printWriter.println("Exit");
-                                    printWriter.flush();
-                                }
-                            }
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
-
-                        Platform.exit();
-                        System.exit(0);
+                    } catch (IOException e) {
+                        logger.error("class Server line 73 Error when working with sockets");
                     }
+
+                    try {
+                        for (Socket socket : socketList) {
+                            if (!socket.isClosed()){
+                                PrintWriter printWriter = new PrintWriter(socket.getOutputStream());
+                                printWriter.println("Exit");
+                                printWriter.flush();
+                            }
+                        }
+                    } catch (IOException e) {
+                        logger.error("class Server line 85 Error when working with sockets");
+                    }
+
+                    Platform.exit();
+                    System.exit(0);
                 }
             }
         });
@@ -87,19 +92,6 @@ public class Server extends Application {
         TaskIO taskIO = new TaskIO();
         Gson gson = new Gson();
 
-        /*usersList.add(new User("aa", "ba", false));
-        usersList.add(new User("ab", "bb", false));
-        usersList.add(new User("ac", "bc", false));
-        usersList.add(new User("ad", "bd", false));
-        usersList.add(new User("ae", "be", false));
-        usersList.add(new User("af", "bf", false));
-
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd/hh:mm:ss");
-        ArrayList<Task> arrayList = new ArrayList<>();
-        arrayList.add(new Task("Hello", new Date(), false));
-        for (User view.user : usersList) {
-            tasksList.put(view.user.getLogin(), arrayList);
-        }*/
         taskIO.readData(tasksList, usersList);
 
         try {
@@ -110,7 +102,7 @@ public class Server extends Application {
             if (str != null && !str.equals("[]"))
                 adminList = new ArrayList<>(Arrays.asList(gson.fromJson(str, User[].class)));
         } catch (IOException e) {
-            e.printStackTrace();
+            logger.error("class Server line 110 Error when working with file adminka.txt");
         }
 
         new Thread(() -> {
@@ -124,7 +116,7 @@ public class Server extends Application {
                     }
                 }
             } catch (IOException e) {
-                e.printStackTrace();
+                logger.error("class Server line 124 Error when working with sockets");
             }
         }).start();
 

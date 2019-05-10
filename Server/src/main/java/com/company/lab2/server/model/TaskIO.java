@@ -1,5 +1,6 @@
 package com.company.lab2.server.model;
 
+import org.apache.log4j.Logger;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -23,9 +24,20 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.TreeMap;
 
+/**
+ * class to work with xml files
+ */
 public class TaskIO {
+    private Logger logger = Logger.getLogger(TaskIO.class);
+
+    /** file name */
     private String fileName = "information.xml";
 
+    /**
+     * data readout method of the file
+     * @param information - data store with key - login and value - list of tasks related to this client
+     * @param usersList - collection to which you want to record data about customers
+     */
     public void readData(TreeMap<String, ArrayList<Task>> information, ArrayList<User> usersList) {
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         try {
@@ -73,10 +85,16 @@ public class TaskIO {
 
             }
         } catch (ParserConfigurationException | ParseException | IOException | SAXException e) {
-            e.printStackTrace();
+            logger.error("error while reading from the xml file");
         }
     }
 
+    /**
+     * method to cast a string to an object of type Task
+     * @param attr - task information
+     * @return - task object
+     * @throws ParseException - incorrectly stored data
+     */
     private Task parserStroki(String attr) throws ParseException {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd/hh:mm:ss");
         Task task;
@@ -107,6 +125,11 @@ public class TaskIO {
         return task;
     }
 
+    /**
+     * write method to xml file
+     * @param information - data store with key - login and value - list of tasks related to this client
+     * @param usersList - collection to which you want to record data about customers
+     */
     public void writeData(TreeMap<String, ArrayList<Task>> information, ArrayList<User> usersList) {
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         try {
@@ -130,10 +153,16 @@ public class TaskIO {
             t.setOutputProperty(OutputKeys.INDENT, "yes");
             t.transform(new DOMSource(document), new StreamResult(new FileOutputStream(fileName)));
         } catch (ParserConfigurationException | FileNotFoundException | TransformerException e) {
-            e.printStackTrace();
+            logger.error("error while writing to the xml file");
         }
     }
 
+    /**
+     * method of building dependent elements
+     * @param user - client to which tasks will be associated
+     * @param list - tasks list
+     * @param document - xml document
+     */
     private void addElements(Element user, ArrayList<Task> list, Document document) {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd/hh:mm:ss");
         for (Task task : list) {

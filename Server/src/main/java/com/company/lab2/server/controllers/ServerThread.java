@@ -4,6 +4,7 @@ import com.company.lab2.server.model.Task;
 import com.company.lab2.server.model.Tasks;
 import com.company.lab2.server.model.User;
 import com.google.gson.Gson;
+import org.apache.log4j.Logger;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -14,17 +15,31 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
+/**
+ * class of allocation of a separate stream for processing client requests
+ */
 public class ServerThread extends Thread {
+    private Logger logger = Logger.getLogger(ServerThread.class);
+
+    /** client socket */
     private Socket socket;
+    /** message flow */
     private PrintWriter printWriter;
+    /** current client */
     private User currentUser;
+    /** current client login */
     private String login;
 
+    /** list of all clients */
     private final ArrayList<User> usersList;
+    /** information of client tasks */
     private final TreeMap<String, ArrayList<Task>> tasksList;
+    /** current client task list */
     private ArrayList<Task> taskArrayList;
+    /** a list of customers that want to get the admin rights */
     private final ArrayList<User> adminList;
-    private LinkedList<User> activeUsers = new LinkedList<>();
+    /** list of active client */
+    private LinkedList<User> activeUsers;
 
     public ServerThread(Socket socket, ArrayList<User> usersList, TreeMap<String, ArrayList<Task>> tasksList, ArrayList<User> adminList, LinkedList<User> activeUsers) {
         this.socket = socket;
@@ -208,7 +223,7 @@ public class ServerThread extends Thread {
                                 date1 = format.parse(in.readLine());
                                 date2 = format.parse(in.readLine());
                             } catch (ParseException e) {
-                                e.printStackTrace();
+                                logger.error("class ServerThread line 226 Parsing error");
                             }
                             synchronized (tasksList) {
                                 SortedMap<Date, Set<String>> sortedMap = Tasks.calendar(tasksList.get(login), date1, date2);
@@ -309,10 +324,14 @@ public class ServerThread extends Thread {
                 }
             }
         } catch (IOException | InterruptedException e) {
-            e.printStackTrace();
+            logger.error("class ServerThread IOException or InterruptedException");
         }
     }
 
+    /**
+     * message sending method
+     * @param write - message
+     */
     private void streamWrite(String write) {
         printWriter.print(write);
         printWriter.flush();

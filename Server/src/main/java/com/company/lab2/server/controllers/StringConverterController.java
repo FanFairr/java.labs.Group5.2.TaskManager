@@ -12,9 +12,16 @@ import java.util.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-
+/**
+ * class to convert collections to another type
+ */
 public class StringConverterController {
 
+    /**
+     * translation method ArrayList to ObservableList
+     * @param list - task list
+     * @return - task observable list
+     */
     static ObservableList<String> formatTaskArr(ArrayList<Task> list) {
         ObservableList<String> TaskList = FXCollections.observableArrayList();
         for (Task task: list) {
@@ -23,6 +30,11 @@ public class StringConverterController {
         return TaskList;
     }
 
+    /**
+     * translation method ArrayList to ObservableList
+     * @param userList - user list
+     * @return - user observable list
+     */
     static ObservableList<String> convertUserList(ArrayList<User> userList) {
         ObservableList<String> list = FXCollections.observableArrayList();
         for (User user: userList) {
@@ -31,6 +43,11 @@ public class StringConverterController {
         return list;
     }
 
+    /**
+     * translation method String to User
+     * @param strUser - user information
+     * @return - user
+     */
     static User makeUserFromString (String strUser) {
         String login = getLogin(strUser);
         String pw = getPassword(strUser);
@@ -39,7 +56,11 @@ public class StringConverterController {
         return new User(login,pw,Boolean.valueOf(ban),adm);
     }
 
-
+    /**
+     * translation method String to Task
+     * @param strTask - task information
+     * @return - task
+     */
     static Task makeTaskFromString (String strTask) {
         String title = getTitle(strTask);
         String buffer;
@@ -74,51 +95,100 @@ public class StringConverterController {
         }
     }
 
+    /**
+     * the method that returns the login from the string
+     * @param str - user information
+     * @return - user login
+     */
     private static String getLogin(String str) {
         String string = str.replace("Login: '","");
         return string.substring(0, string.indexOf("',"));
     }
+
+    /**
+     * the method that returns the password from the string
+     * @param str - user information
+     * @return - user password
+     */
     private static String getPassword(String str) {
         String string = str.replaceAll(".+password: '","");
         return string.substring(0, string.indexOf("',"));
     }
+
+    /**
+     * the method that returns the ban status from the string
+     * @param str - user information
+     * @return - user ban status
+     */
     private static String getBanned(String str) {
         String string = str.replaceAll(".+banned: ","");
         return string.substring(0, string.indexOf(", "));
     }
+
+    /**
+     * the method that returns the admin status from the string
+     * @param str - user information
+     * @return - user admin status
+     */
     private static String getAdmin(String str) {
         String string = str.replaceAll(".+admin: '","");
         return string.substring(0, string.indexOf("'"));
     }
 
+    /**
+     * the method that returns the task title from the string
+     * @param str - task information
+     * @return - task title
+     */
     private static String getTitle(String str) {
         String string = str.replace("Title: \'","");
         return string.substring(0, string.indexOf("\',"));
     }
 
+    /**
+     * the method that returns the task date from the string
+     * @param str - task information
+     * @return - task date
+     */
     private static String getDate(String str) {
         String string = str.replaceAll(".+time: ","");
         return string.substring(0, string.indexOf(","));
     }
 
+    /**
+     * the method that returns the task start time from the string
+     * @param str - task information
+     * @return - task start time
+     */
     private static String getStartDate(String str) {
         String string = str.replaceAll(".+startTime: ","");
         return string.substring(0, string.indexOf(","));
     }
 
+    /**
+     * the method that returns the task end time from the string
+     * @param str - task information
+     * @return - task end time
+     */
     private static String getEndDate(String str) {
         String string = str.replaceAll(".+endTime: ","");
         return string.substring(0, string.indexOf(","));
     }
 
+    /**
+     * the method that returns the task active status from the string
+     * @param str - task information
+     * @return - task active status
+     */
     private static boolean getActive(String str) {
         String active = str.replaceAll(".+active: ","").replace(";","");
         return active.equals("true");
     }
 
-    /**метод, что записывает интервал повторения
-     *задачи в текстовый формат(строку).
-     *@param repeatInterval интервал повторения задачи
+    /**
+     * a method that writes a task repetition interval
+     * to a text format (string).
+     * @param repeatInterval task repetition interval
      */
     public static String getStringFromRepeatInterval(final int repeatInterval) {
         StringBuilder builderString = new StringBuilder();
@@ -133,9 +203,10 @@ public class StringConverterController {
         String s = new String(builderString);
         return s.trim();
     }
-    /**метод, что парсит строку в int
-     * значение интервала повторение задачи.
-     *@param data строчное представление интервала повторения задачи
+    /**
+     * a method that parses the string in the int
+     * value of the repetition interval of the task.
+     *@param data string representation of the task repetition interval
      */
     private static int parseRepeatInterval(String data) throws NumberFormatException {
         int days = 0, hours = 0, minutes = 0, seconds = 0;

@@ -2,14 +2,18 @@ package com.company.lab2.server.model;
 
 import java.util.*;
 
+/**
+ * class for finding tasks by criterion
+ */
 public class Tasks {
-    /** метод, що повертає підмножину задач,
-     *які заплановані на виконання хоча б раз
-     *після часу from і не пізніше ніж to.
-     *@param tasks итератор по задачам
-     *@param start время от которого ищем задачу
-     *@param end время до которого ищем задачу
-     *@return итератор по списку задач
+    /**
+     * a method that returns a subset of tasks
+     * that are scheduled to execute at least once
+     * after the time from and no later than that
+     *@param tasks task iterator
+     *@param start time from which we are looking for a task
+     *@param end time to which we are looking for a task
+     *@return task list iterator
      **/
     private static Iterable<Task> incoming(Iterable<Task> tasks, Date start, Date end){
         if (tasks == null)
@@ -30,11 +34,12 @@ public class Tasks {
         return iter_return;
     }
 
-    /** метод, будувати календар задач на заданий період.
-     *@param tasks итератор по задачам
-     *@param start время от которого ищем задачу
-     *@param end время до которого ищем задачу
-     *@return связанный список задач
+    /**
+     * method, build a task calendar for a given period
+     *@param tasks task iterator
+     *@param start time from which we are looking for a task
+     *@param end time to which we are looking for a task
+     *@return linked task list
      **/
     public static SortedMap<Date, Set<String>> calendar(Iterable<Task> tasks, Date start, Date end) {
         if (tasks == null)
