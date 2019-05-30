@@ -5,7 +5,8 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Tooltip;
 
-/**Class for fields validation
+/**
+ * Class for fields validation
  */
 class ValidateController {
 
@@ -60,6 +61,9 @@ class ValidateController {
         });
     }
 
+    /**Method for port validation
+     * @param textField port
+     */
     static void portValidate(TextField textField){
         textField.textProperty().addListener((observable, oldValue, newValue) -> {
             if (!newValue.matches("\\d{1,5}")){
@@ -69,6 +73,9 @@ class ValidateController {
         textField.setTooltip(new Tooltip("Server port"));
     }
 
+    /**Method for host validation
+     * @param host host ip
+     */
     static void hostValidate(TextField host){
         host.textProperty().addListener((observable, oldValue, newValue) -> {
             if (!newValue.matches("[0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-5][0-5]")) {

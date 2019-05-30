@@ -8,6 +8,7 @@ import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import org.apache.log4j.Logger;
 
@@ -18,10 +19,11 @@ import java.io.PrintWriter;
 import java.net.Socket;
 import java.text.SimpleDateFormat;
 import java.util.*;
-
+/**
+ *Client controller class
+ */
 public class Controller extends Application {
-
-    private static BufferedReader reader;
+    /** PrintWriter to stream write**/
     private static PrintWriter writer;
     private static String title;
     private static String header;
@@ -30,37 +32,55 @@ public class Controller extends Application {
     private static Boolean tParsed;
     private static String adminValue;
     public final static Logger logger = Logger.getLogger(MainController.class);
+    /** tasks list */
     public static ObservableList<String> taskList;
+    /** users list */
     public static ObservableList<String> usersList;
+    /** admins list */
     public static ObservableList<String> adminsList;
+    /** task title */
     public static String tTitle;
+    /** task date */
     public static String tDate;
+    /** task active */
     public static String tActive;
+    /** task start date */
     public static String tSDate;
+    /** task end date */
     public static String tEDate;
+    /** task string interval */
     public static String tStrInterval;
+    /** task int interval(mils) */
     public static int tIntInterval;
+    /** tasks calendar map */
     public static SortedMap<Date, Set<String>> tCalendar;
+    /** last date key in last calendar map request */
     public static Date lastKey;
+    /** become admin try counter */
     public static int becomeAdmTry = 1;
+    /** info about current request status in becoming admin */
     public static String waiting4Adm;
-
+    /** server connection thread  */
     private static Thread connection;
+    /** condition for while loop */
     private static boolean whileCondition = true;
+    /** first opened stage after connection */
     private static Stage firstStage;
-    private static String host;//127.0.0.1
-    private static Integer port;//1488
+    /**client socket*/
+    private static Socket client;
 
     @Override
     public void start(Stage primaryStage) {
         final String path = "/view/user/Connection.fxml";
         final String header = "Connection";
-        WindowMaker.makeWindow(path, header);
+        WindowMaker.makeWindow(path, header, Modality.NONE);
     }
 
     public static void main(String[] args) {
+
         connection = new Thread(() -> {
-            while (host == null || port == null) {
+            BufferedReader reader;
+            while (client == null) {
                 try {
                     Thread.sleep(10);
                 } catch (InterruptedException e) {
@@ -68,7 +88,6 @@ public class Controller extends Application {
                 }
             }
             try {
-                Socket client = new Socket(host, port);
                 reader = new BufferedReader(new InputStreamReader(client.getInputStream()));
                 writer = new PrintWriter(client.getOutputStream());
                 while (whileCondition) {
@@ -191,30 +210,41 @@ public class Controller extends Application {
         connection.interrupt();
     }
 
+    /** method for user registration
+     * @param login user login
+     * @param password user password*/
     public static void registration(String login, String password) {
         streamWrite("Registration:\n" + login + "\n" + password + "\n");
         Platform.runLater(Controller::runMain);
     }
 
+    /** method for user logIn
+     * @param login user login
+     * @param password user password*/
     public static void signIn(String login, String password) {
         streamWrite("Login:\n" + login + "\n" + password + "\n");
         Platform.runLater(Controller::runMain);
     }
 
+    /** method for sending task to add on server
+     * @param task task to add*/
     public static void addTask(String task) {
         title = null;
         streamWrite("Add:\n" + task + "\n");
         taskList.add(task);
         w84Response();
     }
-
+    /** method for sending task to delete on server
+     * @param task task to delete*/
     public static void deleteTask(String task) {
         title = null;
         streamWrite("Delete:\n" + task + "\n");
         taskList.remove(task);
         w84Response();
     }
-
+    /** method for sending task to  change on server
+     * @param oldT old task to be changed
+     * @param newT new task which replace old*/
     public static void changeTask(String oldT, String newT) {
         title = null;
         streamWrite("Change:\n" + oldT + "\n" + newT + "\n");
@@ -222,6 +252,8 @@ public class Controller extends Application {
         w84Response();
     }
 
+    /** method for sending request to check current user admin rights
+     * @return true if admin or supperAdmin*/
     public static boolean isAdmin() {
         adminValue = null;
         waiting4Adm = null;
@@ -250,6 +282,9 @@ public class Controller extends Application {
         return to_return;
     }
 
+    /** method for getting adminPanel data
+     * @param str can be UsersList to get userList
+     *            or AdminsList to get AdminsList*/
     public static void getPanelData(String str) {
         usersList = null;
         adminsList = null;
@@ -277,6 +312,8 @@ public class Controller extends Application {
         }
     }
 
+    /** method for sending request to become admin
+     * @param code secret code to become admin verification*/
     public static void becomeAdmin(String code) {
         streamWrite("Become adm:\n" + code + "\n");
         while (true) {
@@ -305,6 +342,7 @@ public class Controller extends Application {
         }
     }
 
+    /** method for running main scene */
     private static void runMain() {
         while (true) {
             if (taskList != null) {
@@ -325,6 +363,9 @@ public class Controller extends Application {
         }
     }
 
+    /** method for sending request to get tasks calendar
+     * @param start start date of calendar
+     * @param end end date of calendar*/
     public static SortedMap<Date, Set<String>> calendar(Date start,Date end) {
         streamWrite("Calendar:\n" + new SimpleDateFormat(" HH:mm:ss dd-MM-yyyy").format(start) + "\n" + new SimpleDateFormat(" HH:mm:ss dd-MM-yyyy").format(end) + "\n");
         calendarIsEmpty = null;
@@ -344,6 +385,8 @@ public class Controller extends Application {
         }
     }
 
+    /** method for sending request to parse task
+     * @param task task to parse */
     public static void parsTaskStringRequest(String task) {
         tParsed = null;
         streamWrite("Task:\n" + task + "\n");
@@ -357,6 +400,7 @@ public class Controller extends Application {
         }
     }
 
+    /** method for interrupting all threads and exit program*/
     public static void interrupt() {
         whileCondition = false;
         streamWrite("Exit:\n");
@@ -365,16 +409,21 @@ public class Controller extends Application {
         System.exit(0);
     }
 
+    /** method for writing into the stream
+     * @param write string to write*/
     private static void streamWrite(String write) {
         writer.print(write);
         writer.flush();
     }
 
+    /** method for banning or unbanning user request
+     * @param user user to ban or unban*/
     public static void banned(String user) {
         if (user != null && user.length() > 20)
             streamWrite("Banned:\n" + user + "\n");
     }
 
+    /** method for server rebut request*/
     public static void rebut() {
         streamWrite("Rebut:\n");
     }
@@ -384,6 +433,7 @@ public class Controller extends Application {
             streamWrite("Adminka:\n" + user + "\n");
     }
 
+    /** method for waiting for response on add/delete/change requests*/
     private static void w84Response() {
         while (true) {
             if (title !=  null)
@@ -398,16 +448,16 @@ public class Controller extends Application {
         MainController.notificationInterrupt();
     }
 
+    /** method for getting isAdmin value for current user
+     * @return adminValue*/
     public static String getAdminValue() {
         return adminValue;
     }
 
-    public static void setHost(String host) {
-        Controller.host = host;
-    }
-
-    public static void setPort(Integer port) {
-        Controller.port = port;
+    /** method for setting client socket
+     * @param client client socket*/
+    public static void setClient(Socket client) {
+        Controller.client = client;
     }
 }
 

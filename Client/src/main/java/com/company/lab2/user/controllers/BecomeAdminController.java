@@ -9,6 +9,9 @@ import javafx.stage.Stage;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+/**
+ * Class controller for BecomeAdmin.fxml view.user
+ */
 public class BecomeAdminController {
 
         @FXML

@@ -99,8 +99,8 @@ public class TaskIO {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd/hh:mm:ss");
         Task task;
 
-        String title = attr.substring(0, attr.indexOf(" "));
-        attr = attr.substring(attr.indexOf(" ") + 1);
+        String title = attr.substring(1, attr.indexOf("]"));
+        attr = attr.substring(attr.indexOf("]", 1) + 2);
 
         String time = attr.substring(0, attr.indexOf(" "));
         attr = attr.substring(attr.indexOf(" ") + 1);
@@ -171,7 +171,7 @@ public class TaskIO {
             Element title = document.createElement("title");
             user.appendChild(task1);
             task1.appendChild(title);
-            title.setAttribute("value", task.getTitle());
+            title.setAttribute("value", "[" +  task.getTitle() + "]");
 
             if (task.isRepeated()) {
                 Element time = document.createElement("time");

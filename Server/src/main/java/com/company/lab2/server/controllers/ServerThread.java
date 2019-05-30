@@ -1,5 +1,6 @@
 package com.company.lab2.server.controllers;
 
+import com.company.lab2.server.model.Patterns;
 import com.company.lab2.server.model.Task;
 import com.company.lab2.server.model.Tasks;
 import com.company.lab2.server.model.User;
@@ -65,7 +66,7 @@ public class ServerThread extends Thread {
                 String response = in.readLine();
                 if (response != null && !response.isEmpty()) {
                     switch (response) {
-                        case "Login:":
+                        case Patterns.login:
                             login = in.readLine();
                             String password = in.readLine();
                             synchronized (tasksList) {
@@ -106,7 +107,7 @@ public class ServerThread extends Thread {
                             }
                             break;
 
-                        case "Registration:":
+                        case Patterns.registration:
                             login = in.readLine();
                             password = in.readLine();
                             loginNotExist = true;
@@ -133,7 +134,7 @@ public class ServerThread extends Thread {
                             }
                             break;
 
-                        case "Task:":
+                        case Patterns.task:
                             String taskStr = in.readLine();
                             Task task = StringConverterController.makeTaskFromString(taskStr);
                             StringBuilder builder = new StringBuilder();
@@ -152,30 +153,24 @@ public class ServerThread extends Thread {
                             streamWrite(new String(builder));
                             break;
 
-                        case "Add:":
+                        case Patterns.add:
                             taskArrayList.add(StringConverterController.makeTaskFromString(in.readLine()));
                             streamWrite("doneADCH\n");
                             break;
 
-                        case "Delete:":
+                        case Patterns.delete:
                             taskArrayList.remove(StringConverterController.makeTaskFromString(in.readLine()));
                             streamWrite("doneADCH\n");
                             break;
 
-                        case "Change:":
+                        case Patterns.change:
                             Task oldT = StringConverterController.makeTaskFromString(in.readLine());
                             Task newT = StringConverterController.makeTaskFromString(in.readLine());
                             taskArrayList.set(taskArrayList.indexOf(oldT), newT);
                             streamWrite("doneADCH\n");
                             break;
 
-                        case "Users list:":
-                            synchronized (usersList) {
-                                streamWrite(gson.toJson(usersList) + "\n");
-                            }
-                            break;
-
-                        case "isAdmin:":
+                        case Patterns.isAdmin:
                             if (currentUser.getAdmin().equals("false")) {
                                 synchronized (adminList) {
                                     if (adminList.contains(currentUser)) {
@@ -185,7 +180,7 @@ public class ServerThread extends Thread {
                             } else streamWrite("isAdmin\n"+currentUser.getAdmin()+"\n");
                             break;
 
-                        case "Become adm:":
+                        case Patterns.becomeAdm:
                             String code = in.readLine();
                             if (code.equals("123")) {
                                 synchronized (adminList) {
@@ -204,19 +199,19 @@ public class ServerThread extends Thread {
                             }
                             break;
 
-                        case "UsersList:":
+                        case Patterns.usersList:
                             synchronized (adminList) {
                                 streamWrite("usersList\n" + gson.toJson(StringConverterController.convertUserList(usersList)) + "\n");
                             }
                             break;
 
-                        case "AdminsList:":
+                        case Patterns.adminList:
                             synchronized (adminList) {
                                 streamWrite("adminsList\n" + gson.toJson(StringConverterController.convertUserList(adminList)) + "\n");
                             }
                             break;
 
-                        case "Calendar:":
+                        case Patterns.calendar:
                             Date date1 = null;
                             Date date2 = null;
                             try {
@@ -249,7 +244,7 @@ public class ServerThread extends Thread {
                             }
                             break;
 
-                        case "Banned:":
+                        case Patterns.banned:
                             synchronized (usersList) {
                                 strUser = in.readLine();
                                 newUser = StringConverterController.makeUserFromString(strUser);
@@ -266,7 +261,7 @@ public class ServerThread extends Thread {
                             }
                             break;
 
-                        case "Adminka:":
+                        case Patterns.adminka:
                             synchronized (usersList) {
                                 strUser = in.readLine();
                                 newUser = StringConverterController.makeUserFromString(strUser);
@@ -284,7 +279,7 @@ public class ServerThread extends Thread {
                             }
                             break;
 
-                        case "Rebut:":
+                        case Patterns.rebut:
                             ServerSceneController controller = new ServerSceneController();
                             controller.rebut(null);
 
@@ -300,7 +295,7 @@ public class ServerThread extends Thread {
                             whileCondition = false;
                             break;
 
-                        case "Exit:":
+                        case Patterns.exit:
                             synchronized (tasksList) {
                                 if (login != null)
                                     tasksList.put(login, taskArrayList);

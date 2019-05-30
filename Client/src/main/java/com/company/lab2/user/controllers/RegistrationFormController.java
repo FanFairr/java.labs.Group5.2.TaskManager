@@ -12,6 +12,9 @@ import javafx.stage.Stage;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+/**
+ * Class controller for RegistrationForm.fxml view.user
+ */
 public class RegistrationFormController {
 
     @FXML

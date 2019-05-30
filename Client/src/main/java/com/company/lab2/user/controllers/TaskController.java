@@ -42,6 +42,7 @@ public class TaskController {
     @FXML
     private Label Active;
 
+    /**current stage*/
     private static Stage stage;
 
     @FXML

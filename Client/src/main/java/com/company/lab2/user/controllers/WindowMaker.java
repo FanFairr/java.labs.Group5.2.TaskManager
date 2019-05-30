@@ -11,17 +11,19 @@ import java.io.IOException;
 
 import static com.company.lab2.user.Controller.logger;
 
-/**Class for making new windows
+/**
+ * Class for making new windows
  */
 public class WindowMaker {
 
+    /**last created stage*/
     private static Stage stage;
 
     /**Method for making new window
      * which is not allowed to use others windows
      * while this one is open
      * @param path .fxml file path
-
+     * @param header header
      */
     public static void makeWindow(String path, String header) {
         try {
@@ -32,6 +34,28 @@ public class WindowMaker {
             loader.setLocation(Controller.class.getResource(path));
             stage.setScene(new Scene(loader.load()));
             stage.initModality(Modality.APPLICATION_MODAL);
+            stage.showAndWait();
+        } catch (IOException e) {
+            logger.error(e.getMessage(),e);
+            e.printStackTrace();
+        }
+    }
+
+    /**Method for making new window
+     * with different modality
+     * @param path .fxml file path
+     * @param header header
+     * @param modality window modality
+     */
+    public static void makeWindow(String path, String header, Modality modality) {
+        try {
+            stage = new Stage();
+            stage.setResizable(false);
+            stage.setTitle(header);
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(Controller.class.getResource(path));
+            stage.setScene(new Scene(loader.load()));
+            stage.initModality(modality);
             stage.showAndWait();
         } catch (IOException e) {
             logger.error(e.getMessage(),e);
@@ -69,10 +93,14 @@ public class WindowMaker {
         alert.showAndWait();
     }
 
+    /**method for closing stage
+     * @param stageClose stage to close*/
     public static void closeWindow(Stage stageClose){
         stageClose.close();
     }
 
+    /**method for gettind current stage
+     * @return  current stage*/
     public static Stage getStage() {
         return stage;
     }

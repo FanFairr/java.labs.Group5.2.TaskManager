@@ -31,9 +31,13 @@ public class CalendarController {
     @FXML
     private TreeView<String> calendarTreeView;
 
+    /**start date of calendar selected py user*/
     private Date start = MakeCalendarController.getStart();
+    /**start end of calendar selected py user*/
     private Date end = MakeCalendarController.getEnd();
+    /**calendar map*/
     private SortedMap<Date, Set<String>> calendar;
+    /**calendar map where days are keys*/
     private SortedMap<Date, Set<String>> calendarByDays = new TreeMap<>();
 
     @FXML

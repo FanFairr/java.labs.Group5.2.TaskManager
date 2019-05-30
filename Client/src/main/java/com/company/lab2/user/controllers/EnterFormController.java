@@ -12,6 +12,9 @@ import javafx.stage.Stage;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+/**
+ * Class controller for EnterForm.fxml view.user
+ */
 public class EnterFormController {
 
     @FXML

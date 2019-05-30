@@ -70,7 +70,9 @@ public class AddOrChangeTaskController {
     @FXML
     private Label Header;
 
+    /**Current task*/
     private String task;
+    /**task repInterval*/
     private int interval;
 
     @FXML
@@ -125,9 +127,9 @@ public class AddOrChangeTaskController {
         String alertText = "";
         boolean taskReady = false;
         boolean alertMade = true;
-        Long SDate = ConvertController.makeLongFromTimeFields(shours, smin, ssec);
-        Long EDate = ConvertController.makeLongFromTimeFields(ehours, emin, esec);
-        Long lDate = ConvertController.makeLongFromTimeFields(hours, min, sec);
+        Long SDate = Convert.makeLongFromTimeFields(shours, smin, ssec);
+        Long EDate = Convert.makeLongFromTimeFields(ehours, emin, esec);
+        Long lDate = Convert.makeLongFromTimeFields(hours, min, sec);
         if (ValidateController.isEmpty(Title)) {
             alertText = "Title field should be filled";
         } else {
@@ -142,8 +144,8 @@ public class AddOrChangeTaskController {
                 } else if (interval == 0) {
                     alertText = "\"Interval\" must be greater than zero!";
                 } else {
-                    Date startD = ConvertController.makeDate(start, SDate);
-                    Date endD = ConvertController.makeDate(end, EDate);
+                    Date startD = Convert.makeDate(start, SDate);
+                    Date endD = Convert.makeDate(end, EDate);
                     if (endD.getTime() < startD.getTime() + interval * 1000) {
                         alertText = "End time of the task must be greater than Start time + interval";
                     } else {
@@ -164,11 +166,11 @@ public class AddOrChangeTaskController {
             } else if (NRep.isSelected()) {
                 if (date.getValue() == null) {
                     alertText = "Date field should be filled";
-                } else if (ConvertController.makeLongFromTimeFields(hours, min, sec) == null) {
+                } else if (Convert.makeLongFromTimeFields(hours, min, sec) == null) {
                     alertText = "At least one of time fields should be filled";
                 } else {
                     StringBuilder builder = new StringBuilder();
-                    Date time = ConvertController.makeDate(date, lDate);
+                    Date time = Convert.makeDate(date, lDate);
                     builder.append("Title: \'").append(Title.getText()).append("', time: ");
                     builder.append(new SimpleDateFormat(" HH:mm:ss dd-MM-yyyy").format(time)).append(", active: ");
                     if (active.isSelected())

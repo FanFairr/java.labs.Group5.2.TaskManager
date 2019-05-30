@@ -6,9 +6,10 @@ import javafx.scene.control.TextField;
 import java.time.ZoneId;
 import java.util.Date;
 
-class ConvertController {
-
-
+/**
+ * Class for converting values
+ */
+class Convert {
 
     /**Method for show not repeated task radioButton content
      * @param date date to get from

@@ -7,6 +7,9 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.MultipleSelectionModel;
 import javafx.stage.Stage;
 
+/**
+ * Class controller for AdminPanel.fxml view.user
+ */
 public class AdminPanelController {
 
     @FXML
@@ -18,6 +21,7 @@ public class AdminPanelController {
     @FXML
     private Button grantBtn;
 
+    /**selected user for actions*/
     private String user;
 
     public void initialize() {

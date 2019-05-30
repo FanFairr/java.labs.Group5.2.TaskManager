@@ -9,17 +9,27 @@ import java.util.SortedMap;
 
 import static com.company.lab2.user.Controller.logger;
 
-/**Thread class for checking taskList
+/**
+ * Thread class for checking taskList
  * and make alarm signal when it's time to do Task
  */
 public class Notification extends Thread {
+    /**current time*/
     private Date now;
+    /**end of current day time*/
     private Date endDayTime;
+    /**next alarm time */
     private Date nextAlarmDate;
+    /**calendar map by time*/
     private SortedMap<Date, Set<String>> calendarByTime;
+    /**boolean statement for checking usage of
+     * makeCalendarForDay() method*/
     private boolean notFirstTimeHereAfterMonitor;
+    /**boolean statement for while loop*/
     private boolean checkForWhile = true;
+    /**title of notification*/
     private final String title = "Task Time!";
+    /**header of notification*/
     private final String header = "Time to do this Task";
 
 

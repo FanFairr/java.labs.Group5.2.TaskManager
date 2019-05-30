@@ -21,7 +21,7 @@
             <Font name="Times New Roman" size="14.0" />
          </font>
       </Text>
-      <TextField fx:id="host1" alignment="CENTER" layoutX="186.0" layoutY="147.0" prefHeight="26.0" prefWidth="35.0" promptText="0">
+      <TextField fx:id="host1" alignment="CENTER" layoutX="186.0" layoutY="147.0" prefHeight="26.0" prefWidth="35.0" promptText="127" text="127">
          <font>
             <Font name="Arial" size="12.0" />
          </font>
@@ -31,7 +31,7 @@
             <Font name="Times New Roman Bold" size="20.0" />
          </font>
       </Text>
-      <TextField fx:id="host2" alignment="CENTER" layoutX="228.0" layoutY="147.0" prefHeight="26.0" prefWidth="35.0" promptText="0">
+      <TextField fx:id="host2" alignment="CENTER" layoutX="228.0" layoutY="147.0" prefHeight="26.0" prefWidth="35.0" promptText="0" text="0">
          <font>
             <Font name="Arial" size="12.0" />
          </font>
@@ -41,7 +41,7 @@
             <Font name="Times New Roman Bold" size="20.0" />
          </font>
       </Text>
-      <TextField fx:id="host3" alignment="CENTER" layoutX="270.0" layoutY="147.0" prefHeight="26.0" prefWidth="35.0" promptText="0">
+      <TextField fx:id="host3" alignment="CENTER" layoutX="270.0" layoutY="147.0" prefHeight="26.0" prefWidth="35.0" promptText="0" text="0">
          <font>
             <Font name="Arial" size="12.0" />
          </font>
@@ -51,7 +51,7 @@
             <Font name="Times New Roman Bold" size="20.0" />
          </font>
       </Text>
-      <TextField fx:id="host4" alignment="CENTER" layoutX="312.0" layoutY="147.0" prefHeight="26.0" prefWidth="35.0" promptText="0">
+      <TextField fx:id="host4" alignment="CENTER" layoutX="312.0" layoutY="147.0" prefHeight="26.0" prefWidth="35.0" promptText="1" text="1">
          <font>
             <Font name="Arial" size="12.0" />
          </font>
@@ -61,7 +61,7 @@
             <Font name="Times New Roman" size="14.0" />
          </font>
       </Text>
-      <TextField fx:id="port" layoutX="186.0" layoutY="191.0" prefHeight="26.0" prefWidth="161.0" promptText="Enter port">
+      <TextField fx:id="port" alignment="CENTER" layoutX="186.0" layoutY="191.0" prefHeight="26.0" prefWidth="161.0" promptText="1488" text="1488">
          <font>
             <Font name="Arial" size="12.0" />
          </font>

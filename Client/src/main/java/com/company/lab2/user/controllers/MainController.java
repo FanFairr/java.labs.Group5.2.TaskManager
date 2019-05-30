@@ -20,7 +20,10 @@ public class MainController {
     private Button adminBtn;
     @FXML
     private ListView<String> taskListView;
+
+    /**selected task in taskListView*/
     private static String task;
+    /**notification thread*/
     private static Notification alarm;
 
     @FXML
@@ -111,9 +114,13 @@ public class MainController {
         }));
     }
 
+    /**method for getting current task
+     * @return task*/
     public static String getTask() {
         return task;
     }
+    /**method for setting current task
+     * @param task task to set*/
     public static void setTask(String task) {
         MainController.task = task;
     }

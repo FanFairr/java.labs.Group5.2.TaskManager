@@ -38,8 +38,11 @@ public class MakeCalendarController {
     @FXML
     private Button SearchBtn;
 
+    /**start date of calendar selected py user*/
     private static Date start;
+    /**end date of calendar selected py user*/
     private static Date end;
+    /**makeCalendar.fxml stage*/
     private static Stage stage;
 
     @FXML
@@ -54,15 +57,15 @@ public class MakeCalendarController {
             String header = "Action mistake";
             String text = "";
             boolean alertMade = true;
-            Long fromTime = ConvertController.makeLongFromTimeFields(fromH, fromM, fromS);
-            Long toTime = ConvertController.makeLongFromTimeFields(toH, toM, toS);
+            Long fromTime = Convert.makeLongFromTimeFields(fromH, fromM, fromS);
+            Long toTime = Convert.makeLongFromTimeFields(toH, toM, toS);
             if (From.getValue() == null || To.getValue() == null) {
                 text = "Date field should be filled";
             } else if (fromTime == null || toTime == null) {
                 text = "At least one of time fields in one row should be filled";
             } else {
-                start = ConvertController.makeDate(From, fromTime);
-                end = ConvertController.makeDate(To, toTime);
+                start = Convert.makeDate(From, fromTime);
+                end = Convert.makeDate(To, toTime);
                 if (end.getTime() < start.getTime()) {
                     text = "The end time of the task must be greater than the start time";
                 } else {
@@ -84,10 +87,14 @@ public class MakeCalendarController {
         CloseBtn.setOnAction(event -> WindowMaker.closeWindow(stage));
     }
 
-    public static Date getStart() {
+    /**method for getting start date
+     * @return start*/
+    static Date getStart() {
         return start;
     }
 
+    /**method for getting end date
+     * @return end*/
     static Date getEnd() {
         return end;
     }

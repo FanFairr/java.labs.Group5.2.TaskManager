@@ -7,9 +7,14 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
+import java.io.IOException;
+import java.net.Socket;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+/**
+ * Class controller for Connection.fxml view.user
+ */
 public class ConnectionController {
     @FXML
     private ResourceBundle resources;
@@ -28,13 +33,14 @@ public class ConnectionController {
     @FXML
     private TextField host4;
 
-
     @FXML
     void initialize() {
         Stage stage = WindowMaker.getStage();
         stage.setOnCloseRequest(event -> {
-            Platform.exit();
-            System.exit(0);
+            if (stage.equals(WindowMaker.getStage())) {
+                Platform.exit();
+                System.exit(0);
+            }
         });
         ValidateController.portValidate(port);
         ValidateController.hostValidate(host1);
@@ -51,12 +57,22 @@ public class ConnectionController {
             else if (host1.getText() == null || host2.getText() == null || host3.getText() == null || host4.getText() == null)
                 alertText = "Host fields should be filled";
             else {
-                alertMade = false;
-                Controller.setHost(host1.getText() + "." + host2.getText() + "." + host3.getText() + "." + host4.getText());
-                Controller.setPort(Integer.valueOf(port.getText()));
-                final String path = "/view/user/EnterForm.fxml";
-                final String header = "SignIn";
-                WindowMaker.makeWindow(path, header);
+                String host = host1.getText() + "." + host2.getText() + "." + host3.getText() + "." + host4.getText();
+                int porT = Integer.valueOf(port.getText());
+                Socket client = null;
+                try {
+                    client = new Socket(host, porT);
+                } catch (IOException e) {
+                    alertText = "Failed connect to server! Try again or change host/port data!";
+                }
+                if (client != null) {
+                    alertMade = false;
+                    Controller.setClient(client);
+                    Platform.runLater(stage::close);
+                    final String path = "/view/user/EnterForm.fxml";
+                    final String header = "SignIn";
+                    WindowMaker.makeWindow(path, header);
+                }
             }
             if (alertMade) WindowMaker.alertWindowWarning(alertTitle, alertHeader, alertText);
         });
