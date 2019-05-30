@@ -1,49 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
+    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="Фикс 1.0.1">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Client/src/main/java/com/company/lab2/user/controllers/Patterns.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Client/Client.iml" afterPath="$PROJECT_DIR$/Client/Client.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Client/pom.xml" afterPath="$PROJECT_DIR$/Client/pom.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Client/src/main/java/com/company/lab2/user/Controller.java" afterPath="$PROJECT_DIR$/Client/src/main/java/com/company/lab2/user/Controller.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Client/src/main/java/com/company/lab2/user/controllers/AddOrChangeTaskController.java" afterPath="$PROJECT_DIR$/Client/src/main/java/com/company/lab2/user/controllers/AddOrChangeTaskController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Client/src/main/java/com/company/lab2/user/controllers/AdminPanelController.java" afterPath="$PROJECT_DIR$/Client/src/main/java/com/company/lab2/user/controllers/AdminPanelController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Client/src/main/java/com/company/lab2/user/controllers/BecomeAdminController.java" afterPath="$PROJECT_DIR$/Client/src/main/java/com/company/lab2/user/controllers/BecomeAdminController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Client/src/main/java/com/company/lab2/user/controllers/CalendarController.java" afterPath="$PROJECT_DIR$/Client/src/main/java/com/company/lab2/user/controllers/CalendarController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Client/src/main/java/com/company/lab2/user/controllers/ConfirmController.java" afterPath="$PROJECT_DIR$/Client/src/main/java/com/company/lab2/user/controllers/ConfirmController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Client/src/main/java/com/company/lab2/user/controllers/ConnectionController.java" afterPath="$PROJECT_DIR$/Client/src/main/java/com/company/lab2/user/controllers/ConnectionController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Client/src/main/java/com/company/lab2/user/controllers/EnterFormController.java" afterPath="$PROJECT_DIR$/Client/src/main/java/com/company/lab2/user/controllers/EnterFormController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Client/src/main/java/com/company/lab2/user/controllers/MainController.java" afterPath="$PROJECT_DIR$/Client/src/main/java/com/company/lab2/user/controllers/MainController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Client/src/main/java/com/company/lab2/user/controllers/MakeCalendarController.java" afterPath="$PROJECT_DIR$/Client/src/main/java/com/company/lab2/user/controllers/MakeCalendarController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Client/src/main/java/com/company/lab2/user/controllers/Notification.java" afterPath="$PROJECT_DIR$/Client/src/main/java/com/company/lab2/user/controllers/Notification.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Client/src/main/java/com/company/lab2/user/controllers/RegistrationFormController.java" afterPath="$PROJECT_DIR$/Client/src/main/java/com/company/lab2/user/controllers/RegistrationFormController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Client/src/main/java/com/company/lab2/user/controllers/TaskController.java" afterPath="$PROJECT_DIR$/Client/src/main/java/com/company/lab2/user/controllers/TaskController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Client/src/main/java/com/company/lab2/user/controllers/ValidateController.java" afterPath="$PROJECT_DIR$/Client/src/main/java/com/company/lab2/user/controllers/ValidateController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Client/src/main/java/com/company/lab2/user/controllers/WindowMaker.java" afterPath="$PROJECT_DIR$/Client/src/main/java/com/company/lab2/user/controllers/WindowMaker.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Client/src/main/resources/log4j.properties" afterPath="$PROJECT_DIR$/Client/src/main/resources/log4j.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Client/src/main/resources/view/user/AddOrChangeTask.fxml" afterPath="$PROJECT_DIR$/Client/src/main/resources/view/user/AddOrChangeTask.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Client/src/main/resources/view/user/AdminPanel.fxml" afterPath="$PROJECT_DIR$/Client/src/main/resources/view/user/AdminPanel.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Client/src/main/resources/view/user/BecomeAdmin.fxml" afterPath="$PROJECT_DIR$/Client/src/main/resources/view/user/BecomeAdmin.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Client/src/main/resources/view/user/Calendar.fxml" afterPath="$PROJECT_DIR$/Client/src/main/resources/view/user/Calendar.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Client/src/main/resources/view/user/Confirm.fxml" afterPath="$PROJECT_DIR$/Client/src/main/resources/view/user/Confirm.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Client/src/main/resources/view/user/Connection.fxml" afterPath="$PROJECT_DIR$/Client/src/main/resources/view/user/Connection.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Client/src/main/resources/view/user/EnterForm.fxml" afterPath="$PROJECT_DIR$/Client/src/main/resources/view/user/EnterForm.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Client/src/main/resources/view/user/Main.fxml" afterPath="$PROJECT_DIR$/Client/src/main/resources/view/user/Main.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Client/src/main/resources/view/user/MakeCalendar.fxml" afterPath="$PROJECT_DIR$/Client/src/main/resources/view/user/MakeCalendar.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Client/src/main/resources/view/user/RegistrationForm.fxml" afterPath="$PROJECT_DIR$/Client/src/main/resources/view/user/RegistrationForm.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Client/src/main/resources/view/user/Task.fxml" afterPath="$PROJECT_DIR$/Client/src/main/resources/view/user/Task.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Server/Server.iml" afterPath="$PROJECT_DIR$/Server/Server.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Server/pom.xml" afterPath="$PROJECT_DIR$/Server/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Server/src/main/java/com/company/lab2/server/controllers/ServerThread.java" afterPath="$PROJECT_DIR$/Server/src/main/java/com/company/lab2/server/controllers/ServerThread.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Server/src/main/java/com/company/lab2/server/model/TaskIO.java" afterPath="$PROJECT_DIR$/Server/src/main/java/com/company/lab2/server/model/TaskIO.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Server/src/main/resources/log4j.properties" afterPath="$PROJECT_DIR$/Server/src/main/resources/log4j.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Server/src/main/resources/view/server/ServerScene.fxml" afterPath="$PROJECT_DIR$/Server/src/main/resources/view/server/ServerScene.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/information.xml" afterPath="$PROJECT_DIR$/information.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/java.labs.Group5.2.TaskManager.iml" afterPath="$PROJECT_DIR$/java.labs.Group5.2.TaskManager.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/logs/mylog.log" afterPath="$PROJECT_DIR$/logs/mylog.log" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Client/src/main/java/com/company/lab2/user/controllers/ConvertController.java" afterPath="$PROJECT_DIR$/Client/src/main/java/com/company/lab2/user/controllers/Convert.java" />
     </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -152,51 +113,31 @@
       <file leaf-file-name="Controller.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Client/src/main/java/com/company/lab2/user/Controller.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="75" column="58" lean-forward="false" selection-start-line="75" selection-start-column="58" selection-end-line="75" selection-end-column="58" />
+            <state relative-caret-position="218">
+              <caret line="452" column="16" lean-forward="true" selection-start-line="452" selection-start-column="16" selection-end-line="453" selection-end-column="32" />
               <folding>
-                <element signature="e#17792#17793#0" expanded="true" />
-                <element signature="e#17834#17835#0" expanded="true" />
+                <element signature="e#18414#18415#0" expanded="true" />
+                <element signature="e#18456#18457#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ConnectionController.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Client/src/main/java/com/company/lab2/user/controllers/ConnectionController.java">
+      <file leaf-file-name="AddOrChangeTaskController.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Client/src/main/java/com/company/lab2/user/controllers/AddOrChangeTaskController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="497">
-              <caret line="69" column="49" lean-forward="false" selection-start-line="69" selection-start-column="49" selection-end-line="69" selection-end-column="49" />
+            <state relative-caret-position="502">
+              <caret line="200" column="36" lean-forward="true" selection-start-line="200" selection-start-column="16" selection-end-line="200" selection-end-column="36" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="EnterFormController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Client/src/main/java/com/company/lab2/user/controllers/EnterFormController.java">
+      <file leaf-file-name="Patterns.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Client/src/main/java/com/company/lab2/user/controllers/Patterns.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-81">
-              <caret line="14" column="0" lean-forward="false" selection-start-line="14" selection-start-column="0" selection-end-line="16" selection-end-column="3" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ValidateController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Client/src/main/java/com/company/lab2/user/controllers/ValidateController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-833">
-              <caret line="75" column="22" lean-forward="false" selection-start-line="75" selection-start-column="22" selection-end-line="75" selection-end-column="22" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="WindowMaker.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Client/src/main/java/com/company/lab2/user/controllers/WindowMaker.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="276">
-              <caret line="46" column="7" lean-forward="false" selection-start-line="46" selection-start-column="7" selection-end-line="46" selection-end-column="7" />
+            <state relative-caret-position="51">
+              <caret line="3" column="21" lean-forward="false" selection-start-line="3" selection-start-column="13" selection-end-line="3" selection-end-column="21" />
               <folding />
             </state>
           </provider>
@@ -242,6 +183,7 @@
       <find>adminList</find>
       <find>bann</find>
       <find>Patterns.banned:</find>
+      <find>catch</find>
     </findStrings>
     <replaceStrings>
       <replace>/view/</replace>
@@ -258,8 +200,8 @@
   <component name="Git.Settings">
     <option name="PREVIOUS_COMMIT_AUTHORS">
       <list>
-        <option value="DruceLee &lt;andreydrus2@gmail.com&gt;" />
         <option value="Nikita Mishchenko &lt;48204993+fanfairr@users.noreply.github.com&gt;" />
+        <option value="DruceLee &lt;andreydrus2@gmail.com&gt;" />
       </list>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -281,7 +223,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/com/company/lab2/user/controllers/ConfirmController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/company/lab2/server/model/Task.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/company/lab2/user/controllers/MakeCalendarController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/company/lab2/server/controllers/StringConverterController.java" />
@@ -316,7 +257,6 @@
         <option value="$PROJECT_DIR$/Server/src/main/java/com/company/lab2/server/model/Task.java" />
         <option value="$PROJECT_DIR$/Client/target/classes/com/company/lab2/user/controllers/AddOrChangeTaskController.class" />
         <option value="$PROJECT_DIR$/Client/target/classes/com/company/lab2/user/Controller.class" />
-        <option value="$PROJECT_DIR$/Client/src/main/java/com/company/lab2/user/controllers/AddOrChangeTaskController.java" />
         <option value="$PROJECT_DIR$/Client/src/main/java/com/company/lab2/user/controllers/AdminPanelController.java" />
         <option value="$PROJECT_DIR$/Client/src/main/java/com/company/lab2/user/controllers/BecomeAdminController.java" />
         <option value="$PROJECT_DIR$/Client/src/main/java/com/company/lab2/user/controllers/CalendarController.java" />
@@ -330,8 +270,10 @@
         <option value="$PROJECT_DIR$/Client/src/main/java/com/company/lab2/user/controllers/TaskController.java" />
         <option value="$PROJECT_DIR$/Client/src/main/java/com/company/lab2/user/controllers/ValidateController.java" />
         <option value="$PROJECT_DIR$/Client/src/main/java/com/company/lab2/user/controllers/WindowMaker.java" />
-        <option value="$PROJECT_DIR$/Client/src/main/java/com/company/lab2/user/Controller.java" />
         <option value="$PROJECT_DIR$/Client/src/main/java/com/company/lab2/user/controllers/ConnectionController.java" />
+        <option value="$PROJECT_DIR$/Client/src/main/java/com/company/lab2/user/controllers/Patterns.java" />
+        <option value="$PROJECT_DIR$/Client/src/main/java/com/company/lab2/user/Controller.java" />
+        <option value="$PROJECT_DIR$/Client/src/main/java/com/company/lab2/user/controllers/AddOrChangeTaskController.java" />
       </list>
     </option>
   </component>
@@ -1275,7 +1217,7 @@
       <workItem from="1557491469584" duration="1266000" />
       <workItem from="1558433136807" duration="123000" />
       <workItem from="1559216801197" duration="885000" />
-      <workItem from="1559218895960" duration="8190000" />
+      <workItem from="1559218895960" duration="9625000" />
     </task>
     <task id="LOCAL-00001" summary="TaskManager application">
       <created>1552992604199</created>
@@ -1480,11 +1422,18 @@
       <option name="project" value="LOCAL" />
       <updated>1557492769501</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="Фикс 1.0.1">
+      <created>1559228864512</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1559228864512</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="333187000" />
+    <option name="totallyTimeSpent" value="334622000" />
   </component>
   <component name="TodoView" selected-index="3">
     <todo-panel id="selected-file">
@@ -1590,7 +1539,8 @@
     <MESSAGE value="Ready" />
     <MESSAGE value="La Finale" />
     <MESSAGE value="La Finale 1.1" />
-    <option name="LAST_COMMIT_MESSAGE" value="La Finale 1.1" />
+    <MESSAGE value="Фикс 1.0.1" />
+    <option name="LAST_COMMIT_MESSAGE" value="Фикс 1.0.1" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
@@ -1617,7 +1567,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Server/src/main/java/com/company/lab2/controllers/EnterFormController.java" />
     <entry file="file://$PROJECT_DIR$/Server/src/main/java/com/company/lab2/controllers/TaskController.java" />
     <entry file="file://$PROJECT_DIR$/Server/src/main/java/com/company/lab2/model/TaskIO.java" />
     <entry file="file://$PROJECT_DIR$/Server/src/main/java/com/company/lab2/Controller.java" />
@@ -1669,6 +1618,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="4471">
           <caret line="279" column="45" lean-forward="false" selection-start-line="279" selection-start-column="45" selection-end-line="279" selection-end-column="45" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1764,14 +1714,6 @@
           <folding>
             <marker date="1559214623940" expanded="true" signature="15531:16624" ph="{...}" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Client/src/main/java/com/company/lab2/user/controllers/AddOrChangeTaskController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="74" column="23" lean-forward="false" selection-start-line="74" selection-start-column="23" selection-end-line="74" selection-end-column="23" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1879,21 +1821,37 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Client/src/main/java/com/company/lab2/user/controllers/ConnectionController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="395">
+          <caret line="69" column="49" lean-forward="false" selection-start-line="69" selection-start-column="49" selection-end-line="69" selection-end-column="49" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Client/src/main/java/com/company/lab2/user/controllers/Patterns.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="21" lean-forward="false" selection-start-line="3" selection-start-column="13" selection-end-line="3" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Client/src/main/java/com/company/lab2/user/Controller.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="75" column="58" lean-forward="false" selection-start-line="75" selection-start-column="58" selection-end-line="75" selection-end-column="58" />
+        <state relative-caret-position="218">
+          <caret line="452" column="16" lean-forward="true" selection-start-line="452" selection-start-column="16" selection-end-line="453" selection-end-column="32" />
           <folding>
-            <element signature="e#17792#17793#0" expanded="true" />
-            <element signature="e#17834#17835#0" expanded="true" />
+            <element signature="e#18414#18415#0" expanded="true" />
+            <element signature="e#18456#18457#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Client/src/main/java/com/company/lab2/user/controllers/ConnectionController.java">
+    <entry file="file://$PROJECT_DIR$/Client/src/main/java/com/company/lab2/user/controllers/AddOrChangeTaskController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="497">
-          <caret line="69" column="49" lean-forward="false" selection-start-line="69" selection-start-column="49" selection-end-line="69" selection-end-column="49" />
+        <state relative-caret-position="502">
+          <caret line="200" column="36" lean-forward="true" selection-start-line="200" selection-start-column="16" selection-end-line="200" selection-end-column="36" />
           <folding />
         </state>
       </provider>

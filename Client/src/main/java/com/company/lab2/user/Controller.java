@@ -1,6 +1,7 @@
 package com.company.lab2.user;
 
 import com.company.lab2.user.controllers.MainController;
+import com.company.lab2.user.controllers.Patterns;
 import com.company.lab2.user.controllers.WindowMaker;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -94,18 +95,18 @@ public class Controller extends Application {
                     String response = reader.readLine();
                     if (response != null && !response.isEmpty()) {
                         switch (response) {
-                            case "connected":
+                            case Patterns.connected:
                                 String list = reader.readLine();
                                 taskList = FXCollections.observableList(new Gson().fromJson(list, new TypeToken<ArrayList<String>>(){}.getType()));
                                 break;
-                            case "task":
+                            case Patterns.task:
                                 tTitle = reader.readLine();
                                 tDate = reader.readLine();
                                 tActive = reader.readLine();
                                 tStrInterval = null;
                                 tParsed = Boolean.TRUE;
                                 break;
-                            case "taskRep":
+                            case Patterns.taskRep:
                                 tTitle = reader.readLine();
                                 tSDate = reader.readLine();
                                 tEDate = reader.readLine();
@@ -114,15 +115,15 @@ public class Controller extends Application {
                                 tActive = reader.readLine();
                                 tParsed = Boolean.TRUE;
                                 break;
-                            case "calendar":
+                            case Patterns.calendar:
                                 String str = reader.readLine();
-                                if (str.equals("empty"))
+                                if (str.equals(Patterns.empty))
                                     calendarIsEmpty = Boolean.TRUE;
                                 else {
                                     tCalendar = new TreeMap<>();
                                     Date date;
                                     Set<String> set;
-                                    while (!str.equals("end")) {
+                                    while (!str.equals(Patterns.end)) {
                                         date = new Gson().fromJson(str, new TypeToken<Date>(){}.getType());
                                         str = reader.readLine();
                                         set = new Gson().fromJson(str, new TypeToken<Set<String>>(){}.getType());
@@ -133,76 +134,77 @@ public class Controller extends Application {
                                     calendarIsEmpty = Boolean.FALSE;
                                 }
                                 break;
-                            case "usersList":
+                            case Patterns.usersList:
                                 String users = reader.readLine();
                                 usersList = FXCollections.observableList(new Gson().fromJson(users, new TypeToken<ArrayList<String>>(){}.getType()));
                                 break;
-                            case "adminsList":
+                            case Patterns.adminsList:
                                 String admins = reader.readLine();
                                 adminsList = FXCollections.observableList(new Gson().fromJson(admins, new TypeToken<ArrayList<String>>(){}.getType()));
                                 break;
-                            case "doneADCH":
+                            case Patterns.doneADCH:
                                 title = response;
                                 break;
-                            case "already exist login":
+                            case Patterns.alreadyExistLogin:
                                 title = "Error";
                                 header = "Wrong login";
                                 content = "Login already exist";
                                 break;
-                            case "active user":
+                            case Patterns.activeUser:
                                 title = "Error";
                                 header = "Active user";
                                 content = "This account already uses";
                                 break;
-                            case "login not exist":
+                            case Patterns.loginNotExist:
                                 title = "Error";
                                 header = "Wrong login";
                                 content = "Login doesn't exist";
                                 break;
-                            case "wrong password":
+                            case Patterns.wrongPassword:
                                 title = "Error";
                                 header = "Wrong password";
                                 content = "Password is incorrect";
                                 break;
-                            case "banned":
+                            case Patterns.banned:
                                 title = "Nope";
                                 header = "U are banned";
                                 content = "Good luck";
                                 break;
-                            case "isAdmin":
+                            case Patterns.isAdmin:
                                 adminValue = reader.readLine();
                                 if (adminValue.equals("false"))
                                     waiting4Adm = reader.readLine();
                                 break;
-                            case "wrong code":
+                            case Patterns.wrongCode:
                                 becomeAdmTry = Integer.parseInt(reader.readLine());
                                 title = "Error";
                                 header = "Wrong code";
                                 String s = becomeAdmTry > 1? becomeAdmTry +" try's left. ": becomeAdmTry +" try left. ";
                                 content = s + "Connect with mainAdmin to get code";
                                 break;
-                            case "congratulations":
+                            case Patterns.congratulations:
                                 title = "Cool";
                                 header = "Congratulations";
                                 content = "You are on waiting list to become admin";
                                 break;
-                            case "already admin":
+                            case Patterns.alreadyAdmin:
                                 title = "woops";
                                 header = "already admin";
                                 content = "";
                                 break;
-                            case "Exit":
+                            case Patterns.exit:
                                 interrupt();
                                 break;
                             default:
-                                System.out.println("smth wrong with response");
+                                logger.error("smth wrong with response");
                                 break;
                         }
                     }
                 }
                 client.close();
             } catch (IOException e) {
-                e.printStackTrace();
+                logger.error("exception on connection thread");
+                logger.trace(e);
             }
         });
         connection.start();
@@ -276,7 +278,8 @@ public class Controller extends Application {
             try {
                 Thread.sleep(10);
             } catch (InterruptedException e) {
-                e.printStackTrace();
+                logger.error("exception in isAdmin()");
+                logger.trace(e);
             }
         }
         return to_return;
@@ -307,7 +310,8 @@ public class Controller extends Application {
             try {
                 Thread.sleep(10);
             } catch (InterruptedException e) {
-                e.printStackTrace();
+                logger.error("exception in getPanelData()");
+                logger.trace(e);
             }
         }
     }
@@ -337,7 +341,8 @@ public class Controller extends Application {
             try {
                 Thread.sleep(10);
             } catch (InterruptedException e) {
-                e.printStackTrace();
+                logger.error("exception in becomeAdmin()");
+                logger.trace(e);
             }
         }
     }
@@ -358,7 +363,8 @@ public class Controller extends Application {
             try {
                 Thread.sleep(10);
             } catch (InterruptedException e) {
-                e.printStackTrace();
+                logger.error("exception in runMain()");
+                logger.trace(e);
             }
         }
     }
@@ -380,7 +386,8 @@ public class Controller extends Application {
             try {
                 Thread.sleep(10);
             } catch (InterruptedException e) {
-                e.printStackTrace();
+                logger.error("exception in calendar()");
+                logger.trace(e);
             }
         }
     }
@@ -395,7 +402,8 @@ public class Controller extends Application {
             try {
                 Thread.sleep(10);
             } catch (InterruptedException e) {
-                e.printStackTrace();
+                logger.error("exception in parsTaskStringRequest()");
+                logger.trace(e);
             }
         }
     }
@@ -442,7 +450,8 @@ public class Controller extends Application {
             try {
                 Thread.sleep(10);
             } catch (InterruptedException e) {
-                e.printStackTrace();
+                logger.error("exception in w84Response()");
+                logger.trace(e);
             }
         }
         MainController.notificationInterrupt();
