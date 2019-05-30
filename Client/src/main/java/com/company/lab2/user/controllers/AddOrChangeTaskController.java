@@ -198,7 +198,7 @@ public class AddOrChangeTaskController {
                 makeTimeAndDateToShow(new SimpleDateFormat("HH:mm:ss dd-MM-yyyy").parse(Controller.tSDate), shours, smin, ssec, start);
                 makeTimeAndDateToShow(new SimpleDateFormat("HH:mm:ss dd-MM-yyyy").parse(Controller.tEDate), ehours, emin, esec, end);
             } catch (ParseException e) {
-                e.printStackTrace();
+                Controller.logger.error("exception in  makeTimeAndDateToShow() method: " + e);
             }
             makeIntervalToShow(Controller.tIntInterval, idays, ihours, imin, isec);
         } else {
@@ -207,7 +207,7 @@ public class AddOrChangeTaskController {
             try {
                 makeTimeAndDateToShow(new SimpleDateFormat("HH:mm:ss dd-MM-yyyy").parse(Controller.tDate), hours, min, sec, date);
             } catch (ParseException e) {
-                e.printStackTrace();
+                Controller.logger.error("exception in  makeTimeAndDateToShow() method: " + e);
             }
         }
     }
@@ -221,9 +221,9 @@ public class AddOrChangeTaskController {
             ValidateController.setZeroIfEmpty(imin);
             ValidateController.setZeroIfEmpty(isec);
             StringBuilder builder = new StringBuilder();
-            int days = Integer.parseInt(ValidateController.removeZeroBeforeNumber(idays.getText()));// * 86400;
-            int hours = Integer.parseInt(ValidateController.removeZeroBeforeNumber(ihours.getText()));// * 3600;
-            int minutes = Integer.parseInt(ValidateController.removeZeroBeforeNumber(imin.getText()));// * 60;
+            int days = Integer.parseInt(ValidateController.removeZeroBeforeNumber(idays.getText()));
+            int hours = Integer.parseInt(ValidateController.removeZeroBeforeNumber(ihours.getText()));
+            int minutes = Integer.parseInt(ValidateController.removeZeroBeforeNumber(imin.getText()));
             int seconds = Integer.parseInt(ValidateController.removeZeroBeforeNumber(isec.getText()));
             builder.append((days == 0? "": days + (days > 1 ? " days " : " day ")));
             builder.append((hours == 0? "": hours + (hours > 1 ? " hours " : " hour ")));

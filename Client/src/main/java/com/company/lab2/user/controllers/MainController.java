@@ -30,7 +30,8 @@ public class MainController {
     void initialize() {
         final Stage stage = WindowMaker.getStage();
         stage.setOnCloseRequest(event -> {
-            alarm.interrupt();
+            if (alarm != null)
+                alarm.interrupt();
             Controller.interrupt();
         });
         taskListView.refresh();
@@ -61,7 +62,8 @@ public class MainController {
                     if (Controller.becomeAdmTry == 0) {
                         adminBtn.setText("Exit");
                         adminBtn.setOnAction(actionEvent -> {
-                            alarm.interrupt();
+                            if (alarm != null)
+                                alarm.interrupt();
                             Controller.interrupt();
                         });
                     } else {
@@ -103,7 +105,6 @@ public class MainController {
         MultipleSelectionModel<String> selectionModel = taskListView.getSelectionModel();
         selectionModel.selectedItemProperty().addListener((changed, oldValue, newValue) -> taskListView.setOnMouseClicked(event -> {
             if (newValue != null) {
-                //System.out.println("Selected: " + newValue.toString());
                 task = newValue;
                 Controller.parsTaskStringRequest(task);
                 final String path = "/view/user/Task.fxml";

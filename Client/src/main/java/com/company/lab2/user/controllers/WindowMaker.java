@@ -37,7 +37,6 @@ public class WindowMaker {
             stage.showAndWait();
         } catch (IOException e) {
             logger.error(e.getMessage(),e);
-            e.printStackTrace();
         }
     }
 
@@ -59,7 +58,6 @@ public class WindowMaker {
             stage.showAndWait();
         } catch (IOException e) {
             logger.error(e.getMessage(),e);
-            e.printStackTrace();
         }
     }
 

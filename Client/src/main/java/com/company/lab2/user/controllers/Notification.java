@@ -48,59 +48,49 @@ public class Notification extends Thread {
     @Override
     public void run() {
         logger.debug("new Thread");
-        mark:
         while (checkForWhile){
             makeCalendarForDay();
             try {
                 while ((calendarByTime == null ? 0 : calendarByTime.size()) > 0) {
-                    Thread.sleep(5);
                     if (notFirstTimeHereAfterMonitor) {
                         now = new Date(System.currentTimeMillis() / 1000 * 1000);
                     } else notFirstTimeHereAfterMonitor = true;
-                    //зайдем если текущее время = времени зади
                     if (nextAlarmDate != null && now.getTime() == nextAlarmDate.getTime()) {
-                        //то походи по сету задач этого ключа и выводи все задачи сета
                         if (calendarByTime.get(now) != null ) {
                             for (String task : calendarByTime.get(now)) {
                                 logger.debug("alarm!!!");
                                 Platform.runLater(() -> WindowMaker.alertWindowInf(title, header, task));
                             }
-                            //удаляем объекты мапы
                             calendarByTime.remove(now);
                         }
                     }
-                    //зайдем если текущее время > времени зади или время задачи еще не задано
-                    if (nextAlarmDate == null || now.getTime() != nextAlarmDate.getTime()) {
-                        //проходим по сету ключей тримапы
-                        for (Date date : calendarByTime.keySet()) {
-                            //если текущее время соответствует ключу сета
-                            if (date.getTime() == now.getTime()) {
-                                //то проходим по сету задач этого ключа и выводи все задачи сета
-                                if (calendarByTime.get(now) != null ) {
-                                    for (String task : calendarByTime.get(now)) {
-                                        logger.debug("alarm!!!");
-                                        Platform.runLater(() -> WindowMaker.alertWindowInf(title, header, task));
+                    if (nextAlarmDate == null || !now.equals(nextAlarmDate)) {
+                        if (calendarByTime != null) {
+                            for (Date date : calendarByTime.keySet()) {
+                                if (date.getTime() == now.getTime()) {
+                                    if (calendarByTime.get(now) != null ) {
+                                        for (String task : calendarByTime.get(now)) {
+                                            logger.debug("alarm!!!");
+                                            Platform.runLater(() -> WindowMaker.alertWindowInf(title, header, task));
+                                        }
+                                        calendarByTime.remove(now);
+                                        break;
                                     }
-                                    //удаляем объекты мапы
-                                    calendarByTime.remove(now);
+                                } else if (now.getTime() < date.getTime()) {
+                                    nextAlarmDate = date;
+                                    if (nextAlarmDate.getTime() - now.getTime() > 1) {
+                                        long sleep = nextAlarmDate.getTime() - now.getTime() - 1;
+                                        logger.debug("sleep to alarm " + sleep + " mils");
+                                        sleep(sleep);
+                                    }
                                     break;
                                 }
-                            //если текущее время меньше ключа сета
-                            } else if (now.getTime() < date.getTime()) {
-                                //запоминаем время
-                                nextAlarmDate = date;
-                                logger.debug("sleep to alarm " +(nextAlarmDate.getTime() - now.getTime()));
-                                //время на которое засыпаем
-                                long sleep = nextAlarmDate.getTime() - now.getTime();
-                                Thread.sleep(sleep);
-                                break;
-                            } else break mark;
+                            }
                         }
                     }
                 }
-                //если календарь на сегодня пуст - спим до завтра
                 logger.debug("sleep to the next day");
-                Thread.sleep(endDayTime.getTime() - now.getTime());
+                sleep(endDayTime.getTime() - now.getTime());
                 break;
             } catch (InterruptedException e) {
                 logger.debug("exception");
