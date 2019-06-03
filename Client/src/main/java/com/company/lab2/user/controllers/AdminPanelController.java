@@ -28,7 +28,7 @@ public class AdminPanelController {
         Stage stage = WindowMaker.getStage();
         if (stage.getTitle().matches("Admin Panel")) {
             usersList.setItems(Controller.usersList);
-            if (!Controller.getAdminValue().equals("SuperAdmin")) {
+            if (!"SuperAdmin".equals(Controller.getAdminValue())) {
                 grantBtn.setText("Exit");
                 grantBtn.setOnAction(event -> WindowMaker.closeWindow(WindowMaker.getStage()));
             } else {

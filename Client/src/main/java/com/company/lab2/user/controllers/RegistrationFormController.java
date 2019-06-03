@@ -50,8 +50,8 @@ public class RegistrationFormController {
             final String alertHeader = "Action mistake";
             String alertText = "";
             if (ValidateController.isEmpty(login) || ValidateController.isEmpty(name)
-                    || ValidateController.isEmpty(email) || password.getText().trim().equals("")
-                    || passwordConfirm.getText().trim().equals("")) {
+                    || ValidateController.isEmpty(email) ||"".equals(password.getText().trim())
+                    || "".equals(passwordConfirm.getText().trim())) {
                 alertText ="All fields should be filled";
             } else if (!password.getText().equals(passwordConfirm.getText())){
                 alertText ="Passwords not match!";

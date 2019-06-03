@@ -56,9 +56,9 @@ public class MainController {
                 final String header = "Admin Panel";
                 WindowMaker.makeWindow(path, header);
             } else {
-                if (Controller.waiting4Adm.equals("waiting")) {
+                if ("waiting".equals(Controller.waiting4Adm)) {
                     WindowMaker.alertWindowInf("Waite", "You are in waiting list now", "Waite till SuperAdmin make you administrator");
-                } else if (Controller.waiting4Adm.equals("notWaiting")) {
+                } else if ("notWaiting".equals(Controller.waiting4Adm)) {
                     if (Controller.becomeAdmTry == 0) {
                         adminBtn.setText("Exit");
                         adminBtn.setOnAction(actionEvent -> {

@@ -98,7 +98,7 @@ class ValidateController {
      * @return true if empty else false
      */
     static boolean isEmpty(TextField textField) {
-        return textField.getText() == null || textField.getText().trim().equals("");
+        return textField.getText() == null || "".equals(textField.getText().trim());
     }
 
     /**Method for removing "0" in String if string starts from it

@@ -263,12 +263,12 @@ public class Controller extends Application {
         boolean to_return;
         while (true) {
             if(adminValue != null) {
-                if (adminValue.equals("admin") || adminValue.equals("SuperAdmin")) {
+                if ("admin".equals(adminValue) || "SuperAdmin".equals(adminValue)) {
                     to_return = true;
                     break;
-                } else if (adminValue.equals("false")) {
+                } else if ("false".equals(adminValue)) {
                     if (waiting4Adm != null) {
-                        if (waiting4Adm.equals("waiting") || waiting4Adm.equals("notWaiting")) {
+                        if ("waiting".equals(waiting4Adm) || "notWaiting".equals(waiting4Adm)) {
                             to_return = false;
                             break;
                         }

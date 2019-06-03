@@ -42,7 +42,7 @@ public class EnterFormController {
             final String alertTitle = "Warning";
             final String alertHeader = "Action mistake";
             final String alertText ="Login & password fields should be filled";
-            if (ValidateController.isEmpty(login)|| password.getText().trim().equals("")) {
+            if (ValidateController.isEmpty(login)|| "".equals(password.getText().trim())) {
                 WindowMaker.alertWindowWarning(alertTitle, alertHeader, alertText);
             } else {
                 logIn = login.getText();

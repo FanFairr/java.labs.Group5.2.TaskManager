@@ -190,7 +190,7 @@ public class AddOrChangeTaskController {
     /**Method for showing task content on scene*/
     private void setTaskValuesToShow() {
         Title.setText(Controller.tTitle);
-        if (Controller.tActive.equals("Active")) active.setSelected(true);
+        if ("Active".equals(Controller.tActive)) active.setSelected(true);
         if (Controller.tStrInterval != null) {
             Rep.setSelected(true);
             showRepRadioBtnContent();
