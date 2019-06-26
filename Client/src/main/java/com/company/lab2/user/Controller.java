@@ -72,11 +72,12 @@ public class Controller extends Application {
     /**client socket*/
     private static Socket client;
 
+    final String path = "/view/user/Connection.fxml";
+    final String header1 = "Connection";
+
     @Override
     public void start(Stage primaryStage) {
-        final String path = "/view/user/Connection.fxml";
-        final String header = "Connection";
-        WindowMaker.makeWindow(path, header, Modality.NONE);
+        WindowMaker.makeWindow(path, header1, Modality.NONE);
     }
 
     public static void main(String[] args) {
