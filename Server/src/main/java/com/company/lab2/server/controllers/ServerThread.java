@@ -22,10 +22,13 @@ import java.util.*;
 public class ServerThread extends Thread {
     private Logger logger = Logger.getLogger(ServerThread.class);
 
-    /** client socket */
-    private Socket socket;
+    /** message flow */
+    private BufferedReader in;
     /** message flow */
     private PrintWriter printWriter;
+
+    /** client socket */
+    private Socket socket;
     /** current client */
     private User currentUser;
     /** current client login */
@@ -59,14 +62,14 @@ public class ServerThread extends Thread {
             User newUser;
             Gson gson = new Gson();
 
-            BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+            in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             printWriter = new PrintWriter(socket.getOutputStream());
             SimpleDateFormat format = new SimpleDateFormat("HH:mm:ss dd-MM-yyyy");
             while (whileCondition) {
                 String response = in.readLine();
                 if (response != null && !response.isEmpty()) {
                     switch (response) {
-                        case Patterns.login:
+                        case Patterns.LOGIN:
                             login = in.readLine();
                             String password = in.readLine();
                             synchronized (tasksList) {
@@ -107,7 +110,7 @@ public class ServerThread extends Thread {
                             }
                             break;
 
-                        case Patterns.registration:
+                        case Patterns.REGISTRATION:
                             login = in.readLine();
                             password = in.readLine();
                             loginNotExist = true;
@@ -134,7 +137,7 @@ public class ServerThread extends Thread {
                             }
                             break;
 
-                        case Patterns.task:
+                        case Patterns.TASK:
                             String taskStr = in.readLine();
                             Task task = StringConverterController.makeTaskFromString(taskStr);
                             StringBuilder builder = new StringBuilder();
@@ -153,24 +156,24 @@ public class ServerThread extends Thread {
                             streamWrite(new String(builder));
                             break;
 
-                        case Patterns.add:
+                        case Patterns.ADD:
                             taskArrayList.add(StringConverterController.makeTaskFromString(in.readLine()));
                             streamWrite("doneADCH\n");
                             break;
 
-                        case Patterns.delete:
+                        case Patterns.DELETE:
                             taskArrayList.remove(StringConverterController.makeTaskFromString(in.readLine()));
                             streamWrite("doneADCH\n");
                             break;
 
-                        case Patterns.change:
+                        case Patterns.CHANGE:
                             Task oldT = StringConverterController.makeTaskFromString(in.readLine());
                             Task newT = StringConverterController.makeTaskFromString(in.readLine());
                             taskArrayList.set(taskArrayList.indexOf(oldT), newT);
                             streamWrite("doneADCH\n");
                             break;
 
-                        case Patterns.isAdmin:
+                        case Patterns.ISADMIN:
                             if (currentUser.getAdmin().equals("false")) {
                                 synchronized (adminList) {
                                     if (adminList.contains(currentUser)) {
@@ -180,7 +183,7 @@ public class ServerThread extends Thread {
                             } else streamWrite("isAdmin\n"+currentUser.getAdmin()+"\n");
                             break;
 
-                        case Patterns.becomeAdm:
+                        case Patterns.BECOMEADM:
                             String code = in.readLine();
                             if (code.equals("123")) {
                                 synchronized (adminList) {
@@ -199,19 +202,19 @@ public class ServerThread extends Thread {
                             }
                             break;
 
-                        case Patterns.usersList:
+                        case Patterns.USERSLIST:
                             synchronized (adminList) {
                                 streamWrite("usersList\n" + gson.toJson(StringConverterController.convertUserList(usersList)) + "\n");
                             }
                             break;
 
-                        case Patterns.adminList:
+                        case Patterns.ADMINLIST:
                             synchronized (adminList) {
                                 streamWrite("adminsList\n" + gson.toJson(StringConverterController.convertUserList(adminList)) + "\n");
                             }
                             break;
 
-                        case Patterns.calendar:
+                        case Patterns.CALENDAR:
                             Date date1 = null;
                             Date date2 = null;
                             try {
@@ -244,7 +247,7 @@ public class ServerThread extends Thread {
                             }
                             break;
 
-                        case Patterns.banned:
+                        case Patterns.BANNED:
                             synchronized (usersList) {
                                 strUser = in.readLine();
                                 newUser = StringConverterController.makeUserFromString(strUser);
@@ -261,7 +264,7 @@ public class ServerThread extends Thread {
                             }
                             break;
 
-                        case Patterns.adminka:
+                        case Patterns.ADMINKA:
                             synchronized (usersList) {
                                 strUser = in.readLine();
                                 newUser = StringConverterController.makeUserFromString(strUser);
@@ -279,7 +282,7 @@ public class ServerThread extends Thread {
                             }
                             break;
 
-                        case Patterns.rebut:
+                        case Patterns.REBUT:
                             ServerSceneController controller = new ServerSceneController();
                             controller.rebut(null);
 
@@ -295,7 +298,7 @@ public class ServerThread extends Thread {
                             whileCondition = false;
                             break;
 
-                        case Patterns.exit:
+                        case Patterns.EXIT:
                             synchronized (tasksList) {
                                 if (login != null)
                                     tasksList.put(login, taskArrayList);
@@ -313,13 +316,22 @@ public class ServerThread extends Thread {
                             whileCondition = false;
                             break;
                         default:
-                            System.out.println("smth wrong");
+                            logger.error("smth wrong with response");
+                            break;
                     }
                     Thread.sleep(10);
                 }
             }
         } catch (IOException | InterruptedException e) {
             logger.error("class ServerThread IOException or InterruptedException");
+        } finally {
+            try {
+                in.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            } finally {
+                printWriter.close();
+            }
         }
     }
 

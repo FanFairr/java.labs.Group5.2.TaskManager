@@ -26,6 +26,8 @@ import java.util.*;
 public class Controller extends Application {
     /** PrintWriter to stream write**/
     private static PrintWriter writer;
+    /** BufferedReader to stream read*/
+    private static BufferedReader reader;
     private static String title;
     private static String header;
     private static String content;
@@ -80,7 +82,7 @@ public class Controller extends Application {
     public static void main(String[] args) {
 
         connection = new Thread(() -> {
-            BufferedReader reader;
+
             while (client == null) {
                 try {
                     Thread.sleep(10);
@@ -95,18 +97,18 @@ public class Controller extends Application {
                     String response = reader.readLine();
                     if (response != null && !response.isEmpty()) {
                         switch (response) {
-                            case Patterns.connected:
+                            case Patterns.CONNECTED:
                                 String list = reader.readLine();
                                 taskList = FXCollections.observableList(new Gson().fromJson(list, new TypeToken<ArrayList<String>>(){}.getType()));
                                 break;
-                            case Patterns.task:
+                            case Patterns.TASK:
                                 tTitle = reader.readLine();
                                 tDate = reader.readLine();
                                 tActive = reader.readLine();
                                 tStrInterval = null;
                                 tParsed = Boolean.TRUE;
                                 break;
-                            case Patterns.taskRep:
+                            case Patterns.TASKREP:
                                 tTitle = reader.readLine();
                                 tSDate = reader.readLine();
                                 tEDate = reader.readLine();
@@ -115,15 +117,15 @@ public class Controller extends Application {
                                 tActive = reader.readLine();
                                 tParsed = Boolean.TRUE;
                                 break;
-                            case Patterns.calendar:
+                            case Patterns.CALENDAR:
                                 String str = reader.readLine();
-                                if (Patterns.empty.equals(str))
+                                if (Patterns.EMPTY.equals(str))
                                     calendarIsEmpty = Boolean.TRUE;
                                 else {
                                     tCalendar = new TreeMap<>();
                                     Date date;
                                     Set<String> set;
-                                    while (!Patterns.end.equals(str)) {
+                                    while (!Patterns.END.equals(str)) {
                                         date = new Gson().fromJson(str, new TypeToken<Date>(){}.getType());
                                         str = reader.readLine();
                                         set = new Gson().fromJson(str, new TypeToken<Set<String>>(){}.getType());
@@ -134,65 +136,65 @@ public class Controller extends Application {
                                     calendarIsEmpty = Boolean.FALSE;
                                 }
                                 break;
-                            case Patterns.usersList:
+                            case Patterns.USERSLIST:
                                 String users = reader.readLine();
                                 usersList = FXCollections.observableList(new Gson().fromJson(users, new TypeToken<ArrayList<String>>(){}.getType()));
                                 break;
-                            case Patterns.adminsList:
+                            case Patterns.ADMINSLIST:
                                 String admins = reader.readLine();
                                 adminsList = FXCollections.observableList(new Gson().fromJson(admins, new TypeToken<ArrayList<String>>(){}.getType()));
                                 break;
-                            case Patterns.doneADCH:
+                            case Patterns.DONEADCH:
                                 title = response;
                                 break;
-                            case Patterns.alreadyExistLogin:
+                            case Patterns.ALREADYEXISTLOGIN:
                                 title = "Error";
                                 header = "Wrong login";
                                 content = "Login already exist";
                                 break;
-                            case Patterns.activeUser:
+                            case Patterns.ACTIVEUSER:
                                 title = "Error";
                                 header = "Active user";
                                 content = "This account already uses";
                                 break;
-                            case Patterns.loginNotExist:
+                            case Patterns.LOGINNOTEXIST:
                                 title = "Error";
                                 header = "Wrong login";
                                 content = "Login doesn't exist";
                                 break;
-                            case Patterns.wrongPassword:
+                            case Patterns.WRONGPASSWORD:
                                 title = "Error";
                                 header = "Wrong password";
                                 content = "Password is incorrect";
                                 break;
-                            case Patterns.banned:
+                            case Patterns.BANNED:
                                 title = "Nope";
                                 header = "U are banned";
                                 content = "Good luck";
                                 break;
-                            case Patterns.isAdmin:
+                            case Patterns.ISADMIN:
                                 adminValue = reader.readLine();
                                 if ("false".equals(adminValue))
                                     waiting4Adm = reader.readLine();
                                 break;
-                            case Patterns.wrongCode:
+                            case Patterns.WRONGCODE:
                                 becomeAdmTry = Integer.parseInt(reader.readLine());
                                 title = "Error";
                                 header = "Wrong code";
                                 String s = becomeAdmTry > 1? becomeAdmTry +" try's left. ": becomeAdmTry +" try left. ";
                                 content = s + "Connect with mainAdmin to get code";
                                 break;
-                            case Patterns.congratulations:
+                            case Patterns.CONGRATULATIONS:
                                 title = "Cool";
                                 header = "Congratulations";
                                 content = "You are on waiting list to become admin";
                                 break;
-                            case Patterns.alreadyAdmin:
+                            case Patterns.ALREADYADMIN:
                                 title = "woops";
                                 header = "already admin";
                                 content = "";
                                 break;
-                            case Patterns.exit:
+                            case Patterns.EXIT:
                                 interrupt();
                                 break;
                             default:
@@ -205,6 +207,14 @@ public class Controller extends Application {
             } catch (IOException e) {
                 logger.error("exception on connection thread");
                 logger.trace(e);
+            } finally {
+                try {
+                    reader.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                } finally {
+                    writer.close();
+                }
             }
         });
         connection.start();
@@ -322,17 +332,17 @@ public class Controller extends Application {
         streamWrite("Become adm:\n" + code + "\n");
         while (true) {
             if (header != null) {
-                if (Patterns.wrongCode.equals(header)) {
+                if (Patterns.WRONGCODE.equals(header)) {
                     WindowMaker.alertWindowInf(title, header, content);
                     header = null;
                     break;
                 }
-                if (Patterns.congratulations.equals(header)) {
+                if (Patterns.CONGRATULATIONS.equals(header)) {
                     WindowMaker.alertWindowInf(title, header, content);
                     header = null;
                     break;
                 }
-                if (Patterns.alreadyAdmin.equals(header)) {
+                if (Patterns.ALREADYADMIN.equals(header)) {
                     WindowMaker.alertWindowInf(title, header, content);
                     header = null;
                     break;
@@ -444,7 +454,7 @@ public class Controller extends Application {
     /** method for waiting for response on add/delete/change requests*/
     private static void w84Response() {
         while (true) {
-            if (Patterns.doneADCH.equals(title)) {
+            if (Patterns.DONEADCH.equals(title)) {
                 MainController.notificationInterrupt();
                 break;
             }

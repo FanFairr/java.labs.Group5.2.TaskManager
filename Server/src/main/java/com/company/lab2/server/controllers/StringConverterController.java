@@ -4,6 +4,7 @@ import com.company.lab2.server.model.Task;
 import com.company.lab2.server.model.User;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import org.apache.log4j.Logger;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -16,6 +17,7 @@ import java.util.regex.Pattern;
  * class to convert collections to another type
  */
 public class StringConverterController {
+    private static Logger logger = Logger.getLogger(StringConverterController.class);
 
     /**
      * translation method ArrayList to ObservableList
@@ -77,7 +79,7 @@ public class StringConverterController {
                 start = new SimpleDateFormat("HH:mm:ss dd-MM-yyyy").parse(getStartDate(strTask));
                 end = new SimpleDateFormat("HH:mm:ss dd-MM-yyyy").parse(getEndDate(strTask));
             } catch (ParseException e) {
-                e.printStackTrace();
+                logger.error("Error parsing date on line 78-79 of class StringConverterController");
             }
             Task task = new Task(title, start ,end, repInt);
             task.setActive(getActive(strTask));
@@ -87,7 +89,7 @@ public class StringConverterController {
             try {
                 time = new SimpleDateFormat("HH:mm:ss dd-MM-yyyy").parse(getDate(strTask));
             } catch (ParseException e) {
-                e.printStackTrace();
+                logger.error("Error parsing date on line 90 of class StringConverterController");
             }
             Task task = new Task(title, time);
             task.setActive(getActive(strTask));
