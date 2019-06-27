@@ -22,5 +22,77 @@ public class Patterns {
     public static final String ALREADYADMIN = "already admin";
     public static final String EXIT = "Exit";
 
+    public enum TitleEnum {
+        ERROR ("Error"),
+        NOPE ("Nope"),
+        COOl ("Cool"),
+        WOOPS ("Woops");
+
+        private String title;
+
+        TitleEnum(String title) {
+            this.title = title;
+        }
+
+        public String getTitle() {
+            return title;
+        }
+        @Override
+        public String toString() {
+            return "Header = '" + title + '\'';
+        }
+    }
+
+    public enum HeaderEnum {
+        WRONGLOGIN ("Wrong login"),
+        ACTIVEUSER ("Active user"),
+        WRONGPASSWORD ("Wrong password"),
+        BANNED ("U are banned"),
+        WRONGCODE ("Wrong code"),
+        CONGRATULATIONS ("Congratulations"),
+        ALREADYADMIN ("Already admin");
+
+        private String title;
+
+        HeaderEnum(String title) {
+            this.title = title;
+        }
+
+        public String getTitle() {
+            return title;
+        }
+        @Override
+        public String toString() {
+            return "Header = '" + title + '\'';
+        }
+    }
+
+    public enum ContentEnum {
+        WRONGLOGIN ("Login doesn't exist"),
+        ALREADYEXISTLOGIN ("already exist login"),
+        ACTIVEUSER ("This account is active wright now"),
+        LOGINNOTEXIST ("Login doesn't exist"),
+        WRONGPASSWORD ("Password is incorrect"),
+        BANNED ("Good luck"),
+        WRONGCODE ("Contact with mainAdmin to get code"),
+        CONGRATULATIONS ("You are on waiting list to become admin"),
+        ALREADYADMIN ("");
+
+        private String title;
+
+        ContentEnum(String title) {
+            this.title = title;
+        }
+
+        public String getTitle() {
+            return title;
+        }
+        @Override
+        public String toString() {
+            return "Header = '" + title + '\'';
+        }
+    }
+
+
 
 }

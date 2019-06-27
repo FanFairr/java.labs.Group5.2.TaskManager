@@ -28,9 +28,6 @@ public class Controller extends Application {
     private static PrintWriter writer;
     /** BufferedReader to stream read*/
     private static BufferedReader reader;
-    private static String title;
-    private static String header;
-    private static String content;
     private static Boolean calendarIsEmpty;
     private static Boolean tParsed;
     private static String adminValue;
@@ -67,16 +64,13 @@ public class Controller extends Application {
     private static Thread connection;
     /** condition for while loop */
     private static boolean whileCondition = true;
-    /** first opened stage after connection */
-    private static Stage firstStage;
     /**client socket*/
     private static Socket client;
 
-    final String path = "/view/user/Connection.fxml";
-    final String header1 = "Connection";
-
     @Override
     public void start(Stage primaryStage) {
+        final String path = "/view/user/Connection.fxml";
+        final String header1 = "Connection";
         WindowMaker.makeWindow(path, header1, Modality.NONE);
     }
 
@@ -101,6 +95,11 @@ public class Controller extends Application {
                             case Patterns.CONNECTED:
                                 String list = reader.readLine();
                                 taskList = FXCollections.observableList(new Gson().fromJson(list, new TypeToken<ArrayList<String>>(){}.getType()));
+                                Platform.runLater(()-> {
+                                    Stage firstStage = WindowMaker.getStage();
+                                    Platform.runLater(firstStage::close);
+                                    WindowMaker.makeWindow("/view/user/Main.fxml", "Task Manager");
+                                });
                                 break;
                             case Patterns.TASK:
                                 tTitle = reader.readLine();
@@ -146,32 +145,22 @@ public class Controller extends Application {
                                 adminsList = FXCollections.observableList(new Gson().fromJson(admins, new TypeToken<ArrayList<String>>(){}.getType()));
                                 break;
                             case Patterns.DONEADCH:
-                                title = response;
+                                Platform.runLater(MainController::notificationInterrupt);
                                 break;
                             case Patterns.ALREADYEXISTLOGIN:
-                                title = "Error";
-                                header = "Wrong login";
-                                content = "Login already exist";
+                                Platform.runLater(()-> WindowMaker.alertWindowInf(Patterns.TitleEnum.ERROR.getTitle(), Patterns.HeaderEnum.WRONGLOGIN.getTitle(), Patterns.ContentEnum.ALREADYEXISTLOGIN.getTitle()));
                                 break;
                             case Patterns.ACTIVEUSER:
-                                title = "Error";
-                                header = "Active user";
-                                content = "This account already uses";
+                                Platform.runLater(()-> WindowMaker.alertWindowInf(Patterns.TitleEnum.ERROR.getTitle(), Patterns.HeaderEnum.ACTIVEUSER.getTitle(), Patterns.ContentEnum.ACTIVEUSER.getTitle()));
                                 break;
                             case Patterns.LOGINNOTEXIST:
-                                title = "Error";
-                                header = "Wrong login";
-                                content = "Login doesn't exist";
+                                Platform.runLater(()-> WindowMaker.alertWindowInf(Patterns.TitleEnum.ERROR.getTitle(), Patterns.HeaderEnum.WRONGLOGIN.getTitle(), Patterns.ContentEnum.LOGINNOTEXIST.getTitle()));
                                 break;
                             case Patterns.WRONGPASSWORD:
-                                title = "Error";
-                                header = "Wrong password";
-                                content = "Password is incorrect";
+                                Platform.runLater(()-> WindowMaker.alertWindowInf(Patterns.TitleEnum.ERROR.getTitle(), Patterns.HeaderEnum.WRONGPASSWORD.getTitle(), Patterns.ContentEnum.WRONGPASSWORD.getTitle()));
                                 break;
                             case Patterns.BANNED:
-                                title = "Nope";
-                                header = "U are banned";
-                                content = "Good luck";
+                                Platform.runLater(()-> WindowMaker.alertWindowInf(Patterns.TitleEnum.NOPE.getTitle(), Patterns.HeaderEnum.BANNED.getTitle(), Patterns.ContentEnum.BANNED.getTitle()));
                                 break;
                             case Patterns.ISADMIN:
                                 adminValue = reader.readLine();
@@ -180,20 +169,13 @@ public class Controller extends Application {
                                 break;
                             case Patterns.WRONGCODE:
                                 becomeAdmTry = Integer.parseInt(reader.readLine());
-                                title = "Error";
-                                header = "Wrong code";
-                                String s = becomeAdmTry > 1? becomeAdmTry +" try's left. ": becomeAdmTry +" try left. ";
-                                content = s + "Connect with mainAdmin to get code";
+                                Platform.runLater(()-> WindowMaker.alertWindowInf(Patterns.TitleEnum.ERROR.getTitle(), Patterns.HeaderEnum.WRONGCODE.getTitle(), becomeAdmTry > 1? becomeAdmTry +" try's left. ": becomeAdmTry +" try left. " + Patterns.ContentEnum.WRONGCODE.getTitle()));
                                 break;
                             case Patterns.CONGRATULATIONS:
-                                title = "Cool";
-                                header = "Congratulations";
-                                content = "You are on waiting list to become admin";
+                                Platform.runLater(()-> WindowMaker.alertWindowInf(Patterns.TitleEnum.COOl.getTitle(), Patterns.HeaderEnum.CONGRATULATIONS.getTitle(),Patterns.ContentEnum.CONGRATULATIONS.getTitle()));
                                 break;
                             case Patterns.ALREADYADMIN:
-                                title = "woops";
-                                header = "already admin";
-                                content = "";
+                                Platform.runLater(()-> WindowMaker.alertWindowInf(Patterns.TitleEnum.WOOPS.getTitle(), Patterns.HeaderEnum.ALREADYADMIN.getTitle(),Patterns.ContentEnum.ALREADYADMIN.getTitle()));
                                 break;
                             case Patterns.EXIT:
                                 interrupt();
@@ -228,7 +210,6 @@ public class Controller extends Application {
      * @param password user password*/
     public static void registration(String login, String password) {
         streamWrite("Registration:\n" + login + "\n" + password + "\n");
-        Platform.runLater(Controller::runMain);
     }
 
     /** method for user logIn
@@ -236,37 +217,30 @@ public class Controller extends Application {
      * @param password user password*/
     public static void signIn(String login, String password) {
         streamWrite("Login:\n" + login + "\n" + password + "\n");
-        Platform.runLater(Controller::runMain);
     }
 
     /** method for sending task to add on server
      * @param task task to add*/
     public static void addTask(String task) {
-        title = null;
         streamWrite("Add:\n" + task + "\n");
         taskList.add(task);
-        w84Response();
     }
     /** method for sending task to delete on server
      * @param task task to delete*/
     public static void deleteTask(String task) {
-        title = null;
         streamWrite("Delete:\n" + task + "\n");
         taskList.remove(task);
-        w84Response();
     }
     /** method for sending task to  change on server
      * @param oldT old task to be changed
      * @param newT new task which replace old*/
     public static void changeTask(String oldT, String newT) {
-        title = null;
         streamWrite("Change:\n" + oldT + "\n" + newT + "\n");
         taskList.set(taskList.indexOf(oldT), newT);
-        w84Response();
     }
 
     /** method for sending request to check current user admin rights
-     * @return true if admin or supperAdmin*/
+     * @return true if admin or supperAdmin else false*/
     public static boolean isAdmin() {
         adminValue = null;
         waiting4Adm = null;
@@ -331,53 +305,6 @@ public class Controller extends Application {
      * @param code secret code to become admin verification*/
     public static void becomeAdmin(String code) {
         streamWrite("Become adm:\n" + code + "\n");
-        while (true) {
-            if (header != null) {
-                if (Patterns.WRONGCODE.equals(header)) {
-                    WindowMaker.alertWindowInf(title, header, content);
-                    header = null;
-                    break;
-                }
-                if (Patterns.CONGRATULATIONS.equals(header)) {
-                    WindowMaker.alertWindowInf(title, header, content);
-                    header = null;
-                    break;
-                }
-                if (Patterns.ALREADYADMIN.equals(header)) {
-                    WindowMaker.alertWindowInf(title, header, content);
-                    header = null;
-                    break;
-                }
-            }
-            try {
-                Thread.sleep(10);
-            } catch (InterruptedException e) {
-                logger.error("exception in becomeAdmin()");
-                logger.trace(e);
-            }
-        }
-    }
-
-    /** method for running main scene */
-    private static void runMain() {
-        while (true) {
-            if (taskList != null) {
-                firstStage = WindowMaker.getStage();
-                Platform.runLater(()-> firstStage.close());
-                WindowMaker.makeWindow("/view/user/Main.fxml", "Task Manager");
-                break;
-            } else if (title != null) {
-                WindowMaker.alertWindowInf(title, header, content);
-                title = null;
-                break;
-            }
-            try {
-                Thread.sleep(10);
-            } catch (InterruptedException e) {
-                logger.error("exception in runMain()");
-                logger.trace(e);
-            }
-        }
     }
 
     /** method for sending request to get tasks calendar
@@ -409,7 +336,7 @@ public class Controller extends Application {
         tParsed = null;
         streamWrite("Task:\n" + task + "\n");
         while (true) {
-            if (tParsed !=  null) break;
+            if (tParsed != null) break;
             try {
                 Thread.sleep(10);
             } catch (InterruptedException e) {
@@ -450,23 +377,6 @@ public class Controller extends Application {
     public static void grantAdmin(String user) {
         if (user != null && user.length() > 20)
             streamWrite("Adminka:\n" + user + "\n");
-    }
-
-    /** method for waiting for response on add/delete/change requests*/
-    private static void w84Response() {
-        while (true) {
-            if (Patterns.DONEADCH.equals(title)) {
-                MainController.notificationInterrupt();
-                break;
-            }
-            try {
-                Thread.sleep(10);
-            } catch (InterruptedException e) {
-                logger.error("exception in w84Response()");
-                logger.trace(e);
-            }
-        }
-
     }
 
     /** method for getting isAdmin value for current user

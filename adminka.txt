@@ -1,1 +1,1 @@
-[]
+[{"login":"Valera","password":"123","banned":false,"admin":"false"}]
