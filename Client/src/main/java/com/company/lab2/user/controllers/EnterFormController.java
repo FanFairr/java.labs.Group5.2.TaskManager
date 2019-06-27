@@ -39,11 +39,11 @@ public class EnterFormController {
         login.setTooltip(new Tooltip("Your login"));
         password.setTooltip(new Tooltip("Your password"));
         signInBtn.setOnAction(event -> {
-            final String alertTitle = "Warning";
-            final String alertHeader = "Action mistake";
-            final String alertText ="Login & password fields should be filled";
+            final String ALERT_TITLE = "Warning";
+            final String ALERT_HEADER = "Action mistake";
+            final String ALERT_TEXT ="Login & password fields should be filled";
             if (ValidateController.isEmpty(login)|| "".equals(password.getText().trim())) {
-                WindowMaker.alertWindowWarning(alertTitle, alertHeader, alertText);
+                WindowMaker.alertWindowWarning(ALERT_TITLE, ALERT_HEADER, ALERT_TEXT);
             } else {
                 logIn = login.getText();
                 Controller.signIn(login.getText(), password.getText());
@@ -51,10 +51,10 @@ public class EnterFormController {
         });
         registrationBtn.setOnMouseClicked(event -> {
             Stage current = WindowMaker.getStage();
-            final String path = "/view/user/RegistrationForm.fxml";
-            final String header = "Registration";
+            final String PATH = "/view/user/RegistrationForm.fxml";
+            final String HEADER = "Registration";
             Platform.runLater(() -> WindowMaker.closeWindow(current));
-            WindowMaker.makeWindow(path, header);
+            WindowMaker.makeWindow(PATH, HEADER);
         });
 
     }

@@ -26,7 +26,7 @@ public class BecomeAdminController {
         void initialize() {
             SendBtn.setOnAction(event -> {
                 if (Code.getText().isEmpty()) {
-                    WindowMaker.alertWindowInf("Code is empty", "Code field is empty", "pls filed code field before sending");
+                    WindowMaker.alertWindowInf(Patterns.TitleEnum.EMPTY_CODE.getTitle(), Patterns.HeaderEnum.EMPTY_CODE.getTitle(), Patterns.ContentEnum.EMPTY_CODE.getTitle());
                 } else {
                     Stage current = WindowMaker.getStage();
                     Controller.becomeAdmin(Code.getText());

@@ -48,14 +48,14 @@ public class ConnectionController {
         ValidateController.hostValidate(host3);
         ValidateController.hostValidate(host4);
         connectBtn.setOnAction(event -> {
-            final String alertTitle = "Warning";
-            final String alertHeader = "Action mistake";
+            final String ALERT_TITLE = "Warning";
+            final String ALERT_HEADER = "Action mistake";
             String alertText = "";
             boolean alertMade = true;
             if (port.getText() == null)
-                alertText = "Port field should be filled";
+                alertText = Patterns.ContentEnum.PORT.getTitle();
             else if (host1.getText() == null || host2.getText() == null || host3.getText() == null || host4.getText() == null)
-                alertText = "Host fields should be filled";
+                alertText = Patterns.ContentEnum.HOST.getTitle();
             else {
                 String host = host1.getText() + "." + host2.getText() + "." + host3.getText() + "." + host4.getText();
                 int porT = Integer.valueOf(port.getText());
@@ -63,18 +63,18 @@ public class ConnectionController {
                 try {
                     client = new Socket(host, porT);
                 } catch (IOException e) {
-                    alertText = "Failed connect to server! Try again or change host/port data!";
+                    alertText = Patterns.ContentEnum.FAILED_CONN.getTitle();
                 }
                 if (client != null) {
                     alertMade = false;
                     Controller.setClient(client);
                     Platform.runLater(stage::close);
-                    final String path = "/view/user/EnterForm.fxml";
-                    final String header = "SignIn";
-                    WindowMaker.makeWindow(path, header);
+                    final String PATH = "/view/user/EnterForm.fxml";
+                    final String HEADER = "SignIn";
+                    WindowMaker.makeWindow(PATH, HEADER);
                 }
             }
-            if (alertMade) WindowMaker.alertWindowWarning(alertTitle, alertHeader, alertText);
+            if (alertMade) WindowMaker.alertWindowWarning(ALERT_TITLE, ALERT_HEADER, alertText);
         });
     }
 }

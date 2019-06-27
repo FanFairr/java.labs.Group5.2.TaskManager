@@ -9,7 +9,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-import static com.company.lab2.user.Controller.logger;
+import static com.company.lab2.user.Controller.LOGGER;
 
 /**
  * Class for making new windows
@@ -36,7 +36,7 @@ public class WindowMaker {
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.showAndWait();
         } catch (IOException e) {
-            logger.error(e.getMessage(),e);
+            LOGGER.error(e.getMessage(),e);
         }
     }
 
@@ -57,7 +57,7 @@ public class WindowMaker {
             stage.initModality(modality);
             stage.showAndWait();
         } catch (IOException e) {
-            logger.error(e.getMessage(),e);
+            LOGGER.error(e.getMessage(),e);
         }
     }
 

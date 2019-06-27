@@ -35,12 +35,12 @@ public class AdminPanelController {
                 grantBtn.setOnAction(event -> {
                     Controller.getPanelData("AdminsList:");
                     if (Controller.adminsList != null && Controller.adminsList.size() != 0) {
-                        final String path = "/view/user/AdminPanel.fxml";
-                        final String header = "Grant Admin Panel";
-                        WindowMaker.makeWindow(path, header);
+                        final String PATH = "/view/user/AdminPanel.fxml";
+                        final String HEADER = "Grant Admin Panel";
+                        WindowMaker.makeWindow(PATH, HEADER);
                         Controller.getPanelData("UsersList:");
                         usersList.setItems(Controller.usersList);
-                    } else WindowMaker.alertWindowInf("AdminRequests", "There are no Requests", "Pls come later!");
+                    } else WindowMaker.alertWindowInf(Patterns.TitleEnum.ADMIN_REQ.getTitle(), Patterns.HeaderEnum.ADMIN_REQ.getTitle(),Patterns.ContentEnum.ADMIN_REQ.getTitle());
                 });
             }
             rebutBtn.setOnAction(event -> Controller.rebut());

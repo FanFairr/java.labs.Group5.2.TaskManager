@@ -53,32 +53,32 @@ public class MakeCalendarController {
         ValidateController.hoursMinSecondsValidate(fromH, fromM, fromS);
         ValidateController.hoursMinSecondsValidate(toH, toM, toS);
         SearchBtn.setOnAction(event -> {
-            String title = "Warning";
-            String header = "Action mistake";
+            String title = Patterns.TitleEnum.WARNING.getTitle();
+            String header = Patterns.HeaderEnum.WARNING.getTitle();
             String text = "";
             boolean alertMade = true;
             Long fromTime = Convert.makeLongFromTimeFields(fromH, fromM, fromS);
             Long toTime = Convert.makeLongFromTimeFields(toH, toM, toS);
             if (From.getValue() == null || To.getValue() == null) {
-                text = "Date field should be filled";
+                text = Patterns.ContentEnum.DATE.getTitle();
             } else if (fromTime == null || toTime == null) {
-                text = "At least one of time fields in one row should be filled";
+                text = Patterns.ContentEnum.TIME.getTitle();
             } else {
                 start = Convert.makeDate(From, fromTime);
                 end = Convert.makeDate(To, toTime);
                 if (end.getTime() < start.getTime()) {
-                    text = "The end time of the task must be greater than the start time";
+                    text = Patterns.ContentEnum.END_START_TIME.getTitle();
                 } else {
                     alertMade = false;
                     if (Controller.calendar(start, end) == null) {
-                        title = "Calendar not found";
-                        header = "Sorry :-(";
-                        text = "There aren't any Tasks is such period of time";
+                        title = Patterns.TitleEnum.CALENDAR_NF.getTitle();
+                        header = Patterns.HeaderEnum.CALENDAR_NF.getTitle();
+                        text = Patterns.ContentEnum.CALENDAR_NF.getTitle();
                         WindowMaker.alertWindowInf(title, header, text);
                     } else {
-                        final String path = "/view/user/Calendar.fxml";
-                        header = "Calendar";
-                        WindowMaker.makeWindow(path, header);
+                        final String PATH = "/view/user/Calendar.fxml";
+                        final String H = "Calendar";
+                        WindowMaker.makeWindow(PATH, H);
                     }
                 }
             }

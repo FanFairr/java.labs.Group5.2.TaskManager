@@ -122,8 +122,8 @@ public class AddOrChangeTaskController {
      * or show alert massage if input isn't valid
      */
     private boolean MakeNewTask() {
-        final String alertTitle = "Warning";
-        final String alertHeader = "Action mistake";
+        final String ALERT_TITLE = "Warning";
+        final String ALERT_HEADER = "Action mistake";
         String alertText = "";
         boolean taskReady = false;
         boolean alertMade = true;
@@ -131,23 +131,23 @@ public class AddOrChangeTaskController {
         Long EDate = Convert.makeLongFromTimeFields(ehours, emin, esec);
         Long lDate = Convert.makeLongFromTimeFields(hours, min, sec);
         if (ValidateController.isEmpty(Title)) {
-            alertText = "Title field should be filled";
+            alertText =  Patterns.ContentEnum.TITLE.getTitle();
         } else {
             String strInterval = makeStrFromInterval();
             if (Rep.isSelected()) {
                 if (start.getValue() == null || end.getValue() == null) {
-                    alertText = "Date field should be filled";
+                    alertText = Patterns.ContentEnum.DATE.getTitle();
                 } else if ( SDate == null || EDate == null) {
-                    alertText = "At least one of time fields in one row should be filled";
+                    alertText = Patterns.ContentEnum.TIME.getTitle();
                 } else if (strInterval == null) {
-                    alertText = "At least one of \"interval\" fields in one row should be filled";
+                    alertText = Patterns.ContentEnum.INTERVAL_F.getTitle();
                 } else if (interval == 0) {
-                    alertText = "\"Interval\" must be greater than zero!";
+                    alertText = Patterns.ContentEnum.INTERVAL_Z.getTitle();
                 } else {
                     Date startD = Convert.makeDate(start, SDate);
                     Date endD = Convert.makeDate(end, EDate);
                     if (endD.getTime() < startD.getTime() + interval * 1000) {
-                        alertText = "End time of the task must be greater than Start time + interval";
+                        alertText = Patterns.ContentEnum.END_START_TIME.getTitle();
                     } else {
                         StringBuilder builder = new StringBuilder();
                         builder.append("Title: \'").append(Title.getText()).append("', startTime: ");
@@ -165,9 +165,9 @@ public class AddOrChangeTaskController {
                 }
             } else if (NRep.isSelected()) {
                 if (date.getValue() == null) {
-                    alertText = "Date field should be filled";
+                    alertText = Patterns.ContentEnum.DATE.getTitle();
                 } else if (Convert.makeLongFromTimeFields(hours, min, sec) == null) {
-                    alertText = "At least one of time fields should be filled";
+                    alertText =  Patterns.ContentEnum.TIME.getTitle();
                 } else {
                     StringBuilder builder = new StringBuilder();
                     Date time = Convert.makeDate(date, lDate);
@@ -181,9 +181,9 @@ public class AddOrChangeTaskController {
                     taskReady = true;
                     alertMade = false;
                 }
-            } else alertText = "Chose one of RadioButtons before adding Task";
+            } else alertText =  Patterns.ContentEnum.RADIO.getTitle();
         }
-        if (alertMade) WindowMaker.alertWindowWarning(alertTitle, alertHeader, alertText);
+        if (alertMade) WindowMaker.alertWindowWarning(ALERT_TITLE, ALERT_HEADER, alertText);
         return taskReady;
     }
 
@@ -198,7 +198,7 @@ public class AddOrChangeTaskController {
                 makeTimeAndDateToShow(new SimpleDateFormat("HH:mm:ss dd-MM-yyyy").parse(Controller.tSDate), shours, smin, ssec, start);
                 makeTimeAndDateToShow(new SimpleDateFormat("HH:mm:ss dd-MM-yyyy").parse(Controller.tEDate), ehours, emin, esec, end);
             } catch (ParseException e) {
-                Controller.logger.error("exception in  makeTimeAndDateToShow() method: " + e);
+                Controller.LOGGER.error("exception in  makeTimeAndDateToShow() method: " + e);
             }
             makeIntervalToShow(Controller.tIntInterval, idays, ihours, imin, isec);
         } else {
@@ -207,7 +207,7 @@ public class AddOrChangeTaskController {
             try {
                 makeTimeAndDateToShow(new SimpleDateFormat("HH:mm:ss dd-MM-yyyy").parse(Controller.tDate), hours, min, sec, date);
             } catch (ParseException e) {
-                Controller.logger.error("exception in  makeTimeAndDateToShow() method: " + e);
+                Controller.LOGGER.error("exception in  makeTimeAndDateToShow() method: " + e);
             }
         }
     }

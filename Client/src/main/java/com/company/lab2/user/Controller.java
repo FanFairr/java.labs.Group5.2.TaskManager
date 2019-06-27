@@ -31,7 +31,7 @@ public class Controller extends Application {
     private static Boolean calendarIsEmpty;
     private static Boolean tParsed;
     private static String adminValue;
-    public final static Logger logger = Logger.getLogger(MainController.class);
+    public final static Logger LOGGER = Logger.getLogger(MainController.class);
     /** tasks list */
     public static ObservableList<String> taskList;
     /** users list */
@@ -69,9 +69,9 @@ public class Controller extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-        final String path = "/view/user/Connection.fxml";
-        final String header1 = "Connection";
-        WindowMaker.makeWindow(path, header1, Modality.NONE);
+        final String PATH = "/view/user/Connection.fxml";
+        final String HEADER = "Connection";
+        WindowMaker.makeWindow(PATH, HEADER, Modality.NONE);
     }
 
     public static void main(String[] args) {
@@ -82,7 +82,7 @@ public class Controller extends Application {
                 try {
                     Thread.sleep(10);
                 } catch (InterruptedException e) {
-                    e.printStackTrace();
+                    LOGGER.error(e.getMessage(),e);
                 }
             }
             try {
@@ -148,16 +148,16 @@ public class Controller extends Application {
                                 Platform.runLater(MainController::notificationInterrupt);
                                 break;
                             case Patterns.ALREADYEXISTLOGIN:
-                                Platform.runLater(()-> WindowMaker.alertWindowInf(Patterns.TitleEnum.ERROR.getTitle(), Patterns.HeaderEnum.WRONGLOGIN.getTitle(), Patterns.ContentEnum.ALREADYEXISTLOGIN.getTitle()));
+                                Platform.runLater(()-> WindowMaker.alertWindowInf(Patterns.TitleEnum.ERROR.getTitle(), Patterns.HeaderEnum.WRONG_LOGIN.getTitle(), Patterns.ContentEnum.ALREADY_EXIST_LOGIN.getTitle()));
                                 break;
                             case Patterns.ACTIVEUSER:
-                                Platform.runLater(()-> WindowMaker.alertWindowInf(Patterns.TitleEnum.ERROR.getTitle(), Patterns.HeaderEnum.ACTIVEUSER.getTitle(), Patterns.ContentEnum.ACTIVEUSER.getTitle()));
+                                Platform.runLater(()-> WindowMaker.alertWindowInf(Patterns.TitleEnum.ERROR.getTitle(), Patterns.HeaderEnum.ACTIVE_USER.getTitle(), Patterns.ContentEnum.ACTIVE_USER.getTitle()));
                                 break;
                             case Patterns.LOGINNOTEXIST:
-                                Platform.runLater(()-> WindowMaker.alertWindowInf(Patterns.TitleEnum.ERROR.getTitle(), Patterns.HeaderEnum.WRONGLOGIN.getTitle(), Patterns.ContentEnum.LOGINNOTEXIST.getTitle()));
+                                Platform.runLater(()-> WindowMaker.alertWindowInf(Patterns.TitleEnum.ERROR.getTitle(), Patterns.HeaderEnum.WRONG_LOGIN.getTitle(), Patterns.ContentEnum.LOGIN_NOT_EXIST.getTitle()));
                                 break;
                             case Patterns.WRONGPASSWORD:
-                                Platform.runLater(()-> WindowMaker.alertWindowInf(Patterns.TitleEnum.ERROR.getTitle(), Patterns.HeaderEnum.WRONGPASSWORD.getTitle(), Patterns.ContentEnum.WRONGPASSWORD.getTitle()));
+                                Platform.runLater(()-> WindowMaker.alertWindowInf(Patterns.TitleEnum.ERROR.getTitle(), Patterns.HeaderEnum.WRONG_PASSWORD.getTitle(), Patterns.ContentEnum.WRONG_PASSWORD.getTitle()));
                                 break;
                             case Patterns.BANNED:
                                 Platform.runLater(()-> WindowMaker.alertWindowInf(Patterns.TitleEnum.NOPE.getTitle(), Patterns.HeaderEnum.BANNED.getTitle(), Patterns.ContentEnum.BANNED.getTitle()));
@@ -169,32 +169,32 @@ public class Controller extends Application {
                                 break;
                             case Patterns.WRONGCODE:
                                 becomeAdmTry = Integer.parseInt(reader.readLine());
-                                Platform.runLater(()-> WindowMaker.alertWindowInf(Patterns.TitleEnum.ERROR.getTitle(), Patterns.HeaderEnum.WRONGCODE.getTitle(), becomeAdmTry > 1? becomeAdmTry +" try's left. ": becomeAdmTry +" try left. " + Patterns.ContentEnum.WRONGCODE.getTitle()));
+                                Platform.runLater(()-> WindowMaker.alertWindowInf(Patterns.TitleEnum.ERROR.getTitle(), Patterns.HeaderEnum.WRONG_CODE.getTitle(), becomeAdmTry > 1? becomeAdmTry +" try's left. ": becomeAdmTry +" try left. " + Patterns.ContentEnum.WRONG_CODE.getTitle()));
                                 break;
                             case Patterns.CONGRATULATIONS:
                                 Platform.runLater(()-> WindowMaker.alertWindowInf(Patterns.TitleEnum.COOl.getTitle(), Patterns.HeaderEnum.CONGRATULATIONS.getTitle(),Patterns.ContentEnum.CONGRATULATIONS.getTitle()));
                                 break;
                             case Patterns.ALREADYADMIN:
-                                Platform.runLater(()-> WindowMaker.alertWindowInf(Patterns.TitleEnum.WOOPS.getTitle(), Patterns.HeaderEnum.ALREADYADMIN.getTitle(),Patterns.ContentEnum.ALREADYADMIN.getTitle()));
+                                Platform.runLater(()-> WindowMaker.alertWindowInf(Patterns.TitleEnum.WHOOPS.getTitle(), Patterns.HeaderEnum.ALREADY_ADMIN.getTitle(),Patterns.ContentEnum.ALREADY_ADMIN.getTitle()));
                                 break;
                             case Patterns.EXIT:
                                 interrupt();
                                 break;
                             default:
-                                logger.error("smth wrong with response");
+                                LOGGER.error("smth wrong with response");
                                 break;
                         }
                     }
                 }
                 client.close();
             } catch (IOException e) {
-                logger.error("exception on connection thread");
-                logger.trace(e);
+                LOGGER.error("exception on connection thread");
+                LOGGER.trace(e);
             } finally {
                 try {
                     reader.close();
                 } catch (IOException e) {
-                    e.printStackTrace();
+                    LOGGER.error(e.getMessage(),e);
                 } finally {
                     writer.close();
                 }
@@ -263,8 +263,8 @@ public class Controller extends Application {
             try {
                 Thread.sleep(10);
             } catch (InterruptedException e) {
-                logger.error("exception in isAdmin()");
-                logger.trace(e);
+                LOGGER.error("exception in isAdmin()");
+                LOGGER.trace(e);
             }
         }
         return to_return;
@@ -295,8 +295,8 @@ public class Controller extends Application {
             try {
                 Thread.sleep(10);
             } catch (InterruptedException e) {
-                logger.error("exception in getPanelData()");
-                logger.trace(e);
+                LOGGER.error("exception in getPanelData()");
+                LOGGER.trace(e);
             }
         }
     }
@@ -324,8 +324,8 @@ public class Controller extends Application {
             try {
                 Thread.sleep(10);
             } catch (InterruptedException e) {
-                logger.error("exception in calendar()");
-                logger.trace(e);
+                LOGGER.error("exception in calendar()");
+                LOGGER.trace(e);
             }
         }
     }
@@ -340,8 +340,8 @@ public class Controller extends Application {
             try {
                 Thread.sleep(10);
             } catch (InterruptedException e) {
-                logger.error("exception in parsTaskStringRequest()");
-                logger.trace(e);
+                LOGGER.error("exception in parsTaskStringRequest()");
+                LOGGER.trace(e);
             }
         }
     }

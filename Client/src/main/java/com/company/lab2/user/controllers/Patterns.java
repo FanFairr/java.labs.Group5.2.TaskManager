@@ -26,7 +26,11 @@ public class Patterns {
         ERROR ("Error"),
         NOPE ("Nope"),
         COOl ("Cool"),
-        WOOPS ("Woops");
+        WHOOPS("Whoops"),
+        ADMIN_REQ ("AdminRequests"),
+        EMPTY_CODE ("Code is empty"),
+        WARNING ("Warning"),
+        CALENDAR_NF ("Calendar not found");
 
         private String title;
 
@@ -44,13 +48,17 @@ public class Patterns {
     }
 
     public enum HeaderEnum {
-        WRONGLOGIN ("Wrong login"),
-        ACTIVEUSER ("Active user"),
-        WRONGPASSWORD ("Wrong password"),
+        WRONG_LOGIN("Wrong login"),
+        ACTIVE_USER("Active user"),
+        WRONG_PASSWORD("Wrong password"),
         BANNED ("U are banned"),
-        WRONGCODE ("Wrong code"),
+        WRONG_CODE("Wrong code"),
         CONGRATULATIONS ("Congratulations"),
-        ALREADYADMIN ("Already admin");
+        ALREADY_ADMIN("Already admin"),
+        ADMIN_REQ ("There are no Requests"),
+        EMPTY_CODE ("Code field is empty"),
+        WARNING ("Action mistake"),
+        CALENDAR_NF ("Sorry :-(");
 
         private String title;
 
@@ -68,15 +76,29 @@ public class Patterns {
     }
 
     public enum ContentEnum {
-        WRONGLOGIN ("Login doesn't exist"),
-        ALREADYEXISTLOGIN ("already exist login"),
-        ACTIVEUSER ("This account is active wright now"),
-        LOGINNOTEXIST ("Login doesn't exist"),
-        WRONGPASSWORD ("Password is incorrect"),
+        ALREADY_EXIST_LOGIN ("Already exist login"),
+        ACTIVE_USER("This account is active wright now"),
+        LOGIN_NOT_EXIST("Login doesn't exist"),
+        WRONG_PASSWORD("Password is incorrect"),
         BANNED ("Good luck"),
-        WRONGCODE ("Contact with mainAdmin to get code"),
+        WRONG_CODE("Contact with mainAdmin to get code"),
         CONGRATULATIONS ("You are on waiting list to become admin"),
-        ALREADYADMIN ("");
+        ALREADY_ADMIN(""),
+        PORT ("Port field should be filled"),
+        HOST ("Host fields should be filled"),
+        FAILED_CONN ("Failed connect to server! Try again or change host/port data!"),
+        TITLE ("Title field should be filled"),
+        DATE ("Date field should be filled"),
+        TIME ("At least one of time fields in one row should be filled"),
+        INTERVAL_F ("At least one of \"interval\" fields in one row should be filled"),
+        INTERVAL_Z ("\"Interval\" must be greater than zero!"),
+        END_START_TIME ("End time of the task must be greater than Start time + interval"),
+        RADIO ("Chose one of RadioButtons before adding Task"),
+        ADMIN_REQ ("Pls come later!"),
+        EMPTY_CODE ("pls filed code field before sending"),
+        CALENDAR_NF ("There aren't any Tasks is such period of time"),
+        FIELDS ("All fields should be filled"),
+        PASSWORDS_NM ("Passwords not match!");
 
         private String title;
 

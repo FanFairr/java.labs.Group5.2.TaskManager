@@ -28,8 +28,8 @@ public class MainController {
 
     @FXML
     void initialize() {
-        final Stage stage = WindowMaker.getStage();
-        stage.setOnCloseRequest(event -> {
+        final Stage STAGE = WindowMaker.getStage();
+        STAGE.setOnCloseRequest(event -> {
             if (alarm != null)
                 alarm.interrupt();
             Controller.interrupt();
@@ -39,22 +39,22 @@ public class MainController {
         multipleSelectionChoose();
         notification();
         addBtn.setOnAction(event -> {
-            final String path = "/view/user/AddOrChangeTask.fxml";
-            final String header = "Task Adding";
-            WindowMaker.makeWindow(path, header);
+            final String PATH = "/view/user/AddOrChangeTask.fxml";
+            final String HEADER = "Task Adding";
+            WindowMaker.makeWindow(PATH, HEADER);
         });
         makeClBtn.setOnAction(event -> {
-            final String path = "/view/user/MakeCalendar.fxml";
-            final String header = "Calendar";
-            WindowMaker.makeWindow(path, header);
+            final String PATH = "/view/user/MakeCalendar.fxml";
+            final String HEADER = "Calendar";
+            WindowMaker.makeWindow(PATH, HEADER);
         });
 
         adminBtn.setOnAction(event -> {
             if (Controller.isAdmin()) {
                 Controller.getPanelData("UsersList:");
-                final String path = "/view/user/AdminPanel.fxml";
-                final String header = "Admin Panel";
-                WindowMaker.makeWindow(path, header);
+                final String PATH = "/view/user/AdminPanel.fxml";
+                final String HEADER = "Admin Panel";
+                WindowMaker.makeWindow(PATH, HEADER);
             } else {
                 if ("waiting".equals(Controller.waiting4Adm)) {
                     WindowMaker.alertWindowInf("Waite", "You are in waiting list now", "Waite till SuperAdmin make you administrator");
@@ -67,9 +67,9 @@ public class MainController {
                             Controller.interrupt();
                         });
                     } else {
-                        final String path = "/view/user/BecomeAdmin.fxml";
-                        final String header = "BecomeAdmin";
-                        WindowMaker.makeWindow(path, header);
+                        final String PATH = "/view/user/BecomeAdmin.fxml";
+                        final String HEADER = "BecomeAdmin";
+                        WindowMaker.makeWindow(PATH, HEADER);
                     }
                 }
             }
@@ -107,9 +107,9 @@ public class MainController {
             if (newValue != null) {
                 task = newValue;
                 Controller.parsTaskStringRequest(task);
-                final String path = "/view/user/Task.fxml";
-                final String header = "Task";
-                WindowMaker.makeWindow(path, header);
+                final String PATH = "/view/user/Task.fxml";
+                final String HEADER = "Task";
+                WindowMaker.makeWindow(PATH, HEADER);
                 taskListView.refresh();
             }
         }));

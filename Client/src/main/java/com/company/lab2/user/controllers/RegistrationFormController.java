@@ -46,29 +46,29 @@ public class RegistrationFormController {
         email.setTooltip(new Tooltip("Your email"));
         registrateBtn.setOnAction(event -> {
             boolean alertMade = true;
-            final String alertTitle = "Warning";
-            final String alertHeader = "Action mistake";
+            final String ALERT_TITLE = "Warning";
+            final String ALERT_HEADER = "Action mistake";
             String alertText = "";
             if (ValidateController.isEmpty(login) || ValidateController.isEmpty(name)
                     || ValidateController.isEmpty(email) ||"".equals(password.getText().trim())
                     || "".equals(passwordConfirm.getText().trim())) {
-                alertText ="All fields should be filled";
+                alertText = Patterns.ContentEnum.FIELDS.getTitle();
             } else if (!password.getText().equals(passwordConfirm.getText())){
-                alertText ="Passwords not match!";
+                alertText = Patterns.ContentEnum.PASSWORDS_NM.getTitle();
             } else {
                 alertMade = false;
                 EnterFormController.logIn = login.getText();
                 Controller.registration(login.getText(), password.getText());
             }
             if (alertMade)
-                WindowMaker.alertWindowWarning(alertTitle, alertHeader, alertText);
+                WindowMaker.alertWindowWarning(ALERT_TITLE, ALERT_HEADER, alertText);
         });
         signInBtn.setOnAction(event -> {
             Stage current = WindowMaker.getStage();
-            final String path = "/view/user/EnterForm.fxml";
-            final String header = "SignIn";
+            final String PATH = "/view/user/EnterForm.fxml";
+            final String HEADER = "SignIn";
             Platform.runLater(() -> WindowMaker.closeWindow(current));
-            WindowMaker.makeWindow(path, header);
+            WindowMaker.makeWindow(PATH, HEADER);
         });
 
     }

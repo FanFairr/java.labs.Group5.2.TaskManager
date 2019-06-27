@@ -50,15 +50,15 @@ public class TaskController {
         stage = WindowMaker.getStage();
         showTaskData();
         ChangeBtn.setOnAction(event -> {
-            final String path = "/view/user/AddOrChangeTask.fxml";
-            final String header = "Task Changing";
-            WindowMaker.makeWindow(path, header);
+            final String PATH = "/view/user/AddOrChangeTask.fxml";
+            final String HEADER = "Task Changing";
+            WindowMaker.makeWindow(PATH, HEADER);
             showTaskData();
         });
         DeleteBtn.setOnAction(event -> {
-            final String path = "/view/user/Confirm.fxml";
-            final String header = "Confirm deleting";
-            WindowMaker.makeWindow(path, header);
+            final String PATH = "/view/user/Confirm.fxml";
+            final String HEADER = "Confirm deleting";
+            WindowMaker.makeWindow(PATH, HEADER);
         });
         CloseBtn.setOnAction(event -> WindowMaker.closeWindow(stage));
     }

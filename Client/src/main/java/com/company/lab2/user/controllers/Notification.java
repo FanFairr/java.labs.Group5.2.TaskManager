@@ -7,7 +7,7 @@ import java.util.Date;
 import java.util.Set;
 import java.util.SortedMap;
 
-import static com.company.lab2.user.Controller.logger;
+import static com.company.lab2.user.Controller.LOGGER;
 
 /**
  * Thread class for checking taskList
@@ -27,10 +27,10 @@ public class Notification extends Thread {
     private boolean notFirstTimeHereAfterMonitor;
     /**boolean statement for while loop*/
     private boolean checkForWhile = true;
-    /**title of notification*/
-    private final String title = "Task Time!";
-    /**header of notification*/
-    private final String header = "Time to do this Task";
+    /**TITLE of notification*/
+    private final String TITLE = "Task Time!";
+    /**HEADER of notification*/
+    private final String HEADER = "Time to do this Task";
 
 
     /**Method for making Calendar for one day
@@ -47,7 +47,7 @@ public class Notification extends Thread {
 
     @Override
     public void run() {
-        logger.debug("new Thread");
+        LOGGER.debug("new Thread");
         while (checkForWhile){
             makeCalendarForDay();
             try {
@@ -58,8 +58,8 @@ public class Notification extends Thread {
                     if (nextAlarmDate != null && now.getTime() == nextAlarmDate.getTime()) {
                         if (calendarByTime.get(now) != null ) {
                             for (String task : calendarByTime.get(now)) {
-                                logger.debug("alarm!!!");
-                                Platform.runLater(() -> WindowMaker.alertWindowInf(title, header, task));
+                                LOGGER.debug("alarm!!!");
+                                Platform.runLater(() -> WindowMaker.alertWindowInf(TITLE, HEADER, task));
                             }
                             calendarByTime.remove(now);
                         }
@@ -70,8 +70,8 @@ public class Notification extends Thread {
                                 if (date.getTime() == now.getTime()) {
                                     if (calendarByTime.get(now) != null ) {
                                         for (String task : calendarByTime.get(now)) {
-                                            logger.debug("alarm!!!");
-                                            Platform.runLater(() -> WindowMaker.alertWindowInf(title, header, task));
+                                            LOGGER.debug("alarm!!!");
+                                            Platform.runLater(() -> WindowMaker.alertWindowInf(TITLE, HEADER, task));
                                         }
                                         calendarByTime.remove(now);
                                         break;
@@ -80,7 +80,7 @@ public class Notification extends Thread {
                                     nextAlarmDate = date;
                                     if (nextAlarmDate.getTime() - now.getTime() > 1) {
                                         long sleep = nextAlarmDate.getTime() - now.getTime() - 1;
-                                        logger.debug("sleep to alarm " + sleep + " mils");
+                                        LOGGER.debug("sleep to alarm " + sleep + " mils");
                                         sleep(sleep);
                                     }
                                     break;
@@ -89,15 +89,15 @@ public class Notification extends Thread {
                         }
                     }
                 }
-                logger.debug("sleep to the next day");
+                LOGGER.debug("sleep to the next day");
                 sleep(endDayTime.getTime() - now.getTime());
                 break;
             } catch (InterruptedException e) {
-                logger.debug("exception");
+                LOGGER.debug("exception");
                 checkForWhile = false;
                 break;
             }
         }
-        logger.debug("end Thread");
+        LOGGER.debug("end Thread");
     }
 }
