@@ -24,7 +24,7 @@ import java.util.TreeMap;
  * class for working with events of the "ServerScene" window
  */
 public class ServerSceneController {
-    private Logger logger = Logger.getLogger(ServerSceneController.class);
+    private Logger LOGGER = Logger.getLogger(ServerSceneController.class);
 
     /** list of clients */
     private static ObservableList<User> observableList;
@@ -87,7 +87,7 @@ public class ServerSceneController {
             }
 
         } catch (IOException e) {
-            logger.error("class ServerSceneController line 90 Error when working with sockets");
+            LOGGER.error("class ServerSceneController line 90 Error when working with sockets");
         }
     }
 
@@ -120,13 +120,13 @@ public class ServerSceneController {
                         }
                     }
                 } catch (IOException e) {
-                    logger.error("class ServerSceneController line 123 Error when working with sockets");
+                    LOGGER.error("class ServerSceneController line 123 Error when working with sockets");
                 }
 
                 try {
                     Thread.sleep(5000);
                 } catch (InterruptedException e) {
-                    logger.error("class ServerSceneController line 129 Error while working with thread");
+                    LOGGER.error("class ServerSceneController line 129 Error while working with thread");
                 }
                 Platform.exit();
                 System.exit(0);

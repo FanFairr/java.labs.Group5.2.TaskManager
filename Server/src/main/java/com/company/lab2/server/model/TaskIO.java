@@ -28,10 +28,10 @@ import java.util.TreeMap;
  * class to work with xml files
  */
 public class TaskIO {
-    private Logger logger = Logger.getLogger(TaskIO.class);
+    private Logger LOGGER = Logger.getLogger(TaskIO.class);
 
     /** file name */
-    private String fileName = "information.xml";
+    private final String FILENAME = "information.xml";
 
     /**
      * data readout method of the file
@@ -42,7 +42,7 @@ public class TaskIO {
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         try {
             DocumentBuilder builder = factory.newDocumentBuilder();
-            Document document = builder.parse(fileName);
+            Document document = builder.parse(FILENAME);
             NodeList userList = document.getElementsByTagName("user");
 
             for (int i = 0; i < userList.getLength(); i++) {
@@ -85,7 +85,7 @@ public class TaskIO {
 
             }
         } catch (ParserConfigurationException | ParseException | IOException | SAXException e) {
-            logger.error("error while reading from the xml file");
+            LOGGER.error("error while reading from the xml file");
         }
     }
 
@@ -151,9 +151,9 @@ public class TaskIO {
 
             Transformer t = TransformerFactory.newInstance().newTransformer();
             t.setOutputProperty(OutputKeys.INDENT, "yes");
-            t.transform(new DOMSource(document), new StreamResult(new FileOutputStream(fileName)));
+            t.transform(new DOMSource(document), new StreamResult(new FileOutputStream(FILENAME)));
         } catch (ParserConfigurationException | FileNotFoundException | TransformerException e) {
-            logger.error("error while writing to the xml file");
+            LOGGER.error("error while writing to the xml file");
         }
     }
 

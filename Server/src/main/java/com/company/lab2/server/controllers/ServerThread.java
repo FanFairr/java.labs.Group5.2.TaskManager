@@ -20,7 +20,7 @@ import java.util.*;
  * class of allocation of a separate stream for processing client requests
  */
 public class ServerThread extends Thread {
-    private Logger logger = Logger.getLogger(ServerThread.class);
+    private Logger LOGGER = Logger.getLogger(ServerThread.class);
 
     /** message flow */
     private BufferedReader in;
@@ -221,7 +221,7 @@ public class ServerThread extends Thread {
                                 date1 = format.parse(in.readLine());
                                 date2 = format.parse(in.readLine());
                             } catch (ParseException e) {
-                                logger.error("class ServerThread line 226 Parsing error");
+                                LOGGER.error("class ServerThread line 226 Parsing error");
                             }
                             synchronized (tasksList) {
                                 SortedMap<Date, Set<String>> sortedMap = Tasks.calendar(tasksList.get(login), date1, date2);
@@ -316,14 +316,14 @@ public class ServerThread extends Thread {
                             whileCondition = false;
                             break;
                         default:
-                            logger.error("smth wrong with response");
+                            LOGGER.error("smth wrong with response");
                             break;
                     }
                     Thread.sleep(10);
                 }
             }
         } catch (IOException | InterruptedException e) {
-            logger.error("class ServerThread IOException or InterruptedException");
+            LOGGER.error("class ServerThread IOException or InterruptedException");
         } finally {
             try {
                 in.close();

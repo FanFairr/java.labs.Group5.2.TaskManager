@@ -24,7 +24,7 @@ import java.util.TreeMap;
 
 public class Server extends Application {
     /** logger */
-    private static Logger logger = Logger.getLogger(Server.class);
+    private static Logger LOGGER = Logger.getLogger(Server.class);
 
     /** server socket */
     private static ServerSocket serverSocket;
@@ -66,7 +66,7 @@ public class Server extends Application {
                             bufferedWriter.write(gson.toJson(adminList));
                         }
                     } catch (IOException e) {
-                        logger.error("class Server line 73 Error when working with sockets");
+                        LOGGER.error("class Server line 73 Error when working with sockets");
                     }
 
                     try {
@@ -78,7 +78,7 @@ public class Server extends Application {
                             }
                         }
                     } catch (IOException e) {
-                        logger.error("class Server line 85 Error when working with sockets");
+                        LOGGER.error("class Server line 85 Error when working with sockets");
                     }
 
                     Platform.exit();
@@ -102,7 +102,7 @@ public class Server extends Application {
             if (str != null && !str.equals("[]"))
                 adminList = new ArrayList<>(Arrays.asList(gson.fromJson(str, User[].class)));
         } catch (IOException e) {
-            logger.error("class Server line 110 Error when working with file adminka.txt");
+            LOGGER.error("class Server line 110 Error when working with file adminka.txt");
         }
 
         new Thread(() -> {
@@ -116,7 +116,7 @@ public class Server extends Application {
                     }
                 }
             } catch (IOException e) {
-                logger.error("class Server line 124 Error when working with sockets");
+                LOGGER.error("class Server line 124 Error when working with sockets");
             }
         }).start();
 
