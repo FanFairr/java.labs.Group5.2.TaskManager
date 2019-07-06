@@ -328,7 +328,7 @@ public class ServerThread extends Thread {
             try {
                 in.close();
             } catch (IOException e) {
-                e.printStackTrace();
+                LOGGER.error("error when BufferedReader closed " + e.getMessage());
             } finally {
                 printWriter.close();
             }
